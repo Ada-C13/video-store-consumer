@@ -7,13 +7,18 @@ const Library = (props) => {
   if (props.library) {
     movies = props.library.map((movie) => {
       return (
-        <li>{movie.title}</li>
+        <div className="ui card">
+          <div className="ui content">
+            <img src={movie.image_url} className="ui image"/>
+            <p className="ui header">{movie.title}</p>
+          </div>
+        </div>
       );
     });
   }
 
   return (
-    <div className="">
+    <div className="ui cards">
       I am library!
       <ul>
         {movies}
