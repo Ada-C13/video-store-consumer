@@ -111,7 +111,6 @@ The Rails back-end already has a lot of functionality implemented. You can:
 - Get details on an individual movie
 - Get a list of customers
 - Check movies in and out
-- Get a list of all overdue movies
 
 It is worth taking the time to read through this Rails code and understand how the different pieces of the server fit together.
 
@@ -124,6 +123,7 @@ For the core requirements, you will need to add the ability to add a movie from 
 ## Optional Enhancements
 Some of these optional requirements require work in the front-end only, back-end only or both.
 
+- Get a list of all overdue movies
 - Deploy your front-end to GitHub Pages, and your back-end to AWS
 - Set up TravisCI for continuous integration on your back-end
 - Allow a user to interact with a Movie by clicking
