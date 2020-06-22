@@ -1,9 +1,12 @@
 import React from 'react';
+import SearchBar from './SearchBar';
 
 const Search = () => {
+  
+
   return (
     <div className="">
-      Let's look for stuff!
+      <SearchBar />
     </div>
   )
 }
