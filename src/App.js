@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import './App.css';
 
 import Navbar from "./components/Navbar";
@@ -15,8 +15,24 @@ import {
   Link
 } from "react-router-dom";
 
+const LIBRARY_URL = "http://localhost:3000/library"
+
 const App = () => {
 
+  const [library, setLibrary] = useState();
+
+  useEffect(() => {
+    axios.get(LIBRARY_URL)
+      .then((response) => {
+        const apiLibrary = response.data;
+        setLibrary(apiLibrary);
+      })
+      .catch((error) => {
+        // Error Handling, huh?
+        console.log(error);
+      });
+  }, []);
+  
   return (
     <Router>
       <div> 
@@ -26,7 +42,7 @@ const App = () => {
 
         <Switch>
           <Route path="/library">
-            <Library />
+            <Library library={library} />
           </Route>
           <Route path="/search">
             <Search />
