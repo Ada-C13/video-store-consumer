@@ -47,7 +47,7 @@ At project submission, we expect more tests/assertions, and 0 skips
 
 | Overall Feedback                | Criteria                                                                                                                                                                                  | yes/no |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| Green (Meets/Exceeds Standards) | 4 in Code Review && 6 in Functional Requirements                                                                                                                                          |
+| Green (Meets/Exceeds Standards) | 3 in Code Review && 6 in Functional Requirements                                                                                                                                          |
 | Yellow (Approaches Standards)   | 2 in Code Review or 4 in Functional Requirements, or the instructor judges that this project needs special attention                                                                      |
 | Red (Not at Standard)           | 0 in Code Review or 0 in Functional Reqs, or assignment is breaking/doesn’t run with less than 5 minutes of debugging, or the instructor judges that this project needs special attention |
 
