@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Movie = (props) => {
-  console.log(props)
   return (
     <div id={props.id} className="movie">
       <div className="movie__content">

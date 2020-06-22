@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Movie from './Movie';
+import Search from './Search';
 
 const reformatData = (data) => {
   return data.map((element) => {
@@ -10,6 +11,18 @@ const reformatData = (data) => {
 };
 
 const Store = (props) => {
+  const [movie, setMovie] = useState([]);
+  const onSubmitCallback = (movie) => {
+    axios.get(`${props.url}movies/${movie}`) 
+    .then ((response) => {
+    setMovie(response)
+    
+    })
+
+    .catch((error) => {
+      console.log(`Error: ${error}`)
+    });
+  }
 
   // The useState function returns an array which contains 
   // two items: movieList and SetMovieList.
@@ -24,8 +37,8 @@ const Store = (props) => {
     axios.get(url)
       .then((response) => {
         console.log(response.data)
-        const apiMovieList = reformatData(response.data);
-        setMovieList(apiMovieList);
+        const apiMovie = reformatData(response.data);
+        setMovieList(apiMovie);
       })
       .catch((error) => {
         console.log(error)
@@ -39,7 +52,7 @@ const Store = (props) => {
   // in this array you can pass variables. When any of this variable updates it will cause the useEffect to run again
   useEffect(() => { getMovies(endPoint); }, [endPoint]);
 
-  const formatMovies = movieList.map((movie) => {
+  const formatMovies = movie.map((movie) => {
     return (
       <Movie
         key={movie.id}
@@ -54,6 +67,9 @@ const Store = (props) => {
 
   return (
     <main>
+      <div><Search 
+        onSubmitCallback={onSubmitCallback}/>
+      </div>
       <div className="store">
         {formatMovies}
       </div>
