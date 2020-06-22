@@ -1,6 +1,9 @@
 import React, { useState, Component } from 'react';
 import './App.css';
 import Home from "./components/Home";
+import Library from './components/Library';
+import Customers from './components/Customers';
+import Search from './components/Search';
 import {
   BrowserRouter as Router,
   Switch,
@@ -66,15 +69,15 @@ class App extends Component {
 //   return <h2>Home</h2>;
 // }
 
-function Search() {
-  return <h2>Search</h2>;
-}
+// function Search() {
+//   return <h2>Search</h2>;
+// }
 
-function Customers() {
-  return <h2>Customers</h2>;
-}
+// function Customers() {
+//   return <h2>Customers</h2>;
+// }
 
-function Library() {
-  return <h2>Library</h2>;
-}
+// function Library() {
+//   return <h2>Library</h2>;
+// }
 export default App;
