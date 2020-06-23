@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import AddToLibraryButton from './AddToLibraryButton';
 
 const POST_URL = "http://localhost:3000/movies"
 
 const SearchResult = (props) => {
+  const [inLibrary, setInLibrary] = useState(props.inLibrary);
 
   const addToLibrary = () => {
     const data = {
@@ -18,8 +19,8 @@ const SearchResult = (props) => {
     console.log(data);
     axios.post(POST_URL, data)
       .then((response) => {
-        // What should we do when we know the post request worked?
         console.log("Added to Library");
+        setInLibrary(true);
         // setErrorMessage('');
       })
       .catch((error) => {
@@ -36,7 +37,7 @@ const SearchResult = (props) => {
       <td className="two wide"> {props.title} </td>
       <td className="two wide"> {props.release_date} </td>
       <td> {props.overview} </td>
-      <td><AddToLibraryButton inLibrary={props.inLibrary} addToLibraryCallback={addToLibrary}/></td>
+      <td><AddToLibraryButton inLibrary={inLibrary} addToLibraryCallback={addToLibrary}/></td>
     </tr>
   );
 };

@@ -8,7 +8,7 @@ const AddToLibraryButton = (props) => {
   };
 
   if(props.inLibrary){
-    return(<button class="ui disabled button">Already added</button>);
+    return(<button class="ui disabled button">Added</button>);
   } else {
     return(<button class="ui olive button" onClick={addToLibrary}>To Library</button>);
   }
