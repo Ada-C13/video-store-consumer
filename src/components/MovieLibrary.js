@@ -27,7 +27,7 @@ const MovieLibrary = () => {
 
   const allMovies = movieList.map((movie) => {
 		return (
-			<div>
+			<div  key={movie.id}>
 				<Movie movie={movie} />
 			</div>
 		);
@@ -35,10 +35,10 @@ const MovieLibrary = () => {
 
 
   return (
-    <div class="container">
+    <div className="container">
       <h3>Movie Library</h3>
 
-      <div class="card-deck d-flex">
+      <div className="card-deck d-flex">
         { allMovies }
       </div>
     </div>
