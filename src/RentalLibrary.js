@@ -6,7 +6,7 @@ const RentalLibrary = () => {
     <div className="RentalLibrary">
       <h1>Rental Library</h1>
     </div>
-);
+  );
 }
 
 export default RentalLibrary;

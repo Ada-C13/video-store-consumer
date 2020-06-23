@@ -6,7 +6,7 @@ const Customers = () => {
     <div className="Customers">
       <h1>Customers Page</h1>
     </div>
-);
+  );
 }
 
 export default Customers;
