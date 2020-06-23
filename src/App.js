@@ -6,7 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
     return (
-      <Header />
+      <section>
+        <Header />
+      </section>
     );
 }
 
