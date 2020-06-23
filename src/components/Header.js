@@ -6,7 +6,9 @@ import Customers from './Customers';
 import Library from './Library';
 import Search from './Search';
 
-const Header = () => {
+URL = "http://localhost:3000/"
+
+const Header = (props) => {
   return (
   <Router>
       <div>
@@ -18,12 +20,26 @@ const Header = () => {
           <li><Link to={'/customers'} className="nav-link">Customers</Link></li>
           <li><Link to={'/search'} className="nav-link">Search</Link></li>
         </ul>
+        <ul>
+          {/* <li>{props.selectedCustomer}</li> */}
+          <li></li>
+        </ul>
         </nav>
         <hr />
         <Switch>
             <Route exact path='/' component={Home} />
-            <Route path='/library' component={Library} />
-            <Route path='/customers' component={Customers} />
+            <Route 
+            path='/library'
+            render={(props) => (
+              <Library {...props} url={URL+"/movies"}/>
+            )} />
+            <Route 
+            path='/customers'
+            render={(props) => (
+              <Customers {...props} url={URL+"/customers"}/>
+            )} />
+            
+            
             <Route path='/search' component={Search} />
         </Switch>
       </div>

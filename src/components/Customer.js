@@ -7,7 +7,11 @@ const Customer = (props) => {
       <td>{props.id}</td>
       <td>
         <form action="">
-            <input type="submit" className="btn btn-primary" value="Select" />
+            <input type="submit"
+            className="btn btn-primary"
+            value="Select"
+            // onClick={() => selectCustomer(props.id)}
+            />
         </form> 
       </td>
       <td>{props.name}</td>
