@@ -68,6 +68,27 @@ const App = () => {
     if (selectedCustomer) {
       setCustomerPick(selectedCustomer);
       console.log(customerPick); 
+      };
+    });
+  };
+      // I don't really understand this part
+  const onSelectMovie = (movie_id) => {
+    axios.get(LIBRARY_URL) 
+      .then((response)=>{
+      let count = 1
+      const movieList = response.data.map((movie) => {
+        movie["id"] = count
+        count += 1
+        return movie
+      })
+  
+    const selectedMovie = movieList.find((movie) => {
+      return movie.id === movie_id;
+    });
+
+    if (selectedMovie) {
+      setMoviePick(selectedMovie);
+      console.log(moviePick); 
     };
   });
   }
@@ -80,10 +101,8 @@ const App = () => {
         </header>
 
         <Switch>
-          <Route path="/library">
-            <Library 
-            library={library} 
-            onClick={moviePick}/>
+          <Route path="/library"> 
+            <Library library={library} selectMovieCallback={onSelectMovie}/>
           </Route>
           <Route path="/search">
             <Search library={library}/>
@@ -94,7 +113,7 @@ const App = () => {
             customers={customers} />
           </Route>
           <Route path="/">
-            <Home />
+            <Home moviePick={moviePick}/>
           </Route>
           <Route path="/rental">
             <RentalBox moviePick={moviePick} customerPick={customerPick} />

@@ -7,19 +7,21 @@ const Library = (props) => {
   if (props.library) {
     movies = props.library.map((movie) => {
       return (
-        <div className="ui card">
-          <div className="ui content">
-            <img src={movie.image_url} className="ui image"/>
-            <p className="ui header">{movie.title}</p>
-          </div>
-        </div>
+        <Movie 
+        title={movie.title} 
+        image_url={movie.image_url}
+        movieCallback={props.selectMovieCallback}
+        id={movie.id}
+        key={movie.id} 
+      />
       );
     });
   }
 
   return (
     <div className="ui cards">
-
+      <p></p>
+      <p></p>
       <ul>
         {movies}
       </ul>
