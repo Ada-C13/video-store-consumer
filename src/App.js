@@ -90,7 +90,8 @@ class App extends Component {
         <MovieSearch/>
       </Route> 
       <Route path="/library">
-        <MovieLib url="http://localhost:3000/"/>
+        <MovieLib movieList={this.state.movies} 
+        selectMovie={(id) => this.selectMovie(id)} />
       </Route>
       <Route path="/customers">
         <CustomerList 
