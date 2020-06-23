@@ -1,55 +1,60 @@
-import React from "react";
+import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+import './App.css';
+import CustomerList from './components/customerindex';
+import MovieIndex from './components/movieindex';
 
-export default function App() {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedCustomer: undefined,
+      selectedMovie: undefined,
+      open: false,
+      message: '',
+    }
+  }
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+
+
+  render() {
+
+    return (
+      <div className="App">
+        <Router>
+          <div>
+            <nav>
+              <ul>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/movies">Movie List</Link></li>
+                <li><Link to="/customers">Customers</Link></li>
+                <li>
+                </li>
+              </ul>
+            </nav>
+
+            <Switch>
+              <Route path="/customers">
+                <CustomerList
+                  selectCustomerCallback={this.selectCustomer}
+                />
+              </Route>
+              <Route path="/movies">
+                <MovieIndex
+                  selectMovieCallback={this.selectMovie}
+                />
+              </Route>
+            </Switch>
+          </div>
+        </Router>
       </div>
-    </Router>
-  );
+    );
+  }
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
+export default App;
