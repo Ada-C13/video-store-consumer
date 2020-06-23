@@ -1,15 +1,16 @@
 import React from 'react';
+import axios from 'axios';
 import AddToLibraryButton from './AddToLibraryButton';
 
 const POST_URL = "http://localhost:3000/movies"
 
 const SearchResult = (props) => {
 
-  const addToLibrary = (props) => {
+  const addToLibrary = () => {
     const data = {
       title: props.title,
       overview: props.overview,
-      release_date: release_date,
+      release_date: props.release_date,
       image_url: props.image_url,
       external_id: props.external_id
     };
