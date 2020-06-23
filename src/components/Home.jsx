@@ -1,13 +1,15 @@
 import React from 'react';
+import './Home.css';
 
 const Home = () => {
   return (
-    <div class="ui text container">
-      <h1 class="">
-        Imagine-a-Company
-      </h1>
-      <h2>Do whatever you want when you want to.</h2>
-      <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>
+    <div class="home-header">
+      <div class="home-header__text-box">
+        <h1 class="heading-primary">
+            <span class="heading-primary--main">Video Store</span>
+            <span class="heading-primary--sub">may the force of React be with you</span>
+        </h1>
+      </div>
     </div>
   )
 }
