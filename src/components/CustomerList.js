@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from'react';
 import PropTypes from 'prop-types';
+import Customer from './Customer';
 
 import axios from 'axios';
 
@@ -30,9 +31,9 @@ const CustomerList = () => {
 
   const allCustomers = customerList.map((customer) => {
 		return (
-      <div>
-        {customer.name}
-      </div>
+			<div key={customer.id}>
+				<Customer id={customer.id} name={customer.name} address={customer.address} />
+			</div>
 		);
 	});
 
