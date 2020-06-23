@@ -80,10 +80,14 @@ const App = () => {
 
         <Switch>
           <Route path="/library">
+<<<<<<< HEAD
             <Library library={library} onClick={moviePick}/>
+=======
+            <Library library={library}/>
+>>>>>>> 31c60039aaf5198f67cff811bded83718ca7e41b
           </Route>
           <Route path="/search">
-            <Search />
+            <Search library={library}/>
           </Route>
           <Route path="/customers">
             <Customers 
