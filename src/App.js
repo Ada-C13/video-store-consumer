@@ -58,7 +58,7 @@ const App = () => {
 
         <Switch>
           <Route path="/library">
-            <Library library={library} onClick={moviePick}/>
+            <Library library={library} selectMovieCallback={() => setMoviePick(moviePick)}/>
           </Route>
           <Route path="/search">
             <Search />

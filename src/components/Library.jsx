@@ -5,7 +5,7 @@ import {
   Link
 } from "react-router-dom";
 
-const Library = (props, onClickCallback ) => {
+const Library = (props) => {
   const [displaySelectedMovie, setMovie] = useState();
 
   let movies = [];
@@ -16,6 +16,9 @@ const Library = (props, onClickCallback ) => {
         // <div className="ui card">
         //   <div className="ui content">
         //     <img src={movie.image_url} className="ui medium image" />
+        //     <button className="square" key={props.id} onClick={() => {props.selectMovieCallback(movie)}} >
+        //     Select Movie
+        //   </button>
         //     <p className="ui header">{movie.title}</p>
         //   </div>
         // </div>
