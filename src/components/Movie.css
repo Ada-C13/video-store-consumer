@@ -1,5 +1,6 @@
 .movie_grid {
-  width: fit-content;
+  width: 400px;
+  height: max-content;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -12,4 +13,13 @@
   border: solid gray 20px;
   border-radius: 25px;
   border-color: rgba(189, 195, 199, 0.6);
+}
+
+.movie_details_container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-size: 13px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
 }

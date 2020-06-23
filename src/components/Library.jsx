@@ -13,6 +13,7 @@ const Library = (props) => {
         title={movie.title} 
         image_url={movie.image_url}
         movieCallback={props.selectMovieCallback}
+        overview={movie.overview}
         id={movie.id}
         key={movie.id} 
       />

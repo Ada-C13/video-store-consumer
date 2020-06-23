@@ -10,14 +10,13 @@ const Movie = (props) => {
         <div className="movie_poster">
           <img src={props.image_url} alt={props.title} />
         </div>
-        <div>
-          <h3>{props.title}</h3>
+        <div className="movie_details_container">
+          {/* <h3>{props.title}</h3> */}
           <p>{props.overview}</p>
-          <td>
-            <button class="ui olive button" onClick={() => { props.movieCallback(props.id) } }>
-              Rent {props.title}
-            </button>
-          </td>
+
+          <button class="ui olive button" onClick={() => { props.movieCallback(props.id) } }>
+            Rent {props.title}
+          </button>
         </div>
       </div>
     </div>
