@@ -2,7 +2,6 @@ import React from 'react';
 import AddToLibraryButton from './AddToLibraryButton';
 
 const SearchResult = (props) => {
-
   return (
     <tr>
       <td>
@@ -11,7 +10,7 @@ const SearchResult = (props) => {
       <td className="two wide"> {props.title} </td>
       <td className="two wide"> {props.release_date} </td>
       <td> {props.overview} </td>
-      <td><AddToLibraryButton/></td>
+      <td><AddToLibraryButton inLibrary={props.inLibrary}/></td>
     </tr>
   );
 };

@@ -6,7 +6,7 @@ import SearchResults from './SearchResults';
 
 const SEARCH_URL = "http://localhost:3000/search";
 
-const Search = () => {
+const Search = (props) => {
   const [movies, setMovies] = useState([]);
 
   const searchMovies = (query) => {
@@ -33,7 +33,7 @@ const Search = () => {
       <div class="ui horizontal divider">
         Results
       </div>
-      {movies.length > 0 && <SearchResults foundMovies={movies} /> }
+      {movies.length > 0 && <SearchResults foundMovies={movies} library={props.library}/> }
     </div>
   )
 }

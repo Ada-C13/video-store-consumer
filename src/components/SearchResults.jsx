@@ -5,14 +5,21 @@ const SearchResults = (props) => {
   let searchResultComponents = [];
   if (props.foundMovies.length > 0) {
     searchResultComponents = props.foundMovies.map((movie) => {
+
+      const found = props.library.find((movieInLibrary) => {
+        return movieInLibrary.external_id === movie.external_id
+      });
+      const inLibrary = found ? true : false;
+
       return (
         <SearchResult
           key={movie.id}
-          id={movie.id}
+          id={movie.external_id}
           title={movie.title}
           release_date={movie.release_date}
           overview={movie.overview}
           image_url={movie.image_url}
+          inLibrary={inLibrary}
         />
       );
     });
