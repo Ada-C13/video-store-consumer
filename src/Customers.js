@@ -26,6 +26,7 @@ const Customers = () => {
     return(< Customer 
       id={customerObj.id}
       name={customerObj.name} 
+      account_credit = {customerObj.account_credit}
       movie_count={customerObj.movies_checked_out_count}
       key={customerObj.id}
     />)
