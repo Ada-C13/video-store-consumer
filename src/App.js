@@ -16,51 +16,41 @@ import axios from 'axios';
 const BASE_URL = 'http://localhost:3000/'
 
 class App extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     movies: [],
-  //     selectMovie: undefined,
-  //     customers: [],
-  //     selectedCustomer: undefined,
-  //     error: undefined,
-  //   };
-  // }
+  constructor() {
+    super();
+    this.state = {
+      movies: [],
+      selectMovie: undefined,
+      customers: [],
+      selectedCustomer: undefined,
+      error: undefined,
+    };
+  }
 
-  // // const addCardCallBack = (card) => {
-	// // 	let newEmoji = emoji.getName(card.emoji);
-	// // 	if (!newEmoji) {
-	// // 		newEmoji = card.emoji;
-	// // 	}
-	// // 	axios
-	// // 		.post(`https://inspiration-board.herokuapp.com/boards/${currentBoard}/cards?text=${card.text}&emoji=${newEmoji}`)
-	// // 		.then((response) => {
-	// // 			const newCard = response.data;
-	// // 			const newCardsList = [ ...cardsList, newCard ];
-  // //       setCardsList(newCardsList);
-  // //       setErrorMessage(null);
-	// // 		})
-	// // 		.catch((error) => {
-	// // 			setErrorMessage(`Error: ${error.message}`);
-	// // 		});
-	// // };
+  componentDidMount() {
+    axios.get(`${BASE_URL}/customers`)
+    .then((response) => {
 
+      const customers = response.data;
 
-  // componentDidMount() {
-  //   axios.get(`${BASE_URL}/customers`)
-  //   .then((response) => {
-  //     const customers = Object.keys(response.data).map ((customer) => {
-  //       return response.data[customer]
-  //     })
-  //     this.setState({
-  //       customers,
-  //       error: undefined
-  //     });
-  //   })
-  //   .catch ((error) => {
-  //     this.setState({ error: error.message });
-  //   });
-  // }
+      this.setState({
+        customers,
+        error: undefined
+      });
+    })
+    .catch ((error) => {
+      this.setState({ error: error.message });
+    });
+  }
+  selectCustomer(id) {
+    const { customers } = this.state;
+
+    const selectedCustomer = customers[id - 1]
+
+    this.setState({
+      selectedCustomer,
+    })
+  }
   render() {
     return (
       <Router>
@@ -86,7 +76,7 @@ class App extends Component {
             <Home />
           </Route>
           <Route path="/customers">
-            <CustomerList/>
+            <CustomerList customerList={this.state.customers} selectCustomer={(id) => this.selectCustomer(id)} />
           </Route>
           <Route path="/library">
             <MovieLibrary />

@@ -6,6 +6,8 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/'
 
+
+//TODO add selectCustomer, check proptypes
 const CustomerList = () => {
   const [customerList, setCustomerList] = useState([])
   const [ errorMessage, setErrorMessage ] = useState(null);
@@ -45,5 +47,10 @@ const CustomerList = () => {
     </>
   )
 }
+
+CustomerList.propTypes = {
+  customerList: PropTypes.array.isRequired,
+  selectCustomer: PropTypes.func.isRequired,
+};
 
 export default CustomerList;
