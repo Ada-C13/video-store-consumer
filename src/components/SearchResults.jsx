@@ -26,6 +26,7 @@ const SearchResults = (props) => {
           <th className="two wide">Title</th>
           <th className="two wide">Release Date</th>
           <th>Overview</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
