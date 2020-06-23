@@ -14,7 +14,6 @@ const MovieCard = ({title, external_id, overview, release_date, image_url}) => {
         <p className='card--desc'>{overview}</p>
       </div> */}
       <h1>{title}</h1>
-      <img> </img>
       <h2>THIS IS A MOVIE CARD</h2>
     </div>
     )
