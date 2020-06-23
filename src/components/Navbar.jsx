@@ -40,9 +40,6 @@ const Navbar = (props) => {
               onClick={onItemClick} className={ nav.customers ? "active item" : "item" }>Customers</Link>
       
       </div>
-      <div class="card">
-        <h2>Rental Customer: { props.customerPick ? props.customerPick.name : ""}</h2>
-      </div>
     </div>
   )
 }

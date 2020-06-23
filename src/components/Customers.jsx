@@ -20,12 +20,8 @@ const Customers = (props) => {
   }
 
   return (
-    <div class="ui grid">
-      {/* <p></p>
-      <p></p>
-      <ul> */}
+    <div class="ui">
         {customerList}
-      {/* </ul> */}
     </div>
   )
 }

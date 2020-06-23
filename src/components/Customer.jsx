@@ -19,13 +19,11 @@ const Customer = (props) => {
   // )
 
   return (
-    <div class="ui card">
-      <div class="ui sub header"> {props.name} </div>
-      <div>
+    <div class="">
+      <h3 class="ui header"> {props.name} </h3>
         <button class="ui olive button" onClick={() => { props.customerCallback(props.id) } }>
           Select Customer
         </button>
-     </div>
     </div>
   )
 };

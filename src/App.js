@@ -93,13 +93,20 @@ const App = () => {
   });
   }
 
+  const clearSelections = () => {
+    setMoviePick(null);
+    setCustomerPick(null);
+  }
+
   return (
     <Router>
       <div> 
         <header>
-          <Navbar moviePick={moviePick} customerPick={customerPick}/>
+          <Navbar />
         </header>
-
+        <body>
+          <RentalBox moviePick={moviePick} customerPick={customerPick} clearSelectionsCallback={clearSelections}/>
+        </body>
         <Switch>
           <Route path="/library"> 
             <Library library={library} selectMovieCallback={onSelectMovie}/>
@@ -115,10 +122,11 @@ const App = () => {
           <Route path="/">
             <Home moviePick={moviePick}/>
           </Route>
-          <Route path="/rental">
-            <RentalBox moviePick={moviePick} customerPick={customerPick} />
-          </Route>
         </Switch>
+
+        <footer>
+          {/* <RentalBox moviePick={moviePick} customerPick={customerPick}/> */}
+        </footer>
       </div>
     </Router>
   )
