@@ -1,3 +1,4 @@
+import React , { Component}  from 'react';
 import './MovieLib.css';
 import PropTypes from 'prop-types';
 import Movie from './Movie'
@@ -5,7 +6,7 @@ import Movie from './Movie'
 const MovieLib = ({ movieList, selectMovie }) => {
   const buildMovie = () => {
     const movie = movieList.map((movie) => {
-      return <Customer 
+      return <Movie
         key={movie.id}
         { ...movie }
         selectMovie={(id) => selectMovie(id)}

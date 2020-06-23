@@ -56,7 +56,7 @@ class App extends Component {
   selectMovie(movieId) {
     const { movies } = this.state;
     const selectedMovie = movies.find((movie) => {
-      return mov.id === movieId;
+      return movie.id === movieId;
     })
     this.setState({ selectedMovie })
   }
