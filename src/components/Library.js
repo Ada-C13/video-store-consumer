@@ -26,7 +26,7 @@ const Library = (props) => {
   console.log(`drawing Library...`, props);
   return (
     <div>
-      <h1>Library</h1>
+      <h1>Movie Library</h1>
       <div className="movielist">
         <table>
           <thead>

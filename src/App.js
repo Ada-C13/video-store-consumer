@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-// import logo from "./logo.svg";
-
 import "./App.css";
 import Home from "./components/Home";
 import Search from "./components/Search";
@@ -173,6 +171,7 @@ const App = () => {
               <Search
                 {...props}
                 onMovieSelectCallback={onMovieSelectCallback}
+                movieList={mockMovies}
               />
             )}
           />
