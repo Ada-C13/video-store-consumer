@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const Movie = (props) => {
 
-
   return(
     <div className="cards">
       <div className="card">
@@ -11,9 +10,11 @@ const Movie = (props) => {
         <div className="content">
           <h3>{props.title}</h3>
           <p>{props.overview}</p>
-          <button className="square" key={props.id} onClick={() => {props.selectMovieCallback(props.id)}} >
-            Select Movie
-          </button>
+          <td>
+            <button class="ui olive button" onClick={() => { props.movieCallback(props.id) } }>
+              Rent {props.title}
+            </button>
+          </td>
         </div>
       </div>
     </div>

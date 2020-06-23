@@ -4,7 +4,7 @@ import {
   Link
 } from "react-router-dom";
 
-const Customers = (props, onClickCallback ) => {
+const Customers = (props) => {
 
   let customers = [];
 
