@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Customer from '../components/Customer';
 
 const Customers = () => {
   const [customers, setCustomers] = useState([]);
@@ -17,23 +18,28 @@ const Customers = () => {
       });
   }, []);
 
+  const cutomersList = customers.map((customer) => {
+    return (
+      <Customer
+        key={customer.id}
+        id={customer.id}
+        name={customer.name}
+        registered_at={customer.registered_at}
+        address={customer.address}
+        city={customer.city}
+        state={customer.state}
+        postal_code={customer.postal_code}
+        phone={customer.phone}
+        account_credit={customer.account_credit}
+        movies_checked_out_count={customer.movies_checked_out_count}
+      />
+    );
+  });
   return (
-    <div className='Lists-container'>
-      Customers List
-      <ul>
-        {customers.map((customer) => {
-          return (
-            <li>
-              <div>
-                <p>{customer.name}</p>
-                <p>{customer.registered_at}</p>
-                <p>{customer.address}</p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+    <di>
+      <h1>List of Customers</h1>
+      {cutomersList}
+    </di>
   );
 };
 export default Customers;

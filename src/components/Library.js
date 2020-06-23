@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Movie from '../components/Movie';
 
 const Library = () => {
   const [library, setLibrary] = useState([]);
@@ -17,23 +18,25 @@ const Library = () => {
         setErrorMessage(error.message);
       });
   }, []);
-  console.log(library);
+
+  const moviesList = library.map((movie) => {
+    return (
+      <Movie
+        key={movie.id}
+        id={movie.id}
+        title={movie.title}
+        overview={movie.overview}
+        release_date={movie.release_date}
+        image_url={movie.image_url}
+        external_id={movie.external_id}
+      />
+    );
+  });
 
   return (
-    <div className='Lists-container'>
-      Movie Library
-      <ul>
-        {library.map((movie) => {
-          return (
-            <div>
-              <li>
-                <p>{movie.title}</p>
-                <p>{movie.overview}</p>
-              </li>
-            </div>
-          );
-        })}
-      </ul>
+    <div>
+      <h1>List of Movies</h1>
+      {moviesList}
     </div>
   );
 };
