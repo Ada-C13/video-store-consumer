@@ -1,25 +1,26 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Customers from "./components/Customers";
-import Movies from "./components/Movies";
-import Home from "./components/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
+
+import logo from "./logo.svg";
+
+import "./App.css";
+import Home from "./components/Home";
+import Search from "./components/Search";
+import Library from "./components/Library";
+import Customers from "./components/Customers";
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="AppRoute">
-          {Nav()}
+          {drawNav()}
           <Switch>
-            {" "}
-            # Switch: stops after we get the url, doesn’t go to the next url
+            <Route path="/" exact component={Home} />
+            <Route path="/search" component={Search} />
+            <Route path="/library" component={Library} />
             <Route path="/customers" component={Customers} />
-            <Route path="/movies" component={Movies} />
-            <Route path="/" exact component={Home} /> # exact: makes sure we
-            don’t render "/" followed by something else
           </Switch>
         </div>
       </Router>
@@ -27,15 +28,18 @@ class App extends Component {
   }
 }
 
-function Nav() {
+function drawNav() {
   return (
     <nav>
       <ul className="nav-links">
         <Link to="/">
           <li>Home</li>
         </Link>
-        <Link to="/movies">
-          <li>Movies</li>
+        <Link to="/search">
+          <li>Search</li>
+        </Link>
+        <Link to="/library">
+          <li>Library</li>
         </Link>
         <Link to="/customers">
           <li>Customers</li>
