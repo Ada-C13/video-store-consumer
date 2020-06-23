@@ -10,7 +10,6 @@ const Movie = (props) => {
             <p className="movie__content-text">Tilte: {props.title} </p>
             <p className="movie__content-text">Overview: {props.overview} </p>
             <p className="movie__content-text">Release date: {props.release_date} </p>
-            <p className="movie__content-text">Availabe Inventory: {props.available_inventory} </p>
             <p className="movie__content-text">Total inventory: {props.inventory} </p>
           </div>
         )
