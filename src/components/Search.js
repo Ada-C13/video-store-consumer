@@ -33,7 +33,7 @@ const Search = (props) => {
           />
         </div>
         <div className="search__form-button">
-          <input type="submit" value="submit card" className="search__form-button"  onSubmit={onFormSubmitCallback}/>
+          <input type="submit" value="Search" className="search__form-button"  onSubmit={onFormSubmitCallback}/>
         </div>
       </form>
     );
