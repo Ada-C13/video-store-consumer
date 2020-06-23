@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import SearchBar from './SearchBar';
+import searchResults from './SearchResults';
 import axios from 'axios';
+import SearchResults from './SearchResults';
 
 const SEARCH_URL = "http://localhost:3000/search";
 
@@ -23,20 +25,6 @@ const Search = () => {
       });
   };
 
-  let foundMovies = [];
-
-  if (movies) {
-    foundMovies = movies.map((movie) => {
-      return (
-        <div className="ui card">
-          <div className="ui content">
-            <p className="ui header">{movie.title}</p>
-          </div>
-        </div>
-      );
-    });
-  }
-
   return (
     <div className="ui container">
       <div className="">
@@ -45,8 +33,7 @@ const Search = () => {
       <div class="ui horizontal divider">
         Results
       </div>
-      <button onClick={searchMovies}>Frozen!</button>
-      {foundMovies}
+      <SearchResults foundMovies={movies}/>
     </div>
   )
 }
