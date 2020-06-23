@@ -23,17 +23,16 @@ const Movie = ({ title, release_date, overview, image_url, id, selectMovie, deta
   return (
     <Card>
       <div onClick={ () => detailsCallback(id) }>
-
         <div>
           <img src={image_url}/>
           <div>
-            {title} ({release_date})
+            {title} 
+            <br></br>
+            {release_date}
             <p>{isDetailed ? overview : ""}</p>
             <div>{isDetailed ? fakeReviews() : ""}</div>
           </div>
           
-  
-
           <div>
             <Button 
               onClick={() => selectMovie(id)}>{inLibrary ? "Select" : "Add to Rental Library"}
