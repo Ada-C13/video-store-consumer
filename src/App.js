@@ -6,6 +6,11 @@ import CustomerList from './components/CustomerList'
 import MovieLib from './components/MovieLib'
 import MovieSearch from './components/MovieSearch'
 import Home from './components/Home'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Add to all components 
+import * as ReactBootstrap from 'react-bootstrap'
+
 
 const BASE_URL = 'http://localhost:3000'
 
