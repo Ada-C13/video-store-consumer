@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Customer.css'
 
 const Customer = (props) => {
 
@@ -19,7 +20,7 @@ const Customer = (props) => {
   // )
 
   return (
-    <div class="">
+    <div className="user_grid">
       <h3 class="ui header"> {props.name} </h3>
         <button class="ui olive button" onClick={() => { props.customerCallback(props.id) } }>
           Select Customer

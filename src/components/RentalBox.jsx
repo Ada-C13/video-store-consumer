@@ -19,7 +19,9 @@ const RentalBox = (props) => {
                     props.clearSelectionsCallback(null);
                     } }>Cancel</button>
                   <div class="or"></div>
-                  <button class="ui olive button">Submit</button>
+                  <button class="ui olive button" onClick={() => { 
+                    props.submitSelectionsCallback(null);
+                    } }>Submit</button>
                 </div>
               </div>
             </div>

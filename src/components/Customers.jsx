@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Customer from './Customer';
+import './Customers.css'
 
 
 const Customers = (props) => {
@@ -20,7 +21,7 @@ const Customers = (props) => {
   }
 
   return (
-    <div class="ui">
+    <div className="customerList">
         {customerList}
     </div>
   )

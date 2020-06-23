@@ -98,6 +98,13 @@ const App = () => {
     setCustomerPick(null);
   }
 
+  const submitSelections = () => {
+    if (moviePick != null && customerPick != null) {
+      setMoviePick(null);
+      setCustomerPick(null);
+    }
+  }
+
   return (
     <Router>
       <div> 
@@ -105,7 +112,8 @@ const App = () => {
           <Navbar />
         </header>
         <body>
-          <RentalBox moviePick={moviePick} customerPick={customerPick} clearSelectionsCallback={clearSelections}/>
+          <RentalBox moviePick={moviePick} customerPick={customerPick} clearSelectionsCallback={clearSelections}
+          submitSelectionsCallback={submitSelections}/>
         </body>
         <Switch>
           <Route path="/library"> 
