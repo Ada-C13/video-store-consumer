@@ -42,10 +42,10 @@ const App = () => {
 
         <Switch>
           <Route path="/library">
-            <Library library={library} />
+            <Library library={library}/>
           </Route>
           <Route path="/search">
-            <Search />
+            <Search library={library}/>
           </Route>
           <Route path="/customers">
             <Customers />
