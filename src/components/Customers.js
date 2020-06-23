@@ -5,8 +5,14 @@ import "./Customers.css";
 // Customers Component
 const Customers = (props) => {
   console.log(`drawing customers...`, props);
-  props.onCustomerSelectCallback(3);
-  return <h1>Customers</h1>;
+  return (
+    <div>
+      <h1>Customers</h1>
+      <button onClick={() => props.onCustomerSelectCallback(3)}>
+        Select Customer
+      </button>
+    </div>
+  );
 };
 
 Customers.propTypes = {
