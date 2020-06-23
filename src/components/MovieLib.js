@@ -19,7 +19,7 @@ const MovieLib = ({ movieList, selectMovie, detailsCallback, detailsMovie }) => 
   return (
     <div>
       <h3>Movie Library</h3>
-      <div className="row">
+      <div>
         {makeMovies()}
       </div>
     </div>
