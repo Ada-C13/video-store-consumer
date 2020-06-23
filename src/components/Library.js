@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Movie from '../components/Movie';
 
-const Library = () => {
+const Library = (props) => {
   const [library, setLibrary] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -29,6 +29,7 @@ const Library = () => {
         release_date={movie.release_date}
         image_url={movie.image_url}
         external_id={movie.external_id}
+        setSelectedMovieCallBack={props.setSelectedMovieCallBack}
       />
     );
   });

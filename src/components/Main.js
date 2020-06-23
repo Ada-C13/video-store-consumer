@@ -6,15 +6,31 @@ import Library from '../components/Library';
 import Customers from '../components/Customers';
 import Search from '../components/Search';
 
-const Main = () => {
+const Main = (props) => {
   return (
-    <Switch> {/* The Switch decides which component to show based on the current URL.*/}
+    <Switch>
+      {' '}
+      {/* The Switch decides which component to show based on the current URL.*/}
       <Route exact path='/' component={Home}></Route>
-      <Route exact path='/Library' component={Library}></Route>
-      <Route exact path='/Customers' component={Customers}></Route>
+      <Route
+        exact
+        path='/Library'
+        component={() => (
+          <Library setSelectedMovieCallBack={props.setSelectedMovieCallBack} />
+        )}
+      ></Route>
+      <Route
+        exact
+        path='/Customers'
+        component={() => (
+          <Customers
+            setSelectedCustomerCallBack={props.setSelectedCustomerCallBack}
+          />
+        )}
+      ></Route>
       <Route exact path='/Search' component={Search}></Route>
     </Switch>
   );
-}
+};
 
 export default Main;

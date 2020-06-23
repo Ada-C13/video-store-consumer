@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Customer from '../components/Customer';
 
-const Customers = () => {
+const Customers = (props) => {
   const [customers, setCustomers] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -32,14 +32,15 @@ const Customers = () => {
         phone={customer.phone}
         account_credit={customer.account_credit}
         movies_checked_out_count={customer.movies_checked_out_count}
+        setSelectedCustomerCallBack={props.setSelectedCustomerCallBack}
       />
     );
   });
   return (
-    <di>
+    <div>
       <h1>List of Customers</h1>
       {cutomersList}
-    </di>
+    </div>
   );
 };
 export default Customers;

@@ -1,6 +1,10 @@
 import React from 'react';
 
 const Customer = (props) => {
+  const onButtonClick = () => {
+    props.setSelectedCustomerCallBack(props.id);
+  };
+
   return (
     <div>
       <li>
@@ -8,6 +12,9 @@ const Customer = (props) => {
       </li>
       <p>{props.registered_at}</p>
       <p>{props.phone}</p>
+      <button className='Customer' onClick={onButtonClick}>
+        Select User
+      </button>
     </div>
   );
 };
