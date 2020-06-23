@@ -7,6 +7,7 @@ import Library from "./components/Library";
 import Search from "./components/Search";
 import Home from "./components/Home";
 import Customers from "./components/Customers";
+import RentalBox from "./components/RentalBox"
 
 import {
   BrowserRouter as Router,
@@ -75,30 +76,28 @@ const App = () => {
     <Router>
       <div> 
         <header>
-          <Navbar />
+          <Navbar moviePick={moviePick} customerPick={customerPick}/>
         </header>
 
         <Switch>
           <Route path="/library">
-<<<<<<< HEAD
-            <Library library={library} onClick={moviePick}/>
-=======
-            <Library library={library}/>
->>>>>>> 31c60039aaf5198f67cff811bded83718ca7e41b
+            <Library 
+            library={library} 
+            onClick={moviePick}/>
           </Route>
           <Route path="/search">
             <Search library={library}/>
           </Route>
           <Route path="/customers">
             <Customers 
-            // custDetails={custDetails} 
-            // setCustDetailsCallback={customerPick}
             selectCustomerCallback={onSelectCustomer} 
-            // currCustomerCallback={setCurrCustomer} 
             customers={customers} />
           </Route>
           <Route path="/">
             <Home />
+          </Route>
+          <Route path="/rental">
+            <RentalBox moviePick={moviePick} customerPick={customerPick} />
           </Route>
         </Switch>
       </div>

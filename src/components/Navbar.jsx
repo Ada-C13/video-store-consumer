@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [nav, setNav] = useState({
     home: true,
     search: false,
@@ -39,6 +39,9 @@ const Navbar = () => {
         <Link to={`/customers`} name="customers" 
               onClick={onItemClick} className={ nav.customers ? "active item" : "item" }>Customers</Link>
       
+      </div>
+      <div class="card">
+        <h2>Rental Customer: { props.customerPick ? props.customerPick.name : ""}</h2>
       </div>
     </div>
   )
