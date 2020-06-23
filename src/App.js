@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -10,7 +10,10 @@ import {
 import Home from './components/Home';
 import CustomerList from './components/CustomerList';
 import MovieSearch from './components/MovieSearch';
-import MovieLibrary from './components/MovieLibrary'
+import MovieLibrary from './components/MovieLibrary';
+import axios from 'axios';
+
+const BASE_URL = 'http://localhost:3000/'
 
 class App extends Component {
   render() {
