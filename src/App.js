@@ -10,6 +10,7 @@ import Library from "./components/Library";
 import Customers from "./components/Customers";
 
 const axios = require('axios');
+const API_URL_BASE = 'http://localhost:3000';
 
 const mockCustomer = [
   {
@@ -112,12 +113,27 @@ const App = () => {
   const [selectedMovie, setMovie] = useState(0);
   const [selectedCustomer, setCustomer] = useState(0);
 
+  const [movieList, setMovieList] = useState([]);
+  const [customerList, setCustomerList] = useState([]);
+
   // function to run when component is mounted
   useEffect(() => {
+    console.log(`App, component mounted`);
     // get movieList
+    axios.get(API_URL_BASE + "/movies")
+      .then((response) => {
+        const apiMovieList = response.data;
+        // set state
+        setMovieList(apiMovieList);
+      })
+      .catch((error) => {
+        // handle errors
+        // setErrorMessage("could not load movies");
+        // console.log(error.message);
+      });
     // get customerList
 
-  })
+  }, []);
 
   // Callback function to select movie
   const onMovieSelectCallback = (id) => {
@@ -167,6 +183,19 @@ const App = () => {
     );
   };
 
+  const addMovie = movie => {
+    console.log(`App, add movie to library`);
+    const newMovieList = movieList;
+
+    // find max id and add 1
+    const movieIds = newMovieList.map(movie => movie.id);
+    const nextId = Math.max(...movieIds) + 1;
+
+    newMovieList.push(movie);
+
+    setMovieList(newMovieList);
+  }
+
   return (
     <Router>
       <div className="AppRoute">
@@ -179,8 +208,9 @@ const App = () => {
             render={(props) => (
               <Search
                 {...props}
-                onMovieSelectCallback={onMovieSelectCallback}
-                movieList={mockMovies}
+                // onMovieSelectCallback={onMovieSelectCallback}
+                movieList={movieList}
+                addMovieCallBack={addMovie}
               />
             )}
           />
@@ -190,7 +220,7 @@ const App = () => {
               <Library
                 {...props}
                 onMovieSelectCallback={onMovieSelectCallback}
-                movieList={mockMovies}
+                movieList={movieList}
               />
             )}
           />
