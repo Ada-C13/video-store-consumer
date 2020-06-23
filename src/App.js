@@ -63,49 +63,6 @@ const mockCustomer = [
   },
 ];
 
-const mockMovies = [
-  {
-    id: 1,
-    title: "Psycho",
-    overview:
-      "When larcenous real estate clerk Marion Crane goes on the lam with a wad of cash and hopes of starting a new life, she ends up at the notorious Bates Motel, where manager Norman Bates cares for his housebound mother. The place seems quirky, but fine… until Marion decides to take a shower.",
-    release_date: "1960-06-22",
-    image_url:
-      "https://image.tmdb.org/t/p/w185/81d8oyEFgj7FlxJqSDXWr8JH8kV.jpg",
-    external_id: 539,
-  },
-  {
-    id: 2,
-    title: "Jaws",
-    overview:
-      "When an insatiable great white shark terrorizes the townspeople of Amity Island, the police chief, an oceanographer and a grizzled shark hunter seek to destroy the blood-thirsty beast.",
-    release_date: "1975-06-18",
-    image_url:
-      "https://image.tmdb.org/t/p/w185/s2xcqSFfT6F7ZXHxowjxfG0yisT.jpg",
-    external_id: 578,
-  },
-  {
-    id: 3,
-    title: "The Exorcist",
-    overview:
-      "12-year-old Regan MacNeil begins to adapt an explicit new personality as strange events befall the local area of Georgetown. Her mother becomes torn between science and superstition in a desperate bid to save her daughter, and ultimately turns to her last hope: Father Damien Karras, a troubled priest who is struggling with his own faith.",
-    release_date: "1973-05-31",
-    image_url:
-      "https://image.tmdb.org/t/p/w185/4ucLGcXVVSVnsfkGtbLY4XAius8.jpg",
-    external_id: 9552,
-  },
-  {
-    id: 4,
-    title: "North by Northwest",
-    overview:
-      "Advertising man Roger Thornhill is mistaken for a spy, triggering a deadly cross-country chase.",
-    release_date: "1959-07-08",
-    image_url:
-      "https://image.tmdb.org/t/p/w185/i3g0KIoXYx5RvyVaraYx9n2LCli.jpg",
-    external_id: 213,
-  },
-];
-
 // App component
 const App = () => {
   console.log(`App, will initialize`);
@@ -183,7 +140,7 @@ const App = () => {
     );
   };
 
-  const addMovie = movie => {
+  const addMovieCallBack = movie => {
     console.log(`App, add movie to library`);
     const newMovieList = movieList;
 
@@ -208,9 +165,8 @@ const App = () => {
             render={(props) => (
               <Search
                 {...props}
-                // onMovieSelectCallback={onMovieSelectCallback}
                 movieList={movieList}
-                addMovieCallBack={addMovie}
+                addMovieCallBack={addMovieCallBack}
               />
             )}
           />

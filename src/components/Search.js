@@ -16,7 +16,7 @@ const drawMovies = (searchResults, addMovieCallBack, searchText) => {
             <img src={movie.image_url} alt="Movie Cover" />
           </td>
           <td>
-            <button onClick={() => addMovieCallBack(movie.id)}>
+            <button onClick={() => addMovieCallBack(movie)}>
               Add Movie
             </button>
           </td>
