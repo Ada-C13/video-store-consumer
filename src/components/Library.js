@@ -18,6 +18,7 @@ const Library = () => {
           overview = {movie.overview}
           release_date = {movie.release_date}
           image_url = {movie.image_url}
+          key = {movie.external_id}
           />
         );
       });
