@@ -51,6 +51,7 @@ const Customers = () => {
           <thead className="thead-light">
             <tr>
               <th>ID</th>
+              <th>Select</th>
               <th>Name</th>
               <th>Address</th>
               <th>Phone Number</th>
