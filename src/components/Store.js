@@ -7,17 +7,17 @@ import Search from './Search';
 
 const Store = (props) => {
 
-  const [movie, setMovie] = useState([]);
+  const [movies, setMovies] = useState([]);
   const endPoint = `${props.url}movies?query=`
 
-  const onSubmitCallback = (movie) => {
-    axios.get(`${endPoint}${movie}`)
+  const onSubmitCallback = (searchTerm) => {
+    axios.get(`${endPoint}${searchTerm}`)
       .then((response) => {
         console.log(response.data)
-        setMovie(response.data)
+        setMovies(response.data)
       })
       .catch((error) => {
-        setMovie([])
+        setMovies([])
         console.log(`Error: ${error}`);
     
       });
@@ -30,12 +30,12 @@ const Store = (props) => {
   // in this array you can pass variables. When any of this variable updates it will cause the useEffect to run again
   // useEffect(() => { onSubmitCallback(endPoint); }, [endPoint]); 
 
-  const formatMovies = ((movie) => {
+  const formatMovies = ((movies) => {
    
       return (
         <ul>
 
-          {movie.map(movie => {
+          {movies.map(movie => {
           return(
             <li key={movie.external_id}>
               {movie.title}
@@ -68,7 +68,7 @@ const Store = (props) => {
         onSubmitCallback={onSubmitCallback} />
       </div>
       <div className="store">
-        {formatMovies(movie)}
+        {formatMovies(movies)}
       </div>
     </main>
   );
