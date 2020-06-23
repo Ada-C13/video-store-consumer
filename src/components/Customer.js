@@ -6,7 +6,12 @@ const Customer = (props) => {
     <tr>
       <td>{props.id}</td>
       <td>{props.name}</td>
-      <td>${props.account_credit}</td>
+  <td>{props.address}<br/>{props.city}, {props.state} {props.postal_code}</td>
+      <td>{props.phone}</td>
+      <td>{new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD"
+  }).format(props.account_credit)}</td>
       <td>{props.movies_checked_out_count}</td>
       <td>{props.registered_at}</td>
     </tr>

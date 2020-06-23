@@ -24,6 +24,7 @@ const Customers = () => {
   }, [API_CUSTOMER_URL])
 
 
+
   const customersComponents = customersList.map((customerObject) => {
     return(
       <Customer 
@@ -44,15 +45,17 @@ const Customers = () => {
 
 
   return (
-      <div className="d-flex text-left flex-wrap container justify-content-around container-fluid">
+      <div className="w-100 d-flex text-left flex-wrap justify-content-around container-fluid">
         <h2 className="py-2 text-center w-100">Customers</h2>
         <table className="customer table table-striped">
-          <thead class="thead-light">
+          <thead className="thead-light">
             <tr>
               <th>ID</th>
               <th>Name</th>
+              <th>Address</th>
+              <th>Phone Number</th>
               <th>Account Credit</th>
-              <th>Current Rentals Count</th>
+              <th>Rentals Count</th>
               <th>Registered</th>
             </tr>
           </thead>
