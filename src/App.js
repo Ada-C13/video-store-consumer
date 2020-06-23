@@ -15,21 +15,21 @@ import Customers from "./components/Customers";
 const App = () => {
   console.log(`App, will initialize`);
   // Declare and initialize state
-  const [selectedMovie, setMovie] = useState("");
-  const [selectedCustomer, setCustomer] = useState("");
+  const [selectedMovie, setMovie] = useState(0);
+  const [selectedCustomer, setCustomer] = useState(0);
 
   // Callback function to select movie
-  const onMovieSelectCallback = (strMovie) => {
-    console.log(`App, onMovieSelectCallback`, strMovie);
+  const onMovieSelectCallback = (id) => {
+    console.log(`App, onMovieSelectCallback`, id);
     // change state
-    setMovie(strMovie);
+    setMovie(id);
   };
 
   // Callback function to select customer
-  const onCustomerSelectCallback = (strCustomer) => {
-    console.log(`App, onCustomerSelectCallback`, strCustomer);
+  const onCustomerSelectCallback = (id) => {
+    console.log(`App, onCustomerSelectCallback`, id);
     // change state
-    setCustomer(strCustomer);
+    setCustomer(id);
   };
 
   const drawNav = () => {
@@ -66,7 +66,6 @@ const App = () => {
     );
   };
 
-  // render() {
   return (
     <Router>
       <div className="AppRoute">
@@ -74,14 +73,37 @@ const App = () => {
         {drawSelected()}
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/search" component={Search} />
-          <Route path="/library" component={Library} />
-          <Route path="/customers" component={Customers} />
+          <Route
+            path="/search"
+            render={(props) => (
+              <Search
+                {...props}
+                onMovieSelectCallback={onMovieSelectCallback}
+              />
+            )}
+          />
+          <Route
+            path="/library"
+            render={(props) => (
+              <Library
+                {...props}
+                onMovieSelectCallback={onMovieSelectCallback}
+              />
+            )}
+          />
+          <Route
+            path="/customers"
+            render={(props) => (
+              <Customers
+                {...props}
+                onCustomerSelectCallback={onCustomerSelectCallback}
+              />
+            )}
+          />
         </Switch>
       </div>
     </Router>
   );
-  // }
 };
 
 export default App;

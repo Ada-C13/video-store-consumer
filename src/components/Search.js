@@ -4,14 +4,19 @@ import "./Search.css";
 
 // Search Component
 const Search = (props) => {
-  console.log(`drawing Search...`, props.id);
-  return <h1>Search</h1>;
+  console.log(`drawing Search...`, props.onMovieSelectCallback);
+  return (
+    <div>
+      <h1>Search</h1>
+      <button onClick={() => props.onMovieSelectCallback(1)}>
+        Select Movie
+      </button>
+    </div>
+  );
 };
 
 Search.propTypes = {
-  value: PropTypes.string.isRequired,
-  onClickCallback: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
+  onMovieSelectCallback: PropTypes.func.isRequired,
 };
 
 export default Search;

@@ -4,14 +4,13 @@ import "./Library.css";
 
 // Library Component
 const Library = (props) => {
-  console.log(`drawing Library...`, props.id);
+  console.log(`drawing Library...`, props);
+  props.onMovieSelectCallback(2);
   return <h1>Library</h1>;
 };
 
 Library.propTypes = {
-  value: PropTypes.string.isRequired,
-  onClickCallback: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
+  onMovieSelectCallback: PropTypes.func.isRequired,
 };
 
 export default Library;
