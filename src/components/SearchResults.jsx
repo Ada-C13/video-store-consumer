@@ -18,14 +18,13 @@ const SearchResults = (props) => {
     });
   }
 
-
   return (
     <table class="ui very basic collapsing celled table">
       <thead>
-        <tr>
+        <tr className="">
           <th></th>
-          <th>Title</th>
-          <th>Release Date</th>
+          <th className="two wide">Title</th>
+          <th className="two wide">Release Date</th>
           <th>Overview</th>
         </tr>
       </thead>

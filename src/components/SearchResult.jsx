@@ -9,8 +9,8 @@ const SearchResult = (props) => {
       <td>
         <img src={props.image_url} className="ui mini rounded image"/>
       </td>
-      <td> {props.title} </td>
-      <td> {props.release_date} </td>
+      <td className="two wide"> {props.title} </td>
+      <td className="two wide"> {props.release_date} </td>
       <td> {props.overview} </td>
     </tr>
   );

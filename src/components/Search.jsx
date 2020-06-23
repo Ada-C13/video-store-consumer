@@ -33,7 +33,7 @@ const Search = () => {
       <div class="ui horizontal divider">
         Results
       </div>
-      <SearchResults foundMovies={movies}/>
+      {movies.length > 0 && <SearchResults foundMovies={movies} /> }
     </div>
   )
 }
