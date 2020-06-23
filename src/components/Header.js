@@ -10,6 +10,7 @@ const Header = () => {
   return (
   <Router>
       <div>
+        <h2>Welcome to Video Store Customer</h2>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <ul className="navbar-nav mr-auto">
           <li><Link to={'/'} className="nav-link">Home</Link></li>

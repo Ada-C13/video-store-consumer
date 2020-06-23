@@ -12,7 +12,9 @@ const App = () => {
 
 
     return (
-      <Header />
+      <section>
+        <Header />
+      </section>
     );
 }
 
