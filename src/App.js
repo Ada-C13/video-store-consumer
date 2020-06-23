@@ -15,6 +15,7 @@ class App extends Component {
 
     this.state = {
       customers: [],
+      movies: [],
     }
   }
 
@@ -30,6 +31,18 @@ class App extends Component {
     .catch((error) => {
       this.setState({ error: error.message });
     });
+
+    axios.get(`${BASE_URL}/movies`)
+    .then((response) => {
+      const movies = response.data;
+      this.setState({ 
+        movies,
+        error: undefined
+      });
+    })
+    .catch((error) => {
+      this.setState({ error: error.message });
+    });
   }
 
   selectCustomer(customerId) {
@@ -39,6 +52,8 @@ class App extends Component {
     })
     this.setState({ selectedCustomer })
   }
+
+  
   
   render() {
    return (
