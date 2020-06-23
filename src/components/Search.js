@@ -10,8 +10,9 @@ const Search = (props) => {
       setMovie(newMovie);
     };
   
+    // a preventDefault is called on the event when submitting the form to prevent a browser reload/refresh
     const onFormSubmitCallback = (event) => {
-      event.preventDefault();
+      event.preventDefault(); 
       props.onSubmitCallback(movie);
       setMovie('');
     };

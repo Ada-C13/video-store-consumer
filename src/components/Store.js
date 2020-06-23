@@ -8,17 +8,18 @@ import Search from './Search';
 const Store = (props) => {
 
   const [movie, setMovie] = useState([]);
-  const endPoint = `${props.url}movies`
+  const endPoint = `${props.url}movies?query=`
 
   const onSubmitCallback = (movie) => {
-    axios.get(`${props.url}movies/${movie}`)
+    axios.get(`${endPoint}${movie}`)
       .then((response) => {
         console.log(response.data)
         setMovie(response.data)
-
       })
       .catch((error) => {
-        console.log(`Error: ${error}`)
+        setMovie([])
+        console.log(`Error: ${error}`);
+    
       });
   }
 
@@ -27,21 +28,39 @@ const Store = (props) => {
   // useEffect takes a function(getMovies) which can contain any kind of operation including side effects
   // Also takes a second argument as an array [], 
   // in this array you can pass variables. When any of this variable updates it will cause the useEffect to run again
-  useEffect(() => { onSubmitCallback(endPoint); }, [endPoint, movie]);
+  // useEffect(() => { onSubmitCallback(endPoint); }, [endPoint]); 
 
-  const formatMovies = (() => {
-    return (
-      <Movie
-        key={movie.id}
-        id={movie.id}
-        title={movie.title}
-        overview={movie.overview}
-        release_date={movie.release_date}
-        available_inventory={movie.available_inventory}
-        inventory={movie.inventory}
-      />
-    );
-  });
+  const formatMovies = ((movie) => {
+   
+      return (
+        <ul>
+
+          {movie.map(movie => {
+          return(
+            <li key={movie.external_id}>
+              {movie.title}
+              {movie.external_id}
+              {movie.image_url}
+              {movie.overview}
+              {movie.release_date}
+            </li>
+          )
+          }
+        )}
+        </ul>
+        );
+      }); 
+        // <Movie
+        //   key={movie.id}
+        //   id={movie.id}
+        //   title={movie.title}
+        //   overview={movie.overview}
+        //   release_date={movie.release_date}
+        //   available_inventory={movie.available_inventory}
+        //   inventory={movie.inventory}
+        // />
+     
+
 
   return (
     <main>
