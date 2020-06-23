@@ -2,7 +2,7 @@ import React, { useState, Component } from 'react';
 import './App.css';
 import Home from "./components/Home";
 import Library from './components/Library';
-import Customers from './components/Customers';
+import Customers from './components/CustomersList';
 import Search from './components/Search';
 import {
   BrowserRouter as Router,

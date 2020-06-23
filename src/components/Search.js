@@ -1,24 +1,31 @@
 import React, {useState} from 'react';
 import axios from "axios";
 
-URL = "http://localhost:5000/movies"
-
 const Search = () => {
 
   const [query, setQuery] = useState('');
-  const [movie, setMovie] = useState('');
+  const [moviesList, setMoviesList] = useState([]);
+  const [error, setError] = useState(null);
 
   const search = (event) => {
     event.preventDefault();
 
-    axios.get('http://localhost:5000/movies')
+    axios.get('http://localhost:3000/movies', {
+      params: {
+        query: query
+      }
+    })
     .then((response) => {
-      console.log(`YO HERE IS THE RESPONSE: ${response}`);
+      setMoviesList(response.data);
     })
     .catch((error) => {
-      console.log(`THIS GOT THROUGH SO HERE IS THE ERROR: ${error.response}`);
+      setError(error.response);
     });
   };
+
+  // const movies = moviesList.map(movie =>
+  //   make <Movie /> components, add those to the return of the Search component
+  // );
 
   return (
   <form className='form' onSubmit={search}>
@@ -27,6 +34,7 @@ const Search = () => {
     <button className='button' type='submit'>Search </button>
   </form>
   // render some movie cards
+  // each card should also have a button to add it to the rental store database
   );
   // Here we will also return some movie cards and that will be great
 };

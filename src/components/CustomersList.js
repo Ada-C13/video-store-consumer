@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 
-const Customers = () => {
+const CustomersList = () => {
   return <h1>CUSTOMERS PAGE</h1>
 };
 
 
 
-export default Customers;
+export default CustomersList;
