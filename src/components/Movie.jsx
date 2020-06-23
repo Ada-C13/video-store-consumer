@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 
 const Movie = (props) => {
 
+
   return(
     <div className="cards">
       <div className="card">
-      <img src={props.image_url} className="ui medium image" />
+        <img src={props.image_url} alt={props.title} />
         <div className="content">
           <h3>{props.title}</h3>
           <p>{props.overview}</p>
-          <button value={props} onClick={() => props.onClickCallback(props.id)} >Select Movie</button> 
+          <button className="square" key={props.id} onClick={() => {props.selectMovieCallback(props.id)}} >
+            Select Movie
+          </button>
         </div>
       </div>
     </div>

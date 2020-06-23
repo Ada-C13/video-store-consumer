@@ -53,7 +53,7 @@ const App = () => {
     <Router>
       <div> 
         <header>
-          <Navbar moviePick={moviePick} />
+          <Navbar />
         </header>
 
         <Switch>

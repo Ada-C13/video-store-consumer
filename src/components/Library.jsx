@@ -26,7 +26,6 @@ const Library = (props, onClickCallback ) => {
         id={movie.id}
         key={movie.id} 
       />
-      
       );
     });
   }
