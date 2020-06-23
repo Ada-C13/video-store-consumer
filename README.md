@@ -11,7 +11,7 @@ Due: **Friday June 26th**
 - Use React to build a dynamic and attractive user interface
 - Organize the behavior of a complex SPA
 - Independently research and integrate a new technology
-- Remember how Rails works
+- Remember how React works
 - Own both ends of an API
 - Practice project management skills in prioritizing features and determining deliverables
 - Reflect and prepare a short presentation
