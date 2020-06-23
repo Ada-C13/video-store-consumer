@@ -67,17 +67,15 @@ function Movies() {
       {/* 
         TODO: Replace the following list with an each loop 
         that renders a link to each movie in the library.
-        The numbers on lines 74 and 77 are placeholders to 
+        The numbers on lines 75 and 78 are placeholders to 
         demo the route.
       */}
       <ul>
         <li>
-          <Link to={`${match.url}/1`}>Components</Link>
+          <Link to={`${match.url}/1`}>Movie 1</Link>
         </li>
         <li>
-          <Link to={`${match.url}/2`}>
-            Props v. State
-          </Link>
+          <Link to={`${match.url}/2`}>Movie 2</Link>
         </li>
       </ul>
 
@@ -95,8 +93,9 @@ function Movies() {
 
 {/* 
   TODO: This function is where the details on each movie
-  will be rendered. We'll want more than the movieID passed
-  in as params, and line 102 is placeholder text.
+  will be rendered, if we want to add another view. We'll 
+  want more than the movieID passed in as params, and 
+  line 102 is placeholder text.
 */}
 function Movie() {
   let { movieId } = useParams();
