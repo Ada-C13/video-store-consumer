@@ -32,7 +32,7 @@ const Search = (props) => {
     setSearchText(event.target.value);
   };
 
-  console.log(`drawing Search...`, props.onMovieSelectCallback);
+  console.log(`drawing Search...`);
   return (
     <div>
       <h1>Search Movie</h1>

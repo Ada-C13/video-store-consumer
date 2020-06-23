@@ -1,4 +1,3 @@
-// import React, { Component } from "react";
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -110,6 +109,32 @@ const App = () => {
   const [selectedMovie, setMovie] = useState(0);
   const [selectedCustomer, setCustomer] = useState(0);
 
+  const selectedMovieTitle = () => {
+    console.log(`App, selectedMovieTitle`, selectedMovie);
+    let movieTitle = "No movie selected";
+    if (selectedMovie > 0) {
+      mockMovies.forEach((movie, index) => {
+        if (movie.id === selectedMovie) {
+          movieTitle = movie.title;
+        }
+      });
+    }
+    return movieTitle;
+  };
+
+  const selectedCustomerName = () => {
+    console.log(`App, selectedCustomerName`, selectedCustomer);
+    let customerName = "No customer selected";
+    if (selectedCustomer > 0) {
+      mockCustomer.forEach((customer, index) => {
+        if (customer.id === selectedCustomer) {
+          customerName = customer.name;
+        }
+      });
+    }
+    return customerName;
+  };
+
   // Callback function to select movie
   const onMovieSelectCallback = (id) => {
     console.log(`App, onMovieSelectCallback`, id);
@@ -151,8 +176,8 @@ const App = () => {
     return (
       <div>
         <ul className="selected">
-          <li>Selected movie: {selectedMovie}</li>
-          <li>Selected customer: {selectedCustomer}</li>
+          <li>Selected movie: {selectedMovieTitle()}</li>
+          <li>Selected customer: {selectedCustomerName()}</li>
         </ul>
       </div>
     );
