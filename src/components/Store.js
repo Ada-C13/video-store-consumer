@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Store.css';
 import Movie from './Movie';
 import Search from './Search';
 
@@ -37,13 +38,15 @@ const Store = (props) => {
 
           {movies.map(movie => {
           return(
-            <li key={movie.external_id}>
-              {movie.title}
-              {movie.external_id}
-              {movie.image_url}
-              {movie.overview}
-              {movie.release_date}
-            </li>
+            <div key={movie.external_id} class="card">
+                <div class="container">
+                  <h4><b>{movie.title}</b></h4>
+                  <p>{movie.external_id}</p>
+                  <img src={movie.image_url} alt="Logo" />
+                  <p> {movie.overview}</p>
+                  <p>{ movie.release_date }</p>
+              </div>
+            </div>
           )
           }
         )}
