@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from'react';
 import PropTypes from 'prop-types';
 import Movie from './Movie';
-
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/'
 
 const MovieLibrary = () => {
+
   const [ movieList, setMovieList ] = useState([])
   const [ errorMessage, setErrorMessage ] = useState(null);
 
@@ -23,14 +23,11 @@ const MovieLibrary = () => {
       console.log(error.message);
       setErrorMessage(error.message);
     });
-
   }, [])
-
-
 
   const allMovies = movieList.map((movie) => {
 		return (
-			<div key={movie.id}>
+			<div>
 				<Movie movie={movie} />
 			</div>
 		);
@@ -38,10 +35,13 @@ const MovieLibrary = () => {
 
 
   return (
-    <>
+    <div class="container">
       <h3>Movie Library</h3>
-      { allMovies }
-    </>
+
+      <div class="card-deck d-flex">
+        { allMovies }
+      </div>
+    </div>
   )
 }
 
