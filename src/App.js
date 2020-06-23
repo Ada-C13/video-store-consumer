@@ -1,5 +1,8 @@
 import React, { Component, useState, useEffect } from 'react';
 import { CustomerList } from './components/CustomerList.js';
+import { MovieLibrary } from './components/MovieLibrary.js';
+import { MovieSearch } from './components/MovieSearch.js';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -56,14 +59,6 @@ const App = () => {
 
 function Home() {
   return <h2>Home</h2>;
-}
-
-function MovieLibrary() {
-  return <h2>All Movies</h2>;
-}
-
-function MovieSearch() {
-  return <h2>Search</h2>;
 }
 
 export default App;
