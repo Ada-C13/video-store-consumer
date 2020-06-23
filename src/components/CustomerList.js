@@ -1,35 +1,47 @@
-import React from'react';
+import React, { useEffect, useState } from'react';
 import PropTypes from 'prop-types';
+
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:3000/'
 
 const CustomerList = () => {
+  const [customerList, setCustomerList] = useState([])
+  const [ errorMessage, setErrorMessage ] = useState(null);
 
-  axios
-  .get(BASE_URL + '/customers')
-  .then((response) => {
-    const newCustomerList = response.data;
-    // setCardsList(newCardsList);
-    // setErrorMessage(null);
-  })
-  .catch((error) => {
-    console.log(error.message);
-    // setErrorMessage(error.message);
-  });
+  useEffect( () => {
+    axios
+    .get(BASE_URL + 'customers')
+    .then((response) => {
+      console.log('hello')
+      console.log(response.data)
+      const newCustomerList = response.data;
+      setCustomerList(newCustomerList);
+      setErrorMessage(null);
+    })
+    .catch((error) => {
+      console.log(error.message);
+      setErrorMessage(error.message);
+    });
 
-  const allCustomers = newCustomerList.map((customer) => {
+  }, [])
+
+
+
+  const allCustomers = customerList.map((customer) => {
 		return (
       <div>
-        customer.name
+        {customer.name}
       </div>
 		);
 	});
 
 
   return (
-    <h3>Customers</h3>
-    {allCustomers}
+    <>
+      <h3>Customers</h3>
+      { allCustomers }
+    </>
   )
 }
 
