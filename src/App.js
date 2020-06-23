@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Library from './components/Library'
+import Customers from './components/Customers'
 
 export default function App() {
   return (
@@ -51,10 +53,10 @@ function Search() {
   return <h2>Movie Search Page</h2>;
 }
 
-function Library() {
-  return <h2>Your rentals' library</h2>;
-}
+// function Library() {
+//   return <h2>Your rentals' library</h2>;
+// }
 
-function Customers() {
-  return <h2>All the customers</h2>;
-}
+// function Customers() {
+//   return <h2>All the customers</h2>;
+// }
