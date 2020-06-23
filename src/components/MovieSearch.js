@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './MovieSearch.css';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -29,9 +29,12 @@ export function MovieSearch() {
   return (
     <div>
       <SearchForm onSubmitCallback={getMovie} />
-      <ul>
-          {movies.map((m) => <li key={m.external_id}>{m.title}</li> )}
-        </ul>
+      <ol>
+          {movies.map((movie) => <li key={movie.external_id}>
+          <img src={movie.image_url} alt={movie.title} ></img>
+          {movie.title}
+          </li> )}
+        </ol>
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
     </div>
   )
