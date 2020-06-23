@@ -24,9 +24,11 @@ const Customers = () => {
         {customers.map((customer) => {
           return (
             <li>
-              {customer.name}
-              {customer.registered_at}
-              {customer.address}
+              <div>
+                <p>{customer.name}</p>
+                <p>{customer.registered_at}</p>
+                <p>{customer.address}</p>
+              </div>
             </li>
           );
         })}

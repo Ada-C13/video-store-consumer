@@ -25,10 +25,12 @@ const Library = () => {
       <ul>
         {library.map((movie) => {
           return (
-            <li>
-              {movie.title}
-              {movie.overview} 
-            </li>
+            <div>
+              <li>
+                <p>{movie.title}</p>
+                <p>{movie.overview}</p>
+              </li>
+            </div>
           );
         })}
       </ul>
