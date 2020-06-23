@@ -43,9 +43,9 @@ export default function App() {
             <li>
               <Link to="/customers">Custormer List</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/search">Search Movies</Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
 
@@ -58,9 +58,9 @@ export default function App() {
           <Route path="/customers">
             <CustormerList />
           </Route>
-          <Route path="/search">
+          {/* <Route path="/search">
             <MovieSearch />
-          </Route>
+          </Route> */}
           <Route path="/">
             <Home />
           </Route>
@@ -69,6 +69,8 @@ export default function App() {
     </Router>
   );
 }
+
+// we have to move these to componets in components folder and in these function we need to make api calls to the rails server url
 
 function Home() {
   return <h2>Home</h2>;
@@ -82,6 +84,6 @@ function CustormerList() {
   return <h2>All Customers</h2>;
 }
 
-function MovieSearch() {
-  return <h2>Search</h2>;
-}
+// function MovieSearch() {
+//   return <h2>Search</h2>;
+// }
