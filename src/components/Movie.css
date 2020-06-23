@@ -1,0 +1,15 @@
+.movie_grid {
+  width: fit-content;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 20px;
+  align-items: center;
+}
+
+.movie_poster {
+  border: solid gray 20px;
+  border-radius: 25px;
+  border-color: rgba(189, 195, 199, 0.6);
+}

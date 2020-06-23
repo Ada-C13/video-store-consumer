@@ -1,5 +1,6 @@
 import React from 'react';
 import Movie from "./Movie"
+import "./Library.css"
 
 const Library = (props) => {
 
@@ -20,12 +21,8 @@ const Library = (props) => {
   }
 
   return (
-    <div className="ui cards">
-      <p></p>
-      <p></p>
-      <ul>
+    <div className="movieList">
         {movies}
-      </ul>
     </div>
   )
 }
