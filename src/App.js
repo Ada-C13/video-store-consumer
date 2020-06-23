@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
+import { CustomerList } from './components/CustomerList.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,27 +9,8 @@ import {
 // import logo from './logo.svg';
 import './App.css';
 
+const App = () => {
 
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <h1 className="App-title">Welcome to React</h1>
-//         </header>
-//         <p className="App-intro">
-//           To get started, edit <code>src/App.js</code> and save to reload.
-//         </p>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
-
-export default function App() {
   return (
     <Router>
       <div>
@@ -43,9 +25,9 @@ export default function App() {
             <li>
               <Link to="/customers">Custormer List</Link>
             </li>
-            {/* <li>
+            <li>
               <Link to="/search">Search Movies</Link>
-            </li> */}
+            </li>
           </ul>
         </nav>
 
@@ -56,11 +38,11 @@ export default function App() {
             <MovieLibrary />
           </Route>
           <Route path="/customers">
-            <CustormerList />
+            <CustomerList />
           </Route>
-          {/* <Route path="/search">
+          <Route path="/search">
             <MovieSearch />
-          </Route> */}
+          </Route>
           <Route path="/">
             <Home />
           </Route>
@@ -80,10 +62,8 @@ function MovieLibrary() {
   return <h2>All Movies</h2>;
 }
 
-function CustormerList() {
-  return <h2>All Customers</h2>;
+function MovieSearch() {
+  return <h2>Search</h2>;
 }
 
-// function MovieSearch() {
-//   return <h2>Search</h2>;
-// }
+export default App;
