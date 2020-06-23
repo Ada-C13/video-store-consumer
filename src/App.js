@@ -1,5 +1,5 @@
 // import React, { Component } from "react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -8,6 +8,8 @@ import Home from "./components/Home";
 import Search from "./components/Search";
 import Library from "./components/Library";
 import Customers from "./components/Customers";
+
+const axios = require('axios');
 
 const mockCustomer = [
   {
@@ -109,6 +111,13 @@ const App = () => {
   // Declare and initialize state
   const [selectedMovie, setMovie] = useState(0);
   const [selectedCustomer, setCustomer] = useState(0);
+
+  // function to run when component is mounted
+  useEffect(() => {
+    // get movieList
+    // get customerList
+
+  })
 
   // Callback function to select movie
   const onMovieSelectCallback = (id) => {
