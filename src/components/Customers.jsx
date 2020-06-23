@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import Customer from './Customer';
 
-import {
-  Link
-} from "react-router-dom";
 
-const Customers = (props, onClickCallback ) => {
+const Customers = (props) => {
 
-  let customers = [];
+  let customerList = [];
 
   if (props.customers) {
-    customers = props.customers.map((customer) => {
+    customerList = props.customers.map((customer) => {
       return (
-        <div className="ui card">
-          <div className="ui content">
-            <p className="ui header">{customer.name}</p>
-          </div>
-        </div>
+        <Customer 
+        name={customer.name} 
+        customerCallback={props.selectCustomerCallback}
+        id={customer.id}
+        key={customer.id} 
+      />
       );
     });
   }
@@ -23,8 +22,9 @@ const Customers = (props, onClickCallback ) => {
   return (
     <div className="ui cards">
       <p></p>
+      <p></p>
       <ul>
-        {customers}
+        {customerList}
       </ul>
     </div>
   )

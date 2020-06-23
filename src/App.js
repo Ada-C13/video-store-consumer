@@ -24,6 +24,7 @@ const App = () => {
   const [library, setLibrary] = useState();
   const [customers, setCustomers] = useState();
   const [moviePick, setMoviePick] = useState();
+  const [customerPick, setCustomerPick] = useState();
 
   useEffect(() => {
     axios.get(LIBRARY_URL)
@@ -49,6 +50,27 @@ const App = () => {
       });
   }, []);
 
+  const onSelectCustomer = (customer_id) => {
+    axios.get(CUSTOMERS_URL) 
+      .then((response)=>{
+      let count = 1
+      const customerList = response.data.map((customer) => {
+        customer["id"] = count
+        count += 1
+        return customer
+      })
+  
+    const selectedCustomer = customerList.find((customer) => {
+      return customer.id === customer_id;
+    });
+
+    if (selectedCustomer) {
+      setCustomerPick(selectedCustomer);
+      console.log(customerPick); 
+    };
+  });
+  }
+
   return (
     <Router>
       <div> 
@@ -64,7 +86,12 @@ const App = () => {
             <Search />
           </Route>
           <Route path="/customers">
-            <Customers customers={customers} />
+            <Customers 
+            // custDetails={custDetails} 
+            // setCustDetailsCallback={customerPick}
+            selectCustomerCallback={onSelectCustomer} 
+            // currCustomerCallback={setCurrCustomer} 
+            customers={customers} />
           </Route>
           <Route path="/">
             <Home />
