@@ -5,33 +5,35 @@ import axios from 'axios';
 import SearchForm from './SearchForm.js';
 
 export function MovieSearch() {
-  const [movies, getMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-    useEffect((query) => {
-      if (query !== null) {
+  const getMovie = (query) => {
+    if (query !== null) {
       axios.get("http://localhost:3000/movies", {
         params: {
           query: query,
         }
       })
-      .then((response) => {
-        getMovies(
-          response.data.results
-        );
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
-      });
+        .then((response) => {
+          setMovies(
+            response.data
+          );
+        })
+        .catch((error) => {
+          setErrorMessage(error.message);
+        });
     };
-    }, []);
-  
-    return (
-      <div>
-        <SearchForm onSubmitCallback={MovieSearch} />
-          {movies}
-        {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
-      </div>
+  };
+
+  return (
+    <div>
+      <SearchForm onSubmitCallback={getMovie} />
+      <ul>
+          {movies.map((m) => <li key={m.external_id}>{m.title}</li> )}
+        </ul>
+      {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
+    </div>
   )
 };
 

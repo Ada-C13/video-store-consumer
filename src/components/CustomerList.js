@@ -34,6 +34,5 @@ export function CustomerList() {
 
 CustomerList.propTypes = {
   customers: PropTypes.array,
-  selectCustomerCallback: PropTypes.func.isRequired
 }
 

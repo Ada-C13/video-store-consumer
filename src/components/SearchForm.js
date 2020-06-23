@@ -21,7 +21,7 @@ const SearchForm = (props) => {
     event.preventDefault();
     if (formFields.title !== '') {
       // Send that data back up to App
-      props.onSubmitCallback(formFields)
+      props.onSubmitCallback(formFields.title)
       // Clear the fields
       setFormFields({
         title: '',

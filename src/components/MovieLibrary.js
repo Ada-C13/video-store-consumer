@@ -34,7 +34,6 @@ export function MovieLibrary() {
 
 MovieLibrary.propTypes = {
   movies: PropTypes.array,
-  selectMovieCallback: PropTypes.func.isRequired
 }
 
 export default MovieLibrary;
