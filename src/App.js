@@ -53,7 +53,13 @@ class App extends Component {
     this.setState({ selectedCustomer })
   }
 
-  
+  selectMovie(movieId) {
+    const { movies } = this.state;
+    const selectedMovie = movies.find((movie) => {
+      return mov.id === movieId;
+    })
+    this.setState({ selectedMovie })
+  }
   
   render() {
    return (

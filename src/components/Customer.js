@@ -14,7 +14,7 @@ const Customer = ({ id, name, address, city, state, registered_at, phone, accoun
         <li>Movies Checked Out: {movies_checked_out_count} </li>
         <li>Date Registered: {(registered_at).substring(0,10)} </li>
         <li>Phone: {phone} </li>
-        <li>Address: {address}</li>
+        <li>Address: {address} </li>
         <li>{city}, {state} </li>
       </ul>
     </div>
