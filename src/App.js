@@ -1,19 +1,48 @@
 import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Link, Switch} from "react-router-dom";
-// import PropTypes from 'prop-types';
 import axios from 'axios';
 import CustomerList from './components/CustomerList'
 import MovieLib from './components/MovieLib'
 import MovieSearch from './components/MovieSearch'
 import Home from './components/Home'
 
+const BASE_URL = 'http://localhost:3000'
 
-const App = () => {
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      customers: [],
+    }
+  }
+
+  componentDidMount() {
+    axios.get(`${BASE_URL}/customers`)
+    .then((response) => {
+      const customers = response.data;
+      this.setState({ 
+        customers,
+        error: undefined
+      });
+    })
+    .catch((error) => {
+      this.setState({ error: error.message });
+    });
+  }
+
+  selectCustomer(customerId) {
+    const { customers } = this.state;
+    const selectedCustomer = customers.find((customer) => {
+      return customer.id === customerId;
+    })
+    this.setState({ selectedCustomer })
+  }
   
-
-  return (
-    <Router>
+  render() {
+   return (
+     <Router>
       <div className="App">
       <header className="App-header">
         <ul>
@@ -43,12 +72,15 @@ const App = () => {
         <MovieLib url="http://localhost:3000/"/>
       </Route>
       <Route path="/customers">
-        <CustomerList url="http://localhost:3000/"/>
+        <CustomerList 
+        customerList={this.state.customers} 
+        selectCustomer={(id) => this.selectCustomer(id)} />
       </Route> 
       </Switch>
       </div>
-    </Router>
-  );
+     </Router>
+    );
+  }
 }
 
 export default App;
