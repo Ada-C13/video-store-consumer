@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 
 const Customer = (props) => {
   return (
-    <article className="customer card">
-      <h5 className="card-title">{props.name}</h5>
-      <div className="card-body">
-        <p>{props.phone}</p>
-      </div>
-    </article>
+    <tr>
+      <td>{props.id}</td>
+      <td>{props.name}</td>
+      <td>${props.account_credit}</td>
+      <td>{props.movies_checked_out_count}</td>
+      <td>{props.registered_at}</td>
+    </tr>
   );
 }
 

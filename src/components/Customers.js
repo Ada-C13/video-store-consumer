@@ -3,7 +3,6 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import Customer from './Customer';
 
-const API_URL_BASE = "http://localhost:3000/";
 const API_CUSTOMER_URL = "http://localhost:3000/customers"
 
 const Customers = () => {
@@ -31,7 +30,7 @@ const Customers = () => {
         key={customerObject.id}
         id={customerObject.id}
         name={customerObject.name} 
-        registered_at={customerObject.name}
+        registered_at={customerObject.registered_at}
         address={customerObject.address} 
         city={customerObject.city} 
         state={customerObject.state} 
@@ -45,11 +44,22 @@ const Customers = () => {
 
 
   return (
-      <div>
-        <h2 className="text-center">Customers</h2>
-        <div className="container">
-          {customersComponents}
-        </div>
+      <div className="d-flex text-left flex-wrap container justify-content-around container-fluid">
+        <h2 className="py-2 text-center w-100">Customers</h2>
+        <table className="customer table table-striped">
+          <thead class="thead-light">
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Account Credit</th>
+              <th>Current Rentals Count</th>
+              <th>Registered</th>
+            </tr>
+          </thead>
+          <tbody>
+            {customersComponents}
+          </tbody>
+        </table>
       </div>
   );
 }
