@@ -30,7 +30,7 @@ const Search = (props) => {
       <div className="">
         <SearchBar searchMovies={searchMovies} />
       </div>
-      <div class="ui horizontal divider">
+      <div className="ui horizontal divider">
         Results
       </div>
       {movies.length > 0 && <SearchResults foundMovies={movies} library={props.library}/> }

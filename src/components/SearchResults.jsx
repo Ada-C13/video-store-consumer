@@ -13,8 +13,8 @@ const SearchResults = (props) => {
 
       return (
         <SearchResult
-          key={movie.id}
-          id={movie.external_id}
+          key={movie.external_id}
+          external_id={movie.external_id}
           title={movie.title}
           release_date={movie.release_date}
           overview={movie.overview}
