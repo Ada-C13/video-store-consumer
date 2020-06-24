@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Customer.css';
-import { Card, Button } from 'react-bootstrap/';
+import { Button } from 'react-bootstrap/';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Customer = ({ id, name, address, city, state, registered_at, phone, account_credit, movies_checked_out_count, selectCustomer }) => {
