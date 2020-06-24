@@ -3,10 +3,19 @@ import React, { useEffect, useState, useCallback } from 'react';
 // import axios from 'axios';
 
 // import './Search.css';
+import SearchResult from './SearchResult';
 
 const Search = ({ results, onSearchMovieCallback }) => {
-  // TODO: Make a SearchResult child component
-  // TODO: render results into an array of SearchResult components using map
+  const resultsList = results.map(result => 
+    <SearchResult
+      title={result.title}
+      overview={result.overview}
+      release_date={result.release_date}
+      image_url={result.image_url}
+      id={result.external_id}
+      key={result.external_id}
+    />
+  );
 
   const [query, setQuery] = useState({
     query: "",
@@ -44,7 +53,7 @@ const Search = ({ results, onSearchMovieCallback }) => {
           <input type="submit" className="movie-search-form__form-button" value="Search Movies"/>
         </div>
       </form>
-      {results}
+      {resultsList}
     </section>
   ); 
 }
