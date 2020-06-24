@@ -5,6 +5,7 @@ import Store from './Store';
 import Library from './Library';
 import Users from './Users';
 import './Routing.css';
+import Result from './Result';
 
 let selectedUser = "Not selected";
 
@@ -21,7 +22,7 @@ const Routing = (
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/store">Store</Link>
+          <Link to="/store">Seach</Link>
         </li>
         <li>
           <Link to="/library">Library</Link>
@@ -38,6 +39,14 @@ const Routing = (
         render={(props) => (
           <Store {...props} url={"http://localhost:3000/"} />
         )}/>
+      <Route path="/results/:searchTerm"
+        render={(props) => (
+          <Result {...props} url={"http://localhost:3000/"} />
+        )} />
+      <Route path="/library/:movie"
+        render={(props) => (
+          <Result {...props} url={"http://localhost:3000/"} />
+        )} />
       <Route path="/library"
         render={(props) => (
           <Library {...props} url={"http://localhost:3000/"} />
