@@ -3,11 +3,18 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import App from '../App';
 import Store from './Store';
 import Library from './Library';
-import Users from './Library';
+import Users from './Users';
 import './Routing.css';
 import Result from './Result';
 
+let selectedUser = "Not selected";
+
+const onSubmitUserCallback = (user) => {
+  selectedUser = user
+}
+
 const Routing = (
+
   <Router>
     <div>
       <ul className="nav-bar">
@@ -21,7 +28,10 @@ const Routing = (
           <Link to="/library">Library</Link>
         </li>
         <li>
-          <Link to="/user">Users</Link>
+          <Link to="/users">Users</Link>
+        </li>
+        <li>
+          <p>Selected User : {selectedUser}</p>
         </li>
       </ul>
       <Route exact path="/" component={App} />
@@ -41,9 +51,9 @@ const Routing = (
         render={(props) => (
           <Library {...props} url={"http://localhost:3000/"} />
         )}/>
-      <Route path="/library"  
+      <Route path="/users"  
         render={(props) => (
-          <Users {...props} url={"http://localhost:3000/"} />
+          <Users {...props} url={"http://localhost:3000/"}  onSubmitUserCallback={onSubmitUserCallback(selectedUser)}/>
         )}/>
     </div>
   </Router>
