@@ -1,38 +1,26 @@
-import React from 'react';
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Movie from './Movie';
 import './Search.css';
-import PropTypes from "prop-types";
 
-const Search = (props) => {
-  const base_url = "http://localhost:3000/"
+const Search = () => {
+  const base_url = "http://localhost:3000/movies?query="
 
   const [searchText, setSearchText] = useState("");
   const [resultMovies, setResultMovies] = useState([]);
-  const [errors, setErrors] = useState(null);
+  const [error, setError] = useState(null);
 
-  const onInputChange = (event) => {
-    setSearchText(event.target.value);
-  };
 
-  const onSubmitCallback = (event) => {
+  const handleSearch = (event) => {
     event.preventDefault()
-    props.onSubmitCallback(movie);
-    
-  }
 
-
-  const handleSearch = () => {
-    if (searchText !== "" && searchText !== undefined && searchText !== null) {
-      axios.get(base_url + "/movies?query=" + searchText)
+    axios.get(base_url + searchText)
       .then((response) => {
         setResultMovies(response.data);
       })
       .catch((error) => {
-        setErrors(error.message);
-      })
-    }
+        setError(error.message);
+    })
   };
 
   const addMovie = (movieData) => {
@@ -56,7 +44,7 @@ const Search = (props) => {
       </button>
 
       <div>
-        {result.map(movieData => 
+        {resultMovies.map(movieData => 
           <div>
             <p>{movieData.title}</p>
             <button onClick={() => addMovie(movieData)}>Add to Library</button>

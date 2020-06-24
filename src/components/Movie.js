@@ -4,6 +4,7 @@ const Movie = (props) => {
   const onButtonClick = () => {
     props.setSelectedMovieCallBack(props.id);
   };
+  
   return (
     <div>
       <li>
