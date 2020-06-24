@@ -1,15 +1,15 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Movie from './Movie';
 
 const Library = (props) => {
-  const API_MOVIE_URL = "http://localhost:3000/movies"
+  // const API_MOVIE_URL = "http://localhost:3000/movies"
   const [movieList, setMovieList] = useState([]);
   const [errorMessage, setMessage] = useState(null);
   
   useEffect(()=>{
-    axios.get(API_MOVIE_URL)
+    axios.get(props.url)
       .then((response) => {
         const movieList = response.data;
         setMovieList(movieList);
@@ -18,7 +18,7 @@ const Library = (props) => {
         setMessage(error.message);
         console.log(error.message);
       });
-  }, [API_MOVIE_URL])
+  }, [props.url])
 
   const movieComponents = movieList.map((movie) => {
     return(
@@ -30,6 +30,7 @@ const Library = (props) => {
         release_date = {movie.release_date}
         overview = {movie.overview}
         external_id = {movie.external_id}
+        selectMovieCallback={props.selectMovieCallback}
       />
     )
   })
@@ -40,7 +41,8 @@ const Library = (props) => {
         <table class="table table-hover">
           <thead class="thead-light">
             <tr>
-              <th>Id</th>
+              <th>ID</th>
+              <th>Select</th>
               <th>Title</th>
               <th>Image</th>
               <th>Release Date</th>

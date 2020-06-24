@@ -3,16 +3,15 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import Customer from './Customer';
 
-const API_CUSTOMER_URL = "http://localhost:3000/customers"
+// const API_CUSTOMER_URL = "http://localhost:3000/customers"
 
-const Customers = () => {
-
+const Customers = (props) => {
   const [customersList, setCustomersList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
 
   useEffect(() => {
-    axios.get(API_CUSTOMER_URL)
+    axios.get(props.url)
       .then( (response) => {
         const customers = response.data;
         setCustomersList(customers);
@@ -21,7 +20,7 @@ const Customers = () => {
         setErrorMessage(error.message);
         console.log(errorMessage);
       });
-  }, [API_CUSTOMER_URL])
+  }, [props.url])
 
 
 
@@ -39,6 +38,7 @@ const Customers = () => {
         phone={customerObject.phone} 
         account_credit={customerObject.account_credit} 
         movies_checked_out_count={customerObject.movies_checked_out_count} 
+        selectCustomerCallback={props.selectCustomerCallback}
       />
     )
   })
