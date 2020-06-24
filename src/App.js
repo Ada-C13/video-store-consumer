@@ -126,6 +126,9 @@ const App = () => {
 
   const addMovieCallBack = (movie) => {
     console.log(`App, add movie to library`);
+    // if external id is unique:
+    // if (!movieList.find(listMovie => listMovie.external_id === movie.external_id)) { console.log("unique")} else {console.log("not unique")}
+
     // post movie
     axios
       .post(API_URL_BASE + "/movies", movie)
