@@ -73,10 +73,10 @@ import SearchForm from './SearchForm';
     const { API_KEY } = process.env
     const [searchedmovieList, setSearchedMovieList] = useState([]);
     const [errorMessage, setMessage] = useState(null);
-    
     const searchMovie = (search) =>{
       axios.get(`${props.url}?api_key=${API_KEY}&language=en-US&query=${search.searchTerm}&limit=7`)
         .then((response) => {
+          console.log("ldfodjfd")
           const movieList = response.results;
           setSearchedMovieList(movieList);
         })
@@ -96,7 +96,7 @@ import SearchForm from './SearchForm';
           release_date = {movie.release_date}
           overview = {movie.overview}
           external_id = {movie.external_id}
-          selectMovieCallback={props.selectMovieCallback}
+          // selectMovieCallback={props.selectMovieCallback}
         />
       )
     })
