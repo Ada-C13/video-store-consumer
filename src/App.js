@@ -12,6 +12,7 @@ import CustomerList from './components/CustomerList';
 import MovieSearch from './components/MovieSearch';
 import MovieLibrary from './components/MovieLibrary';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 
 const BASE_URL = 'http://localhost:3000/'
 
@@ -78,21 +79,26 @@ class App extends Component {
       selectedCustomer,
     })
   }
-  createRental(dueDate) {
+  createRental() {
     if(this.state.selectedMovie) {
       const movieTitle = this.state.selectedMovie.title
       const customerId = this.state.selectedCustomer.id
+      let dueDate = new Date()
+      dueDate.setDate(new Date().getDate() + 1);
 
       const params = {
         customer_id: customerId,
-        due_date: "2019-12-29T14:54:14.000Z", 
+        due_date: dueDate.toISOString(), 
       }
 
       axios.post(`${BASE_URL}/rentals/${movieTitle}/check-out`, params)
       .then((response) => {
 
-        console.log(response.data)
-
+        this.setState({
+          selectedMovie: undefined,
+          selectedCustomer: undefined,
+          error: undefined,
+        })
       })
       .catch((error) => {
 
@@ -105,9 +111,11 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-        <nav>
+        <div className="sidenav">
           <ul>
+          {this.state.selectedMovie ? <li>Selected Movie:{this.state.selectedMovie.title}</li> : "" }
           {this.state.selectedCustomer ? <li>Selected Customer:{this.state.selectedCustomer.name}</li> : "" }
+          {this.state.selectedMovie ? <li><button onClick={() => this.createRental()}>Create a Rental</button>  </li> : ''}
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -121,22 +129,23 @@ class App extends Component {
               <Link to="/search">Movie Search</Link>
             </li>
           </ul>
-        </nav>
-
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/customers">
-            <CustomerList customerList={this.state.customers} selectCustomer={(id) => this.selectCustomer(id)} />
-          </Route>
-          <Route path="/library">
-            <MovieLibrary />
-          </Route>
-          <Route path="/search">
-            <MovieSearch />
-          </Route>
-        </Switch>
+        </div>
+        <div className="main">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/customers">
+              <CustomerList customerList={this.state.customers} selectCustomer={(id) => this.selectCustomer(id)} />
+            </Route>
+            <Route path="/library">
+              <MovieLibrary movieList={this.state.movies} selectMovie={(id) => this.selectMovie(id)}/>
+            </Route>
+            <Route path="/search">
+              <MovieSearch />
+            </Route>
+          </Switch>
+        </div>
       </div>
     </Router>
     );
