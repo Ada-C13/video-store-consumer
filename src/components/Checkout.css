@@ -1,4 +1,33 @@
+.checkout-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .checkout-form-customer {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  padding: 3em;
+  margin: 1em 1em 0 0;
+  border: 1px solid black;
+}
+
+.checkout-form__header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.checkout-form-customer__avatar {
+  width: 20%;
+}
+
+.checkout-form-customer__buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.checkout-form-movie {
   display: flex;
   justify-content: space-between;
   width: 40%;
@@ -7,11 +36,11 @@
   border: 1px solid black;
 }
 
-.checkout-form-customer__avatar {
+.checkout-form-movie__avatar {
   width: 20%;
 }
 
-.checkout-form-customer__buttons {
+.checkout-form-movie__buttons {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

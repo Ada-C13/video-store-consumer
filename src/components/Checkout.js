@@ -18,32 +18,55 @@ import Movie from './Movie';
 const Checkout = ({ customer, movie, onSubmitCallback }) => {
 
   return (
-    <section className="checkout-form">
-      { 
-        customer && (
-          <div className="checkout-form-customer">
-            <img src={avatar} className="checkout-form-customer__avatar" alt="customer profile pic" />
-            <p className="checkout-form-customer__name">#{customer.id}: {customer.name}</p>
-            <div className="checkout-form-customer__buttons">
-              <Popup trigger={<button className="checkout-form__button">Profile</button>} modal>
-                <Customer
-                  name={customer.name}
-                  registered_at={new Date(customer.registered_at).toString()}
-                  address={customer.address}
-                  city={customer.city}
-                  state={customer.state}
-                  postal_code={customer.postal_code}
-                  phone={customer.phone}
-                  account_credit={customer.account_credit}
-                  movies_checked_out_count={customer.movies_checked_out_count}
-                  id={customer.id}
-                />
-              </Popup>
-              <Link to="/customers" className="checkout-form__button">Change</Link>
+    <section>
+      <h2>Checkout</h2>
+
+      <section className="checkout-form__header">
+        <h4>Customer</h4>
+        <h4>Movie</h4>
+      </section>
+
+      <section className="checkout-form">
+        { 
+          customer && (
+            <div className="checkout-form-customer">
+              <img src={avatar} className="checkout-form-customer__avatar" alt="customer profile pic" />
+              <p className="checkout-form-customer__name">#{customer.id}: {customer.name}</p>
+              <div className="checkout-form-customer__buttons">
+                <Popup trigger={<button className="checkout-form__button">Profile</button>} modal>
+                  <Customer
+                    name={customer.name}
+                    registered_at={new Date(customer.registered_at).toString()}
+                    address={customer.address}
+                    city={customer.city}
+                    state={customer.state}
+                    postal_code={customer.postal_code}
+                    phone={customer.phone}
+                    account_credit={customer.account_credit}
+                    movies_checked_out_count={customer.movies_checked_out_count}
+                    id={customer.id}
+                  />
+                </Popup>
+                <Link to="/customers" className="checkout-form__button">Change</Link>
+              </div>
             </div>
-          </div>
-        )
-      }
+          )
+        }
+        { 
+          movie && (
+            <div className="checkout-form-movie">
+              <img src={movie.image_url} className="checkout-form-movie__cover" alt="movie cover pic" />
+              <p className="checkout-form-movie__title">{movie.title}</p>
+              <div className="checkout-form-movie__buttons">
+                <Popup trigger={<button className="checkout-form__button">Details</button>} modal>
+                  <Movie />
+                </Popup>
+                <Link to="/movies" className="checkout-form__button">Change</Link>
+              </div>
+            </div>
+          )
+        }
+      </section>
     </section>
   );
 }
