@@ -12,15 +12,15 @@ const reformatData = (data) => {
 };
 
 const Users = (props) => {
-// const [chosenUser, setChosenUser] = useState('')
+const [chosenUser, setChosenUser] = useState('')
   const [userList, setUserList] = useState([]);
   const endPoint = `${props.url}customers`
 
-//   const onSelectUserClick = (user) => {  
-//     // setChosenUser(user);
-//     console.log(chosenUser)
-//     props.onSubmitUserCallback(user)
-//   };
+  const onSelectUser= (user) => {  
+    setChosenUser(user);
+    console.log(chosenUser)
+    // props.onSubmitUserCallback(chosenUser)
+  };
 
   
   const getUsers = (url) => {
@@ -55,7 +55,7 @@ const Users = (props) => {
                   <p>{ user.accout_credit }</p>
                   
                   <div>
-                    <input className="add-library-button" type="button" value="Select This User" onClick={() => props.onSubmitUserCallback(user)} />
+                    <input className="add-library-button" type="button" value="Select This User" onClick={() => onSelectUser(user)} />
                   </div>
                 </div>
               </div>
