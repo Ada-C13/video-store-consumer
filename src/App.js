@@ -47,29 +47,26 @@ const App = () => {
 
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/search">Movie Search</Link>
-          </li>
-          <li>
-            <Link to="/library">Movie Library</Link>
-          </li>
-          <li>
-            <Link to="/customers">Customer List</Link>
-          </li>
-        </ul>
+      <main>
+        <h1>Video Store Consumer</h1>
         
-        {
-          selectedCustomer && (
-            <ul>
-              <li>Selected Customer: #{selectedCustomer.id} {selectedCustomer.name}</li>
-            </ul>
-          )
-        }
+        <nav className="App-nav">
+          <div className="App-nav-links">
+            <Link to="/" className="App-nav-links__item">Home</Link>
+            <Link to="/search" className="App-nav-links__item">Movie Search</Link>
+            <Link to="/library" className="App-nav-links__item">Movie Library</Link>
+            <Link to="/customers" className="App-nav-links__item">Customer List</Link>
+          </div>
+            <div className="App-nav-selected">
+              <h3>Current Selection</h3>
+            {
+              selectedCustomer && (
+                <span className="App-nav-selected__customer">Customer #{selectedCustomer.id} {selectedCustomer.name}</span>
+              )
+            }
+          </div>
+        </nav>
+      
 
         <Switch>
           <Route path="/search">
@@ -85,7 +82,7 @@ const App = () => {
             <Home />
           </Route>
         </Switch>
-      </div>
+      </main>
     </Router>
   );
 }
