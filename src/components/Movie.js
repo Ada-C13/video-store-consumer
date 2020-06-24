@@ -4,6 +4,11 @@ import { Card, Button } from 'react-bootstrap/';
 import './Movie.css';
 
 const Movie = ({movie, selectMovie}) => {
+
+  const onMovieClick = () => {
+    selectMovie(movie.id, movie.title, movie.overview, movie.release_date, movie.image_url, movie.external_id);
+  }
+
   return (
     <Card className="movie-card">
       <div>
@@ -17,7 +22,7 @@ const Movie = ({movie, selectMovie}) => {
           <button
           type="button"
           className="movie-card-button"
-          onClick={() => selectMovie(movie.id)}>
+          onClick={onMovieClick}>
             Select
           </button>
         </div>

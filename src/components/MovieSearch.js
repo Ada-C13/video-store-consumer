@@ -76,7 +76,7 @@ import axios from 'axios';
 import Movie from './Movie';
 import './MovieSearch.css';
 
-const MovieSearch = ({ url, movieList, selectMovie }) => {
+const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
 
   const [ searchBar, setSearchBar ] = useState('');
   const [ searchResults, setSearchResults ] = useState([]);
@@ -112,14 +112,30 @@ const MovieSearch = ({ url, movieList, selectMovie }) => {
     }
   }
 
+  const selectMovieToAdd = (id, title, overview, release_date, image_url, external_id) => {
+    const newMovie = {id: id, title: title, overview: overview, release_date: release_date, image_url: image_url, external_id: external_id};
+
+    if (!movieList.find(movie => movie.external_id === external_id)) {
+      let newLibraryResults = [...libraryResults];
+      newLibraryResults.push(newMovie);
+  
+      const newSearchResults = searchResults.filter((movie) => (movie.external_id !== newMovie.external_id))
+      setLibraryResults(newLibraryResults)
+      setSearchResults(newSearchResults)
+  
+      addMovie(newMovie)
+    }
+  };
+
 
   const allSearchResults = searchResults.map((movie) => {
-    return <Movie key={movie.external_id} movie={movie} selectMovie={selectMovie} />
+    return <Movie key={movie.external_id} movie={movie} selectMovie={selectMovieToAdd} />
   });
 
   const allLibraryResults = libraryResults.map((movie) => {
     return <Movie key={movie.external_id} movie={movie} selectMovie={selectMovie} />
   });
+
 
   
   return (

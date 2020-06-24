@@ -76,15 +76,25 @@ class App extends Component {
     }
   }
 
-  selectMovie = (movieId) => {
+  selectMovie = (id, title, overview, release_date, image_url, external_id) => {
     const { movies } = this.state;
 
     const selectedMovie = movies.find((movie) => {
-      return movie.id === movieId;
+      return movie.id === id;
     })
 
     this.setState({ selectedMovie })
   }
+
+  // selectMovie = (movieId) => {
+  //   const { movies } = this.state;
+
+  //   const selectedMovie = movies.find((movie) => {
+  //     return movie.id === movieId;
+  //   })
+
+  //   this.setState({ selectedMovie })
+  // }
   
   selectCustomer(id) {
     const { customers } = this.state;
