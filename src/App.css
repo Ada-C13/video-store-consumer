@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: white;
 }
 
 .sidenav {
@@ -9,7 +10,7 @@
   z-index: 1; 
   top: 0; 
   left: 0;
-  background-color: rgb(3, 27, 133);
+  background-color: rgb(99, 116, 192);
   overflow-x: hidden; 
   padding-top: 20px;
 }
@@ -18,7 +19,7 @@
   padding: 6px 8px 6px 8px;
   text-decoration: none;
   font-size: 25px;
-  color: white;
+  color: black;
   display: block;
 }
 
@@ -33,9 +34,8 @@
 }
 
 .sidenav a:hover {
-  color: #28abf1;
+  color: #0679f5;
   text-decoration: none;
-
 }
 
 .main {
@@ -44,7 +44,12 @@
 }
 
 .items-selected {
-  background-color: rgb(226, 177, 86);
-  padding: 10px;
-  text-shadow: black;
+  background-color: rgb(135, 168, 238);
+  color: black;
+  padding: 20px;
+  text-align: left;
+}
+
+.span{
+  font-weight: bold;
 }
