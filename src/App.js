@@ -30,6 +30,10 @@ const App = () => {
     setErrorMessage(data);
   };
 
+  const setSuccessCallback = (data) => {
+    setSuccessMessage(data);
+  };
+
   useEffect(() => {
     axios
       .get(LIBRARY_URL)
@@ -132,7 +136,7 @@ const App = () => {
   return (
     <Router>
       <header>
-        <Navbar setError={setErrorCallback} />
+        <Navbar setError={setErrorCallback} setSuccess={setSuccessCallback} />
       </header>
 
       <main>
