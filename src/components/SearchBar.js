@@ -85,27 +85,25 @@ class SearchBar extends Component {
   render () {
     return (
       <div>
-        <h3>Movie Search</h3>
         <form onSubmit={this.onSubmitHandler}>
+        <h3>Search for a Movie:</h3>
           <div>
             <input
-              name="title"
-              id="title"
+              text='text'
               onChange={this.onInputChange}
               value={this.state.title}
+              name="title"
+              id="title"
+              className="search-bar"
             />
           </div>
-        <input
-          type="submit"
-          name="submit"
-          className="submit-button"
-          onClick={this.onSubmitHandler}
-        />
+          <div className="submit-padding"><button type="submit">Search</button> 
+          </div>
         </form>
         <div>
           {this.databaseMovies()}
         </div>
-      </div>
+        </div>
     )
   }
 }
