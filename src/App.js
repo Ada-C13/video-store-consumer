@@ -19,7 +19,9 @@ import Customers from './components/Customers';
 const App = () => {
   const [ searchResults, setSearchResults ] = useState([]);
   const [ errorMessage, setErrorMessage ] = useState(null);
+  
   const [ customerList, setCustomerList ] = useState([]);
+  const [ selectedCustomer, setSelectedCustomer ] = useState(null);
 
   const searchMovies = (search) => {
     axios.get('http://localhost:3000/movies', { params: search })
@@ -60,6 +62,14 @@ const App = () => {
             <Link to="/customers">Customer List</Link>
           </li>
         </ul>
+        
+        {
+          selectedCustomer && (
+            <ul>
+              <li>Selected Customer: #{selectedCustomer.id} {selectedCustomer.name}</li>
+            </ul>
+          )
+        }
 
         <Switch>
           <Route path="/search">
@@ -69,7 +79,7 @@ const App = () => {
             <Movies />
           </Route>
           <Route path="/customers">
-            <Customers list={customerList} />
+            <Customers list={customerList} onSelectCallback={setSelectedCustomer} />
           </Route>
           <Route path="/">
             <Home />

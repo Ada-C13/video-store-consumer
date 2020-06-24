@@ -13,7 +13,7 @@ import {
 // import './Customers.css';
 import Customer from './Customer';
 
-const Customers = ({ list }) => {
+const Customers = ({ list, onSelectCallback }) => {
   let match = useRouteMatch();
 
   const [ clickedCustomer, setClickedCustomer ] = useState(null);
@@ -47,6 +47,7 @@ const Customers = ({ list }) => {
                 account_credit={clickedCustomer.account_credit}
                 movies_checked_out_count={clickedCustomer.movies_checked_out_count}
                 id={clickedCustomer.id}
+                onSelectCallback={onSelectCallback}
               />
             </Route>
           )
