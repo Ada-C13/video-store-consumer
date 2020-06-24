@@ -45,7 +45,7 @@ const SearchResult = (props) => {
 SearchResult.propTypes = {
   external_id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  release_date: PropTypes.string.isRequired,
+  release_date: PropTypes.string,
   overview: PropTypes.string,
   inLibrary: PropTypes.bool.isRequired,
   setError: PropTypes.func.isRequired

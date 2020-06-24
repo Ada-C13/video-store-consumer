@@ -9,15 +9,15 @@ const AddToLibraryButton = (props) => {
   };
 
   if(props.inLibrary){
-    return(<button class="ui disabled button">Added</button>);
+    return(<button className="ui disabled button">Added</button>);
   } else {
-    return(<button class="ui olive button" onClick={addToLibrary}>To Library</button>);
+    return(<button className="ui olive button" onClick={addToLibrary}>To Library</button>);
   }
 };
 
 AddToLibraryButton.propTypes = {
   inLibrary: PropTypes.bool.isRequired,
-  addToLibrary: PropTypes.func.isRequired
+  addToLibraryCallback: PropTypes.func.isRequired
 };
 
 export default AddToLibraryButton;
