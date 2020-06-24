@@ -28,7 +28,7 @@ const SearchResults = (props) => {
   }
 
   return (
-    <table class="ui very basic collapsing celled table">
+    <table className="ui very basic collapsing celled table">
       <thead>
         <tr className="">
           <th></th>

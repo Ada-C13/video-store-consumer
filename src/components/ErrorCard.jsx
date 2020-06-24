@@ -5,8 +5,8 @@ const ErrorCard = (props) => {
 
   return (
     <div className="ui container mt mb">
-      <div class="ui negative message">
-        <div class="header">
+      <div className="ui negative message">
+        <div className="header">
           Error detected:
         </div>
         <p>{props.message}</p>
