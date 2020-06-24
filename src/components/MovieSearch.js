@@ -67,23 +67,27 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
 
   
   return (
-    <div className="container">
-      <form onSubmit={ onSearchSubmit }>
-        <h3>Movie Search</h3>
-        <input
-          type='type'
-          name='query'
-          className='searchbox'
-          onChange={onInputChange}
-          value={searchBar}
-        />
-        <input
-          className="btn btn-primary"
-          type="submit"
-          name="submit"
-          value="Search"
-          onClick={ onSearchSubmit }
-        />
+    <div className="container d-flex flex-column search-container">
+      
+      <form onSubmit={ onSearchSubmit } className="align-self-center" >
+        <div class="input-group">
+          <input
+            type='type'
+            name='query'
+            className='searchbox'
+            onChange={onInputChange}
+            value={searchBar}
+          />
+          <div class="input-group-append">
+            <input
+              className="btn btn-primary btn-style"
+              type="submit"
+              name="submit"
+              value="Search"
+              onClick={ onSearchSubmit }
+            />
+          </div>
+        </div>
       </form>
 
       <section className="container text-center">
