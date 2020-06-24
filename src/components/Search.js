@@ -4,7 +4,7 @@ import Movie from './Movie';
 import './Search.css';
 
 const Search = () => {
-  const base_url = "http://localhost:3000/movies?query="
+  const base_url = "http://localhost:3000/movies"
 
   const [searchText, setSearchText] = useState("");
   const [resultMovies, setResultMovies] = useState([]);
@@ -14,7 +14,7 @@ const Search = () => {
   const handleSearch = (event) => {
     event.preventDefault()
 
-    axios.get(base_url + searchText)
+    axios.get(base_url + "?query=" + searchText)
       .then((response) => {
         setResultMovies(response.data);
       })
@@ -24,7 +24,7 @@ const Search = () => {
   };
 
   const addMovie = (movieData) => {
-    axios.post(base_url + "/movies", movieData)
+    axios.post(base_url, movieData)
       .then((response) => {
         console.log(response);
       })
