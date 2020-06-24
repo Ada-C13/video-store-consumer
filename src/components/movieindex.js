@@ -5,10 +5,10 @@ class MovieIndex extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            movieList: [],
-            selectedMovie: undefined
-        };
+        this.state = {value: Movie.title, movieList: []};
+        // https://reactjs.org/docs/forms.html
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -32,6 +32,27 @@ class MovieIndex extends Component {
 
         this.setState({ selectedMovie, });
     }
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
+        console.log(this.state.value)
+      }
+    
+      handleSubmit(event) {
+        // alert('A search was submitted: ' + this.state.value);
+        event.preventDefault();
+        //call API
+        axios.get('http://localhost:3000/movies?query='+ this.state.value).then((response) => {
+          this.setState({
+            movieList: response.data
+          })
+          console.log(this.state.movieList)
+        }).catch(() => {
+          this.setState({
+            error: 'Error'
+          })
+        })
+      }
     render() {
         const { selectedMovie } = this.state;
         const movies = this.state.movieList.map((movie, i) => {
