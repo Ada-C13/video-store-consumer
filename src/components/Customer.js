@@ -8,23 +8,10 @@ import {
   useParams
 } from "react-router-dom";
 // import PropTypes from 'prop-types';
-// import axios from 'axios';
 
 // import './Customer.css';
 
-const Customer = ({ id, name, registered_at, address, city, state, postal_code, phone, account_credit, movies_checked_out_count, onSelectCallback }) => {
-
-  const customerData = {
-    id: id,
-    name: name,
-    registered_at: registered_at,
-    address: address,
-    city: city,
-    state: state,
-    postal_code: postal_code,
-    account_credit: account_credit,
-    movies_checked_out_count: movies_checked_out_count
-  }
+const Customer = ({ id, name, registered_at, address, city, state, postal_code, phone, account_credit, movies_checked_out_count }) => {
 
   return (
     <section>
@@ -37,7 +24,6 @@ const Customer = ({ id, name, registered_at, address, city, state, postal_code, 
       <p>Phone: {phone}</p>
       <p>Account Credit: {account_credit}</p>
       <p>Movies Checked Out: {movies_checked_out_count}</p>
-      <button onClick={() => onSelectCallback(customerData)}>Select Customer for Checkout</button>
     </section>
   );
 }

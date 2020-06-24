@@ -8,54 +8,45 @@ import {
   useParams
 } from "react-router-dom";
 // import PropTypes from 'prop-types';
-// import axios from 'axios';
+import Popup from "reactjs-popup";
 
-// import './Customers.css';
+import avatar from './user.png'
+import './Customers.css';
 import Customer from './Customer';
 
 const Customers = ({ list, onSelectCallback }) => {
   let match = useRouteMatch();
 
-  const [ clickedCustomer, setClickedCustomer ] = useState(null);
-
-  const customerList = list.map(customer =>
-    <li key={customer.id}>
-      <Link to={`${match.url}/${customer.id}`} onClick={() => setClickedCustomer(customer)}>{customer.name}</Link>
-    </li>
-  );
-
   return (
     <section>
       <h2>Customer List</h2>
       
-      <ol>
-        {customerList}
+      <ol className="customer-list">
+        {list.map(customer =>
+          <li key={customer.id} className="customer-list-item">
+            <img src={avatar} className="customer-list-item__avatar" alt="customer profile pic" />
+            <Link to={`${match.url}/${customer.id}`} className="customer-list-item__name">{customer.name}</Link>
+            <div className="customer-list-item__buttons">
+              <Popup trigger={<button>Profile</button>} modal>
+                <Customer
+                  name={customer.name}
+                  registered_at={new Date(customer.registered_at).toString()}
+                  address={customer.address}
+                  city={customer.city}
+                  state={customer.state}
+                  postal_code={customer.postal_code}
+                  phone={customer.phone}
+                  account_credit={customer.account_credit}
+                  movies_checked_out_count={customer.movies_checked_out_count}
+                  id={customer.id}
+                />
+              </Popup>
+              <button onClick={() => onSelectCallback(customer)}>Select</button>
+            </div>
+          </li>
+        )}
       </ol>
 
-      <Switch>
-        {
-          clickedCustomer && (
-            <Route path={`${match.path}/:customerId`}>
-              <Customer
-                name={clickedCustomer.name}
-                registered_at={clickedCustomer.registered_at}
-                address={clickedCustomer.address}
-                city={clickedCustomer.city}
-                state={clickedCustomer.state}
-                postal_code={clickedCustomer.postal_code}
-                phone={clickedCustomer.phone}
-                account_credit={clickedCustomer.account_credit}
-                movies_checked_out_count={clickedCustomer.movies_checked_out_count}
-                id={clickedCustomer.id}
-                onSelectCallback={onSelectCallback}
-              />
-            </Route>
-          )
-        }
-        <Route path={match.path}>
-          <h3>Please click on a customer for more details.</h3>
-        </Route>
-      </Switch>
     </section>
   );
 }
