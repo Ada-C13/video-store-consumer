@@ -8,11 +8,11 @@ const SearchForm = (props) => {
   })
 
   const onInputChange = (event) => {
-    const newFormField = {...formFields}
-    newFormField[event.target.name] = event.target.value
-    setFormFields(newFormField)
+    // const newFormField = {...formFields}
+    // newFormField[event.target.name] = event.target.value
+    setFormFields({searchTerm: event.target.value})
 
-    console.log(newFormField)
+    // console.log(newFormField)
   }
 
   const onFormSubmit = (event) =>{
@@ -25,7 +25,11 @@ const SearchForm = (props) => {
   }
 
   return(
-    <form onSubmit={onFormSubmit} >
+    <form onSubmit={onFormSubmit}
+      className="new-student-form"
+      onSubmit={onFormSubmit}
+      data-testid="SearchForm--form"
+    >
       <div>
         <label>Search movies by title:</label>
         <input
@@ -35,9 +39,10 @@ const SearchForm = (props) => {
           type="text"
         />
       </div>
-      <div>
-        <button onClick = {onFormSubmit}>Search</button>
-      </div>
+      <input
+        type="submit"
+        value="Search"
+      />
   </form>
   )
 } 
