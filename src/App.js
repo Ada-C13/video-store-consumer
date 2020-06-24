@@ -72,7 +72,7 @@ class App extends Component {
   }
 
   // 
-  selectedMovieCustomer(){
+  selectedMovieCustomer(){ 
     return ((this.state.selectedCustomer || this.state.selectedMovie) ? "you selected an items" : "You didn't select any items" )
   }
   
@@ -96,12 +96,10 @@ class App extends Component {
           </li>
         </ul>
         <div>
-              <h3>{this.state.selectedMovie ? ("Movie that you Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
-              <br />
-              <h3>{this.state.selectedCustomer ? ("Customer that you Selected: \n\n" + this.state.selectedCustomer.name) : "" }</h3>
-              <br />
-              {(this.state.selectedMovie && this.state.selectedCustomer )? <Button>Create a Rental</Button> : ''}
-        </div>
+        <h3>{this.state.selectedMovie ? ("Movie that you Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
+        <h3>{this.state.selectedCustomer ? ("Customer that you Selected: \n\n" + this.state.selectedCustomer.name) : "" }</h3>
+        {(this.state.selectedMovie && this.state.selectedCustomer )? <Button>Create a Rental</Button> : ''}
+      </div>
       </header>
     
       <Switch>
