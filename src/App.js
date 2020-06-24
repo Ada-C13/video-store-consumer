@@ -19,18 +19,29 @@ import Customers from './components/Customers';
 const App = () => {
   const [ searchResults, setSearchResults ] = useState([]);
   const [ errorMessage, setErrorMessage ] = useState(null);
+  const [ customerList, setCustomerList ] = useState([]);
 
   const searchMovies = (search) => {
     axios.get('http://localhost:3000/movies', { params: search })
     .then((response) => {
-      console.log("Here's the response", response.data);
       setSearchResults(response.data);
     })
     .catch((error) => {
-      console.log("Here's an error", error);
       setErrorMessage(error.response.data.cause);
     });
   };
+
+  const getCustomers = useCallback(() => {
+    axios.get('http://localhost:3000/customers')
+    .then((response) => {
+      setCustomerList(response.data);
+    })
+    .catch((error) => {
+      setErrorMessage(error.response.data.cause);
+    });
+  }, []);
+
+  useEffect( getCustomers, [ getCustomers ]);
 
   return (
     <Router>
@@ -58,7 +69,7 @@ const App = () => {
             <Movies />
           </Route>
           <Route path="/customers">
-            <Customers />
+            <Customers list={customerList} />
           </Route>
           <Route path="/">
             <Home />
