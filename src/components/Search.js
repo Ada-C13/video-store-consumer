@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import SearchMovieCard from './SearchMovieCard';
 
+
 const Search = () => {
 
   const [query, setQuery] = useState('');
@@ -34,14 +35,16 @@ const Search = () => {
     console.log(`this is movies list before: ${moviesList}`);
     let movieCollection = data.map((movie) => {
       return (
-        <SearchMovieCard
-        external_id = {movie.external_id}
-        title = {movie.title}
-        overview = {movie.overview}
-        release_date = {movie.release_date}
-        image_url = {movie.image_url}
-        key = {movie.external_id}
-        />
+        <div className="col-md-4 pb-4">
+          <SearchMovieCard
+          external_id = {movie.external_id}
+          title = {movie.title}
+          overview = {movie.overview}
+          release_date = {movie.release_date}
+          image_url = {movie.image_url}
+          key = {movie.external_id}
+          />
+        </div>
         );
       });
       setMoviesList(movieCollection);  
@@ -53,12 +56,16 @@ const Search = () => {
   
   return (
   <div class="m-5">
+    <h1>
+      {/* {error ? error : null} */}
+    </h1>
     <form className='form' onClick={search}>
     <label className='label' htmlFor="query">Movie Name</label>
     <input className='input' type='text' name='query' placeholder='Enter a Movie' value={query} onChange={ (event) => setQuery(event.target.value) }/>
     <button className='button' type='submit'>Search </button>
     </form>
-    <h1>{moviesList}</h1>   
+    <hr></hr>
+    <div className="row">{moviesList}</div>   
   </div>
     // render some movie cards
     // each card should also have a button to add it to the rental store database
