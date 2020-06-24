@@ -37,7 +37,7 @@ const App = () => {
   };
 
   const getMovies = useCallback(() => {
-    axios.get('http://localhost:3000/customers')
+    axios.get('http://localhost:3000/movies')
     .then((response) => {
       setMovieList(response.data);
     })
