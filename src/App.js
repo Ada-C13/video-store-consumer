@@ -39,9 +39,36 @@ class App extends Component {
       });
     })
     .catch ((error) => {
-      this.setState({ error: error.message });
+      this.setState({ 
+        error: error.message 
+      });
+    });
+
+    axios.get(`${BASE_URL}/movies`)
+    .then((response) => {
+      const movies = response.data;
+      this.setState({ 
+        movies,
+        error: undefined
+      });
+    })
+    .catch((error) => {
+      this.setState({ 
+        error: error.message 
+      });
     });
   }
+
+  selectMovie = (movieId) => {
+    const { movies } = this.state;
+
+    const selectedMovie = movies.find((movie) => {
+      return movie.id === movieId;
+    })
+
+    this.setState({ selectedMovie, })
+  }
+  
   selectCustomer(id) {
     const { customers } = this.state;
 
@@ -51,12 +78,36 @@ class App extends Component {
       selectedCustomer,
     })
   }
+  createRental(dueDate) {
+    if(this.state.selectedMovie) {
+      const movieTitle = this.state.selectedMovie.title
+      const customerId = this.state.selectedCustomer.id
+
+      const params = {
+        customer_id: customerId,
+        due_date: "2019-12-29T14:54:14.000Z", 
+      }
+
+      axios.post(`${BASE_URL}/rentals/${movieTitle}/check-out`, params)
+      .then((response) => {
+
+        console.log(response.data)
+
+      })
+      .catch((error) => {
+
+        this.setState({ error: error.message });
+
+      });
+    }
+  }
   render() {
     return (
       <Router>
-      <div>
+      <div className="App">
         <nav>
           <ul>
+          {this.state.selectedCustomer ? <li>Selected Customer:{this.state.selectedCustomer.name}</li> : "" }
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -71,8 +122,9 @@ class App extends Component {
             </li>
           </ul>
         </nav>
+
         <Switch>
-          <Route path="/home">
+          <Route exact path="/">
             <Home />
           </Route>
           <Route path="/customers">
