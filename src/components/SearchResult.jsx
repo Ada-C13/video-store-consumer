@@ -21,11 +21,10 @@ const SearchResult = (props) => {
       .then((response) => {
         console.log("Added to Library");
         setInLibrary(true);
-        // setErrorMessage('');
+        props.setError(null);
       })
       .catch((error) => {
-        // What should we do when we know the post request failed?
-        // setErrorMessage(error.message);
+        props.setError(error.message);
       });
   }
 

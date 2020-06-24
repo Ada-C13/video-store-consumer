@@ -20,6 +20,7 @@ const SearchResults = (props) => {
           overview={movie.overview}
           image_url={movie.image_url}
           inLibrary={inLibrary}
+          setError={props.setError}
         />
       );
     });
