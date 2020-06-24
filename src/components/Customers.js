@@ -21,9 +21,9 @@ const Customers = ({ list, onSelectCallback }) => {
     <section>
       <h2>Customer List</h2>
       
-      <ol className="customer-list">
+      <section className="customer-list">
         {list.map(customer =>
-          <li key={customer.id} className="customer-list-item">
+          <div key={customer.id} className="customer-list-item">
             <img src={avatar} className="customer-list-item__avatar" alt="customer profile pic" />
             <p className="customer-list-item__name">#{customer.id}: {customer.name}</p>
             <div className="customer-list-item__buttons">
@@ -43,9 +43,9 @@ const Customers = ({ list, onSelectCallback }) => {
               </Popup>
               <button onClick={() => onSelectCallback(customer)}>Select</button>
             </div>
-          </li>
+          </div>
         )}
-      </ol>
+      </section>
 
     </section>
   );

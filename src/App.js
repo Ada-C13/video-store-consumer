@@ -47,7 +47,7 @@ const App = () => {
 
   return (
     <Router>
-      <main>
+      <header className="App-header">
         <h1>Video Store Consumer</h1>
         
         <nav className="App-nav">
@@ -66,8 +66,9 @@ const App = () => {
             }
           </div>
         </nav>
-      
+      </header>
 
+      <main className="App-content">
         <Switch>
           <Route path="/search">
             <Search results={searchResults} onSearchMovieCallback={searchMovies} />

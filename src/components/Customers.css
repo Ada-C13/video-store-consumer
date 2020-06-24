@@ -7,8 +7,13 @@
   display: flex;
   justify-content: space-between;
   width: 40%;
-  padding: 50px;
+  padding: 3em;
+  margin-top: 1em;
   border: 1px solid black;
+}
+
+.customer-list-item:nth-child(odd) {
+  margin-right: 1em;
 }
 
 .customer-list-item__avatar {
