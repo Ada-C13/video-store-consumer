@@ -28,7 +28,7 @@ const MovieLibrary = ({ movieList, selectMovie }) => {
   const allMovies = movieList.map((movie) => {
 		return (
 			<div  key={movie.id}>
-				<Movie movie={movie} selectMovieCallback={selectMovie} />
+				<Movie movie={movie} selectMovie={selectMovie} />
 			</div>
 		);
 	});

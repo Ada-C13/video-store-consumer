@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Movie = ({movie, selectMovieCallback}) => {
+const Movie = ({movie, selectMovie}) => {
   return (
     <div className="movie-card">
       <img className="movie-card-image" src={movie.image_url} alt={movie.title} />
@@ -12,7 +12,7 @@ const Movie = ({movie, selectMovieCallback}) => {
         <button
         type="button"
         className="movie-card-button"
-        onClick={() => selectMovieCallback(movie.id)}>
+        onClick={() => selectMovie(movie.id)}>
           Select
       </button>
       </div>

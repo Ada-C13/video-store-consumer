@@ -153,7 +153,7 @@ class App extends Component {
               <MovieLibrary movieList={this.state.movies} selectMovie={(id) => this.selectMovie(id)}/>
             </Route>
             <Route path="/search">
-              <MovieSearch url={BASE_URL} selectMovie={(movie) => this.addMovie(movie)} />
+              <MovieSearch url={BASE_URL} selectMovie={(id) => this.selectMovie(id)} addMovie={(movie) => this.addMovie(movie)} movieList={this.state.movies} />
             </Route>
           </Switch>
         </div>
