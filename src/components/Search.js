@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
-import MovieCard from './MovieCard';
+import SearchMovieCard from './SearchMovieCard';
 
 const Search = () => {
-  
+
   const [query, setQuery] = useState('');
   const [moviesList, setMoviesList] = useState([]);
   const [error, setError] = useState(null);
@@ -34,12 +34,13 @@ const Search = () => {
     console.log(`this is movies list before: ${moviesList}`);
     let movieCollection = data.map((movie) => {
       return (
-        <MovieCard
+        <SearchMovieCard
         external_id = {movie.external_id}
         title = {movie.title}
         overview = {movie.overview}
         release_date = {movie.release_date}
         image_url = {movie.image_url}
+        key = {movie.external_id}
         />
         );
       });
@@ -51,7 +52,7 @@ const Search = () => {
   };
   
   return (
-  <div>
+  <div class="m-5">
     <form className='form' onClick={search}>
     <label className='label' htmlFor="query">Movie Name</label>
     <input className='input' type='text' name='query' placeholder='Enter a Movie' value={query} onChange={ (event) => setQuery(event.target.value) }/>
