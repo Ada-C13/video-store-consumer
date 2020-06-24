@@ -53,6 +53,13 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
           )
         }
         { 
+          !customer && (
+            <div className="checkout-form-customer">
+              <p>No customer selected.</p>
+            </div>
+          )
+        }
+        { 
           movie && (
             <div className="checkout-form-movie">
               <img src={movie.image_url} className="checkout-form-movie__cover" alt="movie cover pic" />
@@ -63,6 +70,13 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
                 </Popup>
                 <Link to="/movies" className="checkout-form__button">Change</Link>
               </div>
+            </div>
+          )
+        }
+        { 
+          !movie && (
+            <div className="checkout-form-movie">
+              <p>No movie selected.</p>
             </div>
           )
         }
