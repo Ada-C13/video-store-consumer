@@ -28,9 +28,9 @@ const Customers = ({ list }) => {
     <section>
       <h2>Customer List</h2>
       
-      <ul>
+      <ol>
         {customerList}
-      </ul>
+      </ol>
 
       <Switch>
         {
@@ -52,7 +52,7 @@ const Customers = ({ list }) => {
           )
         }
         <Route path={match.path}>
-          <h3>Please select a customer.</h3>
+          <h3>Please click on a customer for more details.</h3>
         </Route>
       </Switch>
     </section>
