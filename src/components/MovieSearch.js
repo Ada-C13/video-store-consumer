@@ -1,65 +1,73 @@
-import React, { useEffect, useState } from'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
-import './MovieSearch.css';
 
-/*class Car {
-  constructor(brand) {
-    this.carname = brand;
+import React, { Component } from 'react';
+import Movie from './Movie';
+
+class MovieSearch extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      title: '',
+    };
   }
-  present() {
-    return 'I have a ' + this.carname;
+
+  onInputChange = (event) => {
+    const updatedState = {};
+
+    const title = event.target.title;
+    const value = event.target.value;
+
+    updatedState[title] = value;
+    this.setState(updatedState);
   }
-}
 
-class Model extends Car {
-  constructor(brand, mod) {
-    super(brand);
-    this.model = mod;
-  }
-  show() {
-    return this.present() + ', it is a ' + this.model;
-  }
-}
-// // class MovieSearch extends Component {
-// //   constracutor (props){
-// //     super(props);
-
-// //     this.cleared = {
-//           title: "",
-              
-}
-//   }
-// }*/
-
-const MovieSearch = (props) => {
-
-  const [ searchBar, setSearchBar ] = useState('');
-  
-  const onInputChange = (event) => {
-		const newSearch = { ...searchBar };
-		newSearch = event.target.value;
-    setSearchBar(newSearch);
-  };
-
-  const onSearchSubmit = (event) => {
+  onSubmit = (event) => {
     event.preventDefault();
-    // TODO: create a callback function as props
-		props.searchMovieCallBack(searchBar);
-		setSearchBar('');
-	};
-  
-  return (
-    <div>
-      <h3>Movie Search</h3>
-      <input
-        type='type'
-        name='title'
-        className='searchbox'
-        onChange={onInputChange}
-       />
-    </div>
-  )
+
+    if (this.state.title) {
+      this.props.findMovieCallback({
+        title: this.state.title,
+      });
+
+      this.setState({
+        title: '',
+      });
+    }
+  }
+
+  render () {
+    return (
+      <div>
+      <form onSubmit={this.onSubmit}>
+        <h3>Movie Search </h3>
+        <div>
+          <label>Title: </label>
+          <input
+            title="title"
+            onChange={this.onInputChange}
+            value={this.state.name}
+          />
+          <button onClick={this.onSubmit}>Search</button>
+        </div>
+      </form>
+      {this.props.foundMovie !== undefined ?
+        <Movie 
+        id={this.props.foundMovie.id}
+        title={this.props.foundMovie.title}
+        overview={this.props.foundMovie.overview}
+        releaseDate={this.props.foundMovie.release_date}
+        imageUrl={this.props.foundMovie.image_url}
+        /> : null
+      }
+      </div>
+
+    );
+  }
 }
+
+MovieSearch.propTypes = {
+
+};
 
 export default MovieSearch;
