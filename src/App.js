@@ -1,60 +1,69 @@
-import React, { useState } from 'react';
-import AppHeader from './components/AppHeader'
-import Customers from './components/Customers'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import AppHeader from "./components/AppHeader";
+import Customers from "./components/Customers";
+import Library from "./components/Library";
+import Search from "./components/Search";
+import axios from "axios";
 
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import "./App.css";
+
+const API_URL_BASE = "http://localhost:3000";
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
-  const incrementCounter = () => {
-    setCounter(counter + 1);
-  };
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [moviesList, setMoviesList] = useState([]);
+  const [currentCustomer, setCurrentCustomer] = useState(null);
+  const [currentMovies, setCurrentMovies] = useState(null);
+
+
+  // const Movies = () => {
+  //   useEffect(() => {
+  //     axios.get(API_URL_BASE + "/movies").then((response) => {
+  //       // Load in the data
+  //       const moviesList = response.data;
+  //       setResult(moviesList);
+  //     });
+  //   }).catch((error) => {
+  //     // Show an error
+  //     setError("There was an error with this request!");
+  //   }),
+  //     [];
+  // };
 
   return (
     <div className="App">
-      <AppHeader
-        text="Click Refresher in React"
-        counter={counter}
-        clickCallback={incrementCounter}
-        />
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
-
       <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/customers">Customers</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-    <Switch>
-          <Route path="/customers">
-            <Customers />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/customers">Customers</Link>
+              </li>
+              <li>
+                <Link to="/users">Users</Link>
+              </li>
+            </ul>
+          </nav>
+          <Switch>
+            <Route path="/customers" render={(props) => (
+              <Customers {...props} API_URL_BASE={API_URL_BASE}/>
+            )}>
+
+            </Route>
+            <Route path="/users">
+              <Users />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 };
