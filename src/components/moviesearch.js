@@ -32,7 +32,17 @@ class MovieSearch extends React.Component {
     })
   }
 
-    //addMovie
+    //addMovie to rental library
+    //TODO
+    selectMovie = (movieId) => {
+      const { movieList } = this.state;
+  
+      const selectedMovie = movieList.find((movie) => {
+        return movie.id === movieId;
+      });
+  
+      this.setState({ selectedMovie, });
+    }
 
   render() {
     const movies = this.state.movieList.map((movie, i) => {
