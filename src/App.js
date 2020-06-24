@@ -15,6 +15,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import ErrorCard from './components/ErrorCard';
 
 const LIBRARY_URL = "http://localhost:3000/library"
 const CUSTOMERS_URL = "http://localhost:3000/customers"
@@ -27,15 +28,21 @@ const App = () => {
   const [customers, setCustomers] = useState();
   const [moviePick, setMoviePick] = useState();
   const [customerPick, setCustomerPick] = useState();
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const setErrorCallback = (data) => {
+    setErrorMessage(data);
+  };
 
   useEffect(() => {
     axios.get(LIBRARY_URL)
       .then((response) => {
         const apiLibrary = response.data;
         setLibrary(apiLibrary);
+        setErrorMessage(null);
       })
       .catch((error) => {
-        // Error Handling, huh?
+        setErrorMessage(error.message);
         console.log(error);
       });
   }, []);
@@ -120,18 +127,26 @@ const App = () => {
     <Router>
       <div> 
         <header>
-          <Navbar />
+          <Navbar setError={setErrorCallback}/>
         </header>
         <body>
           <RentalBox moviePick={moviePick} customerPick={customerPick} clearSelectionsCallback={clearSelections}
           submitSelectionsCallback={submitSelections}/>
         </body>
         <Switch>
-          <Route path="/library"> 
-            <Library library={library} selectMovieCallback={onSelectMovie}/>
+          <Route exact path="/" />
+          <Route path="/home" />
+          <Route path="/">
+            {errorMessage && <ErrorCard message={errorMessage} />}
+          </Route>
+        </Switch>
+
+        <Switch>
+          <Route path="/library">
+          <Library library={library} selectMovieCallback={onSelectMovie}/>
           </Route>
           <Route path="/search">
-            <Search library={library}/>
+            <Search library={library} setError={setErrorCallback}/>
           </Route>
           <Route path="/customers">
             <Customers 

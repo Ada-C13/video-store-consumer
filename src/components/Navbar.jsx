@@ -9,7 +9,6 @@ const Navbar = (props) => {
     customers: false
   });
 
-
   const onItemClick = (event) => {
     const newNav = {
       home: false,
@@ -21,6 +20,7 @@ const Navbar = (props) => {
     console.log(event.target.name);
     newNav[event.target.name] = true;
     setNav(newNav);
+    props.setError(null);
   };
 
   return (

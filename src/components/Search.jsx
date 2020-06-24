@@ -18,10 +18,10 @@ const Search = (props) => {
       .then((response) => {
         const searchResult = response.data;
         setMovies(searchResult);
+        props.setError(null);
       })
       .catch((error) => {
-        // Still need to handle errors
-        // setErrorMessage(error.message);
+        props.setError(error.message);
       });
   };
 
@@ -33,7 +33,7 @@ const Search = (props) => {
       <div className="ui horizontal divider">
         Results
       </div>
-      {movies.length > 0 && <SearchResults foundMovies={movies} library={props.library}/> }
+      {movies.length > 0 && <SearchResults foundMovies={movies} library={props.library} setError={props.setError}/> }
     </div>
   )
 }
