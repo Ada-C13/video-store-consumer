@@ -10,9 +10,9 @@ const Library = ({ API_URL_BASE, onSelectedMovieCallback }) => {
 		axios.get(API_URL_BASE + "/movies").then((response) => {
 			// Load in the data
 			setMovieList(response.data);
-			// }).catch((error) => {
+			 }).catch((error) => {
 			// Show an error
-			// setError("There was an error with this request!");
+			setError("There was an error with this request!");
 		});
 	}, []);
 

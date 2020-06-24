@@ -77,7 +77,9 @@ const App = () => {
 						<Route
 							path="/customers"
 							render={(props) => (
-								<Customers {...props} API_URL_BASE={API_URL_BASE} />
+                <Customers {...props} API_URL_BASE={API_URL_BASE}
+                onSelectedCustomerCallback={setCustomerState}
+                />
 							)}></Route>
 						<Route
 							path="/movies"
