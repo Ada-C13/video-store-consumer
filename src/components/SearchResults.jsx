@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchResult from './SearchResult';
+import PropTypes from 'prop-types';
 
 const SearchResults = (props) => {
   let searchResultComponents = [];
@@ -42,6 +43,12 @@ const SearchResults = (props) => {
       </tbody>
     </table>
   );
+};
+
+SearchResults.propTypes = {
+  foundMovies: PropTypes.array.isRequired,
+  library: PropTypes.array,
+  setError: PropTypes.func.isRequired
 };
 
 export default SearchResults;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const Navbar = (props) => {
   const [nav, setNav] = useState({
@@ -43,5 +44,9 @@ const Navbar = (props) => {
     </div>
   )
 }
+
+Navbar.propTypes = {
+  setError: PropTypes.func.isRequired,
+};
 
 export default Navbar;

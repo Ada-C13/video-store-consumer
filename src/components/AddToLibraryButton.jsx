@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const AddToLibraryButton = (props) => {
 
@@ -14,4 +15,10 @@ const AddToLibraryButton = (props) => {
   }
 };
 
+AddToLibraryButton.propTypes = {
+  inLibrary: PropTypes.bool.isRequired,
+  addToLibrary: PropTypes.func.isRequired
+};
+
 export default AddToLibraryButton;
+

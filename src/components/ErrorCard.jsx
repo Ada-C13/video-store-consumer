@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ErrorCard = (props) => {
 
@@ -12,6 +13,10 @@ const ErrorCard = (props) => {
       </div>
     </div>
   )
+};
+
+ErrorCard.propTypes = {
+  message: PropTypes.string
 };
 
 export default ErrorCard;
