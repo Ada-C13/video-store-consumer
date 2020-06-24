@@ -15,7 +15,7 @@ const Routing = (
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/store">Store</Link>
+          <Link to="/store">Seach</Link>
         </li>
         <li>
           <Link to="/library">Library</Link>
@@ -30,6 +30,10 @@ const Routing = (
           <Store {...props} url={"http://localhost:3000/"} />
         )}/>
       <Route path="/results/:searchTerm"
+        render={(props) => (
+          <Result {...props} url={"http://localhost:3000/"} />
+        )} />
+      <Route path="/library/:movie"
         render={(props) => (
           <Result {...props} url={"http://localhost:3000/"} />
         )} />

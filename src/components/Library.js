@@ -3,28 +3,21 @@ import axios from 'axios';
 import Movie from './Movie';
 
 const reformatData = (data) => {
+  console.log(data)
   return data.map((element) => {
     return element;
   });
 };
 
 const Library = (props) => {
-    console.log(props)
-  
-  // The useState function returns an array which contains 
-  // two items: movieList and SetMovieList.
-  // The movieList is the variable which will store our value and SetMovieList
-  // is an updater function which will be responsible to update the movieList.
 
   const [movieList, setMovieList] = useState([]);
   const endPoint = `${props.url}movies`
-  console.log(endPoint)
 
   const getMovies = (url) => {
 
     axios.get(url)
       .then((response) => {
-        console.log(response.data)
         const apiMovieList = reformatData(response.data);
         setMovieList(apiMovieList);
       })
@@ -48,7 +41,8 @@ const Library = (props) => {
       title = {movie.title}
       overview = {movie.overview}
       release_date = {movie.release_date}
-      inventory = {movie.inventory}
+      inventory={movie.inventory}
+      // onSelectMovie={onSelectMovie(movie)}
     />
     );
   });

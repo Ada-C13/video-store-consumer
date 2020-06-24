@@ -3,6 +3,7 @@ import './Movie.css';
 
 const Movie = (props) => {
   console.log(props)
+
   return (
     <div id={props.id} className="movie">
       
@@ -16,7 +17,12 @@ const Movie = (props) => {
                     <div class="card-content">
                     <p className="movie__content-text">Overview: {props.overview} </p>
                     <p className="movie__content-text">Release date: {props.release_date} </p>
-                    <p className="movie__content-text">Total inventory: {props.inventory} </p>
+                    {/* <p className="movie__content-text">Total inventory: {props.inventory} </p> */}
+                    <button
+                      className="add-library-button"
+                      // onClick={props.onSelectMovie}
+                    > Select
+                    </button>
                   </div>
                 </div>
                 </div>
