@@ -3,10 +3,10 @@ import React from 'react';
 const Home = () => {
   return (
       <div className="card rounded-0 home-card">
-        <img className="w-100 card-img" src="https://lh3.googleusercontent.com/FHWIecUOrFFGfQak-MAZ6KuXubYH576GlVjcJUujQGcUFdIDd3iqngSNIzgJyjKq-HM3B-1YqUK2gC6T1AIln-fA_E7xvnLN0KZMyNQ0Oqi3MLxOQc_IrCj4QMoOKWzRCQApXrzI4mou9aMs6nmaVdYhRfHQ511n9be2X0CyJs73xlKX6pNbjEDnL7GnDWmRG-Q0qimUwC2sFzUgLDeC7MF5kU-xJAPCsd_fwkrIzmS_65wF88I7duAcvC5qvXqtjD-9hr-jsHbj-3tl7VAs2FF2MA2YoKJ9705NdBMQhDZLvg_fqnnCoNHkBrd5qCpjUK7z4zr4SJr-x2ADnTDEyT7Qdf6Rfw8nmPJCz_MHpJ_f5yg5jooE6n14SO70kxiopnntWhdIjPQ21kQY0KynYhvf7vb5HOIcgN2vaME1vQqv3e-npNEsA_4g2aOuuU9tQP5sBWc0hXXCC_iHAUSj_2wlA-1qAWkBMAgyEzWa-YGJ-W5oQHQwNVg35jeqctNFnhBbUmk97HPcQmPX52BATRiBMBpNHgI5y7AKa-sRYxWwQYCnZRtyNhyBCO4M1e7xmJoQMFMAxExKyGHq8HVOF-QxeqpFZE_O71YFiMmDufweH6f6gW1y-Kc4xTdlNS6a0YuzSISAdx-UMqtAuGb0F0mdyZe_8ehYL014dHxvYrtRcIm8fKLJy_ZSj0b9VQ=w1646-h1096-no?authuser=0"/>
+        <img className="w-100 card-img" src="https://lh3.googleusercontent.com/jfCznPZhsrPEpYqWqTZb2FQHN3bpcMDZP8G9AM0Xg4MfEQr_s2BRi1srjbM44SoummDpD9l9mngtGIncmDc6w3WL3H_Vg8_3bVYeIo1S6AKbeLbBtLNOas4qgryVoC5QbJI3yk6-C6NihPuxNANsb6cHP-PkTuNlyy02zMtTcBIfIYTW1iJFcturiH5voM2x60o3i5mItIoMekLelygjiBJW1MGwdssRUQqBUg87QSNYU2uTjLOORTlnhu8-cnH5uMPOou-_bh5phFhvXD40Jm5JQYqRcYP74ZyTmP9455jeA75AXOssg2oJZl_majjnXZlOHoAIRs5ijxh-wN8Le5t_2bsXBOs8Cdk2oaLdvgdC1i1Rd_kOpiclJnlefq3k-TrVeSWPkZ-47eBoSAdeA5XU7tJUyU7fUpG_vA3R9-hcob0Haog8HdNPhVxTV6f25bPo8qafswHpxRgRiYZLivwn1tFzl2KSJzc_gFuDznRRBqiPLN7eTntLiLdPLSDMZ2Jmf4rRBaF5JtpBYi3SAiWZuEtKhD1M9HHxnw2NNOv8ILOswuVdsvtN8-lHznRtgzA28US-yqoOnvfC8LdZ8rM97ptI8AZfsqYwjG_VZIkD0fhtOZBMyt7qIstxBWPXLZQhvtuehsE6ipxRgIBX8v_YFvZwx7KSkuYvST6ozypgrgZZTDOyUhRvSPJMZA=w1792-h1194-no?authuser=0"/>
 
         <div class="card-img-overlay align-content-around not-found">
-          <h2 class="card-title text-center justify-content-around mt-2"></h2>
+          <h2 class="card-title text-center justify-content-around mt-2">Welcome Home</h2>
         </div>
       </div>
   );

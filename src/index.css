@@ -10,17 +10,29 @@
   }
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@800&display=swap');
 
-body {
+
+html, body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #E3DCD6;
+  /* background-color: #ac9c8a; */
   color: #030302;
   height: 100%;
+  
 }
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+  font-family: 'Open Sans', sans-serif;
+}
+
 div.home-card img {
-  opacity: 0.75;
+  position: sticky;
+
 }
 
 
