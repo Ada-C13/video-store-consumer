@@ -51,19 +51,19 @@ const App = () => {
   return (
     <Router>
       <div>
-        <nav>
-          <ul>
+        <nav className="navigation-bar">
+          <ul className="navigation-elements" >
             <li>
-              <Link to="/">Home</Link>
+              <h3><Link to="/">Home</Link></h3>
             </li>
             <li>
-              <Link to="/library">Movie Library</Link>
+              <h3><Link to="/library">Movie Library</Link></h3>
             </li>
             <li>
-              <Link to="/customers">Custormer List</Link>
+              <h3><Link to="/customers">Custormer List</Link></h3>
             </li>
             <li>
-              <Link to="/search">Search Movies</Link>
+              <h3><Link to="/search">Search Movies</Link></h3>
             </li>
           </ul>
           <Rental {...{movie, customer, rentMovie}} />
@@ -92,7 +92,7 @@ const App = () => {
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return <h1 className="home-message">Welcome to Faezeh and Olga's Video Store</h1>;
 }
 
 export default App;
