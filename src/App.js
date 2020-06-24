@@ -1,18 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => {
-  const [selectedCustomer, setSelectedCustomer] = useState({ customer: null });
-  const [errorMessage, setErrorMessage] = useState(null);
-
-  const selectCustomer = (selectedCustomerID) => {
-    const customer = selectedCustomerID;
-
-  }
-
   useEffect(() => {
     
   }, [])
@@ -26,7 +19,9 @@ const App = () => {
       <section>
         <Header 
         // selectedMovie={selectedMovie}
-        // selectedCustomer={selectedCustomer}
+          // selectedCustomer={selectedCustomer}
+          // selectCustomerCallback={selectCustomer}
+          // url={URL}
          />
       </section>
     );

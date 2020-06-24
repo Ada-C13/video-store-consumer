@@ -2,17 +2,23 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const Customer = (props) => {
+
+  const onButtonClick = () => {
+    const selected = {
+        id: props.id,
+        name: props.name
+    }
+    props.selectCustomerCallback(selected);
+  }
+
+
   return (
     <tr>
       <td>{props.id}</td>
       <td>
-        <form action="">
-            <input type="submit"
-            className="btn btn-primary"
-            value="Select"
-            // onClick={() => selectCustomer(props.id)}
-            />
-        </form> 
+        <button onClick={onButtonClick} className="btn btn-primary">
+          Select
+        </button>
       </td>
       <td>{props.name}</td>
       <td>{props.address}<br/>{props.city}, {props.state} {props.postal_code}</td>

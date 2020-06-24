@@ -6,7 +6,6 @@ import Customer from './Customer';
 // const API_CUSTOMER_URL = "http://localhost:3000/customers"
 
 const Customers = (props) => {
-
   const [customersList, setCustomersList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -39,6 +38,7 @@ const Customers = (props) => {
         phone={customerObject.phone} 
         account_credit={customerObject.account_credit} 
         movies_checked_out_count={customerObject.movies_checked_out_count} 
+        selectCustomerCallback={props.selectCustomerCallback}
       />
     )
   })
