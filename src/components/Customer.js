@@ -14,7 +14,7 @@ import {
 const Customer = ({ id, name, registered_at, address, city, state, postal_code, phone, account_credit, movies_checked_out_count }) => {
 
   return (
-    <section>
+    <section className="customer-profile">
       <h3>Customer #{id}: {name}</h3>
       <p>Registered At: {registered_at}</p>
       <p>Address: {address}</p>

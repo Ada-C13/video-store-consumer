@@ -25,3 +25,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.customer-profile {
+  padding: 1em;
+}
