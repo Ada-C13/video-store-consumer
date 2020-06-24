@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
-const Movie = ({externalId, title, overview, releaseDate, imageUrl}) => {
+const Movie = ({externalId, title, overview, releaseDate, imageUrl, showButton}) => {
   const [message, setMessage] = useState(null);
 
   const addMovie = (event) =>{
@@ -30,22 +30,23 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl}) => {
   return (
     <div>
       <div>
-        <img src={imageUrl}></img>
+        <img src={imageUrl} alt={title +"poster"}></img>
       </div>
       <div>
-        title = {title}
+        {title}
       </div>
       <div>
-        external_id = {externalId}
+        {releaseDate}
       </div>
       <div>
-        overview = {overview}
+        External ID: {externalId}
       </div>
       <div>
-        releaseDate = {releaseDate}
+       {overview}
       </div>
-      <button onClick={addMovie}>Add to Movie Library</button>
+      {showButton && <button onClick={addMovie}>Add to Movie Library</button>}
     </div>
+    
   );
 }
 
