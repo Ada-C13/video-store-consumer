@@ -30,7 +30,7 @@ const Header = (props) => {
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div class="navbar-brand float-left">
-          <a href="/"><img className="w-75" src="https://i.imgur.com/7CsGGMu.png"/></a>
+          <a href="/"><img className="w-75" src="https://lh3.googleusercontent.com/pw/ACtC-3emDsynMN5vJmfTvCqR6lWWxeBiBAPLymsKLn8sOq-t8zAQPwLo_f_2YITgWrq_BDWr-h43ohiIUkLm77quCDkSqNMsGsnNlm6AITEUYQeJ7I3Lha95sLe5tDNw9aBQNMAZwr70RbiNI0_LD2XNrpmn=w400-h137-no?authuser=0"/></a>
           </div>
           <ul className="navbar-nav mr-auto float-left">
             <li><Link to={'/'} className="nav-link">Home</Link></li>
