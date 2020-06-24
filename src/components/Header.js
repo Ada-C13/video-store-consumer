@@ -27,11 +27,10 @@ const Header = (props) => {
   }
 
   //Search
-
-  const [searchedMoiveList, setSearchedMoiveList] = useState([]);
+  const [searchedMovieList, setSearchedMovieList] = useState([]);
 
   const searchMovies = (arrayOfMovies) => {
-    setSearchedMoiveList(arrayOfMovies);
+    setSearchedMovieList(arrayOfMovies);
     return;
   }
 

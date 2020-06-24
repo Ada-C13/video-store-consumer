@@ -101,17 +101,17 @@ import SearchForm from './SearchForm';
     return (
       <div className="container-fluid">
         <SearchForm onSubmitCallback ={searchMovie}/>
-        <h2 className="py-2 text-center w-100">All Movies</h2>
+        <h2 className="py-2 text-center w-100">Search Results</h2>
         <table className="table table-hover">
           <thead className="thead-light">
             <tr>
               <th>ID</th>
-              <th>Select</th>
+              <th>Add to Library</th>
               <th>Title</th>
               <th>Image</th>
               <th>Release Date</th>
               <th>Overview</th>
-              <th>External_id</th>
+              <th>External ID</th>
             </tr>
           </thead>
           <tbody>
