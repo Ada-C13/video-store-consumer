@@ -17,7 +17,12 @@ body {
   font-family: sans-serif;
   background-color: #E3DCD6;
   color: #030302;
+  height: 100%;
 }
+div.home-card img {
+  opacity: 0.75;
+}
+
 
 button.btn-danger {
   background-color: #DF2935;
