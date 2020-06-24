@@ -30,14 +30,13 @@ class App extends Component {
   componentDidMount() {
     axios.get(`${BASE_URL}/customers`)
     .then((response) => {
-
       const customers = response.data;
-
       this.setState({
         customers,
         error: undefined
       });
     })
+
     .catch ((error) => {
       this.setState({ 
         error: error.message 
@@ -52,6 +51,7 @@ class App extends Component {
         error: undefined
       });
     })
+    
     .catch((error) => {
       this.setState({ 
         error: error.message 
