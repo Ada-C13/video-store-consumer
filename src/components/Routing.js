@@ -1,20 +1,15 @@
-import React from 'react';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
-import App from '../App';
+import React, { useState } from 'react';
+import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Store from './Store';
 import Library from './Library';
 import Users from './Users';
 import './Routing.css';
 import Result from './Result';
 
-let selectedUser = "Not selected";
 
-const onSubmitUserCallback = (user) => {
-  selectedUser = user
-}
+const Routing = (props) =>{
 
-const Routing = (
-
+  return (
   <Router>
     <div>
       <ul className="nav-bar">
@@ -31,32 +26,34 @@ const Routing = (
           <Link to="/users">Users</Link>
         </li>
         <li>
-          <p>Selected User : {selectedUser}</p>
+          {/* <p>Selected User : {selectedUser.name}</p> */}
         </li>
       </ul>
-      <Route exact path="/" component={App} />
-      <Route path="/store" 
-        render={(props) => (
-          <Store {...props} url={"http://localhost:3000/"} />
-        )}/>
+      {/* <Route exact path="/" component={Home} /> */}
+      <Route path="/store"
+        render={(renderProps) => (
+          <Store {...props}  {...renderProps} url={"http://localhost:3000/"} />
+        )} />
       <Route path="/results/:searchTerm"
-        render={(props) => (
-          <Result {...props} url={"http://localhost:3000/"} />
+          render={(renderProps) => (
+          <Result {...props} {...renderProps} url={"http://localhost:3000/"} />
         )} />
       <Route path="/library/:movie"
-        render={(props) => (
+          render={(renderProps) => (
           <Result {...props} url={"http://localhost:3000/"} />
         )} />
       <Route path="/library"
-        render={(props) => (
+          render={(renderProps) => (
           <Library {...props} url={"http://localhost:3000/"} />
-        )}/>
-      <Route path="/users"  
-        render={(props) => (
-          <Users {...props} url={"http://localhost:3000/"}  onSubmitUserCallback={onSubmitUserCallback(selectedUser)}/>
-        )}/>
+        )} />
+      <Route path="/users"
+          render={(renderProps) => (
+          <Users {...props} url={"http://localhost:3000/"}/>
+        )} />
+
     </div>
   </Router>
-)
+  )
+}
 
 export default Routing;

@@ -3,8 +3,6 @@ import axios from 'axios';
 import Individual from './Individual';
 
 
-
-
 const reformatData = (data) => {
   return data.map((element) => {
     return element;
@@ -12,16 +10,9 @@ const reformatData = (data) => {
 };
 
 const Users = (props) => {
-const [chosenUser, setChosenUser] = useState('')
+
   const [userList, setUserList] = useState([]);
   const endPoint = `${props.url}customers`
-
-  const onSelectUser= (user) => {  
-    setChosenUser(user);
-    console.log(chosenUser)
-    // props.onSubmitUserCallback(chosenUser)
-  };
-
   
   const getUsers = (url) => {
 
@@ -34,7 +25,6 @@ const [chosenUser, setChosenUser] = useState('')
         console.log(error)
       });
   };
-
  
   useEffect(() => { getUsers(endPoint);}, [endPoint]);
 
@@ -53,9 +43,8 @@ const [chosenUser, setChosenUser] = useState('')
                   <p>{ user.postal_code }</p>
                   <p>{ user.phone }</p>
                   <p>{ user.accout_credit }</p>
-                  
                   <div>
-                    <input className="add-library-button" type="button" value="Select This User" onClick={() => onSelectUser(user)} />
+                    <input className="add-library-button" type="button" value="Select This User" onClick={() => props.onSubmitUserCallback(user)} />
                   </div>
                 </div>
               </div>
@@ -69,7 +58,7 @@ const [chosenUser, setChosenUser] = useState('')
   return ( 
   <main>
     <div className = "store" > {
-    //   formatUsers
+
       formatUsers(userList)
     } 
     </div> 

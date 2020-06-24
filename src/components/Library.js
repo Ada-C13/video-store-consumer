@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Movie from './Movie';
+import SideBar from './SideBar';
 
 const reformatData = (data) => {
   console.log(data)
@@ -25,7 +26,6 @@ const Library = (props) => {
         console.log(error)
       });
   };
-
   // By using this Hook, you tell React that your component needs to do something 
   // after render.
   // useEffect takes a function(getMovies) which can contain any kind of operation including side effects
@@ -37,12 +37,8 @@ const Library = (props) => {
     return (
     <Movie
       key = {movie.id}
-      id = {movie.id}
-      title = {movie.title}
-      overview = {movie.overview}
-      release_date = {movie.release_date}
-      inventory={movie.inventory}
-      // onSelectMovie={onSelectMovie(movie)}
+      movie={movie}
+      {...props}
     />
     );
   });
@@ -51,7 +47,14 @@ const Library = (props) => {
   <main>
     <div className = "store" > {
       formatMovies
-    } </div> 
+    } </div>
+    <SideBar width={300} height={"100vh"}>
+      <h1>Nav Item</h1>
+      <h1>Nav Item</h1>
+      <h1>Nav Item</h1>
+      <h1>Nav Item</h1>
+      <h1>Nav Item</h1>
+    </SideBar>
   </main>
   );
 }
