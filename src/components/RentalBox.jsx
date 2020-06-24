@@ -29,7 +29,7 @@ const RentalBox = (props) => {
                   </button>
                   <div class="or"></div>
                   <button
-                    class="ui blue button"
+                    class="ui olive button"
                     onClick={() => {
                       props.submitSelectionsCallback(null);
                     }}
