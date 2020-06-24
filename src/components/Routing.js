@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Store from './Store';
 import Library from './Library';
 import Users from './Users';
@@ -7,13 +7,7 @@ import './Routing.css';
 import Result from './Result';
 
 
-const Routing = () =>{
-
-  const [selectedUser, setSelectedUser] = useState("Not selected")
-
-  const onSubmitUserCallback = (user) => {
-    setSelectedUser(user)
-  }
+const Routing = (props) =>{
 
   return (
   <Router>
@@ -32,30 +26,31 @@ const Routing = () =>{
           <Link to="/users">Users</Link>
         </li>
         <li>
-            <p>Selected User : {selectedUser.name}</p>
+          {/* <p>Selected User : {selectedUser.name}</p> */}
         </li>
       </ul>
       {/* <Route exact path="/" component={Home} /> */}
-      <Route path="/store" 
-        render={(props) => (
-          <Store {...props} url={"http://localhost:3000/"} />
-        )}/>
+      <Route path="/store"
+        render={(renderProps) => (
+          <Store {...props}  {...renderProps} url={"http://localhost:3000/"} />
+        )} />
       <Route path="/results/:searchTerm"
-        render={(props) => (
-          <Result {...props} url={"http://localhost:3000/"} />
+          render={(renderProps) => (
+          <Result {...props} {...renderProps} url={"http://localhost:3000/"} />
         )} />
       <Route path="/library/:movie"
-        render={(props) => (
+          render={(renderProps) => (
           <Result {...props} url={"http://localhost:3000/"} />
         )} />
       <Route path="/library"
-        render={(props) => (
+          render={(renderProps) => (
           <Library {...props} url={"http://localhost:3000/"} />
-        )}/>
-      <Route path="/users"  
-        render={(props) => (
-          <Users {...props} url={"http://localhost:3000/"}  onSubmitUserCallback={onSubmitUserCallback}/>
-        )}/>
+        )} />
+      <Route path="/users"
+          render={(renderProps) => (
+          <Users {...props} url={"http://localhost:3000/"}/>
+        )} />
+
     </div>
   </Router>
   )
