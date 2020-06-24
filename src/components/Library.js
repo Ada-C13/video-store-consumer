@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Library.css";
+import Button from 'react-bootstrap/Button'
 
 const drawMovies = (movieList, onMovieSelectCallback) => {
   return movieList.map((movie, index) => {
@@ -12,9 +13,9 @@ const drawMovies = (movieList, onMovieSelectCallback) => {
           <img src={movie.image_url} alt="Movie Cover" />
         </td>
         <td>
-          <button onClick={() => onMovieSelectCallback(movie.id)}>
+          <Button variant="primary"  onClick={() => onMovieSelectCallback(movie.id)}>
             Select Movie
-          </button>
+          </Button>
         </td>
       </tr>
     );
@@ -42,9 +43,9 @@ const Library = (props) => {
           </tbody>
         </table>
       </div>
-      <button onClick={() => props.onMovieSelectCallback(2)}>
+      <Button variant="primary" onClick={() => props.onMovieSelectCallback(2)}>
         Select Movie
-      </button>
+      </Button>
     </div>
   );
 };

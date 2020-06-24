@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./Search.css";
 import axios from "axios";
+import Button from 'react-bootstrap/Button'
 
 const API_URL_BASE = "http://localhost:3000";
 
@@ -16,7 +17,7 @@ const drawMovies = (searchResults, addMovieCallBack, searchText) => {
             <img src={movie.image_url} alt="Movie Cover" />
           </td>
           <td>
-            <button onClick={() => addMovieCallBack(movie)}>Add Movie</button>
+            <Button variant="primary" onClick={() => addMovieCallBack(movie)}>Add Movie</Button>
           </td>
         </tr>
       );

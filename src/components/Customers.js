@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Button from 'react-bootstrap/Button'
+
 import "./Customers.css";
 
 const drawCustomers = (customerList, onCustomerSelectCallback) => {
@@ -11,9 +13,9 @@ const drawCustomers = (customerList, onCustomerSelectCallback) => {
         <td>{customer.account_credit}</td>
         <td>{customer.movies_checked_out_count}</td>
         <td>
-          <button onClick={() => onCustomerSelectCallback(customer.id)}>
+          <Button variant="primary" onClick={() => onCustomerSelectCallback(customer.id)}>
             Select Customer
-          </button>
+          </Button>
         </td>
       </tr>
     );
