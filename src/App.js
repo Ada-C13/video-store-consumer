@@ -31,6 +31,7 @@ const App = () => {
       })
       .catch((error) => {
         setMessage(error.message);
+        setTimeout(() => setMessage(''), 5000);
       });
   }}, [foundMovie]);
   
@@ -55,9 +56,11 @@ const App = () => {
           setMessage(
             "Succesfully Rented"
           );
+          setTimeout(() => setMessage(''), 5000);
         })
         .catch((error) => {
           setMessage(error.message);
+          setTimeout(() => setMessage(''), 5000);
         });
   }
 
@@ -68,10 +71,17 @@ const App = () => {
       setMessage(
         "Succesfully added a movie to rental library!"
       );
+      setTimeout(() => setMessage(''), 5000);
     })
     .catch((error) => {
       setMessage(error.message);
+      setTimeout(() => setMessage(''), 5000);
     });
+  };
+
+  const addMessage = (new_message) => {
+    setMessage(new_message);
+    setTimeout(() => setMessage(''), 5000);
   };
 
   return (
@@ -106,7 +116,7 @@ const App = () => {
             <CustomerList pickCustomerCallback = {selectCustomer} />
           </Route>
           <Route path="/search">
-            <MovieSearch addMovieCallback = {addMovie} />
+            <MovieSearch addMovieCallback = {addMovie} addMessageCallback = {addMessage} />
           </Route>
           <Route path="/">
             <Home />

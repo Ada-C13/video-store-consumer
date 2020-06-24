@@ -4,9 +4,8 @@ import axios from 'axios';
 import SearchForm from './SearchForm.js';
 import PropTypes from 'prop-types';
 
-const MovieSearch = ({ addMovieCallback }) => {
+const MovieSearch = ({ addMovieCallback, addMessageCallback }) => {
   const [movies, setMovies] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
 
   const getMovie = (query) => {
     if (query !== null) {
@@ -19,9 +18,10 @@ const MovieSearch = ({ addMovieCallback }) => {
           setMovies(
             response.data
           );
+          addMessageCallback(`${response.data.length} movies found`);
         })
         .catch((error) => {
-          setErrorMessage(error.message);
+          addMessageCallback(error.message);
         });
     };
   };
@@ -36,13 +36,13 @@ const MovieSearch = ({ addMovieCallback }) => {
         {movie.id === 0 || movie.id ? "" : <button onClick={() => { addMovieCallback(movie) }}>Add to rental library</button>}
         </li> )}
       </ol>
-      {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
     </div>
   )
 };
 
 MovieSearch.propTypes = {
-  addMovieCallback: PropTypes.func
+  addMovieCallback: PropTypes.func,
+  addMessageCallback: PropTypes.func,
 }
 
 export default MovieSearch;
