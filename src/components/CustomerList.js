@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 
-export function CustomerList() {
+export function CustomerList({ pickCustomerCallback }) {
   const [customers, setCustomers] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -25,7 +25,13 @@ export function CustomerList() {
 
       <div className='list' >
         <ul>
-          {customers.map((c) => <li key={c.id}>{c.name}</li> )}
+          {customers.map((c) => 
+            <li key={c.id}>
+              {c.name}
+              {" "}
+              <button onClick={() => { pickCustomerCallback(c) }}>select</button>
+            </li> 
+          )}
         </ul>
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
     </div>
@@ -33,6 +39,7 @@ export function CustomerList() {
 };
 
 CustomerList.propTypes = {
-  customers: PropTypes.array,
+  // customers: PropTypes.array,
+  pickCustomerCallback: PropTypes.func.isRequired
 }
 

@@ -30,8 +30,8 @@ export function MovieSearch() {
     <div>
       <SearchForm onSubmitCallback={getMovie} />
       <ul>
-          {movies.map((m) => <li key={m.external_id}>{m.title}</li> )}
-        </ul>
+        {movies.map((m) => <li key={m.external_id}>{m.title}</li> )}
+      </ul>
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
     </div>
   )

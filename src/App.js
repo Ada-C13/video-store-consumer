@@ -2,6 +2,8 @@ import React, { Component, useState, useEffect } from 'react';
 import { CustomerList } from './components/CustomerList.js';
 import { MovieLibrary } from './components/MovieLibrary.js';
 import { MovieSearch } from './components/MovieSearch.js';
+import Rental from './components/Rental.js';
+import axios from 'axios';
 
 import {
   BrowserRouter as Router,
@@ -13,6 +15,38 @@ import {
 import './App.css';
 
 const App = () => {
+  const [movie, setMovie] = useState(null);
+  const [customer, setCustomer] = useState(null);
+  const [message, setMessage] = useState("");
+
+  const selectMovie = (chosenMovie) => {
+    setMovie(chosenMovie);
+  };
+
+  const selectCustomer = (chosenCustomer) => {
+    setCustomer(chosenCustomer);
+  };
+
+  const dueDate = () => {
+    const result = new Date();
+    result.setDate(result.getDate() + 14);
+    return result;
+  }
+
+  const rentMovie = () => {
+    axios.post(`http://localhost:3000//rentals/${movie.title}/check-out`, {
+        customer_id: customer.id,
+        due_date: dueDate()
+      })
+        .then((/*response*/) => {
+          setMessage(
+            "Succesfully Rented"
+          );
+        })
+        .catch((error) => {
+          setMessage(error.message);
+        });
+  }
 
   return (
     <Router>
@@ -32,16 +66,18 @@ const App = () => {
               <Link to="/search">Search Movies</Link>
             </li>
           </ul>
+          <Rental {...{movie, customer, rentMovie}} />
+          <p>{message}</p>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/library">
-            <MovieLibrary />
+            <MovieLibrary pickMovieCallback = {selectMovie} />
           </Route>
           <Route path="/customers">
-            <CustomerList />
+            <CustomerList pickCustomerCallback = {selectCustomer} />
           </Route>
           <Route path="/search">
             <MovieSearch />

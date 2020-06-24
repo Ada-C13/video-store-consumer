@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 
-export function MovieLibrary() {
+export function MovieLibrary({ pickMovieCallback }) {
   const [movies, setMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-
+  
     useEffect(() => {
       axios.get("http://localhost:3000/movies")
       .then((response) => {
@@ -19,13 +19,17 @@ export function MovieLibrary() {
         setErrorMessage(error.message);
       });
     }, []);
-
-
+    // console.log("this is before return in movie lib")
     return (
-
       <div className='list' >
         <ul>
-          {movies.map((c) => <li key={c.id}>{c.title}</li> )}
+          {movies.map((m) => 
+            <li key={m.id}>
+                {m.title}
+                {" "}
+                <button onClick={() => { pickMovieCallback(m) }}>select</button>
+            </li> 
+          )}
         </ul>
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
     </div>
@@ -33,7 +37,8 @@ export function MovieLibrary() {
 };
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.array,
+  // movies: PropTypes.array,
+  pickMovieCallback: PropTypes.func.isRequired
 }
 
 export default MovieLibrary;
