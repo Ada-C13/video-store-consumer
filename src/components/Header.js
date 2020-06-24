@@ -55,17 +55,16 @@ const Header = (props) => {
         customer_id: customer_id,
         movie_id: selectedMovie.id,
         checkout_date: new Date(),
-        due_date: new Date() + 7,
+        due_date: new Date(Date.now()+ 7 * 1000 * 60 * 60 * 24),
         returned: false
       }
 
-    axios.post(`${URL}rentals/:${title}/check-out`, rental)
+    axios.post(`${URL}rentals/${title}/check-out`, rental)
     .then((response) => {
       // const newRental= response.data;
       if (response.status === 200 || response.status === "OK"){
         console.log("Rental is successfully checked-out")
-      console.log(message)
-      
+        console.log(message)
       }  
     })
    
