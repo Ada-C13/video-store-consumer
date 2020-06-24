@@ -26,7 +26,6 @@ const Library = (props) => {
         console.log(error)
       });
   };
-
   // By using this Hook, you tell React that your component needs to do something 
   // after render.
   // useEffect takes a function(getMovies) which can contain any kind of operation including side effects
@@ -38,12 +37,8 @@ const Library = (props) => {
     return (
     <Movie
       key = {movie.id}
-      id = {movie.id}
-      title = {movie.title}
-      overview = {movie.overview}
-      release_date = {movie.release_date}
-      inventory={movie.inventory}
-      // onSelectMovie={onSelectMovie(movie)}
+      movie={movie}
+      {...props}
     />
     );
   });
