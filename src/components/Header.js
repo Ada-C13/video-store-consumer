@@ -1,14 +1,17 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import Customers from './Customers';
 import Library from './Library';
 import Search from './Search';
+import axios from 'axios'
 
 const Header = (props) => {
-  URL = "http://localhost:3000/"
+  const URL = "http://localhost:3000/"
 
+  const SEARCH_URL = "https://api.themoviedb.org/3/search/movies"
+  
   //Customer
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   
@@ -24,6 +27,57 @@ const Header = (props) => {
     setSelectedMovie(selectedMovie);
     return;
   }
+
+  //Search
+
+  const [searchedMoiveList, setSearchedMoiveList] = useState([]);
+
+  const searchMovies = (arrayOfMovies) => {
+    setSearchedMoiveList(arrayOfMovies);
+    return;
+  }
+
+  //reset the selected customer and selected movie
+  const reset = () => {
+    setSelectedCustomer(null);
+    setSelectedMovie(null);
+  }
+
+  // Checkout a movie
+  const [message, setMessage] = useState(null);
+
+  const check_out = () => {
+    // POST /rentals/:title/check-out
+    if (selectedMovie && selectedCustomer){
+      const title = selectedMovie.title
+      const customer_id = selectedCustomer.id
+      const rental = {
+        customer_id: customer_id,
+        movie_id: selectedMovie.id,
+        checkout_date: new Date(),
+        due_date: new Date(Date.now()+ 7 * 1000 * 60 * 60 * 24),
+        returned: false
+      }
+
+    axios.post(`${URL}rentals/${title}/check-out`, rental)
+    .then((response) => {
+      // const newRental= response.data;
+      if (response.status === 200 || response.status === "OK"){
+        console.log("Rental is successfully checked-out")
+        console.log(message)
+      }  
+    })
+   
+    .catch((error) => {
+      setMessage(error.message);
+      console.log(error.message);
+    });
+ 
+    console.log(rental)
+    setSelectedCustomer(null);
+    setSelectedMovie(null);
+  }
+}
 
   return (
   <Router>
@@ -43,9 +97,10 @@ const Header = (props) => {
             <ul className="list-group list-group-horizontal text-center">
               <li className={ selectedCustomer ? "list-group-item active" : "list-group-item text-muted"}>{selectedCustomer ? selectedCustomer.name : "No Customer Selected"} </li>
               <li className={ selectedMovie ? "list-group-item active" : "list-group-item text-muted"}> {selectedMovie ? selectedMovie.title : "No Movie Selected"} </li>
-              <button className={ selectedCustomer && selectedMovie ? "btn btn-success text-decoration-none" : "invisible" } onClick="" path="/">Checkout</button>
+              <button className={ selectedCustomer && selectedMovie ? "btn btn-success text-decoration-none" : "invisible" } onClick = {check_out}>Checkout</button>
             </ul>
           </div>
+          <button  onClick = {reset}>Reset</button>
 
         </nav>
         
@@ -67,8 +122,14 @@ const Header = (props) => {
               />
             )} />
             
-            
-            <Route path='/search' component={Search} />
+            <Route 
+            path='/search'
+            render={(props) => (
+              <Search {...props}
+              url={SEARCH_URL}
+              // submitMovieSearch={searchMovies} 
+              />
+            )} />
         </Switch>
       </div>
     </Router>
