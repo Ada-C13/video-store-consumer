@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CustomerList from './components/CustomerList.js';
 import MovieLibrary from './components/MovieLibrary.js';
 import MovieSearch from './components/MovieSearch.js';
@@ -14,13 +14,26 @@ import {
 import './App.css';
 
 const App = () => {
-  const [movie, setMovie] = useState(null);
+  const [foundMovie, setFoundMovie] = useState(null);
   const [customer, setCustomer] = useState(null);
   const [message, setMessage] = useState("");
+  const [movie, setMovie] = useState(null);
 
-  const selectMovie = (chosenMovie) => {
-    setMovie(chosenMovie);
+  const findMovie = (chosenMovie) => {
+    setFoundMovie(chosenMovie); 
   };
+
+  useEffect(() => {
+  if (foundMovie) {
+    axios.get(`http://localhost:3000/movies/${foundMovie.title}`)
+      .then((response) => {
+        setMovie(response.data);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+      });
+  }}, [foundMovie]);
+  
 
   const selectCustomer = (chosenCustomer) => {
     setCustomer(chosenCustomer);
@@ -34,7 +47,7 @@ const App = () => {
   }
 
   const rentMovie = () => {
-    axios.post(`http://localhost:3000//rentals/${movie.title}/check-out`, {
+    axios.post(`http://localhost:3000/rentals/${movie.title}/check-out`, {
         customer_id: customer.id,
         due_date: dueDate()
       })
@@ -87,7 +100,7 @@ const App = () => {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/library">
-            <MovieLibrary pickMovieCallback = {selectMovie} />
+            <MovieLibrary findMovieCallback = {findMovie} />
           </Route>
           <Route path="/customers">
             <CustomerList pickCustomerCallback = {selectCustomer} />

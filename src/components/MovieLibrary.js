@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 
-const MovieLibrary = ({ pickMovieCallback }) => {
+const MovieLibrary = ({ findMovieCallback }) => {
   const [movies, setMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   
@@ -26,7 +26,7 @@ const MovieLibrary = ({ pickMovieCallback }) => {
             <li key={m.id}>
                 {m.title}
                 {" "}
-                <button onClick={() => { pickMovieCallback(m) }}>select</button>
+                <button onClick={() => { findMovieCallback(m) }}>select</button>
             </li> 
           )}
         </ul>
@@ -36,7 +36,7 @@ const MovieLibrary = ({ pickMovieCallback }) => {
 };
 
 MovieLibrary.propTypes = {
-  pickMovieCallback: PropTypes.func.isRequired
+  findMovieCallback: PropTypes.func.isRequired
 }
 
 export default MovieLibrary;
