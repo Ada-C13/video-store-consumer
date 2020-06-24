@@ -1,14 +1,16 @@
 
 import React, { Component } from 'react';
-// import './App.css';
+import './App.css';
+import Routing from './components/Routing'
 
 const App = () => {
 
   return (
     <section>
-      <header className="header">
+      {/* <header className="header">
         <h1 className="header__h1"><span className="header__text">Welcome to insert title movies...</span></h1>
-      </header>
+      </header> */}
+      <Routing />
     </section>
   );
 };

@@ -12,14 +12,14 @@ const reformatData = (data) => {
 };
 
 const Users = (props) => {
-const [chosenUser, setChosenUser] = useState('')
+  // const [chosenUser, setChosenUser] = useState('')
   const [userList, setUserList] = useState([]);
   const endPoint = `${props.url}customers`
 
   const onSelectUser= (user) => {  
-    setChosenUser(user);
-    console.log(chosenUser)
-    // props.onSubmitUserCallback(chosenUser)
+    // setChosenUser(user); 
+    // console.log(chosenUser)
+    props.onSubmitUserCallback(user)
   };
 
   
@@ -34,7 +34,6 @@ const [chosenUser, setChosenUser] = useState('')
         console.log(error)
       });
   };
-
  
   useEffect(() => { getUsers(endPoint);}, [endPoint]);
 
@@ -53,7 +52,6 @@ const [chosenUser, setChosenUser] = useState('')
                   <p>{ user.postal_code }</p>
                   <p>{ user.phone }</p>
                   <p>{ user.accout_credit }</p>
-                  
                   <div>
                     <input className="add-library-button" type="button" value="Select This User" onClick={() => onSelectUser(user)} />
                   </div>
