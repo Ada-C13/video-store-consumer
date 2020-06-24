@@ -16,7 +16,7 @@ const Library = (props) => {
       })
       .catch((error) => {
         setMessage(error.message);
-        console.log(error.message);
+        console.log(errorMessage);
       });
   }, [props.url])
 
