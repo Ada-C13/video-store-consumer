@@ -39,12 +39,11 @@ export function MovieSearch() {
     <div>
       <SearchForm onSubmitCallback={getMovie} />
       <ol>
-          {movies.map((movie) => <li key={movie.external_id}>
-          <img src={movie.image_url} alt={movie.title} ></img>
-          {movie.title}
-          <button onClick={addMovie(movie)}>Add to rental library</button>
-          </li> )}
-          
+        {movies.map((movie) => <li key={movie.external_id}>
+        <img src={movie.image_url} alt={movie.title} ></img>
+        {movie.title}
+          {movies.length === 1 ? "" : <button onClick={addMovie}>Add to rental library</button>}
+        </li> )}
         </ol>
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
     </div>
