@@ -32,6 +32,8 @@ const Search = (props) => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
+  const [errorMessage, setErrorMessage] = useState('');
+
   const onSearchChange = (event) => {
     console.log(`Search Field updated ${event.target.value}`);
     setSearchText(event.target.value);
@@ -44,8 +46,8 @@ const Search = (props) => {
     })
     .catch((error) => {
       // handle errors
-      // setErrorMessage("search failed");
-      // console.log(error.message);
+      setErrorMessage("search failed");
+      console.log(error.message);
     });
   };
 

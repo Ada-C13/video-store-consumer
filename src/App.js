@@ -73,6 +73,8 @@ const App = () => {
   const [movieList, setMovieList] = useState([]);
   const [customerList, setCustomerList] = useState([]);
 
+  const [errorMessage, setErrorMessage] = useState('')
+
   // function to run when component is mounted
   useEffect(() => {
     console.log(`App, component mounted`);
@@ -85,8 +87,8 @@ const App = () => {
       })
       .catch((error) => {
         // handle errors
-        // setErrorMessage("could not load movies");
-        // console.log(error.message);
+        setErrorMessage("could not load movies");
+        console.log(error.message);
       });
     // get customerList
 
@@ -144,9 +146,8 @@ const App = () => {
     console.log(`App, add movie to library`);
     const newMovieList = movieList;
 
-    // find max id and add 1
-    const movieIds = newMovieList.map(movie => movie.id);
-    const nextId = Math.max(...movieIds) + 1;
+    // if movie.external_id doesn't match any in movieList, 
+    // add movie. otherwise show error
 
     newMovieList.push(movie);
 
