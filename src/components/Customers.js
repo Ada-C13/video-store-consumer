@@ -24,53 +24,39 @@ const Customers = ({ list }) => {
     </li>
   );
 
-  if (clickedCustomer) {
-    return (
-      <section>
-        <h2>Customer List</h2>
-        
-        <ul>
-          {customerList}
-        </ul>
+  return (
+    <section>
+      <h2>Customer List</h2>
+      
+      <ul>
+        {customerList}
+      </ul>
 
-        <Switch>
-          <Route path={`${match.path}/:customerId`}>
-            <Customer
-              name={clickedCustomer.name}
-              registered_at={clickedCustomer.registered_at}
-              address={clickedCustomer.address}
-              city={clickedCustomer.city}
-              state={clickedCustomer.state}
-              postal_code={clickedCustomer.postal_code}
-              phone={clickedCustomer.phone}
-              account_credit={clickedCustomer.account_credit}
-              movies_checked_out_count={clickedCustomer.movies_checked_out_count}
-              id={clickedCustomer.id}
-            />
-          </Route>
-          <Route path={match.path}>
-            <h3>Please select a customer.</h3>
-          </Route>
-        </Switch>
-      </section>
-    );
-  } else {
-    return (
-      <section>
-        <h2>Customer List</h2>
-        
-        <ul>
-          {customerList}
-        </ul>
-
-        <Switch>
-          <Route path={match.path}>
-            <h3>Please select a customer.</h3>
-          </Route>
-        </Switch>
-      </section>
-    );
-  }
+      <Switch>
+        {
+          clickedCustomer && (
+            <Route path={`${match.path}/:customerId`}>
+              <Customer
+                name={clickedCustomer.name}
+                registered_at={clickedCustomer.registered_at}
+                address={clickedCustomer.address}
+                city={clickedCustomer.city}
+                state={clickedCustomer.state}
+                postal_code={clickedCustomer.postal_code}
+                phone={clickedCustomer.phone}
+                account_credit={clickedCustomer.account_credit}
+                movies_checked_out_count={clickedCustomer.movies_checked_out_count}
+                id={clickedCustomer.id}
+              />
+            </Route>
+          )
+        }
+        <Route path={match.path}>
+          <h3>Please select a customer.</h3>
+        </Route>
+      </Switch>
+    </section>
+  );
 }
 
 export default Customers;
