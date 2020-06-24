@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Movie from './Movie';
+import Movie from './movie';
 
 class MovieSearch extends React.Component {
   constructor(props) {
@@ -31,6 +31,18 @@ class MovieSearch extends React.Component {
       })
     })
   }
+
+    //addMovie to rental library
+    //TODO
+    selectMovie = (movieId) => {
+      const { movieList } = this.state;
+  
+      const selectedMovie = movieList.find((movie) => {
+        return movie.id === movieId;
+      });
+  
+      this.setState({ selectedMovie, });
+    }
 
   render() {
     const movies = this.state.movieList.map((movie, i) => {

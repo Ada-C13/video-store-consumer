@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Movie from './Movie';
+import Movie from './movie';
 import axios from 'axios';
 
 class MovieIndex extends Component {
@@ -24,15 +24,15 @@ class MovieIndex extends Component {
     })
   }
 
-  selectMovie = (movieId) => {
-    const { movieList } = this.state;
+  // selectMovie = (movieId) => {
+  //   const { movieList } = this.state;
 
-    const selectedMovie = movieList.find((movie) => {
-      return movie.id === movieId;
-    });
+  //   const selectedMovie = movieList.find((movie) => {
+  //     return movie.id === movieId;
+  //   });
 
-    this.setState({ selectedMovie, });
-  }
+  //   this.setState({ selectedMovie, });
+  // }
 
   render () {
     const { selectedMovie } = this.state;
