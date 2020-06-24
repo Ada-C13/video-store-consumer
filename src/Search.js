@@ -12,7 +12,6 @@ const Search = () => {
   
   const onInputChange = (event) => {
     setSearchTerm(event.target.value);
-    console.log(searchTerm);
   }
 
   const onFormSubmit = (event) => {
@@ -41,6 +40,9 @@ const Search = () => {
         id={resultsObj.id}
         title={resultsObj.title} 
         image_url={resultsObj.image_url}
+        overview={resultsObj.overview}
+        release_date={resultsObj.release_date}
+        inventory={1}
         key={resultsObj.id}
       />);
     });
@@ -65,3 +67,4 @@ const Search = () => {
 }
 
 export default Search;
+
