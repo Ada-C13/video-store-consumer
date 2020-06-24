@@ -4,12 +4,13 @@ import App from '../App';
 import Store from './Store';
 import Library from './Library';
 import Users from './Library';
+import './Routing.css';
 
 const Routing = (
   <Router>
     <div>
-      <ul>
-        <li>
+      <ul className="nav-bar">
+        <li class="active">
           <Link to="/">Home</Link>
         </li>
         <li>
