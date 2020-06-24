@@ -169,7 +169,7 @@ class App extends Component {
         <div className="main">
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Home movieList={this.state.movies}/>
             </Route>
             <Route path="/customers">
               <CustomerList customerList={this.state.customers} selectCustomer={(id) => this.selectCustomer(id)} />
