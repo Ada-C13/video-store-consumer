@@ -4,8 +4,6 @@ import axios from 'axios';
 import Movie from './Movie';
 import './MovieSearch.css';
 
-const BASE_URL = 'http://localhost:3000/'
-
 const MovieSearch = ({ url, movieList, selectMovie }) => {
 
   const [ searchBar, setSearchBar ] = useState('');
@@ -21,20 +19,17 @@ const MovieSearch = ({ url, movieList, selectMovie }) => {
 
   const onSearchSubmit = (event) => {
     event.preventDefault();
-  //   // TODO: create a callback function as props
-  //   // props.searchMovieCallBack(searchBar);
-    // console.log(BASE_URL + `movies?query=#{searchBar}`)
-    // const newLibraryResults = movieList.filter((movie) => movie.title.toLowerCase().includes(searchBar.toLowerCase()));
-    const search_url = `${url}/movies?query=${searchBar}`;
     
     if (searchBar) {
+      const newLibraryResults = movieList.filter(movie => movie.title.toLowerCase().includes(searchBar.toLowerCase()));
+
       axios
-      .get(search_url)
+      .get(`${url}/movies?query=${searchBar}`)
       .then((response) => {
         console.log(response.data)
         const newSearchResults = response.data;
         setSearchResults(newSearchResults);
-        // setLibraryResults(newLibraryResults);
+        setLibraryResults(newLibraryResults);
         setErrorMessage(null);
       })
       .catch((error) => {
@@ -48,14 +43,13 @@ const MovieSearch = ({ url, movieList, selectMovie }) => {
     return <Movie key={movie.external_id} movie={movie} selectMovie={selectMovie} />
   });
 
-  // const allLibraryResults = libraryResults.map((movie) => {
-  //   return <Movie key={movie.external_id} movie={movie} selectMovie={selectMovie} />
-  // });
+  const allLibraryResults = libraryResults.map((movie) => {
+    return <Movie key={movie.external_id} movie={movie} selectMovie={selectMovie} />
+  });
 
   
-  
   return (
-    <div>
+    <div className="container">
       <form onSubmit={ onSearchSubmit }>
         <h3>Movie Search</h3>
         <input
@@ -65,7 +59,6 @@ const MovieSearch = ({ url, movieList, selectMovie }) => {
           onChange={onInputChange}
           value={searchBar}
         />
-
         <input
           className="btn btn-primary"
           type="submit"
@@ -75,19 +68,24 @@ const MovieSearch = ({ url, movieList, selectMovie }) => {
         />
       </form>
 
-      {/* <section className="container">
-        <h3> Library Results </h3>
+      <section className="container text-center">
+        <h4> Library Results: {allLibraryResults.length} </h4>
         {allLibraryResults}
-      </section> */}
-
-      <section className="container">
-        <h3> Movie DB Search Results </h3>
-        {allSearchResults}
       </section>
 
+      <section className="container text-center">
+        <h4> Movie DB Search Results: {allSearchResults.length} </h4>
+        {allSearchResults}
+      </section>
     </div>
-    
   )
 }
+
+
+Movie.propTypes = {
+  url: PropTypes.string.isRequired,
+  movieList: PropTypes.array.isRequired,
+  selectMovie: PropTypes.func.isRequired,
+};
 
 export default MovieSearch;
