@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap/';
 import './Movie.css';
 
-const Movie = ({movie, selectMovie}) => {
+const Movie = ({movie, selectMovie, action}) => {
 
   const onMovieClick = () => {
     selectMovie(movie.id, movie.title, movie.overview, movie.release_date, movie.image_url, movie.external_id);
@@ -23,7 +23,7 @@ const Movie = ({movie, selectMovie}) => {
           type="button"
           className="movie-card-button"
           onClick={onMovieClick}>
-            Select
+            {action}
           </button>
         </div>
       </div>

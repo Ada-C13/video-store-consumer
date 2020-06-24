@@ -129,11 +129,11 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
 
 
   const allSearchResults = searchResults.map((movie) => {
-    return <Movie key={movie.external_id} movie={movie} selectMovie={selectMovieToAdd} />
+    return <Movie key={movie.external_id} movie={movie} selectMovie={selectMovieToAdd} action={"Add to Library"} />
   });
 
   const allLibraryResults = libraryResults.map((movie) => {
-    return <Movie key={movie.external_id} movie={movie} selectMovie={selectMovie} />
+    return <Movie key={movie.external_id} movie={movie} selectMovie={selectMovie} action={"Select Movie"} />
   });
 
 
