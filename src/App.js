@@ -47,18 +47,6 @@ class App extends Component {
   
   render() {
    return (
-     <head>
-       <style>
-         body {
-          background - image: url("13450.png");
-          background-color: #cccccc;
-        }
-</style>
-     </head>
-     <body>
-
-     </body>
-
      <Router>
       <div className="App">
       <header className="App-header">
