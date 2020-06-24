@@ -4,18 +4,16 @@ import Movie from "./Movie";
 
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
-const Library = () => {
-  const [movieList, setMovieList] = useState([])
-
+const Details = (props) => {
+  const { title } = props.match.params
   const [message, setMessage] = useState(null);
-
-  // event.preventDefault();
+  const [movie, setMovie] = useState(null)
+  
   useEffect(()=>{
-    axios.get(API_URL_MOVIES)
+    axios.get(API_URL_MOVIES + `/${title}`)
     .then((response) => {
-      const apiMovieList = response.data;
-      console.log(apiMovieList)
-      setMovieList(apiMovieList);
+      const retrievedMovie = response.data
+      setMovie(retrievedMovie)
     })
     .catch((error) => {
       setMessage(error.message);
@@ -23,8 +21,13 @@ const Library = () => {
     });
   }, []);
 
-  const movieComponents = movieList.map((movie) => {
-    return(
+  if (!movie) {
+    return (
+      <div></div>
+    )
+  } else {
+    console.log(props)
+    const movieComponent = 
       <Movie
         key = {movie.external_id}
         externalId = {movie.external_id}
@@ -33,16 +36,13 @@ const Library = () => {
         releaseDate = {movie.release_date}
         imageUrl = {movie.image_url}
         showAddButton = {false}
-        showDetailButton = {true}
+        showDetailButton = {false}
       />
-    )
-  })
-  console.log(movieComponents)
-  return (
-    <div>
-      {movieComponents}
-    </div>
-  );
+    return (
+      <div>
+        {movieComponent}
+      </div>
+    );
+  }
 }
-
-export default Library;
+export default Details;
