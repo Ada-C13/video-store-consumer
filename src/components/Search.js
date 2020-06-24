@@ -54,6 +54,22 @@ const Search = (props) => {
   const onSearchChange = (event) => {
     console.log(`Search Field updated ${event.target.value}`);
     setSearchText(event.target.value);
+<<<<<<< HEAD
+=======
+
+    axios
+      .get(API_URL_BASE + `/movies?query=${searchText}`)
+      .then((response) => {
+        const apiSearchResults = response.data;
+        // set state
+        setSearchResults(apiSearchResults);
+      })
+      .catch((error) => {
+        // handle errors
+        setErrorMessage("search failed");
+        console.log(error.message);
+      },[]);
+>>>>>>> a608bd92611b705f65bb604d879cd338e5ea0ec3
   };
 
   console.log(`drawing Search...`, props.addMovieCallBack);
