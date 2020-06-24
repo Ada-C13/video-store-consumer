@@ -21,18 +21,6 @@ const CustomerList = ({ customerList, selectCustomer }) => {
     <div>
     <div>
  
-    <h3>Search for a Movie:</h3>
-      <div>
-        <input
-        />
-      </div>
-      <div className="submit-padding"><button type="submit">Search</button> 
-      </div>
-   
-
-      
-
-  
     </div>
       <h1>CUSTOMER INFORMATION</h1>
       <p>Select both customer and movie in order to create a rental.</p>
