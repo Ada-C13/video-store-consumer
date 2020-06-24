@@ -7,6 +7,7 @@ const Customer = ({ id, name, address, city, state, postalCode, registered_at, p
   return (
     <Card className="customer-card-container">
       <div className="customer-card">
+        <img src={`https://image.flaticon.com/icons/svg/3105/310593${id%10}.svg`} alt="gilr" className="img-thumbnail w-25"/>
         <div className="customer-name">
           <h3> {name} </h3>
           <ul>
