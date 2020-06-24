@@ -13,5 +13,12 @@ const Customer = (props) => {
     </div>
   )
 }
+//TODO Customer?
+// Customer.propTypes = {
+//   id: PropTypes.number,
+//   name: PropTypes.string,
+//   account_credit: PropTypes.string,
+//   movie_count: PropTypes.number
+// };
 
 export default Customer;

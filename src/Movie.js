@@ -9,5 +9,11 @@ const Movie = (props) => {
     </div>
   )
 }
+//TODO - Movie? 
+// Movie.propTypes = {
+//   id: PropTypes.number,
+//   title: PropTypes.string,
+//   image_url: PropTypes.string
+// };
 
 export default Movie;
