@@ -15,7 +15,8 @@ class Nav extends Component {
         <Link style={navStyle} to="/customers"><li>CustomerList</li></Link>
         <Link style={navStyle} to="/Library"><li>Library</li></Link>
         <Link style={navStyle} to="/Search"><li>SearchBar</li></Link>
-          
+        <Link style={navStyle} to="/Rentals"><li>Rentals</li></Link>
+        
         </ul>
         </nav>
     );
