@@ -81,6 +81,10 @@ class CustomerSearch extends Component {
       searchDetailsCustomer={this.state.searchDetailsCustomer}
       />
   });
+
+  noResults = () => {
+    return <h3>No search results</h3>
+  }
   
   render () {
     return (
@@ -101,7 +105,7 @@ class CustomerSearch extends Component {
           </div>
         </form>
         <div>
-          {this.databaseCustomer()}
+          {this.state.searchResults.length === 0 ? this.noResults() : this.databaseCustomer()}
         </div>
         </div>
     )
