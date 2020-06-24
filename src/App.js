@@ -44,7 +44,7 @@ const App = () => {
     <Router>
       <div> 
         <header>
-          <Navbar />
+          <Navbar setError={setErrorCallback}/>
         </header>
 
         <Switch>

@@ -20,6 +20,7 @@ const Navbar = (props) => {
     console.log(event.target.name);
     newNav[event.target.name] = true;
     setNav(newNav);
+    props.setError(null);
   };
 
   return (
