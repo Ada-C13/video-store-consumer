@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Movie from './Movie';
+import Movie from './movie';
 
 class MovieSearch extends React.Component {
   constructor(props) {
@@ -31,6 +31,8 @@ class MovieSearch extends React.Component {
       })
     })
   }
+
+    //addMovie
 
   render() {
     const movies = this.state.movieList.map((movie, i) => {

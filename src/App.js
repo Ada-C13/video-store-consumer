@@ -8,7 +8,7 @@ import {
 import './App.css';
 import CustomerIndex from './components/customerindex';
 import MovieIndex from './components/movieindex';
-import MovieSearch from './components/MovieSearch';
+import MovieSearch from './components/moviesearch';
 
 class App extends Component {
   constructor(props) {
