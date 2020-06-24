@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import SearchBar from './SearchBar';
-
+import SearchBar from "./SearchBar";
 
 const Search = ({ API_URL_BASE }) => {
 	const [selectedMovie, setSelectedMovie] = useState({});
 	const [searchedMovies, setSearchedMovies] = useState([]);
+	const [newMovie, setNewMovie] = useState({});
 	const [error, setError] = useState(undefined);
 
 	const resetSearchState = () => {
@@ -18,11 +18,8 @@ const Search = ({ API_URL_BASE }) => {
 
 	const searchMovie = (query) => {
 		if (query !== null) {
-			axios.get(API_URL_BASE + "/movies", {
-					params: {
-						query: query,
-					},
-				})
+			axios
+				.get(API_URL_BASE + `/movies?query=${query}`)
 				.then((response) => {
 					if (response.data !== undefined) {
 						console.log(response);
@@ -37,13 +34,16 @@ const Search = ({ API_URL_BASE }) => {
 	};
 
 	const addMovie = (movie) => {
-		axios.post("http://localhost:3000/movies", movie)
-			.then(() => {})
+		axios
+			.post(API_URL_BASE + "/movies", movie)
+			.then((response) => {
+				if (response.data !== undefined) {
+					setNewMovie(response.data);
+				}
+			})
 			.catch((error) => {
-				this.setState({
-					error: error.message,
-					searchedMovies: [],
-				});
+                console.log({error})
+				setError(error.response.data.errors);
 			});
 	};
 
@@ -59,9 +59,7 @@ const Search = ({ API_URL_BASE }) => {
 						onClick={() => {
 							selectMovie(movie);
 						}}
-						className={
-							movie === selectedMovie ? "" : null
-						}></img>
+						className={movie === selectedMovie ? "" : null}></img>
 					<p>{movie.overview}</p>
 					<button onClick={() => addMovie(movie)}>
 						Add Movie to Inventory

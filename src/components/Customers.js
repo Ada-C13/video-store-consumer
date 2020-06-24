@@ -22,7 +22,9 @@ const Customers = ({ API_URL_BASE, onSelectedCustomerCallback }) => {
 	};
 
 	return (
-		<ol>
+
+		<table>
+      <tbody>
 			{customerList.map((customer, i) => (
 				<tr key={i}>
 					<td>{customer.id}</td>
@@ -38,7 +40,8 @@ const Customers = ({ API_URL_BASE, onSelectedCustomerCallback }) => {
 					</td>
 				</tr>
 			))}
-		</ol>
+      </tbody>
+		</table>
 	);
 };
 

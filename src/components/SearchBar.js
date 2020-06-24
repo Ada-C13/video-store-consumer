@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-const SearchBar = (props) => {
+const SearchBar = ({submitSearchTermCallback}) => {
 	const [searchWord, setSearchWord] = useState('');
 
 	const resetState = () => {
-		setSearchWord('');
+		setSearchWord("");
 	};
 
 	const onSubmit = (event) => {
@@ -12,20 +12,18 @@ const SearchBar = (props) => {
 
 		const query = searchWord;
 
-		props.submitSearchTermCallback(query);
+		submitSearchTermCallback(query);
 		resetState();
 	};
 
 	const onFormChange = (event) => {
-		const updatedState = {};
-
-		const field = event.target.name;
 		const value = event.target.value;
-
-		updatedState[field] = value;
-		setSearchWord(updatedState);
+		setSearchWord(value);
 	};
 
+    console.log(
+        searchWord
+    )
 	return (
 		<div>
 			<h2>Search Movie Here</h2>
@@ -35,7 +33,7 @@ const SearchBar = (props) => {
 						onChange={onFormChange}
 						value={searchWord}
 						name="searchWord"
-						placeholder="Psycho"
+						placeholder=""
 					/>
 				</div>
 				<input type="submit" name="submit" value="Search the Movie" />

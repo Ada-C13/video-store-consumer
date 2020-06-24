@@ -17,8 +17,8 @@ const App = () => {
 	const [currentMovies, setCurrentMovies] = useState(null);
 
 	const resetState = () => {
-		setCurrentMovies({});
-		setCurrentCustomer({});
+		setCurrentMovies(null);
+		setCurrentCustomer(null);
 	};
 
 	const setMovieState = (movie) => {
@@ -33,7 +33,8 @@ const App = () => {
 		axios.post(
 				API_URL_BASE + `/rentals/${currentMovies.title}/check-out`,
 				{
-					customer_id: currentCustomer.id,
+          customer_id: currentCustomer.id,
+          due_date: new Date(Date.now() + 1000 /*sec*/ * 60 /*min*/ * 60 /*hour*/ * 24 /*day*/ * 7)
 				}
 			)
 			.then(() => {
@@ -93,6 +94,14 @@ const App = () => {
 						<Route path="/users">
 							<Users />
 						</Route>
+            <Route
+							path="/search"
+							render={(props) => (
+								<Search
+									{...props}
+                  API_URL_BASE={API_URL_BASE}
+								/>
+							)}></Route>
 						<Route path="/">
 							<Home />
 						</Route>

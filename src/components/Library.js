@@ -12,7 +12,7 @@ const Library = ({ API_URL_BASE, onSelectedMovieCallback }) => {
 			setMovieList(response.data);
 			 }).catch((error) => {
 			// Show an error
-			setError("There was an error with this request!");
+			setError(error.message);
 		});
 	}, []);
 
