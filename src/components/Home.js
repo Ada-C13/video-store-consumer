@@ -41,6 +41,18 @@ const Home = () => {
         <p>RIDE YOUR BIKE. (P.S. ADIE BIKE CREW IS WHERE IT'S AT)</p>
       </Carousel.Caption>
     </Carousel.Item>
+    <Carousel.Item>
+      <img
+        className="d-block w-100"
+        src="https://i.imgur.com/hLrJyPz.jpg"
+        alt="Fourth slide"
+      />
+
+      <Carousel.Caption>
+        <h3>Seriously, get out of the house.</h3>
+        <p>You'll feel better!</p>
+      </Carousel.Caption>
+    </Carousel.Item>
   </Carousel>
   )
 };
