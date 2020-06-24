@@ -7,26 +7,26 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Customer = ({ id, name, address, city, state, registered_at, phone, account_credit, movies_checked_out_count, selectCustomer }) => {
   return (
-    <div className="customer-card">
-    <section className="customer-header">
-  
-            <p><strong>{name}</strong></p>
-            <p>Date Registered: {(registered_at).substring(0,10)} </p>
-             <p>Account Credit: {account_credit} </p>
-            <p>Movies Checked Out: {movies_checked_out_count} </p>
+    <section className="card customer-card mb-3">
+      <h5 className="card-header">
+      {name}</h5>
+      <div className="card-body">
+            <p className="card-text">Date Registered: {(registered_at).substring(0,10)} </p>
+             <p className="card-text">Account Credit: {account_credit} </p>
+            <p className="card-text">Movies Checked Out: {movies_checked_out_count} </p>
    
-            <p>Phone: {phone} </p>
-            <p>Address: {address}</p>
-            <p>{city}, {state} </p>
+            <p className="card-text">Phone: {phone} </p>
+            <p className="card-text">Address: {address}{city}, {state} </p>
 
           <Button
             className="btn btn-dark"
             onClick={() => selectCustomer(id)}>
               Select Customer
           </Button>
-   
-</section>
+
    </div>
+
+   </section>
 
   )
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import logo from "./log"
 import {Link} from 'react-router-dom'
 
 
@@ -8,16 +9,26 @@ import {Link} from 'react-router-dom'
 
 class Nav extends Component {
   render () {
-    return (
-      <nav>
-        <h3>Logo</h3>
+    const style = {
+      margin: 0,
+      top: 0,
+      right: 60,
+   bottom:20,
+      left: 'auto',
+      position: 'fixed',
+  };
+return(
+
+      <nav style={style}>
+        <div className="our-story-header">
         <ul className="nav-links">
-        <Link style={navStyle} to="/customers"><li>CustomerList</li></Link>
-        <Link style={navStyle} to="/Library"><li>Library</li></Link>
-        <Link style={navStyle} to="/Search"><li>SearchBar</li></Link>
-        <Link style={navStyle} to="/Rentals"><li>Rentals</li></Link>
+        <Link style={navStyle} to="/customers"><li className="authLinks redButton">CustomerList</li></Link>
+        <Link style={navStyle} to="/Library"><li className="authLinks redButton">Library</li></Link>
+        <Link style={navStyle} to="/Search"><li className="authLinks redButton">SearchBar</li></Link>
+        <Link style={navStyle} to="/Rentals"><li className="authLinks redButton">Rentals</li></Link>
         
         </ul>
+        </div>
         </nav>
     );
   }

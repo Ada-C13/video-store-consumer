@@ -90,7 +90,7 @@ class CustomerSearch extends Component {
     return (
       <div>
         <form onSubmit={this.onSubmitHandler}>
-        <h3>Search for a Customer:</h3>
+        <h5>Search for a Customer:</h5>
           <div>
             <input
               text='text'
@@ -101,7 +101,7 @@ class CustomerSearch extends Component {
               className="search-bar"
             />
           </div>
-          <div className="submit-padding"><button type="submit">Search</button> 
+          <div className="submit-padding"><button type="submit" className="">Search</button> 
           </div>
         </form>
         <div>

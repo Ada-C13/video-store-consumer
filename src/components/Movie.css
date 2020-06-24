@@ -1,7 +1,7 @@
 
 .card {
+ 
   background-color: rgba(181, 181, 181, 50%);
-
   padding: 1em 0;
   margin: 0.5rem;
 
@@ -16,17 +16,15 @@
   align-items: center;
 }
 
-.card__content {
+.card__content {    
   grid-column-start: 2;
-
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
   text-align: center;
   font-weight: 100;
   overflow: hidden;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .card__content-text {
@@ -36,12 +34,13 @@
 }
 
 .card__content-image {
-  height: auto;
-  width: 150px;
-  position: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
-.card__content-text, .card__content-image {
+.card__content-text{
   padding: 0;
   margin: 0;
 }

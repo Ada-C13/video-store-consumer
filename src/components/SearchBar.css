@@ -1,7 +1,6 @@
 .search-bar {
   margin-top: 1em;
   background: #fff;
-  padding: 1em;
   border-radius: 10em;
   transition: box-shadow 300ms ease;
   border: 1px solid rgba(137, 149, 199, .2);

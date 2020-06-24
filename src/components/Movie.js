@@ -25,7 +25,7 @@ const Movie = ({ title, release_date, overview, image_url, id, selectMovie, deta
       <div className='card'>
         <section className='card__content'>
         <div onClick={ () => detailsCallback(id) }></div>
-        <img src={image_url} className='card__content-image'/>
+        <img src={image_url}/>
         <section className='card__content-text'>{title}</section>
       
         <section className='card__content-text'>
