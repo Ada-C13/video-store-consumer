@@ -1,5 +1,5 @@
 .customer-card-container {
-  margin: 10px;
+  margin: 5px;
 }
 
 h3 {
@@ -8,11 +8,11 @@ h3 {
 
 .customer-card {
   margin: 10px;
-  display: grid;
-  grid-template-columns: 200px 1fr 100px; 
-  align-items: center;
+  align-items: left;
 }
 
+.img-thumbnail{
+}
 .customer-name{
   grid-column-start: 1;
   text-align: left;
@@ -24,7 +24,14 @@ h3 {
 }
 
 .customer-info{
-  grid-column-start: 2;
+  grid-column-start: 1;
+  grid-row-start: 3;
+  text-align: left;
+}
+
+.customer-select-button{
+  grid-column-start: 1;
+  grid-row-start: 4;
   text-align: left;
 }
 
