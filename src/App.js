@@ -89,7 +89,7 @@ class App extends Component {
   selectCustomer(id) {
     const { customers } = this.state;
     const selectedCustomer = customers.find((customer) => {
-      return customer.id === customerId;
+      return customer.id === id;
     })
     this.setState({ selectedCustomer })
   }
