@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
 
 import "./App.css";
 import Home from "./components/Home";
@@ -93,22 +95,23 @@ const App = () => {
   const drawNav = () => {
     console.log(`App, draw navigation`);
     return (
-      <nav>
-        <ul className="nav-links">
-          <Link to="/">
-            <li>Home</li>
-          </Link>
-          <Link to="/search">
-            <li>Search</li>
-          </Link>
-          <Link to="/library">
-            <li>Library</li>
-          </Link>
-          <Link to="/customers">
-            <li>Customers</li>
-          </Link>
+      <Navbar fixed="top" bg="dark" variant="dark">
+        <Navbar.Brand>Video Store Dashboard</Navbar.Brand>
+        <ul className="navbar-nav">
+          <Nav.Link href="/">
+            <li className="nav-item">Home</li>
+          </Nav.Link>
+          <Nav.Link href="/search">
+            <li className="nav-item">Search</li>
+          </Nav.Link>
+          <Nav.Link href="/library">
+            <li className="nav-item">Library</li>
+          </Nav.Link>
+          <Nav.Link href="/customers">
+            <li className="nav-item">Customers</li>
+          </Nav.Link>
         </ul>
-      </nav>
+      </Navbar>
     );
   };
 
