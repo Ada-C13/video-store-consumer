@@ -18,6 +18,7 @@ const Store = (props) => {
           onSubmitCallback={onSubmitCallback} 
         />
       </div>
+    
     </main>
   );
 }

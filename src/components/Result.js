@@ -8,6 +8,7 @@ import './Store.css';
 const Result = (props) => {
 
   const [movies, setMovies] = useState([]);
+  const [flash, setFlash] = useState(null)
   const endPoint = `${props.url}movies?query=`
 
   const onLoadSearch = (searchTerm) => {
@@ -31,10 +32,11 @@ const Result = (props) => {
     })
       .then((response) => {
         console.log(response)
-
+        setFlash(`${movie.title} added`)
       })
       .catch((error) => {
         console.log(`Error: ${error}`)
+        setFlash(`${movie.title} not added`)
       })
   }
 
@@ -50,6 +52,7 @@ const Result = (props) => {
   const formatMovies = (movies) => {
     return (
       <ul>
+        <p>{flash}</p>
         {movies.map(movie => {
           return (
             <div key={movie.external_id}>
