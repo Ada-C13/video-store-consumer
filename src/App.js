@@ -6,8 +6,8 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
-import CustomerList from './components/customerindex';
-import MovieIndex from './components/movieindex';
+import CustomerIndex from './components/CustomerIndex';
+import MovieIndex from './components/MovieIndex';
 
 class App extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class App extends Component {
 
             <Switch>
               <Route path="/customers">
-                <CustomerList
+                <CustomerIndex
                   selectCustomerCallback={this.selectCustomer}
                 />
               </Route>
