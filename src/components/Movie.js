@@ -42,7 +42,7 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl, showButton})
         External ID: {externalId}
       </div>
       <div>
-       {overview}
+      {overview}
       </div>
       {showButton && <button onClick={addMovie}>Add to Movie Library</button>}
     </div>
