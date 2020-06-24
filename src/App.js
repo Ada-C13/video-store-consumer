@@ -210,7 +210,7 @@ class App extends Component {
 
     return (
       <Router>
-            <Nav/>
+            <Nav className="ml-auto"/>
             <div className={this.selectedItemClass()}>
               {this.state.selectedMovie ? ("Selected Movie: \n" + this.state.selectedMovie.title) : "" }
               <br />

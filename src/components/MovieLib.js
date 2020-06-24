@@ -20,19 +20,20 @@ const MovieLib = ({ movieList, selectMovie, selectCustomer, detailsCallback, det
   });
   
   return (
-    <div>
-    <div>
+    <div className="row">
+    <div class="col-md-4 mb-4">
+
     <CustomerSearch
       url={BASE_URL} 
       selectCustomer={(id) => selectCustomer(id)}
       detailsCallback={(id) => detailsCallback(id) }
       />
     </div>
-      <div className="container">
+      
       <div className="row">
         {makeMovies()}
       </div>
-      </div>
+   
     </div>
   )
 }
