@@ -46,6 +46,7 @@ const SearchContainer = () => {
         overview = {movie.overview}
         releaseDate = {movie.release_date}
         imageUrl = {movie.image_url}
+        showButton = {true}
       />
     )
   })
