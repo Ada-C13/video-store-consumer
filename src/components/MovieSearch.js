@@ -65,6 +65,7 @@
 // }
 // MovieSearch.propTypes = {
 // };
+// export default MovieSearch;
 
 
 // Alternative Search to use
@@ -91,7 +92,7 @@ const MovieSearch = ({ url, movieList, selectMovie }) => {
 
   const onSearchSubmit = (event) => {
     event.preventDefault();
-    
+
     if (searchBar) {
       const newLibraryResults = movieList.filter(movie => movie.title.toLowerCase().includes(searchBar.toLowerCase()));
 
