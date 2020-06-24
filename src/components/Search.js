@@ -67,17 +67,14 @@ import axios from 'axios'
 import Movie from './Movie';
 import SearchForm from './SearchForm';
 
-// const API_URL = "https://api.themoviedb.org/3/search/movies"
-
   const Search = (props) => {
-    const { API_KEY } = process.env
     const [searchedmovieList, setSearchedMovieList] = useState([]);
     const [errorMessage, setMessage] = useState(null);
+    
     const searchMovie = (search) =>{
-      axios.get(`${props.url}?api_key=${API_KEY}&language=en-US&query=${search.searchTerm}&limit=7`)
+      axios.get(`${props.url}/?query=${search.searchTerm}`)
         .then((response) => {
-          // console.log("ldfodjfd")
-          const movieList = response.results;
+          const movieList = response.data;
           setSearchedMovieList(movieList);
         })
         .catch((error) => {
@@ -105,8 +102,8 @@ import SearchForm from './SearchForm';
       <div className="container-fluid">
         <SearchForm onSubmitCallback ={searchMovie}/>
         <h2 className="py-2 text-center w-100">All Movies</h2>
-        <table class="table table-hover">
-          <thead class="thead-light">
+        <table className="table table-hover">
+          <thead className="thead-light">
             <tr>
               <th>ID</th>
               <th>Select</th>
