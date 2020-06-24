@@ -10,7 +10,7 @@ const drawMovies = (movieList, onMovieSelectCallback) => {
         <td>{movie.title}</td>
         <td>{movie.release_date}</td>
         <td>
-          <img src={movie.image_url} alt="Movie Cover" />
+          <img className="movie-image" src={movie.image_url} alt="Movie Cover" />
         </td>
         <td>
           <Button variant="primary"  onClick={() => onMovieSelectCallback(movie.id)}>
