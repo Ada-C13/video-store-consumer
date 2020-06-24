@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import './MovieSearch.css';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import SearchForm from './SearchForm.js';
 
-export function MovieSearch() {
+const MovieSearch = () => {
   const [movies, setMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -44,13 +43,15 @@ export function MovieSearch() {
         {movie.title}
           {movies.length === 1 ? "" : <button onClick={addMovie}>Add to rental library</button>}
         </li> )}
-        </ol>
+      </ol>
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
     </div>
   )
 };
+
 MovieSearch.propTypes = {
   movies: PropTypes.array,
 }
+
 
 export default MovieSearch;
