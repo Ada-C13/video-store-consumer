@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Movie from './Movie';
+import SideBar from './SideBar';
 
 const reformatData = (data) => {
   console.log(data)
@@ -51,7 +52,14 @@ const Library = (props) => {
   <main>
     <div className = "store" > {
       formatMovies
-    } </div> 
+    } </div>
+    <SideBar width={300} height={"100vh"}>
+      <h1>Nav Item</h1>
+      <h1>Nav Item</h1>
+      <h1>Nav Item</h1>
+      <h1>Nav Item</h1>
+      <h1>Nav Item</h1>
+    </SideBar>
   </main>
   );
 }
