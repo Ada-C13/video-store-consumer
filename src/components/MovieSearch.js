@@ -4,7 +4,7 @@ import axios from 'axios';
 import SearchForm from './SearchForm.js';
 import PropTypes from 'prop-types';
 
-const MovieSearch = ({ findMovieCallback }) => {
+const MovieSearch = ({ addMovieCallback }) => {
   const [movies, setMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -33,7 +33,7 @@ const MovieSearch = ({ findMovieCallback }) => {
         {movies.map((movie) => <li key={movie.external_id}>
         <img src={movie.image_url} alt={movie.title} ></img>
         {movie.title}
-        {movies.length === 1 ? "" : <button onClick={() => { findMovieCallback(movie.title) }}>Add to rental library</button>}
+        {movie.id === 0 || movie.id ? "" : <button onClick={() => { addMovieCallback(movie) }}>Add to rental library</button>}
         </li> )}
       </ol>
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}

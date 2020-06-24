@@ -62,9 +62,9 @@ const App = () => {
   }
 
   const addMovie = (movie) => {
-    console.log("MOVIE", movie)
     axios.post('http://localhost:3000/movies', movie)
     .then(() => {
+      movie.id = 0
       setMessage(
         "Succesfully added a movie to rental library!"
       );
