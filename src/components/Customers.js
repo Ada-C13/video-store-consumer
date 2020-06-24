@@ -25,7 +25,7 @@ const Customers = ({ list, onSelectCallback }) => {
         {list.map(customer =>
           <li key={customer.id} className="customer-list-item">
             <img src={avatar} className="customer-list-item__avatar" alt="customer profile pic" />
-            <Link to={`${match.url}/${customer.id}`} className="customer-list-item__name">{customer.name}</Link>
+            <p className="customer-list-item__name">#{customer.id}: {customer.name}</p>
             <div className="customer-list-item__buttons">
               <Popup trigger={<button>Profile</button>} modal>
                 <Customer
