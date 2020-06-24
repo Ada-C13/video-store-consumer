@@ -82,7 +82,7 @@ const App = () => {
             }
             {
               selectedMovie && (
-                <span className="App-selected__movie"> {selectedMovie.title} {selectedMovie.name}</span>
+                <span className="App-selected__movie">Movie: {selectedMovie.title} {selectedMovie.name}</span>
               )
             }
           </div>
