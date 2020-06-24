@@ -48,6 +48,16 @@ const App = () => {
         });
   }
 
+  const addMovie = (movie) => {
+    
+    axios.post('http://localhost:3000/movies', movie)
+    .then(() => {
+    })
+    .catch((error) => {
+      setMessage(error.message);
+    });
+  };
+
   return (
     <Router>
       <div>
@@ -80,7 +90,7 @@ const App = () => {
             <CustomerList pickCustomerCallback = {selectCustomer} />
           </Route>
           <Route path="/search">
-            <MovieSearch />
+            <MovieSearch addMovieCallback = {addMovie} />
           </Route>
           <Route path="/">
             <Home />
