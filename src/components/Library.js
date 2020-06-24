@@ -47,7 +47,7 @@ const Library = (props) => {
               <th>Image</th>
               <th>Release Date</th>
               <th>Overview</th>
-              <th>External ID</th>
+              <th>Ext. ID</th>
             </tr>
           </thead>
           <tbody>

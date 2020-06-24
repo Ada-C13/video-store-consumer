@@ -18,7 +18,7 @@ const Movie = (props) => {
   
   return (
     <tr>
-      <td>{props.id}</td>
+      <td>{ props.selectMovieCallback? props.id : props.external_id }</td>
       <td>
         <button onClick={onButtonClick} className="btn btn-danger">
           Select
@@ -29,7 +29,7 @@ const Movie = (props) => {
       <td><img src={props.image_url} alt={props.title}/></td>
       <td className = "w-25">{props.release_date}</td>
       <td className = "w-75"> {props.overview}</td>
-      <td>{props.external_id}</td>
+      { props.selectMovieCallback ? <td>{props.external_id}</td> : ""}
     </tr>
   )
 }
