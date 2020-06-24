@@ -23,4 +23,12 @@ const Movie = (props) => {
   )
 };
 
+Movie.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  image_url: PropTypes.string,
+  overview: PropTypes.string,
+  movieCallback: PropTypes.func.isRequired,
+}
+
 export default Movie
