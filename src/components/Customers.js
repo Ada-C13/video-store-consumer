@@ -1,4 +1,4 @@
-import React, { Component, useState , useEffect } from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 
 const API_URL_CUSTOMERS = "http://http://localhost:3000/customers"
@@ -8,7 +8,7 @@ const Customers = () => {
   const [customerList, setCustomerList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  useEffect(() => {
+  
     axios.get(API_URL_CUSTOMERS)
     .then((response) => {
       const apiCustomerList = response.data;
@@ -18,7 +18,6 @@ const Customers = () => {
       setErrorMessage(error.message);
       console.log(error.message);
     });
-  }, []);
 
 
   return (
@@ -29,7 +28,7 @@ const Customers = () => {
         2.) From the customer list, I can "select" a customer. My customer selection will continue to be visible as I navigate the app.
         </p>
         <ul>
-          <li>{setCustomerList}</li>
+          <li>{customerList}</li>
         </ul>
     </div>
   );

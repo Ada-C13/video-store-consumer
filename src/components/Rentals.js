@@ -1,6 +1,6 @@
 import React from 'react';
 
-const rentals = () => {
+const Rentals = () => {
   return (
     <div>
       <h1>Rentals</h1>
@@ -9,4 +9,4 @@ const rentals = () => {
   );
 }
 
-export default rentals;
+export default Rentals;
