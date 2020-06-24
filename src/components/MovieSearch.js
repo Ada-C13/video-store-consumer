@@ -26,6 +26,15 @@ export function MovieSearch() {
     };
   };
 
+  const addMovie = (movie) => {
+    axios.post('http://localhost:3000/movies', movie)
+    .then(() => {
+    })
+    .catch((error) => {
+      setErrorMessage(error.message);
+    });
+  };
+
   return (
     <div>
       <SearchForm onSubmitCallback={getMovie} />
@@ -33,13 +42,14 @@ export function MovieSearch() {
           {movies.map((movie) => <li key={movie.external_id}>
           <img src={movie.image_url} alt={movie.title} ></img>
           {movie.title}
+          <button onClick={addMovie(movie)}>Add to rental library</button>
           </li> )}
+          
         </ol>
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
     </div>
   )
 };
-
 MovieSearch.propTypes = {
   movies: PropTypes.array,
 }
