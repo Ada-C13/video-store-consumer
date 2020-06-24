@@ -4,6 +4,7 @@ import SearchMovieCard from './SearchMovieCard';
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
+import Jumbotron from 'react-bootstrap/Jumbotron'
 
 
 const Search = () => {
@@ -59,14 +60,23 @@ const Search = () => {
   
   return (
   <div class="m-5">
-    <h1>
-      {/* {error ? error : null} */}
-    </h1>
-    <Form inline className='form' onClick={search}>
-      <label className='label' htmlFor="query"></label>
-      <FormControl type="text" placeholder="Enter a movie" className="mr-sm-2" value={query} onChange={ (event) => setQuery(event.target.value) } />
-      <Button variant="light" type='submit'>Search</Button>
-    </Form>
+    {/* <h1>Add a Movie to Your Rental Database</h1> */}
+    <Jumbotron>
+      <h1>Movie Search!</h1>
+      <p>
+      This is the place you can search for a movie to add to your rental database.  Go ahead, I dare you.
+      </p>
+      <p>
+        <Form inline className='form' onClick={search}>
+          <label className='label' htmlFor="query"></label>
+          <FormControl type="text" placeholder="Enter a movie" className="mr-sm-2" value={query} onChange={ (event) => setQuery(event.target.value) } />
+          <Button variant="light" type='submit'>Search</Button>
+        </Form>
+      </p>
+    </Jumbotron>
+
+
+    
     {/* <form className='form' onClick={search}>
     <input className='input' type='text' name='query' placeholder='Enter a Movie' value={query} onChange={ (event) => setQuery(event.target.value) }/>
     <button className='button' type='submit'>Search </button>
@@ -74,10 +84,7 @@ const Search = () => {
     <hr></hr>
     <div className="row">{moviesList}</div>   
   </div>
-    // render some movie cards
-    // each card should also have a button to add it to the rental store database
     );
-    // Here we will also return some movie cards and that will be great
   };
   
   export default Search;

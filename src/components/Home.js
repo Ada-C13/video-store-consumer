@@ -20,7 +20,7 @@ const Home = () => {
     <Carousel.Item>
       <img
         className="d-block w-100"
-        src="https://i.imgur.com/8VOCN00.png"
+        src="https://i.imgur.com/jiUGTnw.jpg"
         alt="Second slide"
       />
 
@@ -32,7 +32,7 @@ const Home = () => {
     <Carousel.Item>
       <img
         className="d-block w-100"
-        src="https://images.unsplash.com/photo-1592780828756-c418d71faa1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80"
+        src="https://i.imgur.com/NFB7QdS.jpg"
         alt="Third slide"
       />
 
