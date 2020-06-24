@@ -20,6 +20,7 @@ const LIBRARY_URL = "http://localhost:3000/library"
 const App = () => {
 
   const [library, setLibrary] = useState();
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     axios.get(LIBRARY_URL)
@@ -28,7 +29,7 @@ const App = () => {
         setLibrary(apiLibrary);
       })
       .catch((error) => {
-        // Error Handling, huh?
+        setErrorMessage(error.message);
         console.log(error);
       });
   }, []);
