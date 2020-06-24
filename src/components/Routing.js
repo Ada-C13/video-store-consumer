@@ -5,6 +5,7 @@ import Store from './Store';
 import Library from './Library';
 import Users from './Library';
 import './Routing.css';
+import Result from './Result';
 
 const Routing = (
   <Router>
@@ -28,6 +29,10 @@ const Routing = (
         render={(props) => (
           <Store {...props} url={"http://localhost:3000/"} />
         )}/>
+      <Route path="/results/:searchTerm"
+        render={(props) => (
+          <Result {...props} url={"http://localhost:3000/"} />
+        )} />
       <Route path="/library"
         render={(props) => (
           <Library {...props} url={"http://localhost:3000/"} />
