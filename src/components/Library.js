@@ -32,10 +32,12 @@ const Library = () => {
         overview = {movie.overview}
         releaseDate = {movie.release_date}
         imageUrl = {movie.image_url}
-        showButton = {false}
+        showAddButton = {false}
+        showDetailButton = {true}
       />
     )
   })
+  console.log(movieComponents)
   return (
     <div>
       {movieComponents}

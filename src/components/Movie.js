@@ -1,25 +1,27 @@
 import React,{useState} from 'react';
+import { BrowserRouter as Router, Link, Route, Switch, useRouteMatch,} from 'react-router-dom';
 import axios from 'axios';
+import Details from "./Details";
 
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
-const Movie = ({externalId, title, overview, releaseDate, imageUrl, showButton}) => {
+const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButton, showDetailButton}) => {
   const [message, setMessage] = useState(null);
+  const [movie, setMovie] = useState(null)
 
   const addMovie = (event) =>{
     event.preventDefault();
 
     axios.post(API_URL_MOVIES, {
-      body: {
         title,
         overview,
         release_date: releaseDate,
         image_url: imageUrl,
         external_id: externalId,
-      }
     })
     .then((response) => {
-      console.log(response.data)
+      const retrievedMovie = response.data
+      setMovie(retrievedMovie)
     })
     .catch((error) => {
       setMessage(error.message);
@@ -39,12 +41,20 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl, showButton})
         {releaseDate}
       </div>
       <div>
-        External ID: {externalId}
+        External ID{externalId}
       </div>
       <div>
       {overview}
       </div>
-      {showButton && <button onClick={addMovie}>Add to Movie Library</button>}
+      <div>
+        {showAddButton && <button onClick={addMovie}>Add to Movie Library</button>}
+      </div>
+        
+      <div>
+        {showDetailButton && <Link to={`/details/${title}`}><button>Details</button></Link>}
+      </div>
+      
+    
     </div>
     
   );
