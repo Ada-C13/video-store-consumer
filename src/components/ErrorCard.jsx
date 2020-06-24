@@ -3,7 +3,7 @@ import React from 'react';
 const ErrorCard = (props) => {
 
   return (
-    <div className="ui container">
+    <div className="ui container mt mb">
       <div class="ui negative message">
         <div class="header">
           Error detected:
