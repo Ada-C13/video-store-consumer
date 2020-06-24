@@ -1,14 +1,25 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Navbar = (props) => {
-  const [nav, setNav] = useState({
-    home: true,
-    search: false,
-    library: false,
-    customers: false,
-  });
+  const location = useLocation();
+
+  const [nav, setNav] = useState([]);
+
+  useEffect(() => {
+    const newNav = {
+      home: false,
+      search: false,
+      library: false,
+      customers: false,
+    };
+
+    newNav[location.pathname.slice(1)] = true;
+    setNav(newNav);
+  }, []);
+
+  console.log(location.pathname);
 
   const onItemClick = (event) => {
     const newNav = {
@@ -18,7 +29,6 @@ const Navbar = (props) => {
       customers: false,
     };
 
-    console.log(event.target.name);
     newNav[event.target.name] = true;
     setNav(newNav);
     props.setError(null);
