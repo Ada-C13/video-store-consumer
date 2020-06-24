@@ -43,7 +43,8 @@
   padding: 20px 10px;
 }
 
-.selected-item {
+.items-selected {
   background-color: rgb(226, 177, 86);
-  padding: 20px;
+  padding: 10px;
+  text-shadow: black;
 }

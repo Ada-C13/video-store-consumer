@@ -59,8 +59,8 @@ class App extends Component {
     });
   }
 
+  //To add new movie to dabat base
   addMovie = (movieToAdd) => {
-    console.log(movieToAdd)
     if (!this.state.movies.find(movie => movie.external_id === movieToAdd.external_id)) {
       axios.post(`${BASE_URL}/movies`, movieToAdd)
       .then((response) => {
@@ -83,7 +83,7 @@ class App extends Component {
       return movie.id === movieId;
     })
 
-    this.setState({ selectedMovie, })
+    this.setState({ selectedMovie })
   }
   
   selectCustomer(id) {
@@ -99,7 +99,7 @@ class App extends Component {
       const movieTitle = this.state.selectedMovie.title
       const customerId = this.state.selectedCustomer.id
       let dueDate = new Date()
-      dueDate.setDate(new Date().getDate() + 5);
+      dueDate.setDate(new Date().getDate() + 5 );
 
       const params = {
         customer_id: customerId,
@@ -116,9 +116,7 @@ class App extends Component {
         })
       })
       .catch((error) => {
-
         this.setState({ error: error.message });
-
       });
     }
   }
@@ -148,6 +146,7 @@ class App extends Component {
               <Link to="/search">Movie Search</Link>
             </li>
           </ul>
+
           <div className={this.selectedItemClass()}>
             {this.state.selectedMovie ? ("Selected Movie: \n" + this.state.selectedMovie.title) : "" }
             <br />
@@ -156,6 +155,7 @@ class App extends Component {
             {this.state.selectedMovie ? <Button onClick={() => this.createRental()}>Create a Rental</Button> : ''}
           </div>
         </div>
+
         <div className="main">
           <Switch>
             <Route exact path="/">
