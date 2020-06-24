@@ -20,7 +20,7 @@ const Movie = (props) => {
     <tr>
       <td>{props.id}</td>
       <td>
-        <button onClick={onButtonClick} className="btn btn-primary">
+        <button onClick={onButtonClick} className="btn btn-danger">
           Select
         </button>
       </td>

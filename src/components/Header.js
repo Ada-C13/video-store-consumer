@@ -28,8 +28,8 @@ const Header = (props) => {
   return (
   <Router>
       <div>
-        <h2>Welcome to Video Store Customer</h2>
         <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+          <h2 className="">Videos</h2>
 
           <ul className="navbar-nav mr-auto">
             <li><Link to={'/'} className="nav-link">Home</Link></li>
@@ -42,7 +42,7 @@ const Header = (props) => {
             <ul className="list-group list-group-horizontal text-center">
               <li className={ selectedCustomer ? "list-group-item active" : "list-group-item text-muted"}>{selectedCustomer ? selectedCustomer.name : "No Customer Selected"} </li>
               <li className={ selectedMovie ? "list-group-item active" : "list-group-item text-muted"}> {selectedMovie ? selectedMovie.title : "No Movie Selected"} </li>
-              <button className={ selectedCustomer && selectedMovie ? "btn btn-primary text-decoration-none" : "invisible" } onClick="" path="/">Checkout</button>
+              <button className={ selectedCustomer && selectedMovie ? "btn btn-success text-decoration-none" : "invisible" } onClick="" path="/">Checkout</button>
             </ul>
           </div>
 

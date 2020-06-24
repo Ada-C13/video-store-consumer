@@ -1,5 +1,45 @@
+/* color scheme:
+  https://coolors.co/e3dcd6-030302-ac9c8a-9a031e-df2935
+
+  {
+    "Timberwolf":"e3dcd6",
+    "Rich Black FOGRA 39":"030302",
+    "Grullo":"ac9c8a",
+    "Ruby Red":"9a031e",
+    "Rose Madder":"df2935"
+  }
+*/
+
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #E3DCD6;
+  color: #030302;
 }
+
+button.btn-danger {
+  background-color: #DF2935;
+  border-color: #DF2935;
+}
+button.btn-danger:hover {
+  background-color: #9A031E;
+  border-color: #9A031E;
+}
+
+ul.list-group li.active {
+  background-color: #DF2935;
+  border-color: #DF2935;
+}
+button.btn-success {
+  border-top-left-radius: none;
+  border-bottom-left-radius: none;
+  background-color: #9A031E;
+  border-color: #9A031E;
+}
+button.btn-success:hover {
+  background-color: #DF2935;
+  border-color: #DF2935;
+}
+
