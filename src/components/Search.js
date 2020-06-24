@@ -76,7 +76,7 @@ import SearchForm from './SearchForm';
     const searchMovie = (search) =>{
       axios.get(`${props.url}?api_key=${API_KEY}&language=en-US&query=${search.searchTerm}&limit=7`)
         .then((response) => {
-          console.log("ldfodjfd")
+          // console.log("ldfodjfd")
           const movieList = response.results;
           setSearchedMovieList(movieList);
         })
