@@ -92,10 +92,11 @@ const App = () => {
               <h3><Link to="/search">Search Movies</Link></h3>
             </li>
           </ul>
+        </nav>
+        <section className="rental body">
           <Rental {...{movie, customer, rentMovie}} />
           <p>{message}</p>
-        </nav>
-
+        
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
@@ -112,6 +113,7 @@ const App = () => {
             <Home />
           </Route>
         </Switch>
+        </section>
       </div>
     </Router>
   );

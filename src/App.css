@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 * {
   padding: 0;
@@ -8,7 +9,10 @@
 body {
   background-color: #f7efee;
   margin: 10px;
-  /* font-family: 'Cormorant Garamond', serif; */
+}
+
+.body {
+  font-family: 'Poppins', sans-serif;
 }
 
 .navigation-bar {
@@ -47,4 +51,40 @@ a:active {
   text-align: center;
   font-family: 'Notable', sans-serif;
   margin-top: 50px;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  list-style: none;
+}
+.movie-square {
+  display: grid;
+  grid-template: 1fr / 1fr 2fr ;
+  width: 420px;
+  border-radius: 25px;
+  padding: 15px;
+  border: solid tomato 1px;
+  margin: 10px;
+}
+
+.movie-image {
+  padding-right: 10px;
+  width: 140px;
+  height: auto;
+}
+
+.movie-title {
+  margin-top: 3px;
+}
+
+.movie-date {
+  margin-bottom: 3px;
+}
+
+.button {
+  background-color: tomato;
+  width: 60px;
+  height: 30px;
 }
