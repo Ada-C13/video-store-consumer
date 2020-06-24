@@ -126,14 +126,21 @@ const App = () => {
 
   const addMovieCallBack = (movie) => {
     console.log(`App, add movie to library`);
-    const newMovieList = movieList;
-
-    // if movie.external_id doesn't match any in movieList,
-    // add movie. otherwise show error
-
-    newMovieList.push(movie);
-
-    setMovieList(newMovieList);
+    // post movie
+    axios
+      .post(API_URL_BASE + "/movies", movie)
+      .then((response) => {
+        // console.log(response)
+        const newMovieList = movieList;
+        newMovieList.push(movie);
+        // set state
+        setMovieList(newMovieList);
+      })
+      .catch((error) => {
+        // handle errors
+        setErrorMessage("Cannot add movie");
+        console.log(error.message);
+      });
   };
 
   return (
