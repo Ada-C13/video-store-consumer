@@ -2,7 +2,7 @@ import React from 'react';
 
 const Movie = (props) => {
   const onButtonClick = () => {
-    props.setSelectedMovieCallBack(props.id);
+    props.setSelectedMovieCallBack(props);
   };
   
   return (

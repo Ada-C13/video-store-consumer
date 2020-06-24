@@ -2,7 +2,7 @@ import React from 'react';
 
 const CustomerDetails = (props) => {
   const onButtonClick = () => {
-    props.setSelectedCustomerCallBack(props.id);
+    props.setSelectedCustomerCallBack(props);
   };
 
   return (
