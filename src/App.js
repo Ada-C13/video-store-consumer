@@ -15,7 +15,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
 import ErrorCard from './components/ErrorCard';
+import SuccessCard from './components/SuccessCard';
 
 const LIBRARY_URL = "http://localhost:3000/library"
 const CUSTOMERS_URL = "http://localhost:3000/customers"
@@ -29,6 +31,7 @@ const App = () => {
   const [moviePick, setMoviePick] = useState();
   const [customerPick, setCustomerPick] = useState();
   const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   const setErrorCallback = (data) => {
     setErrorMessage(data);
@@ -40,6 +43,7 @@ const App = () => {
         const apiLibrary = response.data;
         setLibrary(apiLibrary);
         setErrorMessage(null);
+        setSuccessMessage(null);
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -52,9 +56,10 @@ const App = () => {
       .then((response) => {
         const apiCustomers = response.data;
         setCustomers(apiCustomers);
+        setSuccessMessage(null);
       })
       .catch((error) => {
-        // Error Handling, huh?
+        setErrorMessage(error.message);
         console.log(error);
       });
   }, []);
@@ -75,6 +80,7 @@ const App = () => {
 
     if (selectedCustomer) {
       setCustomerPick(selectedCustomer);
+      setSuccessMessage(null);
       console.log(customerPick); 
       };
     });
@@ -96,6 +102,7 @@ const App = () => {
 
     if (selectedMovie) {
       setMoviePick(selectedMovie);
+      setSuccessMessage(null);
       console.log(moviePick); 
     };
   });
@@ -104,6 +111,7 @@ const App = () => {
   const clearSelections = () => {
     setMoviePick(null);
     setCustomerPick(null);
+    setSuccessMessage(null);
   }
 
   const submitSelections = () => {
@@ -114,12 +122,15 @@ const App = () => {
         .then(response => {
           setMoviePick(null);
           setCustomerPick(null);
+          setSuccessMessage("Rental successfully created.");
+          console.log(response.message);
         })
         .catch(error => {
-          console.log(error)
+          setErrorMessage(error.message);
+          console.log(error);
         })
     };
-      
+    
     };
   
 
@@ -127,17 +138,19 @@ const App = () => {
     <Router>
       <div> 
         <header>
-          <Navbar setError={setErrorCallback}/>
+          <Navbar setError={setErrorCallback} />
         </header>
         <body>
           <RentalBox moviePick={moviePick} customerPick={customerPick} clearSelectionsCallback={clearSelections}
           submitSelectionsCallback={submitSelections}/>
+          
         </body>
         <Switch>
           <Route exact path="/" />
           <Route path="/home" />
           <Route path="/">
             {errorMessage && <ErrorCard message={errorMessage} />}
+            {successMessage && <SuccessCard message={successMessage} />}
           </Route>
         </Switch>
 
@@ -157,10 +170,6 @@ const App = () => {
             <Home moviePick={moviePick}/>
           </Route>
         </Switch>
-
-        <footer>
-          {/* <RentalBox moviePick={moviePick} customerPick={customerPick}/> */}
-        </footer>
       </div>
     </Router>
   )
