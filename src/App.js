@@ -20,6 +20,8 @@ class App extends Component {
       movies: [],
       selectedCustomer: undefined,
       selectedMovie: undefined,
+      success: undefined,
+      error: undefined
     }; 
   }
   
@@ -95,15 +97,24 @@ class App extends Component {
         this.setState({
           selectedMovie: undefined,
           selectedCustomer: undefined,
+          success: "You Successfully created a Rental",
         })
       })
       .catch((error) => {
         this.setState({ 
-          error: error.message,
+          error: `An error occurred: ${error.message}`,
         });
       });
     }
   }
+  
+  setSucces(){
+    this.setState({
+      success: undefined,
+      error: undefined
+    });
+  }
+
 
   render() {
    return (
@@ -128,6 +139,9 @@ class App extends Component {
         <h3>{this.state.selectedMovie ? ("Movie that you Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
         <h3>{this.state.selectedCustomer ? ("Customer that you Selected: \n\n" + this.state.selectedCustomer.name) : "" }</h3>
         {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.makeRental()}>Rent Now</Button> : ''}
+        <h3>{this.state.success ? (this.state.success) : "" }</h3>
+        <h3>{this.state.error ? (this.state.error) : "" }</h3>
+        {this.state.success? <Button onClick={() => this.setSucces()}>Next Rental</Button> : ''}
       </div>
       </header>
     
