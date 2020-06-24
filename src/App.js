@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -79,6 +78,7 @@ class App extends Component {
       selectedCustomer,
     })
   }
+  
   createRental() {
     if(this.state.selectedMovie) {
       const movieTitle = this.state.selectedMovie.title
@@ -107,15 +107,19 @@ class App extends Component {
       });
     }
   }
+  selectedItemClass() {
+    if (this.state.selectedCustomer || this.state.selectedMovie) {
+      return "items-selected"
+    } else {
+      return "no-items-selected"
+    }
+  }
   render() {
     return (
       <Router>
       <div className="App">
         <div className="sidenav">
           <ul>
-          {this.state.selectedMovie ? <li>Selected Movie:{this.state.selectedMovie.title}</li> : "" }
-          {this.state.selectedCustomer ? <li>Selected Customer:{this.state.selectedCustomer.name}</li> : "" }
-          {this.state.selectedMovie ? <li><button onClick={() => this.createRental()}>Create a Rental</button>  </li> : ''}
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -129,6 +133,13 @@ class App extends Component {
               <Link to="/search">Movie Search</Link>
             </li>
           </ul>
+          <div className={this.selectedItemClass()}>
+            {this.state.selectedMovie ? ("Selected Movie: \n" + this.state.selectedMovie.title) : "" }
+            <br />
+            {this.state.selectedCustomer ? ("Selected Customer: \n" + this.state.selectedCustomer.name) : "" }
+            <br />
+            {this.state.selectedMovie ? <Button onClick={() => this.createRental()}>Create a Rental</Button> : ''}
+          </div>
         </div>
         <div className="main">
           <Switch>
@@ -142,7 +153,7 @@ class App extends Component {
               <MovieLibrary movieList={this.state.movies} selectMovie={(id) => this.selectMovie(id)}/>
             </Route>
             <Route path="/search">
-              <MovieSearch />
+              <MovieSearch url={BASE_URL} selectMovie={(movie) => this.addMovie(movie)} />
             </Route>
           </Switch>
         </div>
