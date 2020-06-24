@@ -47,7 +47,7 @@ const Search = (props) => {
         // handle errors
         setErrorMessage("search failed");
         console.log(error.message);
-      });
+      },[]);
   };
 
   console.log(`drawing Search...`, props.addMovieCallBack);
