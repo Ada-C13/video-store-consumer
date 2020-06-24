@@ -18,10 +18,10 @@ const Search = (props) => {
       .then((response) => {
         const searchResult = response.data;
         setMovies(searchResult);
+        props.setError(null);
       })
       .catch((error) => {
-        // Still need to handle errors
-        // setErrorMessage(error.message);
+        props.setError(error.message);
       });
   };
 

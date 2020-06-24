@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ErrorCard = (props) => {
-  
 
   return (
     <div className="ui container">
