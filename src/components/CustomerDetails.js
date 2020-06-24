@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Customer = (props) => {
+const CustomerDetails = (props) => {
   const onButtonClick = () => {
     props.setSelectedCustomerCallBack(props.id);
   };
@@ -12,11 +12,11 @@ const Customer = (props) => {
       </li>
       <p>{props.registered_at}</p>
       <p>{props.phone}</p>
-      <button className='Customer' onClick={onButtonClick}>
+      <button className='CustomerDetails' onClick={onButtonClick}>
         Select User
       </button>
     </div>
   );
 };
 
-export default Customer;
+export default CustomerDetails;

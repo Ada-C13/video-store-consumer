@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Customer from '../components/Customer';
+import CustomerDetails from '../components/CustomerDetails';
 
 const Customers = (props) => {
   const [customers, setCustomers] = useState([]);
@@ -20,7 +20,7 @@ const Customers = (props) => {
 
   const cutomersList = customers.map((customer) => {
     return (
-      <Customer
+      <CustomerDetails
         key={customer.id}
         id={customer.id}
         name={customer.name}
