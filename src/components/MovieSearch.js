@@ -34,7 +34,7 @@ const MovieSearch = ({ addMovieCallback }) => {
         {movies.map((movie) => <li key={movie.external_id}>
         <img src={movie.image_url} alt={movie.title} ></img>
         {movie.title}
-        {movies.length === 1 ? "" : <button onClick={() => { addMovieCallback(movie) }}>Add to rental library</button>}
+        {movie.id ? "" : <button onClick={() => { addMovieCallback(movie) }}>Add to rental library</button>}
         </li> )}
       </ol>
       {errorMessage ? <div><h2 className="validation-errors-display">{errorMessage}</h2></div> : ''}
