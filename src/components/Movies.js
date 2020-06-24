@@ -7,44 +7,44 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import Popup from "reactjs-popup";
+
 // import axios from 'axios';
 
 // import './Movies.css';
 import Movie from './Movie';
 
-const Movies = () => {
+const Movies = (props) => {
   let match = useRouteMatch();
-
+  const movieList = props.list.map((movie, i) => {
+    return (
+      <li key={i}>
+        <div className="movie-list-item">
+          <Movie 
+            // image ???
+            title={movie.title} 
+            overview={movie.overview} 
+            release_date={movie.release_date}
+            inventory={movie.inventory}
+          />
+        </div>
+      </li>
+    );
+  });
   return (
-    <div>
+    <section className="movie-list">
       <h2>Movie Library</h2>
-      
-      {/* 
-        TODO: Replace the following list with an each loop 
-        that renders a link to each movie in the library.
-        The numbers on lines 75 and 78 are placeholders to 
-        demo the route.
-      */}
       <ul>
-        <li>
-          <Link to={`${match.url}/1`}>Movie 1</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/2`}>Movie 2</Link>
-        </li>
+        {movieList}
       </ul>
-
-      <Switch>
-        <Route path={`${match.path}/:movieId`}>
-          <Movie />
-        </Route>
-        <Route path={match.path}>
-          <h3>Please select a movie.</h3>
-        </Route>
-      </Switch>
-    </div>
+    </section>
   );
 }
+
+Movies.propTypes = {
+  list: PropTypes.array.isRequired,
+  onSelectCallback: PropTypes.func.isRequired,
+};
 
 export default Movies;
