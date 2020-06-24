@@ -8,6 +8,7 @@ import {
 import './App.css';
 import CustomerIndex from './components/customerindex';
 import MovieIndex from './components/movieindex';
+import MovieSearch from './components/MovieSearch';
 
 class App extends Component {
   constructor(props) {
@@ -33,8 +34,7 @@ class App extends Component {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/movies">Movie List</Link></li>
                 <li><Link to="/customers">Customers</Link></li>
-                <li>
-                </li>
+                <li><Link to="/search">Search</Link></li>
               </ul>
             </nav>
 
@@ -47,6 +47,11 @@ class App extends Component {
               <Route path="/movies">
                 <MovieIndex
                   selectMovieCallback={this.selectMovie}
+                />
+              </Route>
+              <Route path="/search">
+                <MovieSearch
+
                 />
               </Route>
             </Switch>
