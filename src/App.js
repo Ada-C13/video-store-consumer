@@ -13,7 +13,6 @@ const BASE_URL = 'http://localhost:3000'
 class App extends Component {
   constructor() {
     super();
-
     this.state = {
       // All Customers
       customers: [],
@@ -54,8 +53,7 @@ class App extends Component {
   // Select Customer Method
   selectCustomer(customerId) {
     console.log(customerId);
-    const { customers } = this.state;
-    const selectedCustomer = customers.find((customer) => {
+    const selectedCustomer = this.state.customers.find((customer) => {
       return customer.id === customerId;
     }) 
     this.setState({ selectedCustomer })
@@ -63,8 +61,7 @@ class App extends Component {
   // Select Movies Method
   selectMovie(movieId) {
     console.log(movieId);
-    const { movies } = this.state;
-    const selectedMovie = movies.find((movie) => {
+    const selectedMovie = this.state.movies.find((movie) => {
       return movie.id === movieId;
     })
     this.setState({ selectedMovie })
@@ -74,7 +71,40 @@ class App extends Component {
   selectedMovieCustomer(){ 
     return ((this.state.selectedCustomer || this.state.selectedMovie) ? "you selected an items" : "You didn't select any items" )
   }
-  
+
+  // If I have the movie that is select and the customer I have to get the movie title and the costumer id and to create dueDate and to post through axios.
+  makeRental(){
+    console.log(this.state.selectedMovie)
+    if(this.state.selectedMovie){
+      const title = this.state.selectedMovie.title
+      const custoId = this.state.selectedCustomer.id
+
+      // let dueDate = new Date()
+      let checkoutDate = new Date()
+      let dueDate = new Date() 
+      dueDate.setDate(checkoutDate.getDate() + 5);
+      
+      const params = {
+        customer_id: custoId,
+        due_date: dueDate,
+        checkout_date: checkoutDate,
+      }
+      // After i Check out one of the movie i have to setup both selectedmethods to undefined,
+      axios.post(`${BASE_URL}/rentals/${title}/check-out`, params)
+      .then(() => {
+        this.setState({
+          selectedMovie: undefined,
+          selectedCustomer: undefined,
+        })
+      })
+      .catch((error) => {
+        this.setState({ 
+          error: error.message,
+        });
+      });
+    }
+  }
+
   render() {
    return (
      <Router>
@@ -97,7 +127,7 @@ class App extends Component {
       <div>
         <h3>{this.state.selectedMovie ? ("Movie that you Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
         <h3>{this.state.selectedCustomer ? ("Customer that you Selected: \n\n" + this.state.selectedCustomer.name) : "" }</h3>
-        {(this.state.selectedMovie && this.state.selectedCustomer )? <Button>Create a Rental</Button> : ''}
+        {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.makeRental()}>Rent Now</Button> : ''}
       </div>
       </header>
     
