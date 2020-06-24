@@ -21,26 +21,33 @@ const Movie = ({ title, release_date, overview, image_url, id, selectMovie, deta
   }
 
   return (
-    <Card>
-      <div onClick={ () => detailsCallback(id) }>
-        <div>
-          <img src={image_url}/>
-          <div>
-            {title} 
-            <br></br>
-            {release_date}
-            <p>{isDetailed ? overview : ""}</p>
-            <div>{isDetailed ? fakeReviews() : ""}</div>
+   
+
+     
+        <div className="col-md-3">
+          <div className='card'>
+          <section className='card__content'>
+          <div onClick={ () => detailsCallback(id) }>
           </div>
-          
-          <div>
-            <Button 
-              onClick={() => selectMovie(id)}>{inLibrary ? "Select" : "Add to Rental Library"}
-            </Button>
-          </div>
-        </div>
-      </div>
-    </Card>
+          <img src={image_url} className='card__content-image'/>
+          <section className='card__content-text'>{title}</section>
+        
+          <section className='card__content-text'>
+          {release_date}</section>
+
+          <p>{isDetailed ? overview : ""}</p>
+          <div>{isDetailed ? fakeReviews() : ""}</div>
+    
+          <Button 
+            onClick={() => selectMovie(id)}>{inLibrary ? "Select" : "Add to Rental Library"}
+          </Button> 
+          </section>     
+    </div>
+    </div> 
+   
+  
+ 
+ 
   )
 }
 
@@ -56,6 +63,6 @@ Movie.propTypes = {
   searchDetailsMovie: PropTypes.func,
   detailsCallback: PropTypes.func, 
   inLibrary: PropTypes.string,
-}
+};
 
 export default Movie;

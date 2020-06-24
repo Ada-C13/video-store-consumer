@@ -10,6 +10,7 @@ import Home from './components/Home';
 import CustomerList from './components/CustomerList';
 import SearchBar from './components/SearchBar';
 import MovieLib from './components/MovieLib';
+import Nav from './components/Nav';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
@@ -170,24 +171,7 @@ class App extends Component {
 
     return (
       <Router>
-        <div className="App">
-          <div className="sidenav">
-
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/customers">Customers</Link>
-              </li>
-              <li>
-                <Link to="/search">Search Bar</Link>
-              </li>
-              <li>
-                <Link to="/library">Library</Link>
-              </li>
-            </ul>
-
+            <Nav/>
             <div className={this.selectedItemClass()}>
               {this.state.selectedMovie ? ("Selected Movie: \n" + this.state.selectedMovie.title) : "" }
               <br />
@@ -196,7 +180,7 @@ class App extends Component {
               {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.createRental()}>Create a Rental</Button> : ''}
             </div>
 
-          </div>
+   
           
           <div className="main">
 
@@ -228,7 +212,7 @@ class App extends Component {
             </Switch>
           
           </div>
-        </div>
+
       </Router>
     );
   }

@@ -12,7 +12,7 @@ class Nav extends Component {
       <nav>
         <h3>Logo</h3>
         <ul className="nav-links">
-        <Link style={navStyle} to="/customerlist"><li>CustomerList</li></Link>
+        <Link style={navStyle} to="/customers"><li>CustomerList</li></Link>
         <Link style={navStyle} to="/Library"><li>Library</li></Link>
         <Link style={navStyle} to="/Search"><li>SearchBar</li></Link>
           

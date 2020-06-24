@@ -18,9 +18,20 @@ const MovieLib = ({ movieList, selectMovie, detailsCallback, detailsMovie }) => 
   
   return (
     <div>
-      <h3>Movie Library</h3>
+    <div>
+    <h3>Search for a Movie:</h3>
       <div>
+        <input
+        />
+      </div>
+      <div className="submit-padding"><button type="submit">Search</button> 
+      </div>
+   
+    </div>
+      <div className="container">
+      <div className="row">
         {makeMovies()}
+      </div>
       </div>
     </div>
   )
