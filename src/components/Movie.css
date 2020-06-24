@@ -1,0 +1,15 @@
+.profile-card-1 {
+  font-family: nunito;
+  float: left;
+  overflow: hidden;
+  width: 40%;
+  color: #413542;
+  text-align: center;
+  height: 300px;
+  border:none;
+  padding: 10px;
+  margin: 40px;
+  font-family: nunito;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px #ff7c7c, 0 0 0 20px #ffffffeb;
+}
