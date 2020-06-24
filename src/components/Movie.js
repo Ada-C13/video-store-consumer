@@ -29,20 +29,23 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl}) => {
 
   return (
     <div>
-        <div>
-          title = {title}
-        </div>
-        <div>
-          external_id = {externalId}
-        </div>
-        <div>
-          overview = {overview}
-        </div>
-        <div>
-          releaseDate = {releaseDate}
-        </div>
-        <button onClick={addMovie}>Add to Movie Library</button>
+      <div>
+        <img src={imageUrl}></img>
       </div>
+      <div>
+        title = {title}
+      </div>
+      <div>
+        external_id = {externalId}
+      </div>
+      <div>
+        overview = {overview}
+      </div>
+      <div>
+        releaseDate = {releaseDate}
+      </div>
+      <button onClick={addMovie}>Add to Movie Library</button>
+    </div>
   );
 }
 
