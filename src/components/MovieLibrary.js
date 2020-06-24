@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 
-export function MovieLibrary({ pickMovieCallback }) {
+const MovieLibrary = ({ pickMovieCallback }) => {
   const [movies, setMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   
@@ -19,7 +19,6 @@ export function MovieLibrary({ pickMovieCallback }) {
         setErrorMessage(error.message);
       });
     }, []);
-    // console.log("this is before return in movie lib")
     return (
       <div className='list' >
         <ul>
@@ -37,7 +36,6 @@ export function MovieLibrary({ pickMovieCallback }) {
 };
 
 MovieLibrary.propTypes = {
-  // movies: PropTypes.array,
   pickMovieCallback: PropTypes.func.isRequired
 }
 

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './MovieSearch.css';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import SearchForm from './SearchForm.js';
 
-export function MovieSearch() {
+const MovieSearch = () => {
   const [movies, setMovies] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -36,9 +35,5 @@ export function MovieSearch() {
     </div>
   )
 };
-
-MovieSearch.propTypes = {
-  movies: PropTypes.array,
-}
 
 export default MovieSearch;

@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
-import { CustomerList } from './components/CustomerList.js';
-import { MovieLibrary } from './components/MovieLibrary.js';
-import { MovieSearch } from './components/MovieSearch.js';
+import CustomerList from './components/CustomerList.js';
+import MovieLibrary from './components/MovieLibrary.js';
+import MovieSearch from './components/MovieSearch.js';
 import Rental from './components/Rental.js';
 import axios from 'axios';
 
@@ -11,7 +11,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-// import logo from './logo.svg';
 import './App.css';
 
 const App = () => {
@@ -27,6 +26,7 @@ const App = () => {
     setCustomer(chosenCustomer);
   };
 
+  // found a similar method on stack overflow and used it here with minor changes
   const dueDate = () => {
     const result = new Date();
     result.setDate(result.getDate() + 14);
@@ -90,8 +90,6 @@ const App = () => {
     </Router>
   );
 }
-
-// we have to move these to componets in components folder and in these function we need to make api calls to the rails server url
 
 function Home() {
   return <h2>Home</h2>;

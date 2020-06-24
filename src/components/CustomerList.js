@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 
-export function CustomerList({ pickCustomerCallback }) {
+const CustomerList = ({ pickCustomerCallback }) => {
   const [customers, setCustomers] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
@@ -39,7 +39,7 @@ export function CustomerList({ pickCustomerCallback }) {
 };
 
 CustomerList.propTypes = {
-  // customers: PropTypes.array,
   pickCustomerCallback: PropTypes.func.isRequired
 }
 
+export default CustomerList;
