@@ -33,3 +33,11 @@
   border-radius: 25px;
   color: white;
 }
+
+.mt {
+  margin-top: 20px;
+}
+
+.mb {
+  margin-bottom: 20px;
+}

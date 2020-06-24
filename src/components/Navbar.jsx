@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [nav, setNav] = useState({
     home: true,
     search: false,
     library: false,
     customers: false
   });
-
 
   const onItemClick = (event) => {
     const newNav = {
@@ -21,6 +20,7 @@ const Navbar = () => {
     console.log(event.target.name);
     newNav[event.target.name] = true;
     setNav(newNav);
+    props.setError(null);
   };
 
   return (
