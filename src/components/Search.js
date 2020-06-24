@@ -35,14 +35,14 @@ import SearchForm from './SearchForm';
     })
   
     return (
-      <div className="container-fluid">
-        <SearchForm onSubmitCallback ={searchMovie}/>
+      <div className="w-100 d-flex flex-wrap justify-content-around container">
+        <div className="search-form w-100"><SearchForm onSubmitCallback ={searchMovie} /></div>
         <h2 className="py-2 text-center w-100">Search Results</h2>
         <table className="table table-hover">
-          <thead className="thead-light">
+          <thead className="thead-light text-center">
             <tr>
               <th>ID</th>
-              <th>Add to Library</th>
+              <th>Select</th>
               <th>Title</th>
               <th>Image</th>
               <th>Release Date</th>
