@@ -4,7 +4,7 @@ import axios from 'axios';
 import SearchForm from './SearchForm.js';
 import PropTypes from 'prop-types';
 
-const MovieSearch = ({ addMovieCallback, addMessageCallback }) => {
+const MovieSearch = ({ addMovieCallback, addMessageCallback, findMovieCallback }) => {
   const [movies, setMovies] = useState([]);
 
   const getMovie = (query) => {
@@ -27,22 +27,29 @@ const MovieSearch = ({ addMovieCallback, addMessageCallback }) => {
   };
 
   return (
-    <div>
-      <SearchForm onSubmitCallback={getMovie} />
-      <ol>
-        {movies.map((movie) => <li key={movie.external_id}>
-        <img src={movie.image_url} alt={movie.title} ></img>
-        {movie.title}
-        {movie.id === 0 || movie.id ? "" : <button onClick={() => { addMovieCallback(movie) }}>Add to rental library</button>}
-        </li> )}
-      </ol>
-    </div>
+  <div className='list'>
+    <SearchForm onSubmitCallback={getMovie} />
+    <ul className='movie-list'>
+      { movies.map((m) => 
+        <li key={m.external_id} className="movie-square">
+          <img src={m.image_url} alt={m.title} className='movie-image'></img>
+          <div>
+            <h3 className='movie-title'>Title: {m.title}</h3>
+            {m.id === 0 || m.id ? <button className='button' onClick={() => { findMovieCallback(m) }}>select</button> : <button className='button' onClick={() => { addMovieCallback(m) }}>Add to rental library</button>}
+            <p>{m.overview}</p>
+            <h5 className='movie-date'>Release Date: { m.release_date }</h5>
+          </div>
+        </li> 
+      )}
+    </ul>
+</div>
   )
 };
 
 MovieSearch.propTypes = {
-  addMovieCallback: PropTypes.func,
-  addMessageCallback: PropTypes.func,
+  addMovieCallback: PropTypes.func.isRequired,
+  addMessageCallback: PropTypes.func.isRequired,
+  findMovieCallback: PropTypes.func.isRequired,
 }
 
 export default MovieSearch;

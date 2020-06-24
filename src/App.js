@@ -119,7 +119,7 @@ const App = () => {
             <CustomerList pickCustomerCallback = {selectCustomer} />
           </Route>
           <Route path="/search">
-            <MovieSearch addMovieCallback = {addMovie} addMessageCallback = {addMessage} />
+            <MovieSearch addMovieCallback = {addMovie} addMessageCallback = {addMessage} findMovieCallback = {findMovie}/>
           </Route>
           <Route path="/">
             <Home />
