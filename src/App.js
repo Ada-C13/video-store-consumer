@@ -30,14 +30,13 @@ class App extends Component {
   componentDidMount() {
     axios.get(`${BASE_URL}/customers`)
     .then((response) => {
-
       const customers = response.data;
-
       this.setState({
         customers,
         error: undefined
       });
     })
+
     .catch ((error) => {
       this.setState({ 
         error: error.message 
@@ -52,11 +51,29 @@ class App extends Component {
         error: undefined
       });
     })
+
     .catch((error) => {
       this.setState({ 
         error: error.message 
       });
     });
+  }
+
+  addMovie = (movieToAdd) => {
+    console.log(movieToAdd)
+    if (!this.state.movies.find(movie => movie.external_id === movieToAdd.external_id)) {
+      axios.post(`${BASE_URL}/movies`, movieToAdd)
+      .then((response) => {
+        const { movies } = this.state;
+        movies.push(movieToAdd)
+        this.setState({
+          movies,
+        });
+      })
+      .catch((error) => {
+        this.setState({ error: error.message });
+      });
+    }
   }
 
   selectMovie = (movieId) => {
@@ -71,20 +88,18 @@ class App extends Component {
   
   selectCustomer(id) {
     const { customers } = this.state;
-
-    const selectedCustomer = customers[id - 1]
-
-    this.setState({
-      selectedCustomer,
+    const selectedCustomer = customers.find((customer) => {
+      return customer.id === id;
     })
+    this.setState({ selectedCustomer })
   }
-  
+
   createRental() {
     if(this.state.selectedMovie) {
       const movieTitle = this.state.selectedMovie.title
       const customerId = this.state.selectedCustomer.id
       let dueDate = new Date()
-      dueDate.setDate(new Date().getDate() + 1);
+      dueDate.setDate(new Date().getDate() + 5);
 
       const params = {
         customer_id: customerId,

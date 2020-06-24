@@ -43,12 +43,7 @@
   padding: 20px 10px;
 }
 
-.items-selected {
-  background-color: rgb(3, 27, 133);
-  color:  #28abf1;
-  text-align: left;
-}
-
-.span{
-  font-weight: bold;
+.selected-item {
+  background-color: rgb(226, 177, 86);
+  padding: 20px;
 }
