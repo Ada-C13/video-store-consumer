@@ -49,9 +49,12 @@ const App = () => {
   }
 
   const addMovie = (movie) => {
-    
+    console.log("MOVIE", movie)
     axios.post('http://localhost:3000/movies', movie)
     .then(() => {
+      setMessage(
+        "Succesfully added a movie to rental library!"
+      );
     })
     .catch((error) => {
       setMessage(error.message);
