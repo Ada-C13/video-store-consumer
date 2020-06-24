@@ -206,6 +206,7 @@ class App extends Component {
                 <MovieLib 
                   movieList={this.state.movies} 
                   selectMovie={(id) => this.selectMovie(id)} 
+                  selectCustomer={(id) => this.selectCustomer(id)}
                   detailsCallback={(id) => this.detailsCallback(id)} 
                   detailsMovie={this.state.detailsMovie} />
               </Route>

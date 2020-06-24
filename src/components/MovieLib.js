@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Movie from './Movie'
+import CustomerSearch from './CustomerSearch'
 import './MovieLib.css'
 
-const MovieLib = ({ movieList, selectMovie, detailsCallback, detailsMovie }) => {
+const BASE_URL = 'http://localhost:3000'
+
+const MovieLib = ({ movieList, selectMovie, selectCustomer, detailsCallback, detailsMovie }) => {
   
   const makeMovies = () => movieList.map((movie, i) => {
     return <Movie
@@ -19,14 +22,11 @@ const MovieLib = ({ movieList, selectMovie, detailsCallback, detailsMovie }) => 
   return (
     <div>
     <div>
-    <h3>Search for a Movie:</h3>
-      <div>
-        <input
-        />
-      </div>
-      <div className="submit-padding"><button type="submit">Search</button> 
-      </div>
-   
+    <CustomerSearch
+      url={BASE_URL} 
+      selectCustomer={(id) => selectCustomer(id)}
+      detailsCallback={(id) => detailsCallback(id) }
+      />
     </div>
       <div className="container">
       <div className="row">
