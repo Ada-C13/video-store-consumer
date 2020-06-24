@@ -16,7 +16,6 @@ import Popup from "reactjs-popup";
 import Movie from './Movie';
 
 const Movies = (props) => {
-  let match = useRouteMatch();
   const movieList = props.list.map((movie, i) => {
     return (
       <li key={i}>
@@ -27,6 +26,7 @@ const Movies = (props) => {
             overview={movie.overview} 
             release_date={movie.release_date}
             inventory={movie.inventory}
+            onSelectCallback={props.onSelectCallback}
           />
         </div>
       </li>
