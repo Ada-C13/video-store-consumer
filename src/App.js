@@ -15,6 +15,7 @@ import Home from './components/Home';
 import Search from './components/Search';
 import Movies from './components/Movies';
 import Customers from './components/Customers';
+import Checkout from './components/Checkout';
 
 const App = () => {
   const [ searchResults, setSearchResults ] = useState([]);
@@ -22,6 +23,8 @@ const App = () => {
   
   const [ customerList, setCustomerList ] = useState([]);
   const [ selectedCustomer, setSelectedCustomer ] = useState(null);
+
+  const [ selectedMovie, setSelectedMovie ] = useState("movie test");
 
   const searchMovies = (search) => {
     axios.get('http://localhost:3000/movies', { params: search })
@@ -45,6 +48,16 @@ const App = () => {
 
   useEffect( getCustomers, [ getCustomers ]);
 
+  const createRental = (title, customer_id) => {
+    axios.post('http://localhost:3000/rentals/' + title + '/check-out', { params: title, customer_id })
+    .then((response) => {
+      setSearchResults(response.data);
+    })
+    .catch((error) => {
+      setErrorMessage(error.response.data.cause);
+    });
+  }
+
   return (
     <Router>
       <header className="App-header">
@@ -65,6 +78,11 @@ const App = () => {
                 <span className="App-selected__customer">Customer #{selectedCustomer.id} {selectedCustomer.name}</span>
               )
             }
+            {
+              selectedCustomer && selectedMovie && (
+                <Link to="/checkout" className="button">Checkout</Link>
+              )
+            }
           </div>
       </header>
 
@@ -78,6 +96,9 @@ const App = () => {
           </Route>
           <Route path="/customers">
             <Customers list={customerList} onSelectCallback={setSelectedCustomer} />
+          </Route>
+          <Route path="/checkout">
+            <Checkout customer={selectedCustomer} movie={selectedMovie} onSubmitCallback={createRental} />
           </Route>
           <Route path="/">
             <Home />
