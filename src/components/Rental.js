@@ -14,7 +14,7 @@ const Rental = ({ movie, customer, rentMovie }) => {
     </div>
     );
   };
-  return ("");
+  return (setIsClickedOn(true));
 }
 
 

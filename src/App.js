@@ -57,6 +57,8 @@ const App = () => {
             "Succesfully Rented"
           );
           setTimeout(() => setMessage(''), 5000);
+          setCustomer(null);
+          setMovie(null);
         })
         .catch((error) => {
           setMessage(error.message);
