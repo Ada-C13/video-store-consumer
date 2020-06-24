@@ -47,7 +47,7 @@ class App extends Component {
     .then((response) => {
       const movies = response.data;
       this.setState({ 
-        movies: movies,
+        movies,
         error: undefined
       });
     })
