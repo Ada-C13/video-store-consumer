@@ -72,15 +72,21 @@ class SearchBar extends Component {
     </form>
     )}
 
-  databaseMovies = () => this.state.searchResults.map((movie, i) => {
-    return <Movie
-      key={i}
-      { ...movie }
-      selectMovie={() => this.props.selectMovie(movie)}
-      detailsCallback={() => this.showDetails(movie.external_id) }
-      searchDetailsMovie={this.state.searchDetailsMovie}
-      />
-  });
+  databaseMovies = () => 
+    this.state.searchResults.map((movie, i) => {
+      return <Movie
+        key={i}
+        { ...movie }
+        selectMovie={() => this.props.selectMovie(movie)}
+        detailsCallback={() => this.showDetails(movie.external_id) }
+        searchDetailsMovie={this.state.searchDetailsMovie}
+        />
+    }
+  );
+
+  noResults = () => {
+    return <h3>No search results</h3>
+  }
   
   render () {
     return (
@@ -101,7 +107,7 @@ class SearchBar extends Component {
           </div>
         </form>
         <div>
-          {this.databaseMovies()}
+          {this.state.searchResults.length === 0 ? this.noResults() : this.databaseMovies()}
         </div>
         </div>
     )
