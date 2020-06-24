@@ -95,6 +95,13 @@ class App extends Component {
             <Link to="/customers">Customer List</Link>
           </li>
         </ul>
+        <div>
+              <h3>{this.state.selectedMovie ? ("Movie that you Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
+              <br />
+              <h3>{this.state.selectedCustomer ? ("Customer that you Selected: \n\n" + this.state.selectedCustomer.name) : "" }</h3>
+              <br />
+              {(this.state.selectedMovie && this.state.selectedCustomer )? <Button>Create a Rental</Button> : ''}
+        </div>
       </header>
     
       <Switch>
