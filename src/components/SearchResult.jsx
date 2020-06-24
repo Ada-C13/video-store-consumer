@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import AddToLibraryButton from './AddToLibraryButton';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import axios from "axios";
+import AddToLibraryButton from "./AddToLibraryButton";
+import PropTypes from "prop-types";
 
-const POST_URL = "http://localhost:3000/movies"
+const POST_URL = "http://localhost:3000/movies";
 
 const SearchResult = (props) => {
   const [inLibrary, setInLibrary] = useState(props.inLibrary);
@@ -14,11 +14,12 @@ const SearchResult = (props) => {
       overview: props.overview,
       release_date: props.release_date,
       image_url: props.image_url,
-      external_id: props.external_id
+      external_id: props.external_id,
     };
 
     console.log(data);
-    axios.post(POST_URL, data)
+    axios
+      .post(POST_URL, data)
       .then((response) => {
         console.log("Added to Library");
         setInLibrary(true);
@@ -27,17 +28,23 @@ const SearchResult = (props) => {
       .catch((error) => {
         props.setError(error.message);
       });
-  }
+    props.addMovie(data);
+  };
 
   return (
     <tr>
       <td>
-        <img src={props.image_url} className="ui mini rounded image"/>
+        <img src={props.image_url} className="ui mini rounded image" />
       </td>
       <td className="two wide"> {props.title} </td>
       <td className="two wide"> {props.release_date} </td>
       <td> {props.overview} </td>
-      <td><AddToLibraryButton inLibrary={inLibrary} addToLibraryCallback={addToLibrary}/></td>
+      <td>
+        <AddToLibraryButton
+          inLibrary={inLibrary}
+          addToLibraryCallback={addToLibrary}
+        />
+      </td>
     </tr>
   );
 };
@@ -48,7 +55,8 @@ SearchResult.propTypes = {
   release_date: PropTypes.string,
   overview: PropTypes.string,
   inLibrary: PropTypes.bool.isRequired,
-  setError: PropTypes.func.isRequired
+  setError: PropTypes.func.isRequired,
+  addMovie: PropTypes.func.isRequired,
 };
 
 export default SearchResult;

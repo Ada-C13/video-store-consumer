@@ -37,6 +37,7 @@ const Search = (props) => {
           foundMovies={movies}
           library={props.library}
           setError={props.setError}
+          addMovie={props.addMovie}
         />
       )}
     </div>
@@ -46,6 +47,7 @@ const Search = (props) => {
 Search.propTypes = {
   library: PropTypes.array,
   setError: PropTypes.func.isRequired,
+  addMovie: PropTypes.func.isRequired,
 };
 
 export default Search;

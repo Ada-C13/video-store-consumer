@@ -63,6 +63,11 @@ const App = () => {
       });
   }, []);
 
+  const addMovieCallback = (newMovie) => {
+    const updatedLibrary = [newMovie, ...library];
+    setLibrary(updatedLibrary);
+  };
+
   const onSelectCustomer = (customer_id) => {
     axios.get(CUSTOMERS_URL).then((response) => {
       let count = 1;
@@ -160,7 +165,11 @@ const App = () => {
             <Library library={library} selectMovieCallback={onSelectMovie} />
           </Route>
           <Route path="/search">
-            <Search library={library} setError={setErrorCallback} />
+            <Search
+              library={library}
+              setError={setErrorCallback}
+              addMovie={addMovieCallback}
+            />
           </Route>
           <Route path="/customers">
             <Customers
