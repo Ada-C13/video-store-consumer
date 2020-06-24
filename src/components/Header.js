@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import Customers from './Customers';
@@ -11,10 +11,17 @@ const Header = (props) => {
 
   //Customer
   const [selectedCustomer, setSelectedCustomer] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
-
+  
   const selectCustomer = (selectedCustomer) => {
     setSelectedCustomer(selectedCustomer);
+    return;
+  }
+
+  //Movie
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  const selectMovie = (selectedMovie) => {
+    setSelectedMovie(selectedMovie);
     return;
   }
 
@@ -22,24 +29,33 @@ const Header = (props) => {
   <Router>
       <div>
         <h2>Welcome to Video Store Customer</h2>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <ul className="navbar-nav mr-auto">
-          <li><Link to={'/'} className="nav-link">Home</Link></li>
-          <li><Link to={'/library'} className="nav-link">Library</Link></li>
-          <li><Link to={'/customers'} className="nav-link">Customers</Link></li>
-          <li><Link to={'/search'} className="nav-link">Search</Link></li>
-          <li> {selectedCustomer ? "Selected Customer: "+selectedCustomer.name : "No Customer Selected"} </li>
-        </ul>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+
+          <ul className="navbar-nav mr-auto">
+            <li><Link to={'/'} className="nav-link">Home</Link></li>
+            <li><Link to={'/library'} className="nav-link">Library</Link></li>
+            <li><Link to={'/customers'} className="nav-link">Customers</Link></li>
+            <li><Link to={'/search'} className="nav-link">Search</Link></li>
+          </ul>
+
+          <div className="selected w-75 d-flex justify-content-end">
+            <ul className="list-group list-group-horizontal text-center">
+              <li className={ selectedCustomer ? "list-group-item active" : "list-group-item text-muted"}>{selectedCustomer ? selectedCustomer.name : "No Customer Selected"} </li>
+              <li className={ selectedMovie ? "list-group-item active" : "list-group-item text-muted"}> {selectedMovie ? selectedMovie.title : "No Movie Selected"} </li>
+              <button className={ selectedCustomer && selectedMovie ? "btn btn-primary text-decoration-none" : "invisible" } onClick="" path="/">Checkout</button>
+            </ul>
+          </div>
 
         </nav>
         <hr />
-        <Switch>
+        <Switch> 
             <Route exact path='/' component={Home} />
             <Route 
             path='/library'
             render={(props) => (
               <Library {...props} 
-              url={URL+"/movies"}/>
+              url={URL+"/movies"}
+              selectMovieCallback={selectMovie}/>
             )} />
             <Route 
             path='/customers'

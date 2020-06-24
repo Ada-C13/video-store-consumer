@@ -30,6 +30,7 @@ const Library = (props) => {
         release_date = {movie.release_date}
         overview = {movie.overview}
         external_id = {movie.external_id}
+        selectMovieCallback={props.selectMovieCallback}
       />
     )
   })
@@ -40,7 +41,8 @@ const Library = (props) => {
         <table class="table table-hover">
           <thead class="thead-light">
             <tr>
-              <th>Id</th>
+              <th>ID</th>
+              <th>Select</th>
               <th>Title</th>
               <th>Image</th>
               <th>Release Date</th>
