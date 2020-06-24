@@ -2,10 +2,15 @@ import React from 'react';
 
 const Movie = (props) => {
 
+  const onSelectMovie = (event) => {
+    // send props.title back to App 
+  }
+
   return (
     <div>
       <h3>{props.title}</h3>
       <img src={props.image_url} alt="movie poster"/>
+      <button onClick={onSelectMovie}>Select Movie</button>
     </div>
   )
 }

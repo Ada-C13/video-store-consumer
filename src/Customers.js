@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Customer from './Customer';
 
-const Customers = () => {
+const Customers = (props) => {
 
   const API_CUSTOMERS_URL = 'http://localhost:3000/customers'
   
@@ -29,6 +29,7 @@ const Customers = () => {
       account_credit = {customerObj.account_credit}
       movie_count={customerObj.movies_checked_out_count}
       key={customerObj.id}
+      onClickCallback= {props.onClickCallback}
     />)
   })
 
