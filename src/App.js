@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+// import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -8,6 +9,8 @@ import Home from "./components/Home";
 import Search from "./components/Search";
 import Library from "./components/Library";
 import Customers from "./components/Customers";
+
+const API_URL_BASE = 'http://localhost:3000';
 
 // App component
 const App = () => {
@@ -23,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/movies`)
+      .get(API_URL_BASE + "/movies")
       .then((response) => {
         const apiMovieList = response.data;
         setMovieList(apiMovieList);
@@ -35,7 +38,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/customers`)
+      .get(API_URL_BASE + "/customers")
       .then((response) => {
         const apiCustomerList = response.data;
         setCustomerList(apiCustomerList);
@@ -119,6 +122,18 @@ const App = () => {
     );
   };
 
+  const addMovieCallBack = movie => {
+    console.log(`App, add movie to library`);
+    const newMovieList = movieList;
+
+    // if movie.external_id doesn't match any in movieList, 
+    // add movie. otherwise show error
+
+    newMovieList.push(movie);
+
+    setMovieList(newMovieList);
+  }
+
   return (
     <Router>
       <div className="AppRoute">
@@ -131,8 +146,8 @@ const App = () => {
             render={(props) => (
               <Search
                 {...props}
-                onMovieSelectCallback={onMovieSelectCallback}
                 movieList={movieList}
+                addMovieCallBack={addMovieCallBack}
               />
             )}
           />
