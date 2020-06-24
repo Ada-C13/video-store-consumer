@@ -4,7 +4,7 @@ import './Home.css'
 
 const Home = () => {
   return (
-    <h1>Shonda and Jocelyn's Video Store!</h1>
+    <div className="background"></div>
   )
 }
 
