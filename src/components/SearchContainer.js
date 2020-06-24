@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import axios from 'axios';
+import Movie from "./Movie";
 
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
@@ -40,7 +41,7 @@ const SearchContainer = () => {
     return(
       <Movie
         key = {movie.external_id}
-        external_id = {movie.external_id}
+        externalId = {movie.external_id}
         title = {movie.title}
         overview = {movie.overview}
         releaseDate = {movie.release_date}
@@ -54,7 +55,7 @@ const SearchContainer = () => {
       <form className="" onSubmit={onFormSubmit} >
         <div className ="">
           <label className="">Search for Movie Title: </label>
-          <input className = "" 
+          <input className = ""
             name="text"
             value={formFields.text}
             onChange = {onInputChange}
