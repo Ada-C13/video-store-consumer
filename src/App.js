@@ -45,13 +45,18 @@ const App = () => {
                 <Link to="/customers">Customers</Link>
               </li>
               <li>
-                <Link to="/users">Users</Link>
+                <Link to="/movies">Library</Link>
               </li>
             </ul>
           </nav>
           <Switch>
             <Route path="/customers" render={(props) => (
               <Customers {...props} API_URL_BASE={API_URL_BASE}/>
+            )}>
+
+            </Route>
+            <Route path="/movies" render={(props) => (
+              <Library {...props} API_URL_BASE={API_URL_BASE}/>
             )}>
 
             </Route>
