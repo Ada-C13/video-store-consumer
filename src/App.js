@@ -9,6 +9,7 @@ import './App.css';
 import CustomerIndex from './components/customerindex';
 import MovieIndex from './components/movieindex';
 import MovieSearch from './components/moviesearch';
+import Rental from './components/rental'
 
 class App extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class App extends Component {
                 <li><Link to="/movies">Movie List</Link></li>
                 <li><Link to="/customers">Customers</Link></li>
                 <li><Link to="/search">Search</Link></li>
+                <li><Link to="/rental">Add a New Movie</Link></li>
               </ul>
             </nav>
 
@@ -51,6 +53,11 @@ class App extends Component {
               </Route>
               <Route path="/search">
                 <MovieSearch
+
+                />
+              </Route>
+              <Route path="/rental">
+                <Rental
 
                 />
               </Route>
