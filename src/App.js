@@ -119,15 +119,6 @@ class App extends Component {
     this.setState({ selectedCustomer })
   }
 
-  selectRental(rentalId) {
-    const { rentals } = this.state;
-    const selectedRental = rentals.find((rental) => {
-      return rental.id === rentalId;
-    })
-
-    this.setState({ selectedRental})
-  }
-
   createRental() {
     if(this.state.selectedMovie) {
       const movieTitle = this.state.selectedMovie.title
@@ -263,7 +254,6 @@ class App extends Component {
               <Route path="/rentals">
                 <RentalList 
                 rentalList={this.state.rentals} 
-                selectRental={(id) => this.selectRental(id)}
                 returnRental={(movie, customer) => this.returnRental(movie, customer)} />
               </Route>
             </Switch>

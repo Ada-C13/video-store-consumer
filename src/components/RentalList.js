@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import Rental from './Rental';
 import './RentalList.css';
 
-const RentalList = ({ rentalList, selectRental, returnRental }) => {
+const RentalList = ({ rentalList, returnRental }) => {
   const buildRentals = () => {
     console.log (rentalList)
     const rentalElements = rentalList.map((rental) => {
       return <Rental 
         key={rental.id}
         { ...rental }
-        selectRental={(id) => selectRental(id)}
         returnRental={(movie, customer) => returnRental(movie, customer)}
       />
     });

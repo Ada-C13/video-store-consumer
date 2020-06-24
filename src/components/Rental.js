@@ -5,7 +5,7 @@ import './Rental.css';
 import { Button } from 'react-bootstrap/';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Rental = ({ id, customer, movie, due_date, returned, selectRental, returnRental }) => {
+const Rental = ({ id, customer, movie, due_date, returned, returnRental }) => {
   return (
     <div className="rental-card">
       <section className="rental-header">
