@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Button } from 'react-bootstrap/';
+import { Button } from 'react-bootstrap/';
 import './Movie.css';
 
 const Movie = ({ title, release_date, overview, image_url, id, selectMovie, detailsMovie, external_id, searchDetailsMovie, detailsCallback, inLibrary }) => {
@@ -21,40 +21,32 @@ const Movie = ({ title, release_date, overview, image_url, id, selectMovie, deta
   }
 
   return (
-   
+    <div className="col-md-3">
+      <div className='card'>
+        <section className='card__content'>
+        <div onClick={ () => detailsCallback(id) }></div>
+        <img src={image_url} className='card__content-image'/>
+        <section className='card__content-text'>{title}</section>
+      
+        <section className='card__content-text'>
+        {release_date}</section>
 
-     
-        <div className="col-md-3">
-          <div className='card'>
-          <section className='card__content'>
-          <div onClick={ () => detailsCallback(id) }>
-          </div>
-          <img src={image_url} className='card__content-image'/>
-          <section className='card__content-text'>{title}</section>
-        
-          <section className='card__content-text'>
-          {release_date}</section>
+        <p>{isDetailed ? overview : ""}</p>
+        <div>{isDetailed ? fakeReviews() : ""}</div>
 
-          <p>{isDetailed ? overview : ""}</p>
-          <div>{isDetailed ? fakeReviews() : ""}</div>
-    
-          <Button 
-            onClick={() => selectMovie(id)}>{inLibrary ? "Select" : "Add to Rental Library"}
-          </Button> 
-          </section>     
-    </div>
+        <Button 
+          onClick={() => selectMovie(id)}>{inLibrary ? "Select" : "Add to Rental Library"}
+        </Button> 
+        </section>     
+      </div>
     </div> 
-   
-  
- 
- 
   )
 }
 
 Movie.propTypes = {
-  title: PropTypes.string.isRequired,
-  release_date: PropTypes.string.isRequired,
-  overview: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  release_date: PropTypes.string,
+  overview: PropTypes.string,
   image_url: PropTypes.string,
   id: PropTypes.number,
   selectMovie: PropTypes.func,

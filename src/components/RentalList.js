@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Rental from './Rental';
 import './RentalList.css';
@@ -31,7 +31,7 @@ const RentalList = ({ rentalList, returnRental }) => {
 
 RentalList.propTypes = {
   rentalList: PropTypes.array.isRequired,
-  selectCustomer: PropTypes.func.isRequired,
+  returnRental: PropTypes.func.isRequired,
 };
 
 export default RentalList;
