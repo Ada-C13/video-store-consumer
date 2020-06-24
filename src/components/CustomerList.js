@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Customer from './Customer';
 
 const CustomerList = ({ customerList, selectCustomer }) => {
+  
   const buildCustomers = () => {
     const customer = customerList.map((customer) => {
       return <Customer 
