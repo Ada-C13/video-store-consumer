@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import './Search.css';
 
 
 const Search = (props) => {
-    
     const [movie, setMovie] = useState('')
+    const [search, setSearch] = useState(false)
   
     const onInputChange = (event) => {
       let newMovie = event.target.value;
@@ -14,17 +15,18 @@ const Search = (props) => {
     const onFormSubmitCallback = (event) => {
       event.preventDefault(); 
       props.onSubmitCallback(movie);
+      setSearch(true)
       setMovie('');
     };
   
+
     return(
-  
-      <form className="new-card-form"
-          onSubmit={onFormSubmitCallback}>
-  
-        <div className="search__form">
-          <h2 >Search</h2>
-          <label htmlFor="writePost" className="search__form-label">Search here: </label>
+    !search && (
+    <div id="cover">  
+      <form method="get" action=""
+        onSubmit={onFormSubmitCallback}>
+        <div className="tb">
+          <label htmlFor="writePost" className="td"> </label>
           <input className="search__form-textarea"
             name="Submit post"
             placeholder="Type Movie here"
@@ -33,10 +35,14 @@ const Search = (props) => {
             type="text"
           />
         </div>
-        <div className="search__form-button">
-          <input type="submit" value="Search" className="search__form-button"  onSubmit={onFormSubmitCallback}/>
+        <div class="td" id="s-cover">
+          <button type="submit">
+            <input id="s-circle" onSubmit={onFormSubmitCallback}/>
+            <span></span>
+          </button>
         </div>
       </form>
+    </div>)
     );
   };
   
@@ -44,4 +50,4 @@ const Search = (props) => {
 //       onSubmitCallback: PropTypes.func.isRequired,
 //     };
   
-    export default Search;
+  export default Search;
