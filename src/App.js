@@ -14,8 +14,6 @@ import {
 class App extends Component {
   render() {
     return (
-      <section class="mx-5">
-
       <Router>
         <head>
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
@@ -23,22 +21,32 @@ class App extends Component {
           crossorigin="anonymous"></link>
         </head>
         <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/search">Search</Link>
-            </li>
-            <li>
-              <Link to="/library">Library</Link>
-            </li>
-            <li>
-              <Link to="/customers">Customers</Link>
-            </li>
-          </ul>
+          
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="/">Rentflix</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/search">Search <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/library">Library <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/customers">Customers <span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+          </div>
         </nav>
+
+
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -59,7 +67,6 @@ class App extends Component {
       </div>
 
       </Router>
-      </section>
     );
   }
 }

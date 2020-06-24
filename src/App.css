@@ -14,8 +14,9 @@
   color: white;
 }
 
-.App-title {
+.navbar-dark .navbar-brand {
   font-size: 1.5em;
+  color: #1af6eb;
 }
 
 .App-intro {
