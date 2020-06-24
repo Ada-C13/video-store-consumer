@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './MovieSearch.css';
 import axios from 'axios';
 import SearchForm from './SearchForm.js';
+import PropTypes from 'prop-types';
 
 const MovieSearch = () => {
   const [movies, setMovies] = useState([]);
