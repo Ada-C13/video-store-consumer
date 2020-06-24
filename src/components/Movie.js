@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 const Movie = ({movie, selectMovieCallback}) => {
   return (
-    <div className="card w-25">
-      <img className="card-img-top" src={movie.image_url} alt={movie.title} />
-      <div className="card-body">
-        <h4 className="card-title"> {movie.title} </h4>
-        <p className="card-text"> Released on {movie.release_date} </p>
-        <p className="card-text"> {movie.overview} </p>
+    <div className="movie-card">
+      <img className="movie-card-image" src={movie.image_url} alt={movie.title} />
+      <div className="movie-card-body">
+        <h4 className="movie-card-title"> {movie.title} </h4>
+        <p className="movie-card-release-date"> Released on {movie.release_date} </p>
+        <p className="movie-card-description"> {movie.overview} </p>
         <button
         type="button"
-        className="select_movie"
+        className="movie-card-button"
         onClick={() => selectMovieCallback(movie.id)}>
           Select
       </button>
