@@ -11,7 +11,7 @@ const Movie = ({ id, title, overview, release_date, image_url, external_id, sele
       <ul>
         <li>Overview: {overview} </li>
         <li>Relase Date: {(release_date).substring(0,10)} </li>
-        <li>Photo: {image_url} </li>
+        <li><img src={image_url} alt={title}/></li>
         <li>External id: {external_id} </li>
       </ul>
     </div>
