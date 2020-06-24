@@ -1,0 +1,10 @@
+.user_grid {
+  border-bottom: solid black 3px;
+  width: fit-content;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 20px;
+  align-items: center;
+}
