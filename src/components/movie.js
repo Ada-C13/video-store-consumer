@@ -22,12 +22,12 @@ const Movie = (props) => {
 };
 
 Movie.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   title: PropTypes.string.isRequired,
   releaseDate: PropTypes.string.isRequired,
   overview: PropTypes.string,
   imageUrl: PropTypes.string,
-  externalId: PropTypes.string,
+  externalId: PropTypes.number,
   selectMovieCallback: PropTypes.func
 }
 
