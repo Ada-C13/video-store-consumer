@@ -6,7 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
-import CustomerList from './components/customerindex';
+import CustomerIndex from './components/customerindex';
 import MovieIndex from './components/movieindex';
 
 class App extends Component {
@@ -40,7 +40,7 @@ class App extends Component {
 
             <Switch>
               <Route path="/customers">
-                <CustomerList
+                <CustomerIndex
                   selectCustomerCallback={this.selectCustomer}
                 />
               </Route>
