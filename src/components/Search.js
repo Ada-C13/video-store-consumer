@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Search.css";
 
-const drawMovies = (movieList, onMovieSelectCallback, searchText) => {
-  return movieList.map((movie, index) => {
+const axios = require("axios");
+const API_URL_BASE = "http://localhost:3000";
+
+const drawMovies = (searchResults, addMovieCallBack, searchText) => {
+  return searchResults.map((movie, index) => {
     if (movie.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
       return (
         <tr key={index}>
@@ -13,9 +16,7 @@ const drawMovies = (movieList, onMovieSelectCallback, searchText) => {
             <img src={movie.image_url} alt="Movie Cover" />
           </td>
           <td>
-            <button onClick={() => onMovieSelectCallback(movie.id)}>
-              Select Movie
-            </button>
+            <button onClick={() => addMovieCallBack(movie)}>Add Movie</button>
           </td>
         </tr>
       );
@@ -24,15 +25,30 @@ const drawMovies = (movieList, onMovieSelectCallback, searchText) => {
 };
 
 // Search Component
+
 const Search = (props) => {
   const [searchText, setSearchText] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   const onSearchChange = (event) => {
     console.log(`Search Field updated ${event.target.value}`);
     setSearchText(event.target.value);
+
+    axios
+      .get(API_URL_BASE + `/movies?query=${searchText}`)
+      .then((response) => {
+        const apiSearchResults = response.data;
+        // set state
+        setSearchResults(apiSearchResults);
+      })
+      .catch((error) => {
+        // handle errors
+        // setErrorMessage("search failed");
+        // console.log(error.message);
+      });
   };
 
-  console.log(`drawing Search...`);
+  console.log(`drawing Search...`, props.addMovieCallBack);
   return (
     <div>
       <h1>Search Movie</h1>
@@ -56,11 +72,7 @@ const Search = (props) => {
             </tr>
           </thead>
           <tbody>
-            {drawMovies(
-              props.movieList,
-              props.onMovieSelectCallback,
-              searchText
-            )}
+            {drawMovies(searchResults, props.addMovieCallBack, searchText)}
           </tbody>
         </table>
       </div>
@@ -69,7 +81,7 @@ const Search = (props) => {
 };
 
 Search.propTypes = {
-  onMovieSelectCallback: PropTypes.func.isRequired,
+  addMovieCallBack: PropTypes.func.isRequired,
 };
 
 export default Search;

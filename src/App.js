@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+// import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -8,6 +9,8 @@ import Home from "./components/Home";
 import Search from "./components/Search";
 import Library from "./components/Library";
 import Customers from "./components/Customers";
+
+const API_URL_BASE = "http://localhost:3000";
 
 // App component
 const App = () => {
@@ -23,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/movies`)
+      .get(API_URL_BASE + `/movies`)
       .then((response) => {
         const apiMovieList = response.data;
         setMovieList(apiMovieList);
@@ -35,7 +38,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/customers`)
+      .get(API_URL_BASE + `/customers`)
       .then((response) => {
         const apiCustomerList = response.data;
         setCustomerList(apiCustomerList);
@@ -70,6 +73,28 @@ const App = () => {
     }
     return customerName;
   };
+
+  const [movieList, setMovieList] = useState([]);
+  const [customerList, setCustomerList] = useState([]);
+
+  // function to run when component is mounted
+  useEffect(() => {
+    console.log(`App, component mounted`);
+    // get movieList
+    axios
+      .get(API_URL_BASE + "/movies")
+      .then((response) => {
+        const apiMovieList = response.data;
+        // set state
+        setMovieList(apiMovieList);
+      })
+      .catch((error) => {
+        // handle errors
+        // setErrorMessage("could not load movies");
+        // console.log(error.message);
+      });
+    // get customerList
+  }, []);
 
   // Callback function to select movie
   const onMovieSelectCallback = (id) => {
@@ -119,6 +144,19 @@ const App = () => {
     );
   };
 
+  const addMovieCallBack = (movie) => {
+    console.log(`App, add movie to library`);
+    const newMovieList = movieList;
+
+    // find max id and add 1
+    const movieIds = newMovieList.map((movie) => movie.id);
+    const nextId = Math.max(...movieIds) + 1;
+
+    newMovieList.push(movie);
+
+    setMovieList(newMovieList);
+  };
+
   return (
     <Router>
       <div className="AppRoute">
@@ -131,7 +169,7 @@ const App = () => {
             render={(props) => (
               <Search
                 {...props}
-                onMovieSelectCallback={onMovieSelectCallback}
+                addMovieCallBack={addMovieCallBack}
                 movieList={movieList}
               />
             )}
