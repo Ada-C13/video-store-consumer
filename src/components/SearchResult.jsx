@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import AddToLibraryButton from './AddToLibraryButton';
+import PropTypes from 'prop-types';
 
 const POST_URL = "http://localhost:3000/movies"
 
@@ -39,6 +40,15 @@ const SearchResult = (props) => {
       <td><AddToLibraryButton inLibrary={inLibrary} addToLibraryCallback={addToLibrary}/></td>
     </tr>
   );
+};
+
+SearchResult.propTypes = {
+  external_id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  release_date: PropTypes.string,
+  overview: PropTypes.string,
+  inLibrary: PropTypes.bool.isRequired,
+  setError: PropTypes.func.isRequired
 };
 
 export default SearchResult;

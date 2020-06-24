@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchResult from './SearchResult';
+import PropTypes from 'prop-types';
 
 const SearchResults = (props) => {
   let searchResultComponents = [];
@@ -27,7 +28,7 @@ const SearchResults = (props) => {
   }
 
   return (
-    <table class="ui very basic collapsing celled table">
+    <table className="ui very basic collapsing celled table">
       <thead>
         <tr className="">
           <th></th>
@@ -42,6 +43,12 @@ const SearchResults = (props) => {
       </tbody>
     </table>
   );
+};
+
+SearchResults.propTypes = {
+  foundMovies: PropTypes.array.isRequired,
+  library: PropTypes.array,
+  setError: PropTypes.func.isRequired
 };
 
 export default SearchResults;

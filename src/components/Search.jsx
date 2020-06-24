@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import SearchBar from './SearchBar';
-import searchResults from './SearchResults';
-import axios from 'axios';
 import SearchResults from './SearchResults';
+import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const SEARCH_URL = "http://localhost:3000/search";
 
@@ -37,5 +37,10 @@ const Search = (props) => {
     </div>
   )
 }
+
+Search.propTypes = {
+  library: PropTypes.array,
+  setError: PropTypes.func.isRequired
+};
 
 export default Search;
