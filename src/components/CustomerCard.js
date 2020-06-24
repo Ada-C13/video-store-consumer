@@ -1,24 +1,27 @@
 import React, {useState} from 'react';
 import PropTypes from "prop-types";
+import Card from 'react-bootstrap/Card'
 
 const CustomerCard = ({id, name, movies_checked_out_count, registered_at, phone}) => {
 
+  const selectCustomer = () => {
+
+  }
+
   return (
-    <div className='card'> 
-      {/* <img className='card--image'
-      src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${poster_path}`} alt={title + ' poster'}/>
-      <div className='card--content'>
-        <h3 className='card--title'>{title}</h3>
-        <p><small>RELEASE DATE: {release_date}</small></p>
-        <p><small>RATING: {vote_average}</small></p>
-        <p className='card--desc'>{overview}</p>
-      </div> */}
-      <h1>{name}</h1>
-      <h2>THIS IS A CUSTOMER CARD</h2>
-    </div>
+    <Card>
+      <Card.Header>Name: {name}</Card.Header>
+      <Card.Body>
+        <Card.Title>Customer #{id}</Card.Title>
+        <Card.Text>
+          Currently, {name} has {movies_checked_out_count} movies checked out.
+        </Card.Text>
+        <button className="button" >Select this Customer</button>
+      </Card.Body>
+      <Card.Footer className="text-muted">Joined on {new Date(registered_at).toString()}</Card.Footer>
+    </Card>
     );
   };
-
 
 CustomerCard.propTypes = {
   id: PropTypes.number,

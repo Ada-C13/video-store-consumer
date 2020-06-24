@@ -12,14 +12,16 @@ const Library = () => {
       console.log(`this is response.data ${response.data}`);
       let movieCollection = data.map((movie) => {
         return (
-          <MovieCard
-          external_id = {movie.external_id}
-          title = {movie.title}
-          overview = {movie.overview}
-          release_date = {movie.release_date}
-          image_url = {movie.image_url}
-          key = {movie.external_id}
-          />
+          <div className="col-md-4 pb-4">
+            <MovieCard
+            external_id = {movie.external_id}
+            title = {movie.title}
+            overview = {movie.overview}
+            release_date = {movie.release_date}
+            image_url = {movie.image_url}
+            key = {movie.external_id}
+            />
+          </div>
         );
       });
       setLibraryList(movieCollection);
@@ -29,7 +31,7 @@ const Library = () => {
     });
 
     return (
-      <div>{libraryList}</div>
+      <div className='row m-5'>{libraryList}</div>
     );
 };
 

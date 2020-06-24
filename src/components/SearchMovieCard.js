@@ -1,16 +1,15 @@
 import React, {useState} from 'react';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import PropTypes from "prop-types";
 import axios from "axios";
 
 const SearchMovieCard = ({title, external_id, overview, release_date, image_url}) => {
-  
+
   const [error, setError] = useState(null);
   // state for inDatabase => default false
 
   const addMovie = (event) => {
-    // POST request
+
     event.preventDefault();
     axios.post('http://localhost:3000/movies',
       {
@@ -23,13 +22,7 @@ const SearchMovieCard = ({title, external_id, overview, release_date, image_url}
     )
     .then((response) => {
       const data = response.data;
-      // console.log(`this is :movie ${:movie}`)
-      // let movieCollection = data.map((movie) => {
-      //   return (
-        
-      //     );
-      //   });
-      //   setMoviesList(movieCollection);  
+      //TODO: ADD DISPLAY MESSAGE
       })
       .catch((error) => {
         setError(error.response);
@@ -42,7 +35,7 @@ const SearchMovieCard = ({title, external_id, overview, release_date, image_url}
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>{overview}</Card.Text>
-          <Button variant="dark" onClick={addMovie}>Add this Movie</Button>
+          <button className="button" onClick={addMovie}>Add this Movie</button>
         </Card.Body>
       </Card>
     )

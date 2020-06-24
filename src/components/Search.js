@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import SearchMovieCard from './SearchMovieCard';
+import Form from 'react-bootstrap/Form'
+import FormControl from 'react-bootstrap/FormControl'
+import Button from 'react-bootstrap/Button'
 
 
 const Search = () => {
@@ -59,11 +62,15 @@ const Search = () => {
     <h1>
       {/* {error ? error : null} */}
     </h1>
-    <form className='form' onClick={search}>
-    <label className='label' htmlFor="query">Movie Name</label>
+    <Form inline className='form' onClick={search}>
+      <label className='label' htmlFor="query"></label>
+      <FormControl type="text" placeholder="Enter a movie" className="mr-sm-2" value={query} onChange={ (event) => setQuery(event.target.value) } />
+      <Button variant="light" type='submit'>Search</Button>
+    </Form>
+    {/* <form className='form' onClick={search}>
     <input className='input' type='text' name='query' placeholder='Enter a Movie' value={query} onChange={ (event) => setQuery(event.target.value) }/>
     <button className='button' type='submit'>Search </button>
-    </form>
+    </form> */}
     <hr></hr>
     <div className="row">{moviesList}</div>   
   </div>

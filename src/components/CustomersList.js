@@ -12,14 +12,16 @@ const CustomersList = () => {
       console.log(`this is response.data ${response.data}`);
       let customerCollection = data.map((customer) => {
         return (
-          <CustomerCard
-            id = {customer.id}
-            name = {customer.name}
-            movies_checked_out_count = {customer.movies_checked_out_count}
-            registered_at = {customer.registered_at}
-            phone = {customer.phone}
-            key = {customer.id}
-          />
+          <div className="col-md-4 pb-4">
+            <CustomerCard
+              id = {customer.id}
+              name = {customer.name}
+              movies_checked_out_count = {customer.movies_checked_out_count}
+              registered_at = {customer.registered_at}
+              phone = {customer.phone}
+              key = {customer.id}
+            />
+          </div>
         );
       });
       setCustomerList(customerCollection);
@@ -29,7 +31,7 @@ const CustomersList = () => {
     });
 
   return (
-    <div>{customerList}</div>
+    <div class="row m-5">{customerList}</div>
   );
 };
 
