@@ -9,7 +9,6 @@ import Search from '../components/Search';
 const Main = (props) => {
   return (
     <Switch>
-      {' '}
       {/* The Switch decides which component to show based on the current URL.*/}
       <Route exact path='/' component={Home}></Route>
       <Route
