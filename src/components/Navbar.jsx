@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 const Navbar = (props) => {
   const location = useLocation();
-
   const [nav, setNav] = useState([]);
 
   useEffect(() => {
@@ -18,8 +17,6 @@ const Navbar = (props) => {
     newNav[location.pathname.slice(1)] = true;
     setNav(newNav);
   }, []);
-
-  console.log(location.pathname);
 
   const onItemClick = (event) => {
     const newNav = {
