@@ -34,7 +34,7 @@ const App = () => {
       .catch((error) => {
         setErrorMessage(error.message);
       });
-  });
+  }, []);
 
   useEffect(() => {
     axios
@@ -46,7 +46,7 @@ const App = () => {
       .catch((error) => {
         setErrorMessage(error.message);
       });
-  });
+  }, []);
 
   const selectedMovieTitle = () => {
     console.log(`App, selectedMovieTitle`, selectedMovie);
