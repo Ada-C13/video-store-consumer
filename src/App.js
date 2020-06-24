@@ -15,15 +15,18 @@ class App extends Component {
     super();
 
     this.state = {
+      // All Customers
       customers: [],
+      // All Movies
       movies: [],
       selectedCustomer: undefined,
       selectedMovie: undefined,
-
     }; 
   }
   
+  // Geting Data from API
   componentDidMount() {
+    // Geting Customers Data
     axios.get(`${BASE_URL}/customers`)
     .then((response) => {
       const customers = response.data;
@@ -35,7 +38,7 @@ class App extends Component {
     .catch((error) => {
       this.setState({ error: error.message });
     });
-
+    // Geting Movies Data
     axios.get(`${BASE_URL}/movies`)
     .then((response) => {
       const movies = response.data;
@@ -47,21 +50,17 @@ class App extends Component {
     .catch((error) => {
       this.setState({ error: error.message });
     });
-
-    
   }
-
+  // Select Customer Method
   selectCustomer(customerId) {
     console.log(customerId);
-
     const { customers } = this.state;
     const selectedCustomer = customers.find((customer) => {
       return customer.id === customerId;
     }) 
-
     this.setState({ selectedCustomer })
   }
-  
+  // Select Movies Method
   selectMovie(movieId) {
     console.log(movieId);
     const { movies } = this.state;
@@ -71,7 +70,7 @@ class App extends Component {
     this.setState({ selectedMovie })
   }
 
-  // 
+  //Geting ready for Checkout
   selectedMovieCustomer(){ 
     return ((this.state.selectedCustomer || this.state.selectedMovie) ? "you selected an items" : "You didn't select any items" )
   }
@@ -95,7 +94,7 @@ class App extends Component {
             <Link to="/customers">Customer List</Link>
           </li>
         </ul>
-        <div>
+      <div>
         <h3>{this.state.selectedMovie ? ("Movie that you Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
         <h3>{this.state.selectedCustomer ? ("Customer that you Selected: \n\n" + this.state.selectedCustomer.name) : "" }</h3>
         {(this.state.selectedMovie && this.state.selectedCustomer )? <Button>Create a Rental</Button> : ''}
