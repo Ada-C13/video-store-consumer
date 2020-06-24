@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Customer from './Customer';
+import Customer from './customer';
 import axios from 'axios';
 
 class CustomerIndex extends Component {

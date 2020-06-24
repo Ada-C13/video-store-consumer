@@ -6,8 +6,8 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
-import CustomerIndex from './components/CustomerIndex';
-import MovieIndex from './components/MovieIndex';
+import CustomerIndex from './components/customerindex';
+import MovieIndex from './components/movieindex';
 
 class App extends Component {
   constructor(props) {
