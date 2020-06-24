@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import Home from './components/Home';
 import CustomerList from './components/CustomerList';
+import RentalList from './components/RentalList';
 import SearchBar from './components/SearchBar';
 import MovieLib from './components/MovieLib';
 import Nav from './components/Nav';
@@ -25,7 +26,9 @@ class App extends Component {
       movies: [],
       selectedMovie: undefined,
       customers: [],
+      rentals: [],
       selectedCustomer: undefined,
+      selectedRental: undefined,
       error: undefined,
       alertText: undefined,
       alertVariant: undefined,
@@ -51,6 +54,18 @@ class App extends Component {
       const movies = response.data;
       this.setState({ 
         movies,
+        error: undefined
+      });
+    })
+    .catch((error) => {
+      this.setState({ error: error.message });
+    });
+
+    axios.get(`${BASE_URL}/rentals`)
+    .then((response) => {
+      const rentals = response.data;
+      this.setState({ 
+        rentals,
         error: undefined
       });
     })
@@ -104,6 +119,15 @@ class App extends Component {
     this.setState({ selectedCustomer })
   }
 
+  selectRental(rentalId) {
+    const { rentals } = this.state;
+    const selectedRental = rentals.find((rental) => {
+      return rental.id === rentalId;
+    })
+
+    this.setState({ selectedRental})
+  }
+
   createRental() {
     if(this.state.selectedMovie) {
       const movieTitle = this.state.selectedMovie.title
@@ -135,6 +159,31 @@ class App extends Component {
         });
       });
     }
+  }
+
+  returnRental(movie, customer) {
+    const params = {
+      customer_id: customer.id,
+      movie_id: movie.id, 
+    }
+
+    axios.post(`${BASE_URL}/rentals/${movie.title}/return`, params)
+    .then(() => {
+      this.setState({
+        selectedMovie: undefined,
+        selectedCustomer: undefined,
+        error: undefined,
+        alertText: "Movie successfully rented",
+        alertVariant: "success"
+      })
+    })
+    .catch((error) => {
+      this.setState({ 
+        error: error.message,
+        alertText: `An error occurred: ${error.message}`,
+        alertVariant: "danger"
+      });
+    });
   }
 
   detailsCallback(movieId) {    
@@ -178,6 +227,7 @@ class App extends Component {
               {this.state.selectedCustomer ? ("Selected Customer: \n" + this.state.selectedCustomer.name) : "" }
               <br />
               {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.createRental()}>Create a Rental</Button> : ''}
+              {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.returnRental()}>Return a Rental</Button> : ''}
             </div>
 
    
@@ -209,6 +259,12 @@ class App extends Component {
                   selectCustomer={(id) => this.selectCustomer(id)}
                   detailsCallback={(id) => this.detailsCallback(id)} 
                   detailsMovie={this.state.detailsMovie} />
+              </Route>
+              <Route path="/rentals">
+                <RentalList 
+                rentalList={this.state.rentals} 
+                selectRental={(id) => this.selectRental(id)}
+                returnRental={(movie, customer) => this.returnRental(movie, customer)} />
               </Route>
             </Switch>
           
