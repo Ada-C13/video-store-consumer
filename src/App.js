@@ -48,24 +48,24 @@ const App = () => {
   return (
     <Router>
       <header className="App-header">
-        <h1 className="App-title"><a href="/">Video Store Consumer</a></h1>
-        
         <nav className="App-nav">
+          <h1 className="App-title"><a href="/">Video Store Consumer</a></h1>
           <div className="App-nav-links">
             <Link to="/" className="App-nav-links__item">Home</Link>
             <Link to="/search" className="App-nav-links__item">Movie Search</Link>
             <Link to="/library" className="App-nav-links__item">Movie Library</Link>
             <Link to="/customers" className="App-nav-links__item">Customer List</Link>
           </div>
-            <div className="App-nav-selected">
+        </nav>
+
+        <div className="App-selected">
               <h3>Current Selection</h3>
             {
               selectedCustomer && (
-                <span className="App-nav-selected__customer">Customer #{selectedCustomer.id} {selectedCustomer.name}</span>
+                <span className="App-selected__customer">Customer #{selectedCustomer.id} {selectedCustomer.name}</span>
               )
             }
           </div>
-        </nav>
       </header>
 
       <main className="App-content">
