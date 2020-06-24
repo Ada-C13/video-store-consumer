@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { Card, Button } from 'react-bootstrap/';
 import './Movie.css';
 
-const Movie = ({movie, selectMovieCallback}) => {
+const Movie = ({movie, selectMovie, action}) => {
+
+  const onMovieClick = () => {
+    selectMovie(movie.id, movie.title, movie.overview, movie.release_date, movie.image_url, movie.external_id);
+  }
+
   return (
     <Card className="movie-card">
       <div>
@@ -17,8 +22,8 @@ const Movie = ({movie, selectMovieCallback}) => {
           <button
           type="button"
           className="movie-card-button"
-          onClick={() => selectMovieCallback(movie.id)}>
-            Select
+          onClick={onMovieClick}>
+            {action}
           </button>
         </div>
       </div>

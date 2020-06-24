@@ -76,15 +76,25 @@ class App extends Component {
     }
   }
 
-  selectMovie = (movieId) => {
+  selectMovie = (id, title, overview, release_date, image_url, external_id) => {
     const { movies } = this.state;
 
     const selectedMovie = movies.find((movie) => {
-      return movie.id === movieId;
+      return movie.id === id;
     })
 
     this.setState({ selectedMovie })
   }
+
+  // selectMovie = (movieId) => {
+  //   const { movies } = this.state;
+
+  //   const selectedMovie = movies.find((movie) => {
+  //     return movie.id === movieId;
+  //   })
+
+  //   this.setState({ selectedMovie })
+  // }
   
   selectCustomer(id) {
     const { customers } = this.state;
@@ -168,7 +178,7 @@ class App extends Component {
               <MovieLibrary movieList={this.state.movies} selectMovie={(id) => this.selectMovie(id)}/>
             </Route>
             <Route path="/search">
-              <MovieSearch url={BASE_URL} selectMovie={(movie) => this.addMovie(movie)} />
+              <MovieSearch url={BASE_URL} selectMovie={(id) => this.selectMovie(id)} addMovie={(movie) => this.addMovie(movie)} movieList={this.state.movies} />
             </Route>
           </Switch>
         </div>
