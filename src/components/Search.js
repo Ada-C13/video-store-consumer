@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./Search.css";
 import axios from "axios";
@@ -32,22 +32,28 @@ const Search = (props) => {
 
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(() => {
+    if (searchText === "") {
+      setSearchResults([]);
+    } else {
+      axios
+        .get(API_URL_BASE + `/movies?query=${searchText}`)
+        .then((response) => {
+          const apiSearchResults = response.data;
+          // set state
+          setSearchResults(apiSearchResults);
+        })
+        .catch((error) => {
+          // handle errors
+          setErrorMessage("search failed");
+          console.log(error.message);
+        });
+    }
+  }, [searchText]);
+
   const onSearchChange = (event) => {
     console.log(`Search Field updated ${event.target.value}`);
     setSearchText(event.target.value);
-
-    axios
-      .get(API_URL_BASE + `/movies?query=${searchText}`)
-      .then((response) => {
-        const apiSearchResults = response.data;
-        // set state
-        setSearchResults(apiSearchResults);
-      })
-      .catch((error) => {
-        // handle errors
-        setErrorMessage("search failed");
-        console.log(error.message);
-      });
   };
 
   console.log(`drawing Search...`, props.addMovieCallBack);

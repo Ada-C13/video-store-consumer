@@ -10,7 +10,7 @@ import Search from "./components/Search";
 import Library from "./components/Library";
 import Customers from "./components/Customers";
 
-const API_URL_BASE = 'http://localhost:3000';
+const API_URL_BASE = "http://localhost:3000";
 
 // App component
 const App = () => {
@@ -29,12 +29,14 @@ const App = () => {
       .get(API_URL_BASE + "/movies")
       .then((response) => {
         const apiMovieList = response.data;
+        console.log(`apimovieList success`);
         setMovieList(apiMovieList);
       })
       .catch((error) => {
+        console.log(`apimovieList error`, error.message);
         setErrorMessage(error.message);
       });
-  });
+  }, []);
 
   useEffect(() => {
     axios
@@ -46,7 +48,7 @@ const App = () => {
       .catch((error) => {
         setErrorMessage(error.message);
       });
-  });
+  }, []);
 
   const selectedMovieTitle = () => {
     console.log(`App, selectedMovieTitle`, selectedMovie);
@@ -126,7 +128,7 @@ const App = () => {
     console.log(`App, add movie to library`);
     const newMovieList = movieList;
 
-    // if movie.external_id doesn't match any in movieList, 
+    // if movie.external_id doesn't match any in movieList,
     // add movie. otherwise show error
 
     newMovieList.push(movie);
