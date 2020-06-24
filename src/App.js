@@ -18,6 +18,7 @@ import {
 
 const LIBRARY_URL = "http://localhost:3000/library"
 const CUSTOMERS_URL = "http://localhost:3000/customers"
+const RENTALS_URL = "http://localhost:3000/"
 
 
 const App = () => {
@@ -100,10 +101,20 @@ const App = () => {
 
   const submitSelections = () => {
     if (moviePick != null && customerPick != null) {
-      setMoviePick(null);
-      setCustomerPick(null);
-    }
-  }
+      let dueDate = new Date();
+      dueDate.setDate(new Date().getDate()+7);
+      axios.post(`${RENTALS_URL}rentals/${moviePick.title}/check-out`, {customer_id: customerPick.id, due_date: dueDate} )
+        .then(response => {
+          setMoviePick(null);
+          setCustomerPick(null);
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    };
+      
+    };
+  
 
   return (
     <Router>
