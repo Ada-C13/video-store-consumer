@@ -88,12 +88,10 @@ class App extends Component {
   
   selectCustomer(id) {
     const { customers } = this.state;
-
-    const selectedCustomer = customers[id - 1]
-
-    this.setState({
-      selectedCustomer,
+    const selectedCustomer = customers.find((customer) => {
+      return customer.id === customerId;
     })
+    this.setState({ selectedCustomer })
   }
 
   createRental() {
@@ -101,7 +99,7 @@ class App extends Component {
       const movieTitle = this.state.selectedMovie.title
       const customerId = this.state.selectedCustomer.id
       let dueDate = new Date()
-      dueDate.setDate(new Date().getDate() + 1);
+      dueDate.setDate(new Date().getDate() + 5);
 
       const params = {
         customer_id: customerId,
