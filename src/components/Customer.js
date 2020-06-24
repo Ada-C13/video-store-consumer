@@ -3,31 +3,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Customer.css';
 import { Card, Button } from 'react-bootstrap/';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Customer = ({ id, name, address, city, state, registered_at, phone, account_credit, movies_checked_out_count, selectCustomer }) => {
   return (
-    <Card className="">
-      <div className="">
-        <div className="">
-          <h3> {name} </h3>
-          <ul>
-            <li>Account Credit: {account_credit} </li>
-            <li>Movies Checked Out: {movies_checked_out_count} </li>
-            <li>Date Registered: {(registered_at).substring(0,10)} </li>
-            <li>Phone: {phone} </li>
-            <li>Address: {address}</li>
-            <li>{city}, {state} </li>
-          </ul>
-        </div>
-        <div className="">
+    <div className="customer-card">
+    <section className="customer-header">
+  
+            <p><strong>{name}</strong></p>
+            <p>Date Registered: {(registered_at).substring(0,10)} </p>
+             <p>Account Credit: {account_credit} </p>
+            <p>Movies Checked Out: {movies_checked_out_count} </p>
+   
+            <p>Phone: {phone} </p>
+            <p>Address: {address}</p>
+            <p>{city}, {state} </p>
+
           <Button
-            className=""
+            className="btn btn-dark"
             onClick={() => selectCustomer(id)}>
               Select Customer
           </Button>
-        </div>  
-      </div>
-    </Card>
+   
+</section>
+   </div>
+
   )
 }
 
