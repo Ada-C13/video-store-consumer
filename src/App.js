@@ -48,7 +48,7 @@ const App = () => {
   return (
     <Router>
       <header className="App-header">
-        <h1>Video Store Consumer</h1>
+        <h1 className="App-title"><a href="/">Video Store Consumer</a></h1>
         
         <nav className="App-nav">
           <div className="App-nav-links">
