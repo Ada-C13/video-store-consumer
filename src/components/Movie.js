@@ -24,7 +24,8 @@ const Movie = (props) => {
           Select
         </button>
       </td>
-      <td><Link to={'library'}>{props.title}</Link></td>
+      {/* <td><Link to={'library'}>{props.title}</Link></td> */}
+      <td>{props.title}</td>
       <td><img src={props.image_url} alt={props.title}/></td>
       <td className = "w-25">{props.release_date}</td>
       <td className = "w-75"> {props.overview}</td>
