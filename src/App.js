@@ -132,8 +132,7 @@ const App = () => {
     // post movie
     axios
       .post(API_URL_BASE + "/movies", movie)
-      .then((response) => {
-        // console.log(response)
+      .then(() => {
         const newMovieList = movieList;
         newMovieList.push(movie);
         // set state
