@@ -29,7 +29,7 @@ const App = () => {
       setSearchResults(response.data);
     })
     .catch((error) => {
-      setErrorMessage(error.response.data.cause);
+      setErrorMessage(error.response.data.errors.query);
     });
   };
 
@@ -39,7 +39,7 @@ const App = () => {
       setCustomerList(response.data);
     })
     .catch((error) => {
-      setErrorMessage(error.response.data.cause);
+      setErrorMessage(error.response.data.errors.sort);
     });
   }, []);
 
@@ -69,6 +69,9 @@ const App = () => {
       </header>
 
       <main className="App-content">
+        <section className="App-content__errors">
+          <p>{errorMessage}</p>
+        </section>
         <Switch>
           <Route path="/search">
             <Search results={searchResults} onSearchMovieCallback={searchMovies} />
