@@ -1,3 +1,13 @@
+/* HEX: #ffef96 yellow
+
+HEX: #50394c dark purple
+
+HEX: #b2b2b2 light grey
+
+HEX: #f4e1d2 light pink
+
+HEX: #505050 dark grey 
+*/
 .App {
   text-align: center;
 }
@@ -7,7 +17,7 @@
   height: 80px;
 } */
 
-.App-header {
+/* .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
@@ -20,9 +30,73 @@
 
 .App-intro {
   font-size: large;
-}
-
+} */
+/* 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+} */
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background-color:#6e6e6e;
+  color:#f4e1d2;
+}
+
+.nav-header {
+  color: #f4e1d2;
+}
+
+.nav-links {
+  display: flex;
+  width: 40%;
+  justify-content: space-around;
+  color: white;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #f4e1d2;
+  text-decoration: none;
+}
+
+a:hover{
+  text-shadow: 2px 2px 5px rgb(231, 231, 226);
+  /* text-shadow: 2px 2px 5px rgb(83, 82, 82); */
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  text-align: center;
+}
+
+h1, body {
+  color: #50394c;
+}
+
+/* .Home {
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+} */
+
+.home-links a {
+  color: #50394c;
+  text-decoration: none;
+  font-size: 2em;
+}
+
+button {
+  border: none;
+  /* border: line #50394c; */
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #f4e1d2;
+  margin: 10px;
 }
