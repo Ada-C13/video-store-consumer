@@ -10,7 +10,7 @@ import Search from "./components/Search";
 import Library from "./components/Library";
 import Customers from "./components/Customers";
 
-const API_URL_BASE = "http://localhost:3000";
+const API_URL_BASE = 'http://localhost:3000';
 
 // App component
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get(API_URL_BASE + `/movies`)
+      .get(API_URL_BASE + "/movies")
       .then((response) => {
         const apiMovieList = response.data;
         setMovieList(apiMovieList);
@@ -38,7 +38,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get(API_URL_BASE + `/customers`)
+      .get(API_URL_BASE + "/customers")
       .then((response) => {
         const apiCustomerList = response.data;
         setCustomerList(apiCustomerList);
@@ -73,28 +73,6 @@ const App = () => {
     }
     return customerName;
   };
-
-  const [movieList, setMovieList] = useState([]);
-  const [customerList, setCustomerList] = useState([]);
-
-  // function to run when component is mounted
-  useEffect(() => {
-    console.log(`App, component mounted`);
-    // get movieList
-    axios
-      .get(API_URL_BASE + "/movies")
-      .then((response) => {
-        const apiMovieList = response.data;
-        // set state
-        setMovieList(apiMovieList);
-      })
-      .catch((error) => {
-        // handle errors
-        // setErrorMessage("could not load movies");
-        // console.log(error.message);
-      });
-    // get customerList
-  }, []);
 
   // Callback function to select movie
   const onMovieSelectCallback = (id) => {
@@ -148,9 +126,8 @@ const App = () => {
     console.log(`App, add movie to library`);
     const newMovieList = movieList;
 
-    // find max id and add 1
-    const movieIds = newMovieList.map((movie) => movie.id);
-    const nextId = Math.max(...movieIds) + 1;
+    // if movie.external_id doesn't match any in movieList, 
+    // add movie. otherwise show error
 
     newMovieList.push(movie);
 
@@ -169,8 +146,8 @@ const App = () => {
             render={(props) => (
               <Search
                 {...props}
-                addMovieCallBack={addMovieCallBack}
                 movieList={movieList}
+                addMovieCallBack={addMovieCallBack}
               />
             )}
           />

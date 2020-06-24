@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Search.css";
+import axios from "axios";
 
-const axios = require("axios");
 const API_URL_BASE = "http://localhost:3000";
 
 const drawMovies = (searchResults, addMovieCallBack, searchText) => {
@@ -30,6 +30,8 @@ const Search = (props) => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const onSearchChange = (event) => {
     console.log(`Search Field updated ${event.target.value}`);
     setSearchText(event.target.value);
@@ -43,8 +45,8 @@ const Search = (props) => {
       })
       .catch((error) => {
         // handle errors
-        // setErrorMessage("search failed");
-        // console.log(error.message);
+        setErrorMessage("search failed");
+        console.log(error.message);
       });
   };
 
