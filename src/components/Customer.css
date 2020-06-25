@@ -1,8 +1,8 @@
 
 .customer-card-container {
   margin: 10px;
-  column-count: 2;
-  text-align: start;
+  column-count: 1;
+  text-align: center;
 }
 
 .customer-name{

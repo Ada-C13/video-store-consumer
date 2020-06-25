@@ -62,7 +62,7 @@ const Home = ({movieList}) => {
             })}
           </Carousel>
           
-          <h1 className="card-text text-white text-bolder">Not just another Netflix site</h1> 
+          <h1 className="card-text text-white text-bolder">Just Another Video Store . . .</h1> 
         </div>
       </div>
     </div>
