@@ -3,6 +3,7 @@ import axios from 'axios';
 import Movie from "./Movie";
 import "./Library.css"
 
+
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
 const Library = () => {
@@ -38,9 +39,9 @@ const Library = () => {
   });
 
   return (
-    <div className="move-list">
+    <div style={{flex: 1, flexDirection: 'row'}}>
       {/* found this sorting code here:https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/ */}
-      {movieComponents.sort((a, b) => (a.props.title > b.props.title) ? 1 : (a.props.title === b.props.title) ? ((a.props.externalId > b.props.externalId) ? 1 : -1) : -1 )}
+      {movieComponents.sort((a, b) => (a.props.title > b.props.title) ? 1 : (a.props.title === b.props.title) ? ((a.props.externalId < b.props.externalId) ? 1 : -1) : -1 )}
     </div>
   );
 }
