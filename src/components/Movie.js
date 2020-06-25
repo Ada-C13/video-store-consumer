@@ -21,12 +21,7 @@ const Movie = ({ id, title, overview, release_date, image_url, external_id, sele
             <Button variant="dark"
               className="button-box button-grad button-grad:hover"
               onClick={() => selectMovie(id)}>
-              + Checkout
-            </Button>
-            <Button variant="dark"
-              className="button-box right-button button-grad button-grad:hover"
-              onClick={() => selectMovie(id)}>
-              + Library
+              Rent Movie
             </Button>
           </div>  
       </Card.Body>

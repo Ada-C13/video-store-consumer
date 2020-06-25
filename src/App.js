@@ -163,7 +163,7 @@ class App extends Component {
           </Navbar>
       <div>
 
-        <h3>{this.state.selectedMovie ? ("Movie that you Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
+        <h3>{this.state.selectedMovie ? ("You Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
         <h3>{this.state.selectedCustomer ? ("Customer that you Selected: \n\n" + this.state.selectedCustomer.name) : "" }</h3>
         {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.makeRental()}>Rent Now</Button> : ''}
         <h3>{this.state.success ? (this.state.success) : "" }</h3>
