@@ -1,0 +1,22 @@
+.movie {
+  margin-top: 10px;
+  padding: 5px;
+  width: 80%;
+  border: solid 2px black;
+  display: flex;
+  justify-content: space-between;
+}
+.movie-image {
+  display: inline-block;
+  border: solid 1px black;
+}
+
+.movie-overview {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.movie-buttons {
+  display: inline-block;
+  margin-left: 10px;
+}

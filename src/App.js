@@ -24,7 +24,8 @@ const App = () => {
   const [ customerList, setCustomerList ] = useState([]);
   const [ selectedCustomer, setSelectedCustomer ] = useState(null);
 
-  const [ selectedMovie, setSelectedMovie ] = useState("movie test");
+  const [ movieList, setMovieList] = useState([]);
+  const [ selectedMovie, setSelectedMovie ] = useState(null);
 
   const searchMovies = (search) => {
     axios.get('http://localhost:3000/movies', { params: search })
@@ -35,6 +36,18 @@ const App = () => {
       setErrorMessage(error.response.data.cause);
     });
   };
+
+  const getMovies = useCallback(() => {
+    axios.get('http://localhost:3000/movies')
+    .then((response) => {
+      setMovieList(response.data);
+    })
+    .catch((error) => {
+      setErrorMessage(error.response.data.cause);
+    })
+  }, []);
+
+  useEffect( getMovies, [ getMovies ]);
 
   const getCustomers = useCallback(() => {
     axios.get('http://localhost:3000/customers')
@@ -79,6 +92,11 @@ const App = () => {
               )
             }
             {
+              selectedMovie && (
+                <span className="App-selected__movie">Movie: {selectedMovie.title} {selectedMovie.name}</span>
+              )
+            }
+            {
               selectedCustomer && selectedMovie && (
                 <Link to="/checkout" className="button">Checkout</Link>
               )
@@ -92,7 +110,7 @@ const App = () => {
             <Search results={searchResults} onSearchMovieCallback={searchMovies} />
           </Route>
           <Route path="/library">
-            <Movies />
+            <Movies list={movieList} onSelectCallback={setSelectedMovie} />
           </Route>
           <Route path="/customers">
             <Customers list={customerList} onSelectCallback={setSelectedCustomer} />
