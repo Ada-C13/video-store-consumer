@@ -35,36 +35,25 @@ const Home = ({movieList}) => {
   },[movieList])
   return (
     <>
+    <h3>
+      Just not another Netflix site
+    </h3>
     <Carousel>
       { selectedMovies.map((movie) => {
         return (
           <Carousel.Item> 
-          <Card className="movie-card">
-      <div>
-        <div className="movie-card-body">
-          <img className="movie-card-image" src={movie.image_url} alt={movie.title} />
-          <h4 className="movie-card-title"> {movie.title} </h4>
-          <div>          
-            <div className="movie-card-release-date"> Released on {movie.release_date} </div>
-            <div className="movie-card-description"> {movie.overview} </div>
-          </div>  
-        </div>
-      </div>
-    </Card>
-          <Carousel.Caption>
-            
-          </Carousel.Caption>
+            <div className="home-card-body">
+              <img className="home-image" src={movie.image_url} alt={movie.title} />
+            </div>
         </Carousel.Item>
         );
       }) 
-      
-} 
-      
+      }
+ 
     </Carousel>
-
-    <h3>
-      Welcome to our website where we offer the best movies 
-    </h3>
+      <div>
+        <img className="home-img w-100" src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3452&q=80" alt="movie popcorn" />
+      </div>
   </>
  
   
