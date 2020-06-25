@@ -36,19 +36,19 @@ const Home = ({movieList}) => {
   return (
     <div className="homepage-main">
 
-      <div class="card learn-card">
-        <img class="card-img learn-img" src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3452&q=80" alt="movie popcorn"/>
-        <div class="card-img-overlay text-center align-items-center caption-6 d-flex justify-content-around flex-column hp-block">
+      <div className="card learn-card">
+        <img className="card-img learn-img" src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3452&q=80" alt="movie popcorn"/>
+        <div className="card-img-overlay text-center align-items-center caption-6 d-flex justify-content-around flex-column hp-block">
           <Carousel>
             { selectedMovies.map((movie) => {
               return (
-                <Carousel.Item> 
-                  <img className="home-image" src={movie.image_url} alt={movie.title} />
+                <Carousel.Item key={movie.external_id} > 
+                  <img className="home-image" src={movie.image_url} alt={movie.title}  />
                 </Carousel.Item>
               );
             })}
           </Carousel>
-          <h1 class="card-text text-white text-bolder">Just not another Netflix site</h1> 
+          <h1 className="card-text text-white text-bolder">Just not another Netflix site</h1> 
         </div>
       </div>
     </div>
