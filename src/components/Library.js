@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Movie from './Movie';
+import { store } from 'react-notifications-component';
 
 const Library = (props) => {
   // const API_MOVIE_URL = "http://localhost:3000/movies"
   const [movieList, setMovieList] = useState([]);
-  const [message, setMessage] = useState(null);
   
   useEffect(()=>{
     axios.get(props.url)
@@ -15,12 +15,19 @@ const Library = (props) => {
         setMovieList(movieList);
       })
       .catch((error) => {
-        setMessage(error.message);
-        console.log(message);
-        
-        setTimeout(() => {
-          setMessage(null);
-        }, 5000);
+        store.addNotification({
+          title: "Error: ",
+          message: `${error.message}`,
+          type: "error",
+          insert: "top",
+          container: "top-left",
+          animationIn: ["animated", "fadeIn"],
+          animationOut: ["animated", "fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true
+          }
+        });
       });
   }, [props.url])
 

@@ -3,10 +3,10 @@ import axios from 'axios'
 import Movie from './Movie';
 import SearchForm from './SearchForm';
 import PropTypes from 'prop-types';
+import { store } from 'react-notifications-component';
 
   const Search = (props) => {
     const [searchedmovieList, setSearchedMovieList] = useState([]);
-    const [message, setMessage] = useState("");
     
     const searchMovie = (search) =>{
       axios.get(`${props.url}/?query=${search.searchTerm}`)
@@ -15,12 +15,19 @@ import PropTypes from 'prop-types';
           setSearchedMovieList(movieList);
         })
         .catch((error) => {
-          setMessage(error.message);
-          console.log(message);
-
-          setTimeout(() => {
-            setMessage(null);
-          }, 5000);
+          store.addNotification({
+            title: "Error: ",
+            message: `${error.message}`,
+            type: "error",
+            insert: "top",
+            container: "top-left",
+            animationIn: ["animated", "fadeIn"],
+            animationOut: ["animated", "fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+          });
         });
     }
 
@@ -34,12 +41,19 @@ import PropTypes from 'prop-types';
     })
       
     .catch((error) => {
-      setMessage(error.message);
-      console.log(message);
-      
-        setTimeout(() => {
-          setMessage(null);
-        }, 5000);
+      store.addNotification({
+        title: "Error: ",
+        message: `${error.message}`,
+        type: "error",
+        insert: "top",
+        container: "top-left",
+        animationIn: ["animated", "fadeIn"],
+        animationOut: ["animated", "fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
       }); 
     }
     
@@ -59,24 +73,55 @@ import PropTypes from 'prop-types';
       }
     
     const addMovie = (addedMovie) => {
-      if (checkPresence(addedMovie)) return
+      if (checkPresence(addedMovie)) {
+        console.log("cannot add movie "+addedMovie.title);
+        // store.addNotification({
+        //   title: "Error: ",
+        //   message: `${addedMovie.title} is already in the rental library.`,
+        //   type: "error",
+        //   insert: "top",
+        //   container: "top-left",
+        //   animationIn: ["animated", "fadeIn"],
+        //   animationOut: ["animated", "fadeOut"],
+        //   dismiss: {
+        //     duration: 5000,
+        //     onScreen: true
+        //   }
+        // });
+        return
+      }
       axios.post(props.url, addedMovie)
       .then((response) => {
         if (response.status === 200 || response.status === "OK"){
-          setMessage("Movie has been successfully added");
-          setTimeout(() => {
-            setMessage(null);
-          }, 5000);
-          refreshMovieList();
+          store.addNotification({
+            title: "Success!",
+            message: `"${addedMovie.title}" has been successfully added to library`,
+            type: "success",
+            insert: "top",
+            container: "top-left",
+            animationIn: ["animated", "fadeIn"],
+            animationOut: ["animated", "fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+          });
         }
       })
         .catch((error) => {
-          setMessage(error.message);
-          console.log(error.message);
-
-          setTimeout(() => {
-            setMessage(null);
-          }, 5000);
+          store.addNotification({
+            title: "Error: ",
+            message: `${error.message}`,
+            type: "error",
+            insert: "top",
+            container: "top-left",
+            animationIn: ["animated", "fadeIn"],
+            animationOut: ["animated", "fadeOut"],
+            dismiss: {
+              duration: 5000,
+              onScreen: true
+            }
+          });
         });
       }
       

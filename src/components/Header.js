@@ -6,6 +6,7 @@ import Customers from './Customers';
 import Library from './Library';
 import Search from './Search';
 import axios from 'axios'
+import { store } from 'react-notifications-component';
 
 const Header = () => {
   const URL = "http://localhost:3000/"
@@ -33,12 +34,11 @@ const Header = () => {
   }
 
   // Checkout a movie
-  const [message, setMessage] = useState("");
-
   const check_out = () => {
     // POST /rentals/:title/check-out
     if (selectedMovie && selectedCustomer){
       const title = selectedMovie.title
+      const name = selectedCustomer.name
       const customer_id = selectedCustomer.id
       const rental = {
         customer_id: customer_id,
@@ -52,22 +52,36 @@ const Header = () => {
     .then((response) => {
       // const newRental= response.data;
       if (response.status === 200 || response.status === "OK"){
-        setMessage("Rental has been successfully checked-out")
-        console.log(message)
-
-        setTimeout(() => {
-          setMessage(null);
-        }, 5000);
+        store.addNotification({
+          title: "Success!",
+          message: `"${title}" has been successfully checked out to ${name}`,
+          type: "success",
+          insert: "top",
+          container: "top-left",
+          animationIn: ["animated", "fadeIn"],
+          animationOut: ["animated", "fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true
+          }
+        });
       }  
     })
    
     .catch((error) => {
-      setMessage(error.message);
-      console.log(error.message);
-
-      setTimeout(() => {
-        setMessage(null);
-      }, 5000);
+      store.addNotification({
+        title: "Error: ",
+        message: `${error.message}`,
+        type: "error",
+        insert: "top",
+        container: "top-left",
+        animationIn: ["animated", "fadeIn"],
+        animationOut: ["animated", "fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
     });
 
     setSelectedCustomer(null);
@@ -78,7 +92,6 @@ const Header = () => {
   return (
   <Router>
     <div>
-    <div className={ message ? "pt-4 alert alert-warning" : "hidden mb-n3" } role="alert"><p><em><strong>{message}</strong></em></p></div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className=" navbar-brand float-left w-50">
           <a href="/"><img className="w-75" src="https://lh3.googleusercontent.com/pw/ACtC-3emDsynMN5vJmfTvCqR6lWWxeBiBAPLymsKLn8sOq-t8zAQPwLo_f_2YITgWrq_BDWr-h43ohiIUkLm77quCDkSqNMsGsnNlm6AITEUYQeJ7I3Lha95sLe5tDNw9aBQNMAZwr70RbiNI0_LD2XNrpmn=w400-h137-no?authuser=0"/></a>
