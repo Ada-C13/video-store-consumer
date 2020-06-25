@@ -1,6 +1,9 @@
+
 .customer-card-container {
   margin: 5px;
   width: 25vw;
+  column-count: 2;
+  grid-auto-columns: auto;
 }
 
 h3 {
@@ -13,7 +16,7 @@ h3 {
 }
 
 .customer-name{
-  grid-column-start: 1;
+  
   text-align: left;
   color: black;
 }
@@ -23,14 +26,12 @@ h3 {
 }
 
 .customer-info{
-  grid-column-start: 1;
-  grid-row-start: 3;
+  
   text-align: left;
 }
 
 .customer-select-button{
-  grid-column-start: 1;
-  grid-row-start: 4;
+  
   text-align: left;
 }
 
