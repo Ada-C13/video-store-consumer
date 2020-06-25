@@ -15,7 +15,7 @@ import SearchForm from './SearchForm';
         })
         .catch((error) => {
           setMessage(error.message);
-          console.log(errorMessage);
+          console.log(message);
 
           setTimeout(() => {
             setMessage(null);
