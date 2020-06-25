@@ -27,11 +27,10 @@ const Header = (props) => {
   }
 
   //Search
-
-  const [searchedMoiveList, setSearchedMoiveList] = useState([]);
+  const [searchedMovieList, setSearchedMovieList] = useState([]);
 
   const searchMovies = (arrayOfMovies) => {
-    setSearchedMoiveList(arrayOfMovies);
+    setSearchedMovieList(arrayOfMovies);
     return;
   }
 
@@ -81,9 +80,9 @@ const Header = (props) => {
   <Router>
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="navbar-brand float-left">
+        <div className="navbar-brand float-left w-100">
           <a href="/"><img className="w-75" src="https://lh3.googleusercontent.com/pw/ACtC-3emDsynMN5vJmfTvCqR6lWWxeBiBAPLymsKLn8sOq-t8zAQPwLo_f_2YITgWrq_BDWr-h43ohiIUkLm77quCDkSqNMsGsnNlm6AITEUYQeJ7I3Lha95sLe5tDNw9aBQNMAZwr70RbiNI0_LD2XNrpmn=w400-h137-no?authuser=0"/></a>
-          </div>
+        </div>
           <ul className="navbar-nav mr-auto float-left">
             <li><Link to={'/'} className="nav-link">Home</Link></li>
             <li><Link to={'/library'} className="nav-link">Library</Link></li>
@@ -99,7 +98,8 @@ const Header = (props) => {
             </ul>
           </div>
           <button  onClick = {reset}>Reset</button>
-
+          <div className="w-100"></div>
+          <div className="w-100 text-left row"><p><em>LOOK AT ME{message}</em></p></div>
         </nav>
         
         <Switch> 
@@ -129,6 +129,7 @@ const Header = (props) => {
               />
             )} />
         </Switch>
+        
       </div>
     </Router>
   );

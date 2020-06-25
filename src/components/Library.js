@@ -36,10 +36,10 @@ const Library = (props) => {
   })
 
     return (
-      <div className="container-fluid">
-        <h2 className="py-2 text-center w-100">All Movies</h2>
+      <div className="w-100 d-flex text-center flex-wrap justify-content-around">
+        <h2 className="text-center w-100 pt-3 pb-3">Rental Library</h2>
         <table class="table table-hover">
-          <thead class="thead-light">
+          <thead class="thead-light text-center">
             <tr>
               <th>ID</th>
               <th>Select</th>
@@ -47,7 +47,7 @@ const Library = (props) => {
               <th>Image</th>
               <th>Release Date</th>
               <th>Overview</th>
-              <th>External_id</th>
+              <th>Ext. ID</th>
             </tr>
           </thead>
           <tbody>

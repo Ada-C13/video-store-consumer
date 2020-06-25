@@ -25,25 +25,30 @@ const SearchForm = (props) => {
   }
 
   return(
-    <form onSubmit={onFormSubmit}
-      className="new-student-form"
-      onSubmit={onFormSubmit}
-      data-testid="SearchForm--form"
-    >
-      <div>
-        <label>Search movies by title:</label>
-        <input
-          name="text"
-          value={formFields.text}
-          onChange = {onInputChange}
-          type="text"
-        />
-      </div>
-      <input
-        type="submit"
-        value="Search"
-      />
-  </form>
+    <div className="pt-3 container">
+      <form onSubmit={onFormSubmit}
+        className="new-student-form input-group"
+        onSubmit={onFormSubmit}
+        data-testid="SearchForm--form"
+      >
+        {/* <div className="float-left"> */}
+          <label className="sr-only" placeholder="Search movie database by title">Search movie database by title: </label>
+          <input
+            className="form-control"
+            name="text"
+            value={formFields.text}
+            onChange = {onInputChange}
+            type="text"
+          />
+          <div class="input-group-append">
+            <button
+              className="form-control btn btn-danger mb-2"
+              type="submit"
+              value="Search"
+            >Search</button>
+          </div>
+    </form>
+  </div>
   )
 } 
 
