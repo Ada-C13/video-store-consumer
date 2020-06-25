@@ -5,7 +5,7 @@ import SearchForm from './SearchForm';
 
   const Search = (props) => {
     const [searchedmovieList, setSearchedMovieList] = useState([]);
-    const [errorMessage, setMessage] = useState(null);
+    const [message, setMessage] = useState("");
     
     const searchMovie = (search) =>{
       axios.get(`${props.url}/?query=${search.searchTerm}`)
@@ -15,53 +15,59 @@ import SearchForm from './SearchForm';
         })
         .catch((error) => {
           setMessage(error.message);
-          console.log(errorMessage);
+          console.log(message);
         });
     }
 
-  const checkPresence = (movie) =>{
+  const [movieList, setMovieList] = useState([]);
+  
+  
+  const refreshMovieList = () =>{
     axios.get(props.url)
-      .then((response) => {
-        const movieList = response.data
-        const movie_titles = movieList.map(movie =>
-          movie.title
-        );
-        let result;
-        if (movie_titles.includes(movie.title)){
-          result = true;
-        }else{
-          result = false;
-        }
-        return result;
-      })
-      
-      .catch((error) => {
-        setMessage(error.message);
-        console.log(errorMessage);
-      }); 
+    .then((response) => {
+      const movieList = response.data;
+      setMovieList(movieList);
+    })
+    .catch((error) => {
+      setMessage(error.message);
+      console.log(message);
+    });
+  }
+  useEffect(()=>{
+    refreshMovieList();
+  }, [props.url])
+
+    const checkPresence = (movie) =>{
+      const movieTitles = movieList.map(movie =>
+        movie.title
+      );    
+      // console.log(movie.title)
+      // console.log(movieTitles)
+      if (movieTitles.includes(movie.title)){
+        return true
+      }else{
+        return false
+      }    
     }
   
     const addMovie = (addedMovie) => {
-        if (checkPresence(addedMovie)){
-          console.log ("it is present")
-        }else{
-          console.log ("it is NOOOOOOT present")
+        if (checkPresence(addedMovie)) return
+      
+        console.log ("XXXXXXX")
         axios.post(props.url, addedMovie)
         .then((response) => {
           // const newRental= response.data;
           if (response.status === 200 || response.status === "OK"){
-            setMessage("Rental is successfully added")
+            console.log("The movie is successfully added")
+            refreshMovieList();
           }  
         })
           .catch((error) => {
             setMessage(error.message);
             console.log(error.message);
           });
-          console.log(addedMovie)
-          
         }
-      }
-    
+      
     const movieComponents = searchedmovieList.map((movie) => {
       return(
         <Movie
