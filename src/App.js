@@ -9,7 +9,8 @@ import './App.css';
 import CustomerIndex from './components/customerindex';
 import MovieIndex from './components/movieindex';
 import MovieSearch from './components/moviesearch';
-import Rental from './components/rental'
+import Rental from './components/rental';
+import CurrentlyCheckedOut from './components/currentlycheckedout'
 
 class App extends Component {
   constructor(props) {
@@ -21,8 +22,6 @@ class App extends Component {
       message: '',
     }
   }
-
-
 
   render() {
 
@@ -36,7 +35,7 @@ class App extends Component {
                 <li><Link to="/movies">Movie List</Link></li>
                 <li><Link to="/customers">Customers</Link></li>
                 <li><Link to="/search">Search</Link></li>
-                <li><Link to="/rental">Add a New Movie</Link></li>
+                <li><Link to="/rentals/currentlycheckedout">CurrentlyCheckedOut</Link></li>
               </ul>
             </nav>
 
@@ -56,7 +55,12 @@ class App extends Component {
 
                 />
               </Route>
-              <Route path="/rental">
+              <Route path="/rentals/currentlycheckedout">
+                <CurrentlyCheckedOut
+
+                />
+              </Route>
+              <Route path="/rentals">
                 <Rental
 
                 />
