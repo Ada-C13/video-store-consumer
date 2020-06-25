@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Library.css";
 
-const drawMovies = (movieList, onMovieSelectCallback) => {
+const renderMovies = (movieList, onMovieSelectCallback) => {
   return movieList.map((movie, index) => {
     return (
       <tr key={index}>
@@ -23,7 +23,7 @@ const drawMovies = (movieList, onMovieSelectCallback) => {
 
 // Library Component
 const Library = (props) => {
-  console.log(`drawing Library...`, props);
+  console.log(`rendering Library...`, props);
   return (
     <div>
       <h1>Movie Library</h1>
@@ -38,13 +38,10 @@ const Library = (props) => {
             </tr>
           </thead>
           <tbody>
-            {drawMovies(props.movieList, props.onMovieSelectCallback)}
+            {renderMovies(props.movieList, props.onMovieSelectCallback)}
           </tbody>
         </table>
       </div>
-      <button onClick={() => props.onMovieSelectCallback(2)}>
-        Select Movie
-      </button>
     </div>
   );
 };

@@ -49,18 +49,6 @@ const App = () => {
       });
   }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(API_URL_BASE + "/customers")
-  //     .then((response) => {
-  //       const apiCustomerList = response.data;
-  //       setCustomerList(apiCustomerList);
-  //     })
-  //     .catch((error) => {
-  //       setErrorMessage(error.message);
-  //     });
-  // }, []);
-
   const selectedMovieData = () => {
     console.log(`App, selectedMovieData`, selectedMovie);
     let movieData = null;
@@ -130,9 +118,9 @@ const App = () => {
     setCustomer(0);
     setMovie(0);
   };
-  // drawNav file! functions that return components, one for each
-  const drawNav = () => {
-    console.log(`App, draw navigation`);
+
+  const renderNav = () => {
+    console.log(`App, render navigation`);
     return (
       <nav>
         <ul className="nav-links">
@@ -155,9 +143,9 @@ const App = () => {
       </nav>
     );
   };
-  // another component!
-  const drawSelected = () => {
-    console.log(`App, draw selected`);
+
+  const renderSelected = () => {
+    console.log(`App, render selected`);
     return (
       <div>
         <ul className="selected">
@@ -182,8 +170,8 @@ const App = () => {
   return (
     <Router>
       <div className="AppRoute">
-        {drawNav()}
-        {drawSelected()}
+        {renderNav()}
+        {renderSelected()}
         <Switch>
           <Route path="/" exact component={Home} />
           <Route

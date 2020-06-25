@@ -5,31 +5,27 @@ import axios from "axios";
 
 const API_URL_BASE = "http://localhost:3000";
 
-const drawMovies = (searchResults, addMovieCallBack, searchText) => {
+const renderMovies = (searchResults, addMovieCallBack, searchText) => {
   return searchResults.map((movie, index) => {
-    if (movie.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
-      return (
-        <tr key={index}>
-          <td>{movie.title}</td>
-          <td>{movie.release_date}</td>
-          <td>
-            <img src={movie.image_url} alt="Movie Cover" />
-          </td>
-          <td>
-            <button onClick={() => addMovieCallBack(movie)}>Add Movie</button>
-          </td>
-        </tr>
-      );
-    }
+    return (
+      <tr key={index}>
+        <td>{movie.title}</td>
+        <td>{movie.release_date}</td>
+        <td>
+          <img src={movie.image_url} alt="Movie Cover" />
+        </td>
+        <td>
+          <button onClick={() => addMovieCallBack(movie)}>Add Movie</button>
+        </td>
+      </tr>
+    );
   });
 };
 
 // Search Component
-
 const Search = (props) => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -46,6 +42,7 @@ const Search = (props) => {
         .catch((error) => {
           // handle errors
           setErrorMessage("search failed");
+          setSearchResults([]);
           console.log(error.message);
         });
     }
@@ -56,7 +53,7 @@ const Search = (props) => {
     setSearchText(event.target.value);
   };
 
-  console.log(`drawing Search...`, props.addMovieCallBack);
+  console.log(`rendering Search...`, props.addMovieCallBack);
   return (
     <div>
       <h1>Search Movie</h1>
@@ -80,7 +77,7 @@ const Search = (props) => {
             </tr>
           </thead>
           <tbody>
-            {drawMovies(searchResults, props.addMovieCallBack, searchText)}
+            {renderMovies(searchResults, props.addMovieCallBack, searchText)}
           </tbody>
         </table>
       </div>

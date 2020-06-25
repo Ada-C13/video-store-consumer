@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Checkout.css";
-
-const drawMovie = (movieData) => {
-  if (movieData === null) {
+// TODO render
+const renderMovie = (movieData) => {
+  if (!movieData) {
     return <p>No movie selected</p>;
   } else {
     return (
@@ -21,8 +21,8 @@ const drawMovie = (movieData) => {
   }
 };
 
-const drawCustomer = (customerData) => {
-  if (customerData === null) {
+const renderCustomer = (customerData) => {
+  if (!customerData) {
     return <p>No customer selected</p>;
   } else {
     return (
@@ -38,8 +38,8 @@ const drawCustomer = (customerData) => {
   }
 };
 
-const drawButton = (movieData, customerData, onCheckoutCallback) => {
-  if (customerData === null || movieData === null) {
+const renderButton = (movieData, customerData, onCheckoutCallback) => {
+  if (!customerData || !movieData) {
     return <p>Cannot Checkout - Select Movie and Customer</p>;
   } else {
     return <button onClick={() => onCheckoutCallback()}>Checkout Movie</button>;
@@ -48,14 +48,14 @@ const drawButton = (movieData, customerData, onCheckoutCallback) => {
 
 // Checkout Component
 const Checkout = (props) => {
-  console.log(`drawing Checkout...`, props);
+  console.log(`rendering Checkout...`, props);
   return (
     <div>
       <h1>Movie Checkout</h1>
       <div className="checkout">
-        {drawMovie(props.movieData)}
-        {drawCustomer(props.customerData)}
-        {drawButton(
+        {renderMovie(props.movieData)}
+        {renderCustomer(props.customerData)}
+        {renderButton(
           props.customerData,
           props.movieData,
           props.onCheckoutCallback
