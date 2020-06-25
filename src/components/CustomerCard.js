@@ -2,10 +2,23 @@ import React, {useState} from 'react';
 import PropTypes from "prop-types";
 import Card from 'react-bootstrap/Card'
 
-const CustomerCard = ({id, name, movies_checked_out_count, registered_at, phone}) => {
+const CustomerCard = ({id, name, movies_checked_out_count, registered_at, phone, onUpdateSelect, selected_id}) => {
 
-  const selectCustomer = () => {
+  const onSelect = () => {
+    const newSelected = {
+      id: id,
+      name: name,
+    }
+    onUpdateSelect(newSelected)
+  }
 
+  const selected = () => {
+    console.log(selected_id)
+    if (id === selected_id) {
+      return true
+    } else {
+      return false
+    }
   }
 
   return (
@@ -16,7 +29,7 @@ const CustomerCard = ({id, name, movies_checked_out_count, registered_at, phone}
         <Card.Text>
           Currently, {name} has {movies_checked_out_count} movies checked out.
         </Card.Text>
-        <button className="button" >Select this Customer</button>
+        <button className="button" onClick={onSelect}> {selected()? 'Selected' : 'Select this Customer'}</button>
       </Card.Body>
       <Card.Footer className="text-muted">Joined on {new Date(registered_at).toString()}</Card.Footer>
     </Card>
