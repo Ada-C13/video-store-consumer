@@ -114,6 +114,8 @@ const App = () => {
   // Callback function to perform checkout
   const onCheckoutCallback = () => {
     console.log(`App, onCheckoutCallback`);
+    // let date = new Date(); // add 7 days
+
     // perform checkout
     axios 
       // /rentals/:title/check-out(.:format)
