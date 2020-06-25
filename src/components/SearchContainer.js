@@ -11,7 +11,6 @@ const SearchContainer = () => {
     text: ""
   })
   const [movieList, setMovieList] = useState([])
-
   const [message, setMessage] = useState(null);
 
   const onInputChange = (event) => {
