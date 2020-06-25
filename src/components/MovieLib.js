@@ -17,7 +17,7 @@ const MovieLib = ({ movieList, selectMovie }) => {
 
   return (
     <div>
-      <h1>INFORMATION ABOUT MOVIES</h1>
+      <h1>Movie Information</h1>
       {buildMovie()}
     </div>
   )

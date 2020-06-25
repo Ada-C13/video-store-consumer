@@ -79,6 +79,10 @@ nav:hover {
   color: #151547;
 }
 
+nav.link {
+  color: #151547;
+}
+
 .button-grad {
   background-image: linear-gradient(to right, #41295a 0%, #2F0743 51%, #41295a 100%);
 }
