@@ -1,12 +1,8 @@
-import React, { Component, useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
-
 import './Movie.css';
 
 const Movie = (props) => {
-
   const onButtonClick = () => {
     const selected = {
         id: props.id,
@@ -14,19 +10,8 @@ const Movie = (props) => {
     }
     props.selectMovieCallback(selected);
   }
-
-  // const [addedMovie, setAddedMovie] = useState({
-  //       id: "",
-  //       title: "",
-  //       overview: "",
-  //       release_date: "",
-  //       inventory: "",
-  //       image_url: "",
-  //       external_id: ""
-  // });
   const onButtonAddClick = () => {
     const clickedMovie = {
-        // id: props.id,
         title: props.title,
         overview: props.overview,
         release_date: props.release_date,
@@ -34,11 +19,7 @@ const Movie = (props) => {
         image_url: props.image_url,
         external_id: props.external_id
     }
-
-    // console.log(clickedMovie )
-    // setAddedMovie(clickedMovie)
     props.clickAddOnMovie(clickedMovie);
-    // console.log(clickedMovie)
   }
   
   return (
@@ -57,5 +38,17 @@ const Movie = (props) => {
     </tr>
   )
 }
+
+Movie.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string,
+  release_date: PropTypes.string,
+  image_url: PropTypes.string,
+  overview: PropTypes.string,
+  external_id: PropTypes.string,
+  url: PropTypes.string,
+  selectMovieCallback: PropTypes.func.isRequired,
+  clickAddOnMovie: PropTypes.func.isRequired
+};
 
 export default Movie;
