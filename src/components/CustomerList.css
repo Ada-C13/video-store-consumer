@@ -1,0 +1,17 @@
+.customer-square {
+  display: flex;
+  width: 300px;
+  margin-left: 100px;
+  list-style: none;
+  margin-top: 20px;
+}
+
+.customer-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.customer-name {
+  padding-left: 15px;
+  margin-top: 0;
+}

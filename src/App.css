@@ -1,28 +1,157 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url(http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+* {
+  padding: 0;
+}
+
+body {
+  background-color: #f7efee;
+  margin: 10px;
+}
+
+.body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.navigation-bar {
+  margin: 10px 5px;
+  border-bottom: gray solid 0.5px;
+}
+
+.navigation-bar a {
+  color: tomato;
+  font-family: 'Notable', sans-serif;
+}
+
+.navigation-elements {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+a {
+  color: black;
+}
+a:link {
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: -moz-grab;
+}
+
+a:active {
+  text-decoration: underline;
+}
+
+.home-message {
   text-align: center;
+  font-family: 'Notable', sans-serif;
+  margin-top: 50px;
+  color: teal;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  list-style: none;
+}
+.movie-square {
+  display: grid;
+  grid-template: 1fr / 1fr 2fr ;
+  width: 420px;
+  border-radius: 25px;
+  padding: 15px;
+  border: solid tomato 1px;
+  margin: 10px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.movie-image {
+  padding-right: 10px;
+  width: 140px;
+  height: auto;
 }
 
-.App-title {
-  font-size: 1.5em;
+.movie-title {
+  margin-top: 3px;
 }
 
-.App-intro {
-  font-size: large;
+.movie-date {
+  margin-bottom: 3px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.select-button {
+  background-color: tomato;
+  width: 80px;
+  height: 30px;
+}
+
+.add-button {
+  background-color: tomato;
+  width: 160px;
+  height: 30px;
+}
+
+.body{
+  
+}
+
+.search {
+  width: 400px;
+  position: relative;
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid teal;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: black;
+}
+
+.searchButton {
+  position: absolute;
+  right: -50px;
+  width: 40px;
+  height: 36px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.search:before {
+  position: absolute;
+  right: -50px;
+  width: 40px;
+  height: 36px;
+  line-height: 36px;
+  background: teal;
+  text-align: center;
+  color: #fff;
+  border-radius: 3px;
+  font-family: 'FontAwesome';
+  content: '\f002';
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  position: relative;
+  margin-left: 108px;
+  padding: 10px;
+  overflow: auto;
+}
+.messageWrap{
+  position: relative;
+  margin-left: 150px;
+  overflow: auto;
 }
