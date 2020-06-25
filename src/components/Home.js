@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from'react';
+import React, { useState, useEffect, useCallback } from'react';
 import Carousel from 'react-bootstrap/Carousel'
+
 
 const selectMovies = (movieList, count = 4) => {
   
@@ -17,28 +18,40 @@ function randomItem(items) {
 }
 
 const Home = ({movieList}) => {
-  const scheduleTimer = () => {
-    return setTimeout(refreshSelectedMovies, 5 * 1000)
-  }
 
   const refreshSelectedMovies = () => {
     setSelectedMovies(selectMovies(movieList));
     setTimer(scheduleTimer());
   }
 
+  const scheduleTimer = () => {
+    return setTimeout(refreshSelectedMovies, 5 * 1000)
+  }
+
   const [selectedMovies,setSelectedMovies] = useState([]);
   const [timer,setTimer] = useState(scheduleTimer);
+  
+  const cancelTimer = useCallback(() => {
+    clearTimeout(timer);
+  }, [timer]);
 
+  
   useEffect(() => {
     setSelectedMovies(selectMovies(movieList));
   },[movieList])
 
+  useEffect(() => {
+    return () =>{
+      cancelTimer();
+    }
+  },[cancelTimer]);
+
   return (
     <div className="homepage-main">
 
-      <div class="card learn-card">
-        <img class="card-img learn-img" src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3452&q=80" alt="movie popcorn"/>
-        <div class="card-img-overlay text-center align-items-center caption-6 d-flex justify-content-around flex-column hp-block">
+      <div className="card learn-card">
+        <img className="card-img learn-img" src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3452&q=80" alt="movie popcorn"/>
+        <div className="card-img-overlay text-center align-items-center caption-6 d-flex justify-content-around flex-column hp-block">
           <Carousel>
             { selectedMovies.map((movie) => {
               return (
@@ -49,7 +62,7 @@ const Home = ({movieList}) => {
             })}
           </Carousel>
           
-          <h1 class="card-text text-white text-bolder">Not just another Netflix site</h1> 
+          <h1 className="card-text text-white text-bolder">Not just another Netflix site</h1> 
         </div>
       </div>
     </div>
