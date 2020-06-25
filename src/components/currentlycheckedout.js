@@ -6,16 +6,33 @@ import './currentlycheckedout.css';
 class CurrentlyCheckedOut extends Component {
   constructor(props) {
     super(props);
-    this.state = {rentals: []};
+    this.state = {rentals: [], error: ''};
   }
 
-  //runs start of this component
-  componentDidMount() {
-    axios.get('http://localhost:3000/rentals/currentlycheckedout').then((response) => {
+  getCurrentlyCheckedOut() {
+  axios.get('http://localhost:3000/rentals/currentlycheckedout').then((response) => {
       this.setState({
         rentals: response.data
       })
       console.log(this.state.rentals)
+    }).catch(() => {
+      this.setState({
+        error: 'Error'
+      })
+    })
+  }
+  //runs start of this component
+  componentDidMount() {
+    this.getCurrentlyCheckedOut()
+  }
+
+  //POST: /rentals/Psycho/return
+  // for this route thing: https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index
+  onClickCheckIn(aTitle, aCustomer_id) {
+    axios.post('http://localhost:3000/rentals/' + aTitle + '/return', {
+      customer_id: aCustomer_id, 
+    }).then((response) => {
+     this.getCurrentlyCheckedOut()
     }).catch(() => {
       this.setState({
         error: 'Error'
@@ -30,7 +47,7 @@ class CurrentlyCheckedOut extends Component {
 
       <button
           className="btn btn-primary select-customer"
-          // onClick={() => { selectCustomerCallback(id) }}
+          onClick={() => { this.onClickCheckIn(item.title, item.customer_id) }}
         >
           Returned
         </button>
