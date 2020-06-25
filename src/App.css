@@ -25,6 +25,13 @@ input {
   margin-bottom: 2em;
 }
 
+/* nav */
+
+.nav-item {
+  color: white;
+  padding-left: 1em;
+}
+
 /* movies */
 
 .movielist {

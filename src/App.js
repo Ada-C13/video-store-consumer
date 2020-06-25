@@ -163,7 +163,7 @@ const App = () => {
             <li className="nav-item">Customers</li>
           </Link>
           <Link to="/checkout">
-            <li>Checkout</li>
+            <li className="nav-item">Checkout</li>
           </Link>
         </ul>
       </Navbar>
