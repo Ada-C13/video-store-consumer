@@ -85,16 +85,6 @@ class App extends Component {
 
     this.setState({ selectedMovie })
   }
-
-  // selectMovie = (movieId) => {
-  //   const { movies } = this.state;
-
-  //   const selectedMovie = movies.find((movie) => {
-  //     return movie.id === movieId;
-  //   })
-
-  //   this.setState({ selectedMovie })
-  // }
   
   selectCustomer(id) {
     const { customers } = this.state;
@@ -162,7 +152,7 @@ class App extends Component {
             <br />
             {this.state.selectedCustomer ? ("Selected Customer: \n" + this.state.selectedCustomer.name) : "" }
             <br />
-            {this.state.selectedMovie && this.state.selectedCustomer ? <Button onClick={() => this.createRental()}>Create a Rental</Button> : ''}
+            {this.state.selectedMovie && this.state.selectedCustomer ? <Button className="btn-secondary" onClick={() => this.createRental()}>Create a Rental</Button> : ''}
           </div>
         </div>
 

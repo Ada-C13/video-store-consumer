@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from'react';
-import PropTypes from 'prop-types';
 import Carousel from 'react-bootstrap/Carousel'
-import Card from 'react-bootstrap/Card'
-// setTimeout(function, milliseconds)
-
 
 const selectMovies = (movieList, count = 4) => {
   
@@ -46,8 +42,8 @@ const Home = ({movieList}) => {
           <Carousel>
             { selectedMovies.map((movie) => {
               return (
-                <Carousel.Item> 
-                  <img className="home-image" src={movie.image_url} alt={movie.title} />
+                <Carousel.Item key={movie.external_id} > 
+                  <img className="home-image" src={movie.image_url} alt={movie.title}  />
                 </Carousel.Item>
               );
             })}
@@ -56,7 +52,6 @@ const Home = ({movieList}) => {
           <h1 class="card-text text-white text-bolder">Not just another Netflix site</h1> 
         </div>
       </div>
-      
     </div>
   )
 }
