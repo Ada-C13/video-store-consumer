@@ -22,8 +22,6 @@ const Customers = (props) => {
       });
   }, [props.url])
 
-
-
   const customersComponents = customersList.map((customerObject) => {
     return(
       <Customer 
@@ -68,6 +66,9 @@ const Customers = (props) => {
   );
 }
 
+Customers.propTypes = {
+  url: PropTypes.string.isRequired
+};
 export default Customers;
 
 
