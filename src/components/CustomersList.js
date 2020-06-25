@@ -11,7 +11,7 @@ const CustomersList = ({onUpdateSelectedCustomer, selected_id}) => {
     axios.get('http://localhost:3000/customers')
       .then((response) => {
         const data = response.data;
-        console.log(`this is response.data ${response.data}`);
+        //console.log(`this is response.data ${response.data}`);
         let customerCollection = data.map((customer) => {
           return (
             <div className="col-md-4 pb-4">
@@ -22,8 +22,8 @@ const CustomersList = ({onUpdateSelectedCustomer, selected_id}) => {
                 registered_at = {customer.registered_at}
                 phone = {customer.phone}
                 key = {customer.id}
-                selected_id={selected_id}
                 onUpdateSelect={onUpdateSelectedCustomer}
+                selected_id={selected_id}
               />
             </div>
           );

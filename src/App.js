@@ -18,9 +18,22 @@ const App = () => {
     id: null,
   });
 
+  const [selectedMovie, setSelectedMovie] = useState({
+    name: '',
+    id: null,
+  });
 
+  
   const updateSelectedCustomer = (newSelected) => {
     setSelectedCustomer({
+      name: newSelected.name,
+      id: newSelected.id
+    });
+    // setAlert(`You selected ${newSelected.name}. Nice.`)
+  };
+
+  const updateSelectedMovie = (newSelected) => {
+    setSelectedMovie({
       name: newSelected.name,
       id: newSelected.id
     });
@@ -44,20 +57,22 @@ const App = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <a className="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+              <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/search">Search <span class="sr-only">(current)</span></a>
+              <a className="nav-link" href="/search">Search <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/library">Library <span class="sr-only">(current)</span></a>
+              <a className="nav-link" href="/library">Library <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/customers">Customers <span class="sr-only">(current)</span></a>
+              <a className="nav-link" href="/customers">Customers <span className="sr-only">(current)</span></a>
             </li>
-            
             <li className="nav-item">
-              <a className="nav-link" href="#">Selected Customer: {selectedCustomer.name} <span class="sr-only">(current)</span></a>
+              <a className="nav-link" href="#">Selected Movie: {selectedMovie.name} <span className="sr-only">(current)</span></a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Selected Customer: {selectedCustomer.name} <span className="sr-only">(current)</span></a>
             </li>
           </ul>
         </div>
@@ -74,7 +89,10 @@ const App = () => {
           />
         </Route>
         <Route path="/library">
-          <Library />
+          <Library 
+            onUpdateSelectedMovie={updateSelectedMovie} 
+            selectedMovie={selectedMovie.id}
+          />
         </Route>
         <Route path="/">
           <Home />
