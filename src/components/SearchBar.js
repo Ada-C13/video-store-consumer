@@ -106,7 +106,7 @@ class SearchBar extends Component {
           <div className="submit-padding"><button type="submit">Search</button> 
           </div>
         </form>
-        <div>
+        <div className="row">
           {this.state.searchResults.length === 0 ? this.noResults() : this.databaseMovies()}
         </div>
         </div>
