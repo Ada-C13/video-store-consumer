@@ -1,5 +1,6 @@
 .customer-card-container {
   margin: 5px;
+  width: 25vw;
 }
 
 h3 {
@@ -11,8 +12,6 @@ h3 {
   align-items: left;
 }
 
-.img-thumbnail{
-}
 .customer-name{
   grid-column-start: 1;
   text-align: left;
