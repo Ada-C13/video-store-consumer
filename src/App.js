@@ -48,9 +48,11 @@ const App = () => {
     <Router>
       <div className="App">
         <Nav />
-        <p>Selected Customer: {selectedCustomer.name}</p>
-        <p>Selected Movie: {selectedMovie}</p>
-        <button onClick= {checkoutMovie}>Checkout</button>
+        <section className="selections">
+          <p>Selected Customer: {selectedCustomer.name}</p>
+          <p>Selected Movie: {selectedMovie}</p>
+          <button onClick= {checkoutMovie}>Checkout</button>
+        </section>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/customers" component={() => (< Customers onClickCallback={selectCustomer}/>)} />

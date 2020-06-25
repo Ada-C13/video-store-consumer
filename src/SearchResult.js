@@ -31,7 +31,7 @@ const SearchResult = (props) => {
   }
 
   return (
-    <div>
+    <div >
       <h3>{props.title}</h3>
       <img src={props.image_url} alt="movie poster"/>
       <button onClick={onSelect}>Add to Libray</button>

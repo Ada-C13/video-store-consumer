@@ -36,8 +36,10 @@ const Customers = (props) => {
         
   return (
     <div className="Customers">
-      <h1>Customers Page</h1>
-      {customerComponents}
+      <h1>All Customers</h1>
+      <section className="grid-columns">
+        {customerComponents}
+      </section>
     </div>
   );
 }
