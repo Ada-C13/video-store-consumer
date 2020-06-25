@@ -57,11 +57,19 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
 
 
   const allSearchResults = searchResults.map((movie) => {
-    return <Movie key={movie.external_id} movie={movie} selectMovie={selectMovieToAdd} action={"Add to Library"} />
+    return (
+      <div  key={movie.id} className="single-movie align-self-center">
+        <Movie key={movie.external_id} movie={movie} selectMovie={selectMovieToAdd} action={"Add to Library"} />
+      </div>
+    );
   });
 
   const allLibraryResults = libraryResults.map((movie) => {
-    return <Movie key={movie.external_id} movie={movie} selectMovie={selectMovie} action={"Select Movie"} />
+    return (
+      <div  key={movie.id} className="single-movie align-self-center">
+        <Movie key={movie.external_id} movie={movie} selectMovie={selectMovie} action={"Select Movie"} />
+      </div>
+    );
   });
 
 
@@ -94,13 +102,13 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
         </div>
       </form>
 
-      <section className="container text-center">
-        <h4> Library Results: {allLibraryResults.length} </h4>
+      <h4> Library Results: {allLibraryResults.length} </h4>
+      <section className="d-flex flex-row flex-wrap justify-content-center align-items-center">
         {allLibraryResults}
       </section>
 
-      <section className="container text-center">
-        <h4> Movie DB Search Results: {allSearchResults.length} </h4>
+      <h4> Movie DB Search Results: {allSearchResults.length} </h4>
+      <section className="d-flex flex-row flex-wrap justify-content-center align-items-center">  
         {allSearchResults}
       </section>
     </div>

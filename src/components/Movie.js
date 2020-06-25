@@ -29,29 +29,40 @@ const Movie = ({movie, selectMovie, action}) => {
     //   </div>
     // </Card>
 
-    <div className="movie-entry align-center">
-      <div className="py-2">
-          <div className="row">
-            <div className="col-lg-6 mb-3 mb-lg-0">
-              <div className="hover hover-2 text-white rounded">
-                <img className="movie-card-image" src={movie.image_url} alt={movie.title} />
-                <div className="hover-overlay"></div>
-                <div className="hover-2-content px-5 py-4">
-                  <h3 className="hover-2-title text-uppercase font-weight-bold mb-0 font-light"> {movie.title} <p className="font-weight-light text-muted">{movie.release_date}</p></h3>
-                  <p className="hover-2-description text-uppercase mb-0"> <small> {movie.overview} </small> </p>
-                </div>
-              </div>
-            </div>
+    // <div className="movie-entry align-center">
+    //   <div className="py-2">
+    //       <div className="row">
+    //         <div className="col-lg-6 mb-3 mb-lg-0">
+    //           <div className="hover hover-2 text-white rounded">
+    //             <img className="movie-card-image" src={movie.image_url} alt={movie.title} />
+    //             <div className="hover-overlay"></div>
+    //             <div className="hover-2-content px-5 py-4">
+    //               <h3 className="hover-2-title text-uppercase font-weight-bold mb-0 font-light"> {movie.title} <p className="font-weight-light text-muted">{movie.release_date}</p></h3>
+    //               <p className="hover-2-description text-uppercase mb-0"> <small> {movie.overview} </small> </p>
+    //             </div>
+    //           </div>
+    //         </div>
 
-          </div>
+    //       </div>
+    //   </div>
+    //   <button
+    //     type="button"
+    //     className="btn btn-outline-dark"
+    //     onClick={onMovieClick}>
+    //       {action}
+    //   </button>
+    // </div>
+
+    <div className="container d-flex flex-column" >
+      <div className="portrait-hover-effect" ds-title={movie.title} ds-desc={movie.overview}>
+        <img src={movie.image_url} alt={movie.title} className="movie-img" />
       </div>
       <button
-        type="button"
-        className="btn btn-outline-dark"
-        onClick={onMovieClick}>
-          {action}
+          type="button"
+          className="btn btn-dark text-light movie-btn"
+          onClick={onMovieClick}>
+            {action}
       </button>
-
     </div>
   )
 }

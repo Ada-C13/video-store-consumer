@@ -32,7 +32,7 @@ const MovieLibrary = ({ movieList, selectMovie }) => {
 
 
 
-      <div className="d-flex flex-column justify-content-center align-items-center">
+      <div className="d-flex flex-row flex-wrap justify-content-center align-items-center">
         { allMovies }
       </div>
     </div>
