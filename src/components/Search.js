@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import Movie from './Movie';
 import SearchForm from './SearchForm';
@@ -69,7 +69,7 @@ import SearchForm from './SearchForm';
             setMessage(null);
           }, 5000);
           refreshMovieList();
-        }  
+        }
       })
         .catch((error) => {
           setMessage(error.message);
