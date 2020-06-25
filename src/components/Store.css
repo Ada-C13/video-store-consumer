@@ -2,13 +2,13 @@
   /* Add shadows to create the "card" effect */
   float: left;
   overflow: hidden;
-  width: 20%;
+  width: 23%;
   color: #413542;
   text-align: center;
-  height: 900px;
+  height: auto;
   border:none;
-  padding: 10px;
-  margin: 10px;
+  padding: 5px;
+  margin: 5px;
   font-family: nunito;
 
 }
@@ -22,17 +22,16 @@
 
 /* Add some padding inside the card container */
 .movies-card {
-  padding: 5px 8px;
+  padding: 5px 5px;
   font-family: nunito;
-  border-radius: 10px;
-  border-radius: 20px;
+  border-radius: 25px;
   box-shadow: 0 10px 40px #ff7c7c, 0 0 0 20px #ffffffeb;
-  margin: 40px;
+  margin: 30px;
 }
 
 .new-inventory{
   height: 20px !important;
-  font-size: 20px !important;
+  font-size: 15px !important;
   margin: 10px;
   background-color: white !important; 
   color: black;
