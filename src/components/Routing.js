@@ -13,10 +13,10 @@ const Routing = (props) =>{
   <Router>
     <div>
       <ul className="nav-bar">
-        <li class="active">
+        {/* <li class="active">
           <Link to="/">Home</Link>
-        </li>
-        <li>
+        </li> */}
+        <li class="active">
           <Link to="/store">Seach</Link>
         </li>
         <li>

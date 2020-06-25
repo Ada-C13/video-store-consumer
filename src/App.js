@@ -5,6 +5,7 @@ import Routing from './components/Routing'
 import axios from 'axios';
 // import FlashMessage from 'react-flash-message'
 import FlashMessage from './components/FlashMessage';
+import picture1 from './images/Picture1.png';
 
 const App = (props) => {
 
@@ -57,19 +58,27 @@ const App = (props) => {
       {/* <header className="header">
         <h1 className="header__h1"><span className="header__text">Welcome to insert title movies...</span></h1>
       </header> */}
-      <div>
-        <p>Selected User : {selectedUser ? selectedUser.name : "Not Selected" }</p>
-      </div>
-      <div>
-        <p>Selected Movie : {selectedMovie ? selectedMovie.title : "Not Selected"}</p>
-      </div>
-      <div>
-        <p>Status : {flash ? "Successfully Checked out" : "Not Checked Out"}</p>
-      </div>
-      <div>
-        <input className="add-library-button" type="button" value="checkout" onClick={() => checkOut(selectedUser, selectedMovie)} />
-      </div>
+      <span className="top">
+        <span className="container">
+          <div className="selected_wording">
+            <p>Selected User : {selectedUser ? selectedUser.name : "Not Selected" }</p>
+          </div>
+          <div className="selected_wording">
+            <p>Selected Movie : {selectedMovie ? selectedMovie.title : "Not Selected"}</p>
+          </div>
+          <div className="selected_wording">
+            <p>Status : {flash ? "Successfully Checked out" : "Not Checked Out"}</p>
+          </div>
+        </span>
+        <div className="item-a">
+          <input className="checkout-button" type="button" value="Checkout" onClick={() => checkOut(selectedUser, selectedMovie)} />
+        </div>
 
+        <div className="logo">
+          <img src={picture1} width="140" height="125" />
+        </div>
+      </span>
+      <br></br>
       {error
         ? <FlashMessage
           messageContents={error}
@@ -82,10 +91,11 @@ const App = (props) => {
           messageClass="success-message"
           onTimeoutCallback={onTimeout} />
         : ""}
-
-      <Routing {...{ onSubmitUserCallback, onSubmitMovieCallback }}
-      />
-
+      <span className='navbar'>
+        <Routing {...{ onSubmitUserCallback, onSubmitMovieCallback }}
+        />
+      </span>
+  
     </section>
   );
 };

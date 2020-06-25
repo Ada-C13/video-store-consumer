@@ -40,12 +40,12 @@ input, button
 #cover
 {
     position: absolute;
-    top: 50%;
+    top: 33%;
     left: 0;
     right: 0;
-    width: 550px;
+    width: 500px;
     padding: 35px;
-    margin: -83px auto 0 auto;
+    margin: -1px auto 0 auto;  /*was -83*/
     background-color: #ff7575;
     border-radius: 20px;
     box-shadow: 0 10px 40px #ff7c7c, 0 0 0 20px #ffffffeb;
@@ -171,7 +171,7 @@ button span:before, button span:after
   right: 0;
   bottom: 0;
   padding: 10px 14px;
-  margin: 20px;
+  /* margin: 20px; */
   color: #fff;
   font-family: Nunito;
   font-size: 14px;
@@ -180,4 +180,13 @@ button span:before, button span:after
   border-radius: 4px;
   box-shadow: 0 10px 20px -5px rgba(255, 117, 117, 0.86);
   z-index: 125;
+}
+
+.mainPic {
+    
+    margin-top: 150px;
+    margin-left: 15%;
+    margin-right: 25%;
+    
+    
 }
