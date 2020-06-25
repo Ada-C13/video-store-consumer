@@ -16,6 +16,10 @@ import SearchForm from './SearchForm';
         .catch((error) => {
           setMessage(error.message);
           console.log(errorMessage);
+
+          setTimeout(() => {
+            setMessage(null);
+          }, 5000);
         });
     }
 
@@ -38,24 +42,41 @@ import SearchForm from './SearchForm';
       .catch((error) => {
         setMessage(error.message);
         console.log(errorMessage);
+
+        setTimeout(() => {
+          setMessage(null);
+        }, 5000);
       }); 
     }
   
     const addMovie = (addedMovie) => {
         if (checkPresence(addedMovie)){
-          console.log ("it is present")
+          setMessage("Rental already exists in library")
+          
+          setTimeout(() => {
+            setMessage(null);
+          }, 5000);
+          // console.log ("it is present")
         }else{
-          console.log ("it is NOOOOOOT present")
+          // console.log ("it is NOOOOOOT present")
         axios.post(props.url, addedMovie)
         .then((response) => {
           // const newRental= response.data;
           if (response.status === 200 || response.status === "OK"){
-            setMessage("Rental is successfully added")
+            setMessage("Rental has been successfully added");
+
+            setTimeout(() => {
+              setMessage(null);
+            }, 5000);
           }  
         })
           .catch((error) => {
             setMessage(error.message);
             console.log(error.message);
+
+            setTimeout(() => {
+              setMessage(null);
+            }, 5000);
           });
           console.log(addedMovie)
           

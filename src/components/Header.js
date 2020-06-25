@@ -60,17 +60,24 @@ const Header = () => {
     .then((response) => {
       // const newRental= response.data;
       if (response.status === 200 || response.status === "OK"){
-        setMessage("Rental is successfully checked-out")
+        setMessage("Rental has been successfully checked-out")
         console.log(message)
+
+        setTimeout(() => {
+          setMessage(null);
+        }, 5000);
       }  
     })
    
     .catch((error) => {
       setMessage(error.message);
       console.log(error.message);
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
     });
- 
-    console.log(rental)
+
     setSelectedCustomer(null);
     setSelectedMovie(null);
   }
@@ -78,61 +85,58 @@ const Header = () => {
 
   return (
   <Router>
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <div>
+    <div className={ message ? "pt-4 alert alert-warning" : "hidden" } role="alert"><p><em><strong>{message}</strong></em></p></div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className=" navbar-brand float-left w-50">
           <a href="/"><img className="w-75" src="https://lh3.googleusercontent.com/pw/ACtC-3emDsynMN5vJmfTvCqR6lWWxeBiBAPLymsKLn8sOq-t8zAQPwLo_f_2YITgWrq_BDWr-h43ohiIUkLm77quCDkSqNMsGsnNlm6AITEUYQeJ7I3Lha95sLe5tDNw9aBQNMAZwr70RbiNI0_LD2XNrpmn=w400-h137-no?authuser=0"/></a>
         </div>
-          <ul className=" navbar-nav mr-auto float-left">
-            <li><Link to={'/'} className="nav-link">Home</Link></li>
-            <li><Link to={'/library'} className="nav-link">Library</Link></li>
-            <li><Link to={'/customers'} className="nav-link">Customers</Link></li>
-            <li><Link to={'/search'} className="nav-link">Search</Link></li>
-          </ul>
-          <div className="w-50"></div>
-          <div className="selected w-100 d-flex justify-content-end ">
-            <div className="btn-group btn-group-sm">
-              <button className={ selectedCustomer ? "active btn btn-danger" : "disabled btn btn-danger"}>{selectedCustomer ? selectedCustomer.name : <a href="/customers" className="text-decoration-none text-white">Select Customer</a>} </button>
-              <button className={ selectedMovie ? "active  btn btn-danger" : "disabled btn btn-danger"}> {selectedMovie ? selectedMovie.title : <a href="/library" className="text-decoration-none text-white">Select Movie</a>} </button>
-              <button className={ selectedCustomer && selectedMovie ? "btn  btn-success text-decoration-none" : "disabled btn btn-success" } onClick={check_out}>Checkout</button>
-              <button className=" btn btn-light border-dark text-decoration-none" onClick = {reset}>Reset</button>
-            </div>
+        <ul className=" navbar-nav mr-auto float-left">
+          <li><Link to={'/'} className="nav-link">Home</Link></li>
+          <li><Link to={'/library'} className="nav-link">Library</Link></li>
+          <li><Link to={'/customers'} className="nav-link">Customers</Link></li>
+          <li><Link to={'/search'} className="nav-link">Search</Link></li>
+        </ul>
+        <div className="w-50"></div>
+        <div className="selected w-100 d-flex justify-content-end ">
+          <div className="btn-group btn-group-sm">
+            <button className={ selectedCustomer ? "active btn btn-danger" : "disabled btn btn-danger"}>{selectedCustomer ? selectedCustomer.name : <a href="/customers" className="text-decoration-none text-white">Select Customer</a>} </button>
+            <button className={ selectedMovie ? "active  btn btn-danger" : "disabled btn btn-danger"}> {selectedMovie ? selectedMovie.title : <a href="/library" className="text-decoration-none text-white">Select Movie</a>} </button>
+            <button className={ selectedCustomer && selectedMovie ? "btn  btn-success text-decoration-none" : "disabled btn btn-success" } onClick={check_out}>Checkout</button>
+            <button className=" btn btn-light border-dark text-decoration-none" onClick = {reset}>Reset</button>
           </div>
-{/*           
-          <div className="w-100"></div>
-          <div className="alert alert-secondary" role="alert"><p><em>{message}</em></p></div> */}
-        </nav>
-        
-        <Switch> 
-            <Route exact path='/' component={Home} />
-            <Route 
-            path='/library'
-            render={(props) => (
-              <Library {...props} 
-              url={URL+"/movies"}
-              selectMovieCallback={selectMovie}/>
-            )} />
-            <Route 
-            path='/customers'
-            render={(props) => (
-              <Customers {...props} 
-              url={URL+"/customers"}
-              selectCustomerCallback={selectCustomer}
-              />
-            )} />
-            
-            <Route 
-            path='/search'
-            render={(props) => (
-              <Search {...props}
-              url={URL+"/movies"}
-              // submitMovieSearch={searchMovies} 
-              />
-            )} />
-        </Switch>
-        
-      </div>
-    </Router>
+        </div>
+      </nav>
+      
+      <Switch> 
+        <Route exact path='/' component={Home} />
+        <Route 
+          path='/library'
+          render={(props) => (
+          <Library {...props} 
+          url={URL+"/movies"}
+          selectMovieCallback={selectMovie}/>
+        )} />
+        <Route 
+          path='/customers'
+          render={(props) => (
+          <Customers {...props} 
+          url={URL+"/customers"}
+          selectCustomerCallback={selectCustomer}
+          />
+        )} />
+          
+        <Route 
+          path='/search'
+          render={(props) => (
+          <Search {...props}
+          url={URL+"/movies"}
+          // submitMovieSearch={searchMovies} 
+          />
+        )} />
+      </Switch>
+    </div>
+  </Router>
   );
 }
 
