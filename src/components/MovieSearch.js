@@ -30,6 +30,10 @@ const MovieSearch = ({url, selectMovie}) => {
           setMessage(error.message);
         });
     }
+    
+    setMessage(null)
+    setSearchResultsList({title: "",})
+    setSearchResultsList([])
   }
 
   const databaseMovies = () => searchResults.map((movie) => {

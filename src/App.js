@@ -161,7 +161,7 @@ class App extends Component {
         {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.makeRental()}>Rent Now</Button> : ''}
         <h3>{this.state.success ? (this.state.success) : "" }</h3>
         <h3>{this.state.error ? (this.state.error) : "" }</h3>
-        {this.state.success? <Button onClick={() => this.setSucces()}>Next Rental</Button> : ''}
+        {this.state.success? <Button onClick={() => this.setSucces()}>Next</Button> : ''}
       </div>
       </header>
     
