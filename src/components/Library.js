@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import axios from 'axios';
-import Movie from "./Movie";
 import "./Library.css"
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-
+ /* found this sorting code here:https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/ */
+//  .sort((a, b) => (a.props.title > b.props.title) ? 1 : (a.props.title === b.props.title) ? ((a.props.externalId < b.props.externalId) ? 1 : -1) : -1 )
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
-const Library = () => {
+const Library = ({onUpdateCurrentMovie}) => {
   const [movieList, setMovieList] = useState([])
   const [message, setMessage] = useState(null);
-
-  // event.preventDefault();
+  const [selectedMovie, setSelectedMovie] = useState(null)
+  
   useEffect(()=>{
     axios.get(API_URL_MOVIES)
     .then((response) => {
@@ -22,26 +25,39 @@ const Library = () => {
     });
   }, []);
 
-  const movieComponents = movieList.map((movie) => {
-    return(
-      <Movie
-        key = {movie.external_id}
-        externalId = {movie.external_id}
-        title = {movie.title}
-        overview = {movie.overview}
-        releaseDate = {movie.release_date}
-        imageUrl = {movie.image_url}
-        showAddButton = {false}
-        showDetailButton = {true}
-        selectMovieButton = {true}
-      />
-    )
-  });
+  const onSelectMovieClick = (event) =>{
+    event.preventDefault();
+    setSelectedMovie(event.target.value);
+  }
 
+  console.log(selectedMovie)
+  
   return (
-    <div style={{flex: 1, flexDirection: 'row'}}>
-      {/* found this sorting code here:https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/ */}
-      {movieComponents.sort((a, b) => (a.props.title > b.props.title) ? 1 : (a.props.title === b.props.title) ? ((a.props.externalId < b.props.externalId) ? 1 : -1) : -1 )}
+    <div>
+      {movieList.map(movie => (
+        <div className="outer-card">
+          <div className='card-container'>
+            <img src={movie.image_url} alt={movie.title +"poster"}></img>
+            <div className='card-info'>
+              <h1>{movie.title}</h1>
+              <p>
+                Released: {movie.release_rate}
+              </p>
+              <p>
+                {movie.overview}
+              </p>
+            </div>
+          </div>
+          <div className="card-buttons">
+            <Link to={`/details/${movie.title}`}><Button variant="outline-secondary">Details</Button></Link>
+            <br/>
+            <Button variant="outline-secondary" value={movie.title} onClick={onSelectMovieClick}>Select this Movie</Button>
+          </div>
+          <div>
+            {message}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

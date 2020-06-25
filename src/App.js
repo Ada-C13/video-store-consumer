@@ -7,13 +7,19 @@ import SearchComponent from './components/SearchContainer';
 import Customers from './components/Customers';
 import Library from './components/Library';
 import Details from './components/Details';
+import Movie from './components/Movie';
 import Selected from './components/Selected';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-
+// http://localhost:3000/rentals/{title}/check-out 
 const App = () => {
   const [currentCustomer, setCurrentCustomer] = useState(null);
   const [currentMovie, setCurrentMovie] = useState(null);
-  
+
+  const updateMovie = (selectedMovie) => {
+    setCurrentMovie(selectedMovie)
+  }
   
   return (
     <>
@@ -22,7 +28,10 @@ const App = () => {
       </div>
 
       <div className="note">
-        <Selected customer={currentCustomer} movie={currentMovie}/>
+        <p>Selected Customer: {currentCustomer}</p>
+        <p>Selected Movie: {currentMovie}</p>
+        <Button variant="outline-secondary" >Check-out</Button>
+        <Button variant="outline-secondary">Return</Button>
       </div>
       
       <Router>
@@ -36,11 +45,14 @@ const App = () => {
           <div>
             <Route exact path="/" component={Home} />
             <Route exact path="/search" component={SearchComponent} />
-            <Route exact path="/library" component={Library}/>
+            <Route exact path="/library" 
+            render={(props) => <Library onUpdateCurrentMovie={updateMovie}/>}/>
             <Route exact path="/customers" component={Customers} />
             <Route exact path= "/details/:title" component= {Details}/>
           </div>
       </Router> 
+
+      {/* {false && <Customers onUpdateCurrentCustomer={updateCustomer}/>} */}
     </>
   );
 
