@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from'react';
+import React, { useState } from'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Movie from './Movie';
@@ -16,7 +16,6 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
 		newSearch = event.target.value;
     setSearchBar(newSearch);
   };
-
 
   const onSearchSubmit = (event) => {
     event.preventDefault();
@@ -55,10 +54,9 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
     }
   };
 
-
   const allSearchResults = searchResults.map((movie) => {
     return (
-      <div  key={movie.id} className="single-movie align-self-center">
+      <div  className="single-movie align-self-center">
         <Movie key={movie.external_id} movie={movie} selectMovie={selectMovieToAdd} action={"Add to Library"} />
       </div>
     );
@@ -73,7 +71,6 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
   });
 
 
-  
   return (
     <div className="container d-flex flex-column search-container">
       <div className="d-flex flex-row justify-content-center align-items-center">
@@ -82,7 +79,7 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
       </div>
       
       <form onSubmit={ onSearchSubmit } className="align-self-center" >
-        <div class="input-group">
+        <div className="input-group">
           <input
             type='type'
             name='query'
@@ -90,9 +87,9 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
             onChange={onInputChange}
             value={searchBar}
           />
-          <div class="input-group-append">
+          <div className="input-group-append">
             <input
-              className="btn btn-primary btn-style"
+              className="btn btn-secondary btn-style bg-dark"
               type="submit"
               name="submit"
               value="Search"
@@ -102,12 +99,20 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
         </div>
       </form>
 
-      <h4> Library Results: {allLibraryResults.length} </h4>
+      <div className="d-flex flex-row justify-content-center align-items-center">
+        <h4> Library Results: {allLibraryResults.length} </h4>
+        <img className="popcorn-icon" src="https://images.unsplash.com/photo-1587132129911-80e544e7e7b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1006&q=80" alt="popcorn as icon" />
+      </div>
+
       <section className="d-flex flex-row flex-wrap justify-content-center align-items-center">
         {allLibraryResults}
       </section>
 
-      <h4> Movie DB Search Results: {allSearchResults.length} </h4>
+      <div className="d-flex flex-row justify-content-center align-items-center">
+        <h4> Movie DB Search Results: {allSearchResults.length}  </h4>
+        <img className="popcorn-icon" src="https://images.unsplash.com/photo-1587132129911-80e544e7e7b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1006&q=80" alt="popcorn as icon" />
+      </div>
+      
       <section className="d-flex flex-row flex-wrap justify-content-center align-items-center">  
         {allSearchResults}
       </section>
@@ -120,6 +125,7 @@ MovieSearch.propTypes = {
   url: PropTypes.string.isRequired,
   movieList: PropTypes.array.isRequired,
   selectMovie: PropTypes.func.isRequired,
+  addMovie: PropTypes.func.isRequired,
 }
 
 export default MovieSearch;
