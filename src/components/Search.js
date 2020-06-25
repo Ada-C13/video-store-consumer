@@ -52,7 +52,7 @@ import SearchForm from './SearchForm';
     const addMovie = (addedMovie) => {
         if (checkPresence(addedMovie)){
           setMessage("Rental already exists in library")
-          
+
           setTimeout(() => {
             setMessage(null);
           }, 5000);
@@ -101,12 +101,14 @@ import SearchForm from './SearchForm';
     return (
       <div className="w-100 d-flex flex-wrap text-center justify-content-around">
         <div className="search-form w-100"><SearchForm onSubmitCallback ={searchMovie} /></div>
+
+        { movieComponents.length > 0 ? <div>
         <h2 className="py-2 text-center w-100">Search Results</h2>
-        <table className="table table-hover">
+        <table className="table table-hover table-light">
           <thead className="thead-light text-center">
             <tr>
               <th>Ext. ID</th>
-              <th>Select</th>
+              <th>Add</th>
               <th>Title</th>
               <th>Image</th>
               <th>Release Date</th>
@@ -117,7 +119,10 @@ import SearchForm from './SearchForm';
             {movieComponents}
           </tbody>
         </table>
-        
+        </div>
+        :
+        <h2 className="py-2 text-center w-100">No Results</h2>
+        }
       </div>
   );
 }

@@ -86,7 +86,7 @@ const Header = () => {
   return (
   <Router>
     <div>
-    <div className={ message ? "pt-4 alert alert-warning" : "hidden" } role="alert"><p><em><strong>{message}</strong></em></p></div>
+    <div className={ message ? "pt-4 alert alert-warning" : "hidden mb-n3" } role="alert"><p><em><strong>{message}</strong></em></p></div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className=" navbar-brand float-left w-50">
           <a href="/"><img className="w-75" src="https://lh3.googleusercontent.com/pw/ACtC-3emDsynMN5vJmfTvCqR6lWWxeBiBAPLymsKLn8sOq-t8zAQPwLo_f_2YITgWrq_BDWr-h43ohiIUkLm77quCDkSqNMsGsnNlm6AITEUYQeJ7I3Lha95sLe5tDNw9aBQNMAZwr70RbiNI0_LD2XNrpmn=w400-h137-no?authuser=0"/></a>

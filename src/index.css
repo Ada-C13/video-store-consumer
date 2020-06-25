@@ -17,11 +17,21 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  /* background-color: #ac9c8a; */
   color: #030302;
   height: 100%;
+  background-image: url('https://lh3.googleusercontent.com/pw/ACtC-3fD4ohzhSj8UxpU5P_nJIF7tnnfeyfjrbQMEcJXmH_k1iMrieKF4YdlCkP0jycCA4SepIhh3ad_m78vYRMIWdzI3URoCKMaTMSNxYxhK_as-Pc_K0vgkf096Zvm8uUNFC4ksqJg222EDaNYi2IC80OF=w1590-h724-no?authuser=0');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   
 }
+
+@media all and (max-width: 499px) {
+  #ifMobile1 {
+      background-image: url("https://lh3.googleusercontent.com/pw/ACtC-3cfUrffFXJ-0UvhaS0lpRJW6eE9SiD95s5NV6kMH124j6zBEIwwF2TEKnJvD79F6MUCuaoSDADE1qc1SMt1By7csqERi13OFZDjKfulyLl3nH_hht1m7pZGXY_psjeQliWDTMuxaK9lIySDucpkSPWO=w564-h1019-no?authuser=0");
+  }
+}
+
 * {
   font-family: 'Montserrat', sans-serif;
 }
