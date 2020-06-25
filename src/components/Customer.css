@@ -1,11 +1,19 @@
 .cards {
   margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .card {
-  flex: 0 1 calc(25% - 1em);
+  width: flex;
   margin-top: 2rem;
   align-items: stretch;
+  min-width: 10rem;
+}
+
+.card-deck .customer-card.card {
+  flex: auto;
+  justify-content: space-evenly;
+  margin: 2vw;
 }
 
 body {
@@ -59,8 +67,6 @@ button:focus {
   box-shadow: none;
   outline: none
 }
-
-
 
 p.card-text {
   padding: 0px;

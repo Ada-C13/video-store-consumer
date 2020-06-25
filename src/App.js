@@ -157,7 +157,8 @@ class App extends Component {
             </Nav>
             <Form inline>
                <Form.Control type="text" placeholder="Movie Title"/>
-              <Button variant="button-grad">Search</Button>
+               <Button variant="dark"
+                 className="button-box button-grad button-grad:hover">Search</Button>
             </Form>
           </Navbar>
       <div>

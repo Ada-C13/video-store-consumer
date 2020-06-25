@@ -17,7 +17,7 @@ const MovieLib = ({ movieList, selectMovie }) => {
   };
 
   return (
-    <div className="">
+    <div>
       <CardDeck>
       {buildMovie()}
       </CardDeck>

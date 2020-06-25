@@ -18,17 +18,13 @@ const CustomerList = ({ customerList, selectCustomer }) => {
   }
 
   return (
-    <div>
-      {buildCustomers()}
+    <div className="card-deck library">
+      <div className="card-deck">
+        <CardDeck>
+        {buildCustomers()}
+        </CardDeck>
+      </div>
     </div>
-
-    // TODO: The above code renders the cards, but no grid. The below code shows grid, but cards are too skinny. 
-
-    // <div className="">
-    //   <CardDeck>
-    //   {buildCustomers()}
-    //   </CardDeck>
-    // </div>
   );
 };
 

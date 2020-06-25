@@ -3,7 +3,6 @@
 }
 
 .card {
-  flex: 0 1 calc(25% - 1em);
   margin-top: 2rem;
   align-items: stretch;
 }

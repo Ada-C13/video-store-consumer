@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card'
 
 const Customer = ({ id, name, address, city, state, registered_at, phone, account_credit, movies_checked_out_count, selectCustomer }) => {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="customer-card">
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>
