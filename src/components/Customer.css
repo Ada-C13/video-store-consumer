@@ -5,16 +5,12 @@
   text-align: start;
 }
 
-h3 {
-  color: black;
-}
-
 .customer-name{
   margin: 10px;
   color: black;
 }
 
-.customer-name h3 {
+.customer-name h4 {
   color: black;
 }
 
@@ -25,4 +21,11 @@ ul{
 
 li{
   list-style-type: none;
+}
+.customer-container{
+  width: 30vw;
+}
+
+.image-customer{
+  height: 14vh;
 }

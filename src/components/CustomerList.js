@@ -16,9 +16,16 @@ const CustomerList = ({ customerList, selectCustomer }) => {
   }
 
   return (
-    <div>
-      <h3>Customer List</h3>
-      { allCustomers() }
+    <div className="container d-flex flex-column align-items-center">
+      
+      <div className="d-flex flex-row justify-content-center align-items-center">
+        <img className="popcorn-header w-25" src="https://images.unsplash.com/photo-1587132129911-80e544e7e7b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1006&q=80" alt="popcorn as icon" />
+        <h3>. . . Customers</h3>
+      </div>
+
+      <div className="d-flex flex-row flex-wrap justify-content-center customers-box">
+        { allCustomers() }
+      </div>
     </div>
   )
 }

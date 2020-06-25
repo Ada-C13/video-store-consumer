@@ -5,11 +5,11 @@ import { Card } from 'react-bootstrap/';
 
 const Customer = ({ id, name, address, city, state, postalCode, registered_at, phone, account_credit, movies_checked_out_count, selectCustomer }) => {
   return (
-    <Card>
+    <Card className="customer-container">
       <div className="customer-card-container">
-        <img src={`https://image.flaticon.com/icons/svg/3105/310593${id%8}.svg`} alt="avatar thumbnail" className="col image w-25"/>
+        <img src={`https://image.flaticon.com/icons/svg/3105/310593${id%10}.svg`} alt="avatar thumbnail" className="col image-customer"/>
         <div className="customer-name">
-          <h3> {name} </h3>
+          <h4> {name} </h4>
           <ul>
             <li>Movies Checked Out: {movies_checked_out_count} </li>
             <li>Account Credit: ${account_credit} </li>
