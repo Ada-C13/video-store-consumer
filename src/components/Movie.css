@@ -49,6 +49,7 @@
 /* Reference: https://bootstrapious.com/p/bootstrap-image-hover*/
 
 .movie-entry {
+  margin-left: 30vw;
   width: 80vw;
   height: auto;
 }

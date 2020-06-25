@@ -68,6 +68,10 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
   
   return (
     <div className="container d-flex flex-column search-container">
+      <div className="d-flex flex-row justify-content-center align-items-center">
+        <img className="popcorn-header w-25" src="https://images.unsplash.com/photo-1587132129911-80e544e7e7b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1006&q=80" alt="popcorn as icon" />
+        <h3>. . . Movie Search</h3>
+      </div>
       
       <form onSubmit={ onSearchSubmit } className="align-self-center" >
         <div class="input-group">

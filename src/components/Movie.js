@@ -30,11 +30,11 @@ const Movie = ({movie, selectMovie, action}) => {
     // </Card>
 
     <div className="movie-entry align-center">
-      <div className="py-5">
+      <div className="py-2">
           <div className="row">
             <div className="col-lg-6 mb-3 mb-lg-0">
               <div className="hover hover-2 text-white rounded">
-                <img classNameName="movie-card-image" src={movie.image_url} alt={movie.title} />
+                <img className="movie-card-image" src={movie.image_url} alt={movie.title} />
                 <div className="hover-overlay"></div>
                 <div className="hover-2-content px-5 py-4">
                   <h3 className="hover-2-title text-uppercase font-weight-bold mb-0 font-light"> {movie.title} <p className="font-weight-light text-muted">{movie.release_date}</p></h3>
@@ -44,13 +44,13 @@ const Movie = ({movie, selectMovie, action}) => {
             </div>
 
           </div>
-          <button
-            type="button"
-            className="btn btn-outline-dark"
-            onClick={onMovieClick}>
-              {action}
-          </button>
       </div>
+      <button
+        type="button"
+        className="btn btn-outline-dark"
+        onClick={onMovieClick}>
+          {action}
+      </button>
 
     </div>
   )

@@ -7,38 +7,32 @@ const BASE_URL = 'http://localhost:3000/'
 
 const MovieLibrary = ({ movieList, selectMovie }) => {
 
-  // const [ movieList, setMovieList ] = useState([])
-  // const [ errorMessage, setErrorMessage ] = useState(null);
-
-  // useEffect( () => {
-  //   axios
-  //   .get(BASE_URL + 'movies')
-  //   .then((response) => {
-  //     console.log(response.data)
-  //     const newMovieList = response.data;
-  //     setMovieList(newMovieList);
-  //     setErrorMessage(null);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error.message);
-  //     setErrorMessage(error.message);
-  //   });
-  // }, [])
-
   const allMovies = movieList.map((movie) => {
 		return (
-			<div  key={movie.id}>
-				<Movie movie={movie} selectMovie={selectMovie} action={"Select Movie"} />
+			<div  key={movie.id} className="single-movie align-self-center">
+				<Movie movie={movie} selectMovie={selectMovie} action={"Select Movie"} key={movie.id}/>
 			</div>
 		);
 	});
 
 
   return (
-    <div className="container">
-      <h3>Movie Library</h3>
+    <div className="container d-flex flex-column align-items-center">
 
-      <div className="card-deck d-flex flex-column justify-content-center align-items-center">
+      {/* <div className="card w-25 align-self-center border-0">
+        <img className="card-img" src="https://images.unsplash.com/photo-1587132129911-80e544e7e7b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1006&q=80" alt="popcorn as icon" />
+        <div className="card-img-overlay d-flex flex-column justify-content-center">
+          <h2 className="card-text text-dark font-weight-bold">Movie Library</h2>
+        </div>
+      </div> */}
+      <div className="d-flex flex-row justify-content-center align-items-center">
+        <img className="popcorn-header w-25" src="https://images.unsplash.com/photo-1587132129911-80e544e7e7b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1006&q=80" alt="popcorn as icon" />
+        <h3>. . . Movie Library</h3>
+      </div>
+
+
+
+      <div className="d-flex flex-column justify-content-center align-items-center">
         { allMovies }
       </div>
     </div>
