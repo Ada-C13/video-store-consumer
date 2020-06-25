@@ -13,7 +13,6 @@ import Popup from "reactjs-popup";
 import avatar from './user.png'
 import './Checkout.css';
 import Customer from './Customer';
-import Movie from './Movie';
 
 const Checkout = ({ customer, movie, onSubmitCallback }) => {
 
@@ -103,7 +102,7 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
                 </Popup>
               </div>
               <div className="checkout-form-movie__buttons">
-                <Link to="/movies" className="checkout-form__button">Change</Link>
+                <Link to="/library" className="checkout-form__button">Change</Link>
               </div>
             </div>
           )
@@ -115,6 +114,7 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
             </div>
           )
         }
+        {/* TODO: Add conditional rendering here for movie && customer to render a date select and a checkout form submit button, which will call submitRentalForm */}
       </section>
     </section>
   );
