@@ -141,7 +141,7 @@ import { store } from 'react-notifications-component';
     })
   
     return (
-      <div className="search-page w-100 d-flex text-center flex-wrap align-content-start justify-content-center">
+      <div className="full-page w-100 d-flex text-center flex-wrap align-content-start justify-content-center">
         <div className="search-form w-100"><SearchForm onSubmitCallback ={searchMovie} /></div>
 
         { movieComponents.length > 0 ? <div>
