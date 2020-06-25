@@ -17,22 +17,29 @@ const App = () => {
   
   return (
     <>
-      <Selected customer={currentCustomer} movie={currentMovie}/>
+      <div className="header">
+        <h2>Welcome to the Video Store Admin Portal</h2>
+      </div>
+
+      <div className="note">
+        <Selected customer={currentCustomer} movie={currentMovie}/>
+      </div>
+      
       <Router>
-        <nav className="">
-          <ul>
+          <ul className="navbar">
             {/* https://medium.com/the-andela-way/understanding-the-fundamentals-of-routing-in-react-b29f806b157e*/}
-            <li className=""><Link to="/">Home</Link></li>
-            <li className=""><Link to="/search"> Search for Movies</Link></li>
-            <li className=""><Link to="/library">Library</Link></li>
-            <li className=""><Link to="/customers">Customers</Link></li>
+            <Link to="/">Home</Link>
+            <Link to="/search"> Search for Movies</Link>
+            <Link to="/library">Library</Link>
+            <Link to="/customers">Customers</Link>
+          </ul> 
+          <div>
             <Route exact path="/" component={Home} />
             <Route exact path="/search" component={SearchComponent} />
             <Route exact path="/library" component={Library}/>
             <Route exact path="/customers" component={Customers} />
             <Route exact path= "/details/:title" component= {Details}/>
-          </ul> 
-        </nav>
+          </div>
       </Router> 
     </>
   );

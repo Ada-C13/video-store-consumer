@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Selected from './Selected'
+import '../App.css';
 
 const Customers = () => {
   const API_URL_CUSTOMERS = "http://localhost:3000/customers"
@@ -38,21 +39,35 @@ const Customers = () => {
 
   return (
     <div>
+      <table className="customers-table">
+        <tr>
+          <th className="customers-table-item">Name</th>
+          <th className="customers-table-item">ID</th>
+          <th className="customers-table-item">Address</th>
+          <th className="customers-table-item">City</th>
+          <th className="customers-table-item">State</th>
+          <th className="customers-table-item">Postal Code</th> 
+          <th className="customers-table-item">Phone</th>
+          <th className="customers-table-item">Account Credit</th>
+          <th className="customers-table-item">Movies Checked Out Count</th>
+          <th className="customers-table-item">Select</th>
+        </tr>
       {customerList.map(customer => (
-        <div>
-          <h1>{customer.name}</h1>
-          <p>{customer.id}</p>
-          <p>{customer.address}</p>
-          <p>{customer.city}</p>
-          <p>{customer.state}</p>
-          <p>{customer.postal_code}</p> 
-          <p>{customer.phone}</p>
-          <p>{customer.account_credit}</p>
-          <p>{customer.movies_checked_out_count}</p>
+        <tr>
+          <td className="customers-table-item">{customer.name}</td>
+          <td className="customers-table-item">{customer.id}</td>
+          <td className="customers-table-item">{customer.address}</td>
+          <td className="customers-table-item">{customer.city}</td>
+          <td className="customers-table-item">{customer.state}</td>
+          <td className="customers-table-item">{customer.postal_code}</td> 
+          <td className="customers-table-item">{customer.phone}</td>
+          <td className="customers-table-item">{customer.account_credit}</td>
+          <td className="customers-table-item">{customer.movies_checked_out_count}</td>
           <button value = {customer.id} onClick={onSelectCustomer}>Select this Customer</button>
           {false && selectedComponents()}
-        </div>
+        </tr>
       ))}
+      </table>
     </div>
   );
 }
