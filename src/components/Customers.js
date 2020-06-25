@@ -47,7 +47,7 @@ const Customers = (props) => {
   return (
       <div className="w-100 d-flex text-center flex-wrap justify-content-around">
         <h2 className="text-center w-100 pt-3 pb-3">Customers</h2>
-        <table className="customer table table-hover">
+        <table className="table table-hover table-light">
           <thead className="thead-light text-center">
             <tr>
               <th>ID</th>

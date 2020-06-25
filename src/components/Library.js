@@ -42,8 +42,8 @@ const Library = (props) => {
     return (
       <div className="w-100 d-flex text-center flex-wrap justify-content-around">
         <h2 className="text-center w-100 pt-3 pb-3">Rental Library</h2>
-        <table class="table table-hover">
-          <thead class="thead-light text-center">
+        <table className="table table-hover table-light">
+          <thead className="thead-light text-center">
             <tr>
               <th>ID</th>
               <th>Select</th>

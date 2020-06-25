@@ -40,7 +40,7 @@ const SearchForm = (props) => {
             onChange = {onInputChange}
             type="text"
           />
-          <div class="input-group-append">
+          <div className="input-group-append">
             <button
               className="form-control btn btn-danger mb-2"
               type="submit"
