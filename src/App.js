@@ -116,12 +116,13 @@ const App = () => {
     console.log(`App, onCheckoutCallback`);
     // perform checkout
     axios
-      // /rentals/:title/check-out(.:format)
-      // params[:title] params[:customer_id] params[:due_date])
+    // title = 
+      // "/rentals/" + `${title}` + "/check-out(.:format)"
+      // params[:movie_id] params[:customer_id] params[:due_date])
       .post(API_URL_BASE + `/rentals/${selectedMovieTitle()}/check-out`, {
         title: selectedMovieTitle(),
         customer_id: selectedCustomer,
-        due_date: `06/25/2020`, //(new Date().getDate() + 7).toLocaleDateString(),
+        due_date: (new Date()).toISOString(),
       })
       .then((response) => {
         console.log(`Checkout success`, response.data);
