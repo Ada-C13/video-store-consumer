@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 // import PropTypes from 'prop-types';
 import Popup from "reactjs-popup";
+import DayPickerInput from 'react-day-picker/DayPickerInput';
 
 import avatar from './user.png'
 import './Checkout.css';
