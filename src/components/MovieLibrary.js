@@ -31,7 +31,7 @@ const MovieLibrary = ({ findMovieCallback }) => {
               <img src={m.image_url} alt={m.title} className='movie-image'></img>
               <div>
                 <h3 className='movie-title'>Title: {m.title}</h3>
-                <button className='button' onClick={() => { findMovieCallback(m) }}>select</button>
+                <button className='select-button' onClick={() => { findMovieCallback(m) }}>select</button>
                 <p>{m.overview}</p>
                 {/* <ReleaseYear releseDate = {m.release_date} /> */}
                 <h5 className='movie-date'>Release Date: { m.release_date }</h5>

@@ -1,0 +1,17 @@
+.SearchForm-form {
+  text-align: center;
+  display: flex;
+  width: 400px;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.SearchForm-submit {
+  padding-left: 15px;
+  margin-top: 0;
+}
+
+.SearchForm-input {
+  height: 27px;
+  width: 200px;
+}
