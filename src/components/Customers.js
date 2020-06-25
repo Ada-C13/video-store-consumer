@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Customer from './Customer';
+import { store } from 'react-notifications-component';
 
-// const API_CUSTOMER_URL = "http://localhost:3000/customers"
 
 const Customers = (props) => {
   const [customersList, setCustomersList] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
-
 
   useEffect(() => {
     axios.get(props.url)
@@ -17,8 +15,19 @@ const Customers = (props) => {
         setCustomersList(customers);
       })
       .catch((error) => {
-        setErrorMessage(error.message);
-        console.log(errorMessage);
+        store.addNotification({
+          title: "Error: ",
+          message: `${error.message}`,
+          type: "danger",
+          insert: "top",
+          container: "top-left",
+          animationIn: ["animated", "fadeIn"],
+          animationOut: ["animated", "fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true
+          }
+        });
       });
   },[props.url])
 
@@ -70,7 +79,3 @@ Customers.propTypes = {
   url: PropTypes.string.isRequired
 };
 export default Customers;
-
-
-// From our Rails API...pagination:
-// data = data.paginate(page: params[:p], per_page: params[:n])
