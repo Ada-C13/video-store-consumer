@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Checkout.css";
-// TODO render
+
 const renderMovie = (movieData) => {
   if (!movieData) {
     return <p>No movie selected</p>;

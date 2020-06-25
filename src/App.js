@@ -65,7 +65,7 @@ const App = () => {
   const selectedMovieTitle = () => {
     console.log(`App, selectedMovieTitle`, selectedMovie);
     let movieData = selectedMovieData();
-    if (movieData === null) {
+    if (!movieData) {
       return `No movie selected`;
     } else {
       return movieData.title;
@@ -90,7 +90,7 @@ const App = () => {
   const selectedCustomerName = () => {
     console.log(`App, selectedCustomerName`, selectedCustomer);
     let customerData = selectedCustomerData();
-    if (customerData === null) {
+    if (!customerData) {
       return `No customer selected`;
     } else {
       return customerData.name;
@@ -115,6 +115,25 @@ const App = () => {
   const onCheckoutCallback = () => {
     console.log(`App, onCheckoutCallback`);
     // perform checkout
+    axios
+      // /rentals/:title/check-out(.:format)
+      // params[:title] params[:customer_id] params[:due_date])
+      .post(API_URL_BASE + `/rentals/${selectedMovieTitle()}/check-out`, {
+        title: selectedMovieTitle(),
+        customer_id: selectedCustomer,
+        due_date: `06/25/2020`, //(new Date().getDate() + 7).toLocaleDateString(),
+      })
+      .then((response) => {
+        console.log(`Checkout success`, response.data);
+        // const updatedCardList = [response.data, ...cardsList];
+        // setCardsList(updatedCardList);
+      })
+      .catch((error) => {
+        console.log(`Checkout failure`, error.message);
+
+        setErrorMessage(error.message);
+      });
+
     setCustomer(0);
     setMovie(0);
   };

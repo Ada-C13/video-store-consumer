@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Customers.css";
-// TODO render
+
 const renderCustomers = (customerList, onCustomerSelectCallback) => {
   return customerList.map((customer, index) => {
     return (
