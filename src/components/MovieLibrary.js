@@ -38,7 +38,7 @@ const MovieLibrary = ({ movieList, selectMovie }) => {
     <div className="container">
       <h3>Movie Library</h3>
 
-      <div className="card-deck d-flex">
+      <div className="card-deck d-flex flex-column justify-content-center align-items-center">
         { allMovies }
       </div>
     </div>

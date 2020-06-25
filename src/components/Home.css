@@ -1,4 +1,33 @@
 .home-image{
   width: 75vw;
-
 }
+
+.homepage-main{
+  margin: 0;
+  padding: 0;
+}
+
+.learn-img {
+  border: none;
+  height: 100%;
+}
+
+.learn-card {
+  border: none;
+  height: 100vh;
+}
+
+div.caption-6 {
+  font-size: 2rem;
+  height: 100%;
+  color: white;
+  padding: 20rem;
+}
+
+.caption-6 > * {
+  margin: 20rem;
+}
+
+/* .hp-block {
+  padding: 10rem 0;
+} */
