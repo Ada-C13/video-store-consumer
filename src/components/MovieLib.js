@@ -1,4 +1,4 @@
-import React , { Component}  from 'react';
+import React from 'react';
 import './MovieLib.css';
 import PropTypes from 'prop-types';
 import Movie from './Movie'
@@ -14,7 +14,7 @@ const MovieLib = ({ movieList, selectMovie }) => {
       />
     });
     return movie;
-  }
+  };
 
   return (
     <div className="">
@@ -22,7 +22,12 @@ const MovieLib = ({ movieList, selectMovie }) => {
       {buildMovie()}
       </CardDeck>
     </div>
-  )
+  );
+};
+
+MovieLib.propTypes = {
+  movieList: PropTypes.array.isRequired,
+  selectMovie: PropTypes.func.isRequired,
 }
 
 export default MovieLib;

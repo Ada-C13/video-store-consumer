@@ -59,4 +59,18 @@ const Customer = ({ id, name, address, city, state, registered_at, phone, accoun
   // </div>
   )
 };
+
+Customer.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  registered_at: PropTypes.string,
+  address: PropTypes.string,
+  city: PropTypes.string,
+  state: PropTypes.string,
+  phone: PropTypes.string,
+  account_credit: PropTypes.number,
+  movies_checked_out_count: PropTypes.number,
+  selectCustomer: PropTypes.func.isRequired,
+};
+
 export default Customer;

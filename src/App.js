@@ -27,6 +27,8 @@ class App extends Component {
       movies: [],
       selectedCustomer: undefined,
       selectedMovie: undefined,
+      success: undefined,
+      error: undefined
     }; 
   }
   
@@ -62,22 +64,22 @@ class App extends Component {
     console.log(customerId);
     const selectedCustomer = this.state.customers.find((customer) => {
       return customer.id === customerId;
-    }) 
-    this.setState({ selectedCustomer })
-  }
+    }) ;
+    this.setState({ selectedCustomer });
+  };
   // Select Movies Method
   selectMovie(movieId) {
     console.log(movieId);
     const selectedMovie = this.state.movies.find((movie) => {
       return movie.id === movieId;
-    })
-    this.setState({ selectedMovie })
-  }
+    });
+    this.setState({ selectedMovie });
+  };
 
   //Geting ready for Checkout
   selectedMovieCustomer(){ 
     return ((this.state.selectedCustomer || this.state.selectedMovie) ? "you selected an items" : "You didn't select any items" )
-  }
+  };
 
   // If I have the movie that is select and the customer I have to get the movie title and the costumer id and to create dueDate and to post through axios.
   makeRental(){
@@ -95,22 +97,51 @@ class App extends Component {
         customer_id: custoId,
         due_date: dueDate,
         checkout_date: checkoutDate,
-      }
+      };
       // After i Check out one of the movie i have to setup both selectedmethods to undefined,
       axios.post(`${BASE_URL}/rentals/${title}/check-out`, params)
       .then(() => {
         this.setState({
           selectedMovie: undefined,
           selectedCustomer: undefined,
-        })
+          success: "You Successfully created a Rental",
+        });
+      })
+      .catch((error) => {
+        this.setState({ 
+          error: `An error occurred: ${error.message}`,
+        });
+      });
+    };
+  };
+  
+  setSucces(){
+    this.setState({
+      success: undefined,
+      error: undefined
+    });
+  };
+
+  addMovie = (addedMovie) => {
+    if (!this.state.movies.find(movie => movie.external_id === addedMovie.external_id)) {
+      axios.post(`${BASE_URL}/movies`, addedMovie)
+      .then((response) => {
+        this.setState({
+          // movies,
+          success: "Movie successfully added to your rental library",
+        });
       })
       .catch((error) => {
         this.setState({ 
           error: error.message,
         });
       });
-    }
-  }
+    } else { 
+      this.setState({
+        error: "Movie already exists in library", 
+      });
+    };
+  };
 
   render() {
    return (
@@ -134,6 +165,9 @@ class App extends Component {
         <h3>{this.state.selectedMovie ? ("Movie that you Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
         <h3>{this.state.selectedCustomer ? ("Customer that you Selected: \n\n" + this.state.selectedCustomer.name) : "" }</h3>
         {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.makeRental()}>Rent Now</Button> : ''}
+        <h3>{this.state.success ? (this.state.success) : "" }</h3>
+        <h3>{this.state.error ? (this.state.error) : "" }</h3>
+        {this.state.success? <Button onClick={() => this.setSucces()}>Next Rental</Button> : ''}
       </div>
       </header>
     
@@ -142,7 +176,7 @@ class App extends Component {
         <Home/>
       </Route>
       <Route path="/search">
-        <MovieSearch/>
+      <MovieSearch url={BASE_URL} selectMovie={(movie) => this.addMovie(movie)} />
       </Route> 
       <Route path="/library">
         <MovieLib movieList={this.state.movies} 
@@ -155,7 +189,7 @@ class App extends Component {
       </Route> 
       </Switch>
       </div>
-     </Router>
+      </Router>
     );
   }
 }
