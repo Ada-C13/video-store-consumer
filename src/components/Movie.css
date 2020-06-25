@@ -6,6 +6,19 @@
   margin-top: 2rem;
   align-items: stretch;
 }
+.h4-movie-card {
+  color: 151547;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.333rem;
+}
+
+.h5-movie-card {
+  color: 151547;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.255rem;
+}
 
 body {
   color: #151547;

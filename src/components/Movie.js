@@ -11,12 +11,12 @@ const Movie = ({ id, title, overview, release_date, image_url, external_id, sele
       <Card style={{ width: '19rem' }}>
       <Card.Img variant="top" src={image_url} />
       <Card.Body>
-        <Card.Title>{title}</Card.Title>
+          <Card.Title><div className="h4-movie-card">{title}</div></Card.Title>
         <Card.Text>
           {overview}
         </Card.Text>
-          <Card.Text>Release Date:{release_date}</Card.Text>
-          <Card.Text>External ID:{external_id}</Card.Text>
+          <Card.Text><strong>Release Date </strong>{release_date}</Card.Text>
+          <Card.Text><strong>External ID </strong>{external_id}</Card.Text>
           <div className="button-box-container">
             <Button variant="dark"
               className="button-box button-grad button-grad:hover"

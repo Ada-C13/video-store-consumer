@@ -16,6 +16,13 @@
   margin: 2vw;
 }
 
+.h4-customer-card {
+  color: 151547;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.333rem;
+}
+
 body {
   color: #151547;
 }

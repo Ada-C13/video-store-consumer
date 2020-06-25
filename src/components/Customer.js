@@ -9,19 +9,19 @@ const Customer = ({ id, name, address, city, state, registered_at, phone, accoun
   return (
     <Card className="customer-card">
       <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        <Card.Text>
-          Account Credit: {account_credit} 
+        <Card.Title><div className="h4-customer-card">{name}</div></Card.Title>
+        <Card.Text><strong>Account Credit </strong>
+          {account_credit} 
         </Card.Text>
-        <Card.Text>Movies Checked Out: {movies_checked_out_count}</Card.Text>
-        <Card.Text>Date Registered: {(registered_at)}</Card.Text>
-        <Card.Text>Phone: {phone}</Card.Text>
-        <Card.Text>Address: {address}, {city}, {state}</Card.Text>
+        <Card.Text><strong>Movies Checked Out </strong>  {movies_checked_out_count}</Card.Text>
+        <Card.Text><strong>Date Registered </strong>{(registered_at)}</Card.Text>
+        <Card.Text><strong>Phone </strong> {phone}</Card.Text>
+        <Card.Text><strong>Address </strong> {address}, {city}, {state}</Card.Text>
         <div className="">
           <Button variant="dark"
             className="button-box right-button button-grad button-grad:hover"
             onClick={() => selectCustomer(id)}>
-            + Checkout
+            Select Customer
           </Button>
         </div> 
       </Card.Body>
