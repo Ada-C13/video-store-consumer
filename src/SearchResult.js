@@ -8,6 +8,7 @@ const SearchResult = (props) => {
 
   const API_CREATE_MOVIE_URL = "http://localhost:3000/movies"
 
+  const [successMessage, setSuccessMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   
   const onSelect = (event) => {
@@ -23,7 +24,7 @@ const SearchResult = (props) => {
         .then((response) => { 
           console.log("made new movie")
           console.log(response.data)
-          setErrorMessage(`Successfully added ${props.title} to library`);
+          setSuccessMessage(`Successfully added ${props.title} to library`);
         })
         .catch((error) => {
           setErrorMessage(error.message);
@@ -34,7 +35,8 @@ const SearchResult = (props) => {
 
   return (
     <div >
-      {errorMessage ? <div><h3>{errorMessage}</h3></div> : ''}
+      {successMessage ? <div className="success-message"><h2>{successMessage}</h2></div> : ''}
+      {errorMessage ? <div className="error-message"><h3>{errorMessage}</h3></div> : ''}
       <h3>{props.title}</h3>
       <img src={props.image_url} alt="movie poster"/>
       <button onClick={onSelect}>Add to Libray</button>

@@ -9,6 +9,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 
 const App = () => {
+  const [successMessage, setSuccessMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [selectedCustomer, setSelectedCustomer] = useState({id: ""})
   const [selectedMovie, setSelectedMovie] = useState(null)
@@ -35,7 +36,7 @@ const App = () => {
 
     axios.post(API_CHECKOUT_MOVIE_URL)
     .then((response) => { 
-      setErrorMessage(`Movie rented successfully! Return it by ${date}`);
+      setSuccessMessage(`Movie rented successfully! Return it by ${date}`);
       console.log(response.data);
     })
     .catch((error) => {
@@ -48,7 +49,8 @@ const App = () => {
     <Router>
       <div className="App">
         <Nav />
-        {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
+        {successMessage ? <div className="success-message"><h2>{successMessage}</h2></div> : ''}
+        {errorMessage ? <div className="error-message"><h2>{errorMessage}</h2></div> : ''}
         <section className="selections">
           <p>Selected Customer: {selectedCustomer.name}</p>
           <p>Selected Movie: {selectedMovie}</p>
