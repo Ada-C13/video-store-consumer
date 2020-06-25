@@ -115,9 +115,8 @@ const App = () => {
   const onCheckoutCallback = () => {
     console.log(`App, onCheckoutCallback`);
     // perform checkout
-    axios
-    // title = 
-      // "/rentals/" + `${title}` + "/check-out(.:format)"
+    axios 
+      // /rentals/:title/check-out(.:format)
       // params[:movie_id] params[:customer_id] params[:due_date])
       .post(API_URL_BASE + `/rentals/${selectedMovieTitle()}/check-out`, {
         title: selectedMovieTitle(),
@@ -178,13 +177,19 @@ const App = () => {
 
   const addMovieCallBack = (movie) => {
     console.log(`App, add movie to library`);
-    const newMovieList = [...movieList, movie]; // same as -> newMovieList.push(movie);
-
-    // if movie.external_id doesn't match any in movieList,
-    // add movie. otherwise show error
-
-    // TODO make API call to add move to the library in the database!
-    setMovieList(newMovieList);
+    // post movie
+    axios
+      .post(API_URL_BASE + "/movies", movie)
+      .then(() => {
+        const newMovieList = [...movieList, movie];
+        // set state
+        setMovieList(newMovieList);
+      })
+      .catch((error) => {
+        // handle errors
+        setErrorMessage("Cannot add movie");
+        console.log(error.message);
+      });
   };
 
   return (
