@@ -44,7 +44,7 @@
 }
 
 .items-selected {
-  background-color: rgb(135, 168, 238);
+  background-color: rgba(135, 168, 238, 0.5);
   color: black;
   padding: 20px;
   text-align: left;
