@@ -7,10 +7,10 @@ const Rental = ({ movie, customer, rentMovie }) => {
 
   if (isClickedOn) {
   return (
-    <div>
+    <div class="messageWrap">
       { movie && <p> Selected Movie: { movie.title }, Available inventory: {movie.available_inventory} </p> }
       { customer && <p> Selected Customer: { customer.name } </p> }
-      { movie && customer ? <button onClick={() => { rentMovie(); setIsClickedOn(false) }}>Rent Movie</button> : ""} 
+      { movie && customer ? <button class="button" onClick={() => { rentMovie(); setIsClickedOn(false) }}>Rent Movie</button> : ""} 
     </div>
     );
   };

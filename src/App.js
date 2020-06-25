@@ -107,7 +107,8 @@ const App = () => {
         </nav>
         <section className="rental body">
           <Rental {...{movie, customer, rentMovie}} />
-          <p>{message}</p>
+          <div class="messageWrap"><p>{message}</p></div>
+          
         
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}

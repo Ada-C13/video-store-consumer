@@ -18,6 +18,7 @@ const SearchForm = (props) => {
   };
 
   const onFormSubmit = (event) => {
+    console.log('onFormSubmit',formFields.title)
     event.preventDefault();
     if (formFields.title !== '') {
       // Send that data back up to App
@@ -29,25 +30,24 @@ const SearchForm = (props) => {
     }
   };
 
+  const handleChange = (event) => {
+    let v =  event.target.value;
+    setFormFields({ title: v }); 
+  }
   return (
-    <div className="SearchForm">
-      <form className="SearchForm__form" onSubmit={onFormSubmit}>
-
-        <div className="SearchForm__inputs">
-          <input
-            name="title"
-            placeholder="Title"
-            type="text"
-            onChange={onInputChange}
-            value={formFields.title} />
+      <div className="wrap">
+        <div className="search">
+        <form onSubmit={onFormSubmit}>
+            <input 
+            type="text" 
+            className="searchTerm" 
+            placeholder="What are you looking for?"
+            onChange={handleChange}
+            value={formFields.title}/>
+            <input type="submit" className="searchButton" />
+            </form>
         </div>
-
-        <div className="SearchForm__submit">
-          <input type="submit" value="Submit Line" className="SearchForm__submit-btn" />
-        </div>
-
-      </form>
-    </div>
+      </div>
   );
 }
 
