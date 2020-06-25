@@ -19,17 +19,60 @@ import SearchForm from './SearchForm';
         });
     }
 
+  const checkPresence = (movie) =>{
+    axios.get(props.url)
+      .then((response) => {
+        const movieList = response.data
+        const movie_titles = movieList.map(movie =>
+          movie.title
+        );
+        let result;
+        if (movie_titles.includes(movie.title)){
+          result = true;
+        }else{
+          result = false;
+        }
+        return result;
+      })
+      
+      .catch((error) => {
+        setMessage(error.message);
+        console.log(errorMessage);
+      }); 
+    }
+  
+    const addMovie = (addedMovie) => {
+        if (checkPresence(addedMovie)){
+          console.log ("it is present")
+        }else{
+          console.log ("it is NOOOOOOT present")
+        axios.post(props.url, addedMovie)
+        .then((response) => {
+          // const newRental= response.data;
+          if (response.status === 200 || response.status === "OK"){
+            setMessage("Rental is successfully added")
+          }  
+        })
+          .catch((error) => {
+            setMessage(error.message);
+            console.log(error.message);
+          });
+          console.log(addedMovie)
+          
+        }
+      }
+    
     const movieComponents = searchedmovieList.map((movie) => {
       return(
         <Movie
-          key = {movie.id}
-          id = {movie.id}
+          key = {movie.external_id}
+          // id = {movie}
           title = {movie.title}
           image_url = {movie.image_url}
           release_date = {movie.release_date}
           overview = {movie.overview}
           external_id = {movie.external_id}
-          // selectMovieCallback={props.selectMovieCallback}
+          clickAddOnMovie={addMovie}
         />
       )
     })
