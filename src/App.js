@@ -1,6 +1,6 @@
 // import React, { Component } from "react";
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import axios from "axios";
 import Navbar from 'react-bootstrap/Navbar'
@@ -117,7 +117,8 @@ const App = () => {
   // Callback function to perform checkout
   const onCheckoutCallback = () => {
     console.log(`App, onCheckoutCallback`);
-    // let date = new Date(); // add 7 days
+    let date = new Date(); // add 7 days
+    date.setDate(new Date().getDate() + 7);
 
     // perform checkout
     axios 
@@ -126,7 +127,7 @@ const App = () => {
       .post(API_URL_BASE + `/rentals/${selectedMovieTitle()}/check-out`, {
         title: selectedMovieTitle(),
         customer_id: selectedCustomer,
-        due_date: (new Date()).toISOString(),
+        due_date: date.toISOString(),
       })
       .then((response) => {
         console.log(`Checkout success`, response.data);
@@ -149,18 +150,21 @@ const App = () => {
       <Navbar fixed="top" bg="dark" variant="dark">
         <Navbar.Brand>GET f l i x</Navbar.Brand>
         <ul className="navbar-nav">
-          <Nav.Link href="/">
+          <Link to="/">
             <li className="nav-item">Home</li>
-          </Nav.Link>
-          <Nav.Link href="/search">
+          </Link>
+          <Link to="/search">
             <li className="nav-item">Search</li>
-          </Nav.Link>
-          <Nav.Link href="/library">
+            </Link>
+          <Link to="/library">
             <li className="nav-item">Library</li>
-          </Nav.Link>
-          <Nav.Link href="/customers">
+          </Link>
+          <Link to="/customers">
             <li className="nav-item">Customers</li>
-          </Nav.Link>
+          </Link>
+          <Link to="/checkout">
+            <li>Checkout</li>
+          </Link>
         </ul>
       </Navbar>
     );
