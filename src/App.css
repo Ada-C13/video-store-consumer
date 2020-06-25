@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url(http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 * {
   padding: 0;
-
 }
 
 body {
@@ -94,15 +94,14 @@ a:active {
   width: 160px;
   height: 30px;
 }
-@import url(http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
-body{
-  background: #f2f2f2;
+.body{
+  
 }
 
 .search {
   width: 400px;
-  position: relative
+  position: relative;
 }
 
 .searchTerm {
@@ -152,6 +151,6 @@ body{
 }
 .messageWrap{
   position: relative;
-  margin-left: 120px;
+  margin-left: 150px;
   overflow: auto;
 }

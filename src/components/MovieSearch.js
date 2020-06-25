@@ -26,6 +26,11 @@ const MovieSearch = ({ addMovieCallback, addMessageCallback, findMovieCallback }
     };
   };
 
+  const movieYear = (date) => {
+    const result = new Date(date);
+    return result.getFullYear();
+  }
+
   return (
     <div>
       <SearchForm onSubmitCallback={getMovie} />
@@ -36,9 +41,9 @@ const MovieSearch = ({ addMovieCallback, addMessageCallback, findMovieCallback }
               <img src={m.image_url} alt={m.title} className='movie-image'></img>
               <div>
                 <h3 className='movie-title'>Title: {m.title}</h3>
-                {m.id === 0 || m.id ? <button className='button' onClick={() => { findMovieCallback(m) }}>select</button> : <button className='button' onClick={() => { addMovieCallback(m) }}>Add to rental library</button>}
+                {m.id === 0 || m.id ? <button className='select-button' onClick={() => { findMovieCallback(m) }}>select</button> : <button className='add-button' onClick={() => { addMovieCallback(m) }}>Add to rental library</button>}
                 <p>{m.overview}</p>
-                <h5 className='movie-date'>Release Date: {m.release_date}</h5>
+                <h5 className='movie-date'>Release Year: { movieYear(m.release_date) }</h5>
               </div>
             </li>
           )}

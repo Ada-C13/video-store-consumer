@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './MovieLibrary.css';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-// import ReleaseYear from './ReleaseYear.js';
 
 
 const MovieLibrary = ({ findMovieCallback }) => {
@@ -21,7 +20,10 @@ const MovieLibrary = ({ findMovieCallback }) => {
       });
     }, []);
 
-    
+    const movieYear = (date) => {
+      const result = new Date(date);
+      return result.getFullYear();
+    }
 
     return (
       <div className='list'>
@@ -33,8 +35,7 @@ const MovieLibrary = ({ findMovieCallback }) => {
                 <h3 className='movie-title'>Title: {m.title}</h3>
                 <button className='select-button' onClick={() => { findMovieCallback(m) }}>select</button>
                 <p>{m.overview}</p>
-                {/* <ReleaseYear releseDate = {m.release_date} /> */}
-                <h5 className='movie-date'>Release Date: { m.release_date }</h5>
+                <h4 className='movie-date'>Release Year: { movieYear(m.release_date) }</h4>
               </div>
             </li> 
           )}
