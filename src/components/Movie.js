@@ -1,4 +1,4 @@
-import React , { Component}  from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './Movie.css';
 import { Button } from 'react-bootstrap/';
@@ -24,6 +24,16 @@ const Movie = ({ id, title, overview, release_date, image_url, external_id, sele
     </div>  
   </div>
   )
+};
+
+Movie.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  overview: PropTypes.string.isRequired,
+  release_date: PropTypes.string,
+  image_url: PropTypes.string,
+  external_id: PropTypes.number,
+  selectMovie: PropTypes.func.isRequired,
 };
 
 export default Movie;

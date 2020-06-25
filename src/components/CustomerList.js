@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './CustomerList.css';
 import PropTypes from 'prop-types';
 import Customer from './Customer';
+
 
 const CustomerList = ({ customerList, selectCustomer }) => {
   const buildCustomers = () => {
@@ -22,5 +23,10 @@ const CustomerList = ({ customerList, selectCustomer }) => {
     </div>
   )
 }
+
+CustomerList.propTypes = {
+  customerList: PropTypes.array.isRequired,
+  selectCustomer: PropTypes.func.isRequired,
+};
 
 export default CustomerList;

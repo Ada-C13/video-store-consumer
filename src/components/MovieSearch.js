@@ -3,6 +3,7 @@ import SearchedMovie from './SearchedMovie'
 import './MovieSearch.css'
 import React, { useState } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 const MovieSearch = ({url, selectMovie}) => {
   const [searchResults, setSearchResultsList] = useState([])
@@ -62,5 +63,10 @@ const MovieSearch = ({url, selectMovie}) => {
   </div>
   )
 }
+
+MovieSearch.propTypes = {
+  url: PropTypes.string.isRequired,
+  selectMovie: PropTypes.func.isRequired,
+};
 
 export default MovieSearch;

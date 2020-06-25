@@ -1,6 +1,7 @@
 import './Movie.css';
 import React from 'react';
 import { Button } from 'react-bootstrap/';
+import PropTypes from 'prop-types';
 
 const SearchedMovie = ({ id, title, overview, release_date, image_url, external_id, selectMovie}) => {
   return (
@@ -24,4 +25,13 @@ const SearchedMovie = ({ id, title, overview, release_date, image_url, external_
   )
 };
 
+SearchedMovie.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  overview: PropTypes.string.isRequired,
+  release_date: PropTypes.string.isRequired,
+  image_url: PropTypes.string.isRequired,
+  external_id: PropTypes.number.isRequired,
+  selectMovie: PropTypes.func.isRequired,
+};
 export default SearchedMovie;
