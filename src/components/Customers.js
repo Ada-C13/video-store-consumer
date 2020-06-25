@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Button from 'react-bootstrap/Button'
+import Table from 'react-bootstrap/Table'
 
 import "./Customers.css";
 
@@ -29,7 +30,7 @@ const Customers = (props) => {
     <div>
       <h1>Customers</h1>
       <div className="customerlistlist">
-        <table>
+        <Table striped hover>
           <thead>
             <tr>
               <td>Name</td>
@@ -42,7 +43,7 @@ const Customers = (props) => {
           <tbody>
             {drawCustomers(props.customerList, props.onCustomerSelectCallback)}
           </tbody>
-        </table>
+        </Table>
       </div>
     </div>
   );

@@ -96,7 +96,7 @@ const App = () => {
     console.log(`App, draw navigation`);
     return (
       <Navbar fixed="top" bg="dark" variant="dark">
-        <Navbar.Brand>Video Store Dashboard</Navbar.Brand>
+        <Navbar.Brand>GETflix</Navbar.Brand>
         <ul className="navbar-nav">
           <Nav.Link href="/">
             <li className="nav-item">Home</li>

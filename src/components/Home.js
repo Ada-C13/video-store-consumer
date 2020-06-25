@@ -9,7 +9,7 @@ const Home = (props) => {
   console.log(`drawing Home...`, props);
   return (
     <div className="container">
-      <h1>Welcome</h1>
+      <h1>Welcome!</h1>
       <Image src="https://i.imgur.com/Q6KB8ty.png" alt="illustration" fluid></Image>
     </div>
   
