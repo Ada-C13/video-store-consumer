@@ -44,11 +44,11 @@ const Routing = (props) =>{
         )} />
       <Route path="/library"
           render={(renderProps) => (
-          <Library {...props} url={"http://localhost:3000/"} />
+            <Library {...props} {...renderProps} url={"http://localhost:3000/"} />
         )} />
       <Route path="/users"
           render={(renderProps) => (
-          <Users {...props} url={"http://localhost:3000/"}/>
+            <Users {...props} {...renderProps} url={"http://localhost:3000/"}/>
         )} />
 
     </div>

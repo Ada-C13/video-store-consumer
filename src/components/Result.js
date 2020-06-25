@@ -3,12 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Store.css';
-
+import FlashMessage from './FlashMessage';
 
 const Result = (props) => {
 
   const [movies, setMovies] = useState([]);
-  const [flash, setFlash] = useState(null)
+  // const [flash, setFlash] = useState(null)
+
+  const [error, setError] = useState(undefined)
+  const [success, setSuccess] = useState(undefined)
+  
   const endPoint = `${props.url}movies?query=`
 
   const onLoadSearch = (searchTerm) => {
@@ -32,11 +36,13 @@ const Result = (props) => {
     })
       .then((response) => {
         console.log(response)
-        setFlash(`${movie.title} added`)
+        // setFlash(`${movie.title} added`)
+        setSuccess(`${movie.title} Successfully Added`)
       })
       .catch((error) => {
-        console.log(`Error: ${error}`)
-        setFlash(`${movie.title} not added`)
+        console.log(`Error: ${error.message}`)
+        // setFlash(`${movie.title} not added`)
+        setError("You can not add the same movie twice")
       })
   }
 
@@ -49,10 +55,30 @@ const Result = (props) => {
     setInventory(newInventory);
   };
 
+  const onTimeout = () => {
+    console.log("timing out, clearing state");
+    // clear success and error messages
+    // clear selected customer and movie
+    setSuccess(undefined);
+    setError(undefined);
+  }
+
   const formatMovies = (movies) => {
     return (
       <ul>
-        <p>{flash}</p>
+        {error
+          ? <FlashMessage
+            messageContents={error}
+            messageClass="error-message"
+            onTimeoutCallback={onTimeout}/>
+          : ""}
+        {success
+          ? <FlashMessage
+            messageContents={success}
+            messageClass="success-message"
+            onTimeoutCallback={onTimeout} />
+          : ""}
+        {/* <p>{flash}</p> */}
         {movies.map(movie => {
           return (
             <div key={movie.external_id}>
