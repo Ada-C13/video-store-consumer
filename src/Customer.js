@@ -3,11 +3,8 @@ import React from 'react';
 const Customer = (props) => {
 
   const onSelectCustomer = () => {
-
-    // send customer id back to the function making the API call & display 
-
-    props.onClickCallback(props.name);
-    
+    // send customer name back to the function making the API call & display 
+    props.onClickCallback(props);
   }
 
   return (

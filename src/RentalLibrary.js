@@ -4,7 +4,7 @@ import './App.css';
 import Movie from './Movie';
 
 
-const RentalLibrary = () => {
+const RentalLibrary = (props) => {
   const API_MOVIES_URL = 'http://localhost:3000/movies'
   
   const [movies, setMovieList] = useState([])
@@ -28,6 +28,7 @@ const RentalLibrary = () => {
       title={moviesObj.title} 
       image_url={moviesObj.image_url}
       key={moviesObj.id}
+      onClickCallback= {props.onClickCallback}
     />)
   })
 

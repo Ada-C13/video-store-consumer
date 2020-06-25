@@ -4,6 +4,7 @@ const Movie = (props) => {
 
   const onSelectMovie = (event) => {
     // send props.title back to App 
+    props.onClickCallback(props.title);
   }
 
   return (
