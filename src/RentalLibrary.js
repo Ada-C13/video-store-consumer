@@ -3,7 +3,6 @@ import axios from 'axios';
 import './App.css';
 import Movie from './Movie';
 
-
 const RentalLibrary = (props) => {
   const API_MOVIES_URL = 'http://localhost:3000/movies'
   

@@ -144,3 +144,10 @@ li {
   border: line white;
   
 }
+.error-message{
+  color: red;
+}
+
+.success-message{
+  color: green;
+}

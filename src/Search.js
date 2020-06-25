@@ -42,12 +42,13 @@ const Search = () => {
         image_url={resultsObj.image_url}
         overview={resultsObj.overview}
         release_date={resultsObj.release_date}
+        external_id={resultsObj.external_id}
         inventory={1}
         key={resultsObj.id}
       />);
     });
     setSearchResultComponents(searchResultComponents)
-  } // end onFormSubmit
+  } 
 
   return (
     <div className="search">
