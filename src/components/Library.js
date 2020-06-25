@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import MovieCard from './MovieCard';
 
-const Library = () => {
+const Library = ({onUpdateSelectedMovie, selected_id}) => {
   const [error, setError] = useState(null);
   const [libraryList, setLibraryList] = useState(null);
 
@@ -10,22 +10,25 @@ const Library = () => {
     axios.get('http://localhost:3000/movies')
       .then((response) => {
         const data = response.data;
-        console.log(`this is response.data ${response.data}`);
-        let movieCollection = data.map((movie) => {
+
+        let libraryCollection = data.map((movie) => {
           return (
             <div className="col-md-4 pb-4">
               <MovieCard
               external_id = {movie.external_id}
+              id = {movie.external_id}
               title = {movie.title}
               overview = {movie.overview}
-              release_date = {movie.release_date}
               image_url = {movie.image_url}
               key = {movie.external_id}
+              onUpdateSelect={onUpdateSelectedMovie} 
+              selected_id={selected_id}
               />
             </div>
           );
         });
-        setLibraryList(movieCollection);
+        
+        setLibraryList(libraryCollection);
       })
       .catch((error) => {
         setError(error.response);
