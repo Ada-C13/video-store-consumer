@@ -47,7 +47,8 @@ Movie.propTypes = {
   overview: PropTypes.string,
   external_id: PropTypes.number,
   url: PropTypes.string,
-  selectMovieCallback: PropTypes.func.isRequired,
+  selectMovieCallback: PropTypes.func,
+  clickAddOnMovie: PropTypes.func,
 };
 
 export default Movie;

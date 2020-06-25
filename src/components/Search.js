@@ -18,7 +18,7 @@ import { store } from 'react-notifications-component';
           store.addNotification({
             title: "Error: ",
             message: `${error.message}`,
-            type: "error",
+            type: "danger",
             insert: "top",
             container: "top-left",
             animationIn: ["animated", "fadeIn"],
@@ -44,7 +44,7 @@ import { store } from 'react-notifications-component';
       store.addNotification({
         title: "Error: ",
         message: `${error.message}`,
-        type: "error",
+        type: "danger",
         insert: "top",
         container: "top-left",
         animationIn: ["animated", "fadeIn"],
@@ -75,20 +75,20 @@ import { store } from 'react-notifications-component';
     const addMovie = (addedMovie) => {
       if (checkPresence(addedMovie)) {
         console.log("cannot add movie "+addedMovie.title);
-        // store.addNotification({
-        //   title: "Error: ",
-        //   message: `${addedMovie.title} is already in the rental library.`,
-        //   type: "error",
-        //   insert: "top",
-        //   container: "top-left",
-        //   animationIn: ["animated", "fadeIn"],
-        //   animationOut: ["animated", "fadeOut"],
-        //   dismiss: {
-        //     duration: 5000,
-        //     onScreen: true
-        //   }
-        // });
-        return
+        store.addNotification({
+          title: "Error: ",
+          message: `${addedMovie.title} already exists in rental library`,
+          type: "danger",
+          insert: "top",
+          container: "top-left",
+          animationIn: ["animated", "fadeIn"],
+          animationOut: ["animated", "fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true
+          }
+        });
+        return;
       }
       axios.post(props.url, addedMovie)
       .then((response) => {
@@ -112,7 +112,7 @@ import { store } from 'react-notifications-component';
           store.addNotification({
             title: "Error: ",
             message: `${error.message}`,
-            type: "error",
+            type: "danger",
             insert: "top",
             container: "top-left",
             animationIn: ["animated", "fadeIn"],

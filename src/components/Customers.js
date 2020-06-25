@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Customer from './Customer';
 import { store } from 'react-notifications-component';
 
-// const API_CUSTOMER_URL = "http://localhost:3000/customers"
 
 const Customers = (props) => {
   const [customersList, setCustomersList] = useState([]);
@@ -19,7 +18,7 @@ const Customers = (props) => {
         store.addNotification({
           title: "Error: ",
           message: `${error.message}`,
-          type: "error",
+          type: "danger",
           insert: "top",
           container: "top-left",
           animationIn: ["animated", "fadeIn"],
@@ -80,7 +79,3 @@ Customers.propTypes = {
   url: PropTypes.string.isRequired
 };
 export default Customers;
-
-
-// From our Rails API...pagination:
-// data = data.paginate(page: params[:p], per_page: params[:n])

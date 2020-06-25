@@ -72,7 +72,7 @@ const Header = () => {
       store.addNotification({
         title: "Error: ",
         message: `${error.message}`,
-        type: "error",
+        type: "danger",
         insert: "top",
         container: "top-left",
         animationIn: ["animated", "fadeIn"],
