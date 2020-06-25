@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Rental = ({ id, customer, movie, due_date, returned, returnRental }) => {
   return (
-    <div className="rental-card">
+    <div className="card">
       <section className="rental-header">
         <p><strong>Rental ID: {id}</strong></p>
         <p>Customer Name: {customer.name} </p>
