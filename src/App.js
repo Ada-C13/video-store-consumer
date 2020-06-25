@@ -88,7 +88,7 @@ const App = () => {
               <h3>Current Selection</h3>
             {
               selectedCustomer && (
-                <span className="App-selected__customer">Customer #{selectedCustomer.id} {selectedCustomer.name}</span>
+                <span className="App-selected__customer">Customer: {selectedCustomer.name}</span>
               )
             }
             {
@@ -98,7 +98,7 @@ const App = () => {
             }
             {
               selectedCustomer && selectedMovie && (
-                <Link to="/checkout" className="button">Checkout</Link>
+                <Link to="/checkout" className="App-selected__checkout">Checkout</Link>
               )
             }
           </div>
