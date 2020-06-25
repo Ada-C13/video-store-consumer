@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Customer from './Customer';
 
 const CustomerList = ({ customerList, selectCustomer }) => {
+  
   const buildCustomers = () => {
     const customer = customerList.map((customer) => {
       return <Customer 
@@ -17,7 +18,7 @@ const CustomerList = ({ customerList, selectCustomer }) => {
 
   return (
     <div>
-      <h1>INFORMATION ABOUT CUSTUMERS</h1>
+      <h1>INFORMATION ABOUT CUSTOMERS</h1>
       {buildCustomers()}
     </div>
   )
