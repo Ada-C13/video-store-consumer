@@ -20,7 +20,7 @@ const Customers = (props) => {
         setErrorMessage(error.message);
         console.log(errorMessage);
       });
-  }, [props.url])
+  },[props.url])
 
   const customersComponents = customersList.map((customerObject) => {
     return(
