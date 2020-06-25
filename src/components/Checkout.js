@@ -34,19 +34,19 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
     <section>
       <h2>Checkout</h2>
 
-      <section className="checkout-form">
+      <section className="checkout__header">
         <h4>Customer</h4>
         <h4>Movie</h4>
       </section>
 
-      <section className="checkout-form__selections">
+      <section className="checkout__selections">
         { 
           customer && (
-            <div className="checkout-form-customer">
-              <div className="checkout-form-customer__info">
-                <img src={avatar} className="checkout-form-customer__avatar" alt="customer profile pic" />
-                <p className="checkout-form-customer__name">#{customer.id}: {customer.name}</p>
-                <Popup trigger={<button className="checkout-form__button smaller-button">Profile</button>} modal>
+            <div className="checkout-customer">
+              <div className="checkout-customer__info">
+                <img src={avatar} className="checkout-customer__avatar" alt="customer profile pic" />
+                <p className="checkout-customer__name">#{customer.id}: {customer.name}</p>
+                <Popup trigger={<button className="checkout__button smaller-button">Profile</button>} modal>
                   <Customer
                     name={customer.name}
                     registered_at={new Date(customer.registered_at).toString()}
@@ -61,26 +61,26 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
                   />
                 </Popup>
               </div>
-              <div className="checkout-form-customer__buttons">
-                <Link to="/customers" className="checkout-form__button">Change</Link>
+              <div className="checkout-customer__buttons">
+                <Link to="/customers" className="checkout__button">Change</Link>
               </div>
             </div>
           )
         }
         { 
           !customer && (
-            <div className="checkout-form-customer">
+            <div className="checkout-customer">
               <p>No customer selected.</p>
             </div>
           )
         }
         { 
           movie && (
-            <div className="checkout-form-movie">
-              <div className="checkout-form-movie__info">
-                <img src={movie.image_url} className="checkout-form-movie__cover" alt="movie cover pic" />
-                <p className="checkout-form-movie__title">{movie.title}</p>
-                <Popup trigger={<button className="checkout-form__button smaller-button">Details</button>} modal>
+            <div className="checkout-movie">
+              <div className="checkout-movie__info">
+                <img src={movie.image_url} className="checkout-movie__cover" alt="movie cover pic" />
+                <p className="checkout-movie__title">{movie.title}</p>
+                <Popup trigger={<button className="checkout__button smaller-button">Details</button>} modal>
                   <section className="movie-details">
                     <h3>{movie.title}</h3>
                     <p>{movie.overview}</p>
@@ -89,29 +89,30 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
                 </section>
                 </Popup>
               </div>
-              <div className="checkout-form-movie__buttons">
-                <Link to="/library" className="checkout-form__button">Change</Link>
+              <div className="checkout-movie__buttons">
+                <Link to="/library" className="checkout__button">Change</Link>
               </div>
             </div>
           )
         }
         { 
           !movie && (
-            <div className="checkout-form-movie">
+            <div className="checkout-movie">
               <p>No movie selected.</p>
             </div>
           )
         }
         {
           movie && customer && (
-            <form className="create-rental-form" onSubmit={submitRentalForm}>
-              <div className="create-rental-form__header"></div>
-              <div className="create-rental-form__form">
-                <label className="create-rental-form__form-label" htmlFor="due date"></label>
-                <DayPickerInput onDayChange={handleDateChange} />
-                <input type="submit" className="create-rental-form__form-button" value="Create Rental"/>
-              </div>
-            </form>
+            <div className="checkout">
+              <form className="checkout-form" onSubmit={submitRentalForm}>
+                <div className="checkout-form__form">
+                  <label className="checkout-form__form-label" htmlFor="due date"></label>
+                  <DayPickerInput onDayChange={handleDateChange} />
+                  <input type="submit" className="checkout__button" value="Create Rental"/>
+                </div>
+              </form>
+            </div>
           )
         }
       </section>

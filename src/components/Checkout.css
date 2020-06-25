@@ -1,37 +1,37 @@
-.checkout-form {
+.checkout__header {
   display: flex;
   justify-content: space-around;
 }
 
-.checkout-form__selections {
+.checkout__selections {
   display: flex;
   flex-wrap: wrap;
 }
 
 /* CUSTOMER */
 
-.checkout-form-customer {
+.checkout-customer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 40%;
+  width: 40.3%;
   padding: 3em;
-  margin: 1em 1em 0 0;
-  border: 1px solid black;
+  margin-right: 1em;
+  border: 3px solid black;
 }
 
-.checkout-form-customer__info {
+.checkout-customer__info {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
 
-.checkout-form-customer__avatar {
+.checkout-customer__avatar {
   width: 20%;
 }
 
-.checkout-form-customer__buttons {
+.checkout-customer__buttons {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-end;
@@ -40,37 +40,61 @@
 
 /* MOVIE */
 
-.checkout-form-movie {
+.checkout-movie {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 40%;
+  width: 40.3%;
   padding: 3em;
-  margin: 1em 1em 0 0;
-  border: 1px solid black;
+  border: 3px solid black;
 }
 
-.checkout-form-movie__info {
+.checkout-movie__info {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
 
-.checkout-form-movie__cover {
+.checkout-movie__cover {
   width: 20%;
 }
 
-.checkout-form-movie__buttons {
+.checkout-movie__buttons {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-end;
   margin-top: 3em;
 }
 
+/* FORM INPUT */
+
+.checkout {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.checkout-form {
+  width: 50%;
+  margin: 3em;
+}
+
+.checkout-form__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.DayPickerInput input {
+  width: 97%;
+  height: 35px;
+  padding-left: 10px;
+  margin-bottom: 1em;
+}
+
 /* BUTTONS */
 
-.checkout-form__button {
+.checkout__button {
   width: 100%;
   text-align: center;
   text-decoration: none;
@@ -86,7 +110,7 @@
   max-height: 35px;
 }
 
-.checkout-form__button:hover {
+.checkout__button:hover {
   background-color: #222;
   color: #fff;
   border: 1px solid #fff;
