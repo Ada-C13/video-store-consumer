@@ -3,56 +3,53 @@ import React, { Component, useState } from 'react';
 import './App.css';
 import Routing from './components/Routing'
 import axios from 'axios';
-import FlashMessage from 'react-flash-message'
+// import FlashMessage from 'react-flash-message'
+import FlashMessage from './components/FlashMessage';
 
 const App = (props) => {
 
   const [selectedUser, setSelectedUser] = useState(null)
-
-  const onSubmitUserCallback = (user) => {
-    console.log(user)
-    setSelectedUser(user)
-    // return (
-    // <div>
-    //   <FlashMessage duration={5000}>
-    //     <strong>I will disapper in 5 seconds!</strong>
-    //   </FlashMessage>
-    // </div>
-    // )
-  }
-
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [flash, setFlash] = useState(null)
+  const [error, setError] = useState(undefined)
+  const [success, setSuccess] = useState(undefined)
 
   const onSubmitMovieCallback = (movie) => {
-    console.log(movie)
     setSelectedMovie(movie)
+  }
+
+  const onSubmitUserCallback = (user) => {
+    setSelectedUser(user)
   }
 
   const checkOut = (selectedUser, selectedMovie) => {
     const url = "http://localhost:3000/";
-    // const someDate = new Date();
 
     axios.post(`${url}rentals/${selectedMovie.title}/check-out`, {
       title: selectedMovie.title,
       customer_id: selectedUser.id,
-      // due_date: someDate + 5
     })
       .then((response) => {
-        console.log(response)
         setFlash(true)
-        // return (
-        //   <div>
-        //     <FlashMessage duration={5000}>
-        //       <strong>I will disapper in 5 seconds!</strong>
-        //     </FlashMessage>
-        //   </div>
-        // )
+        setSuccess(`Successfully Checked out`)
       })
       .catch((error) => {
         console.log(`Error: ${error}`)
+        setError(error.message)
       })
 
+  }
+
+  const onTimeout = () => {
+    console.log("timing out, clearing state");
+
+    // clear success and error messages
+    // clear selected customer and movie
+    setSuccess(undefined);
+    setError(undefined);
+    setSelectedUser(null)
+    setSelectedMovie(null)
+    setFlash(null)
   }
 
   return (
@@ -72,6 +69,20 @@ const App = (props) => {
       <div>
         <input className="add-library-button" type="button" value="checkout" onClick={() => checkOut(selectedUser, selectedMovie)} />
       </div>
+
+      {error
+        ? <FlashMessage
+          messageContents={error}
+          messageClass="error-message"
+          onTimeoutCallback={onTimeout} />
+        : ""}
+      {success
+        ? <FlashMessage
+          messageContents={success}
+          messageClass="success-message"
+          onTimeoutCallback={onTimeout} />
+        : ""}
+
       <Routing {...{ onSubmitUserCallback, onSubmitMovieCallback }}
       />
 
