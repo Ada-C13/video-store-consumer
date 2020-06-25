@@ -26,14 +26,6 @@ const Header = () => {
     return;
   }
 
-  //Search
-  const [searchedMovieList, setSearchedMovieList] = useState([]);
-
-  const searchMovies = (arrayOfMovies) => {
-    setSearchedMovieList(arrayOfMovies);
-    return;
-  }
-
   //reset the selected customer and selected movie
   const reset = () => {
     setSelectedCustomer(null);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const Customer = (props) => {
@@ -10,7 +10,6 @@ const Customer = (props) => {
     }
     props.selectCustomerCallback(selected);
   }
-
 
   return (
     <tr>
@@ -28,13 +27,7 @@ const Customer = (props) => {
           currency: "USD"
         }).format(props.account_credit)}</p></td>
       <td><p>{props.movies_checked_out_count}</p></td>
-      <td><p>{
-      // new Intl.DateTimeFormat("en-us", {
-      //       year: "numeric",
-      //       month: "numeric",
-      //       day: "2-digit"
-      //     }).format(
-            props.registered_at}</p></td>
+      <td><p>{new Date(props.registered_at).toDateString()}</p></td>
     </tr>
   );
 }
@@ -49,7 +42,8 @@ Customer.propTypes = {
   postal_code: PropTypes.string,
   phone: PropTypes.string,
   account_credit: PropTypes.number,
-  movies_checked_out_count: PropTypes.number
+  movies_checked_out_count: PropTypes.number,
+  selectCustomerCallback: PropTypes.func.isRequired
 };
 
 export default Customer;
