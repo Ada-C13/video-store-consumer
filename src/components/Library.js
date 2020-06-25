@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./Library.css";
 import Button from 'react-bootstrap/Button'
 
-const drawMovies = (movieList, onMovieSelectCallback) => {
+const renderMovies = (movieList, onMovieSelectCallback) => {
   return movieList.map((movie, index) => {
     return (
       <div key={index} className="movie-card">
@@ -24,13 +24,13 @@ const drawMovies = (movieList, onMovieSelectCallback) => {
 
 // Library Component
 const Library = (props) => {
-  console.log(`drawing Library...`, props);
+  console.log(`rendering Library...`, props);
   return (
     <div>
       <h1>Movie Library</h1>
       <div className="movielist flex-container">
           
-        {drawMovies(props.movieList, props.onMovieSelectCallback)}
+        {renderMovies(props.movieList, props.onMovieSelectCallback)}
            
       </div>
       <Button variant="primary" onClick={() => props.onMovieSelectCallback(2)}>

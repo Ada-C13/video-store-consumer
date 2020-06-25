@@ -6,7 +6,7 @@ import "./Home.css";
 
 // Home Component
 const Home = (props) => {
-  console.log(`drawing Home...`, props);
+  console.log(`rendering Home...`, props);
   return (
     <div className="container">
       <h1>Welcome!</h1>

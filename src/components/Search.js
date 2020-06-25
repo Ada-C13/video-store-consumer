@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button'
 
 const API_URL_BASE = "http://localhost:3000";
 
-const drawMovies = (searchResults, addMovieCallBack, searchText) => {
+const renderMovies = (searchResults, addMovieCallBack, searchText) => {
   return searchResults.map((movie, index) => {
     if (movie.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
       return (
@@ -26,11 +26,9 @@ const drawMovies = (searchResults, addMovieCallBack, searchText) => {
 };
 
 // Search Component
-
 const Search = (props) => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -47,6 +45,7 @@ const Search = (props) => {
         .catch((error) => {
           // handle errors
           setErrorMessage("search failed");
+          setSearchResults([]);
           console.log(error.message);
         });
     }
@@ -57,7 +56,7 @@ const Search = (props) => {
     setSearchText(event.target.value);
   };
 
-  console.log(`drawing Search...`, props.addMovieCallBack);
+  console.log(`rendering Search...`, props.addMovieCallBack);
   return (
     <div>
       <h1>Search Movie</h1>
@@ -72,7 +71,7 @@ const Search = (props) => {
 
       <div className="movielist flex-container">
           
-        {drawMovies(searchResults, props.addMovieCallBack, searchText)}
+        {renderMovies(searchResults, props.addMovieCallBack, searchText)}
         
       </div>
     </div>

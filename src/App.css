@@ -28,6 +28,7 @@ input {
 .movie-card {
   margin-bottom: 2em;
   width: 200px;
+  text-align: center
 }
 
 .movie-image {

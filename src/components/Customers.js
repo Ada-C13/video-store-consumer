@@ -4,8 +4,8 @@ import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
 
 import "./Customers.css";
-
-const drawCustomers = (customerList, onCustomerSelectCallback) => {
+// TODO render
+const renderCustomers = (customerList, onCustomerSelectCallback) => {
   return customerList.map((customer, index) => {
     return (
       <tr key={index}>
@@ -24,7 +24,7 @@ const drawCustomers = (customerList, onCustomerSelectCallback) => {
 
 // Customers Component
 const Customers = (props) => {
-  console.log(`drawing customers...`, props);
+  console.log(`rendering customers...`, props);
   return (
     <div>
       <h1>Customers</h1>
@@ -39,7 +39,10 @@ const Customers = (props) => {
             </tr>
           </thead>
           <tbody>
-            {drawCustomers(props.customerList, props.onCustomerSelectCallback)}
+            {renderCustomers(
+              props.customerList,
+              props.onCustomerSelectCallback
+            )}
           </tbody>
         </Table>
       </div>
