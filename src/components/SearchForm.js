@@ -1,18 +1,13 @@
 import React, { useState} from 'react';
 import PropTypes from 'prop-types';
 
-
 const SearchForm = (props) => {
   const [formFields, setFormFields] = useState({
     searchTerm: "",
   })
 
   const onInputChange = (event) => {
-    // const newFormField = {...formFields}
-    // newFormField[event.target.name] = event.target.value
     setFormFields({searchTerm: event.target.value})
-
-    // console.log(newFormField)
   }
 
   const onFormSubmit = (event) =>{
@@ -52,8 +47,8 @@ const SearchForm = (props) => {
   )
 } 
 
-// SearchForm.propTypes = {
-//   onSubmitCallback: PropTypes.func.isRequired,
-// };
+SearchForm.propTypes = {
+  onSubmitCallback: PropTypes.func.isRequired,
+};
 
 export default SearchForm;
