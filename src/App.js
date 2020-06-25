@@ -11,8 +11,21 @@ import './App.css';
 import CustomerIndex from './components/customerindex';
 import MovieIndex from './components/movieindex';
 import MovieSearch from './components/moviesearch';
-import Rental from './components/rental';
+import Rental from './components/rental'
 import CurrentlyCheckedOut from './components/currentlycheckedout'
+import {
+  Button, Col,
+  Container,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  Nav,
+  Navbar,
+  NavbarBrand,
+  NavItem,
+  NavLink,
+  Row
+} from "reactstrap";
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +54,36 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
+            <Navbar color="light" light expand="md">
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavbarBrand href="/">Home</NavbarBrand>
+                </NavItem>
+                <NavItem>
+                  <NavbarBrand href="/movies">Movie List</NavbarBrand>
+                </NavItem>
+                <NavItem>
+                  <NavbarBrand href="/customers">Customers</NavbarBrand>
+                </NavItem>
+                <NavItem>
+                  <NavbarBrand href="/search">Search</NavbarBrand>
+                </NavItem>
+                <NavItem>
+                  <NavbarBrand href="/rental">Add a New Movie</NavbarBrand>
+                </NavItem>
+                <NavItem>
+                  <NavbarBrand href="/rentals/currentlycheckedout">Currently Checked out</NavbarBrand>
+                </NavItem>
+                <NavItem>
+                  <NavbarBrand href="/rentals/:title/check-out">Rentals to Cart</NavbarBrand>
+                </NavItem>
+                <p>
+              {this.state.selectedCustomer?.name}
+              {this.state.selectedMovie?.title}
+
+            </p>
+              </Nav>
+            </Navbar>
             <nav>
               <ul>
                 <li><Link to="/">Home</Link></li>
@@ -52,8 +95,8 @@ class App extends Component {
               </ul>
             </nav>
             <p>
-              { this.state.selectedCustomer?.name } 
-              { this.state.selectedMovie?.title }
+              {this.state.selectedCustomer?.name}
+              {this.state.selectedMovie?.title}
 
             </p>
             <Switch>

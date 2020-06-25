@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button, Row, Col
+} from 'reactstrap';
 
 const Movie = (props) => {
   const { movie, selectMovieCallback } = props;
@@ -7,19 +11,24 @@ const Movie = (props) => {
   const { id, title, overview, releaseDate, imageUrl, externalId } = movie;
 
   return (
-    <div className="card movie-card">
-        {id} - {title} - {releaseDate}
-        <button
-          className="btn btn-primary select-movie"
-          onClick={() => { selectMovieCallback(movie) }}
+    <div>
+      <Row xs="2">
+      <Col xs="6" sm="4">
+        <Card>
+          <CardImg top width="100%" src={imageUrl} alt="Card image cap" />
+          <CardBody>
+            <CardTitle>{title}</CardTitle>
+            <CardSubtitle>{releaseDate}</CardSubtitle>
+            <CardText>{overview}</CardText>
+            <Button color="primary" onClick={() => { selectMovieCallback(movie) }}
         >
           Select
-        </button>
-        {imageUrl}
-        <p>{overview}</p>
-        {externalId}
-
-    </div>
+        </Button>
+        </CardBody>
+        </Card>
+        </Col>
+        </Row>
+      </div>
   );
 };
 
