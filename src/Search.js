@@ -58,7 +58,7 @@ const Search = () => {
       <form onSubmit={onFormSubmit}>
         <input onChange={onInputChange} value={searchTerm}/>
 
-        <input type="submit" value="Submit"/>
+        <input className="search-button" type="submit" value="Submit"/>
       </form>
       <section className="grid-columns">
       {searchResultComponents}
