@@ -6,7 +6,6 @@ const API_URL_MOVIES = "http://localhost:3000/movies"
 
 const Library = () => {
   const [movieList, setMovieList] = useState([])
-
   const [message, setMessage] = useState(null);
 
   // event.preventDefault();
@@ -34,6 +33,7 @@ const Library = () => {
         imageUrl = {movie.image_url}
         showAddButton = {false}
         showDetailButton = {true}
+        selectMovieButton = {true}
       />
     )
   })
