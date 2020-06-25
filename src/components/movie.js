@@ -2,14 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Movie = (props) => {
-  const { id, title, overview, releaseDate, imageUrl, externalId, selectMovieCallback } = props;
+  const { movie, selectMovieCallback } = props;
+
+  const { id, title, overview, releaseDate, imageUrl, externalId } = movie;
 
   return (
     <div className="card movie-card">
         {id} - {title} - {releaseDate}
         <button
           className="btn btn-primary select-movie"
-          onClick={() => { selectMovieCallback(id) }}
+          onClick={() => { selectMovieCallback(movie) }}
         >
           Select
         </button>
@@ -22,13 +24,8 @@ const Movie = (props) => {
 };
 
 Movie.propTypes = {
-  id: PropTypes.number,
-  title: PropTypes.string.isRequired,
-  releaseDate: PropTypes.string.isRequired,
-  overview: PropTypes.string,
-  imageUrl: PropTypes.string,
-  externalId: PropTypes.number,
-  selectMovieCallback: PropTypes.func
+  movie: PropTypes.object.isRequired,
+  selectMovieCallback: PropTypes.func.isRequired
 }
 
 export default Movie;

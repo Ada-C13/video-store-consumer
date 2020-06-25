@@ -1,3 +1,5 @@
+// elvis operator ?. safe nav operator, if thing on left evals to null, it does not // render.....whole experssion is null, otherwise, it continues to eval stuff to right
+
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
@@ -23,6 +25,16 @@ class App extends Component {
     }
   }
 
+  selectCustomer = (customer) => {
+    this.setState({ selectedCustomer: customer });
+    console.log(customer)
+  }
+
+  selectMovie = (movie) => {
+    this.setState({ selectedMovie: movie });
+    console.log(movie)
+  }
+
   render() {
 
     return (
@@ -36,9 +48,14 @@ class App extends Component {
                 <li><Link to="/customers">Customers</Link></li>
                 <li><Link to="/search">Search</Link></li>
                 <li><Link to="/rentals/currentlycheckedout">CurrentlyCheckedOut</Link></li>
+                <li><Link to="/rentals/:title/check-out">Rentals to Cart</Link></li>
               </ul>
             </nav>
+            <p>
+              { this.state.selectedCustomer?.name } 
+              { this.state.selectedMovie?.title }
 
+            </p>
             <Switch>
               <Route path="/customers">
                 <CustomerIndex
@@ -60,7 +77,7 @@ class App extends Component {
 
                 />
               </Route>
-              <Route path="/rentals">
+              <Route path="/rentals/:title/check-out">
                 <Rental
 
                 />
