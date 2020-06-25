@@ -2,7 +2,7 @@ import './Movie.css';
 import React from 'react';
 import { Button } from 'react-bootstrap/';
 
-const SearchedMovie = ({ id, title, overview, release_date, image_url, external_id}) => {
+const SearchedMovie = ({ id, title, overview, release_date, image_url, external_id, selectMovie}) => {
   return (
   <div className="">
     <div className="">
@@ -16,8 +16,8 @@ const SearchedMovie = ({ id, title, overview, release_date, image_url, external_
     </div>
     <div className="">
       <Button
-        className="">
-          Add Movie
+       onClick = {() => selectMovie(id, title, overview, release_date, image_url, external_id)}>
+         Add Movie
       </Button> 
     </div>  
   </div>

@@ -4,7 +4,7 @@ import './MovieSearch.css'
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const MovieSearch = ({url}) => {
+const MovieSearch = ({url, selectMovie}) => {
   const [searchResults, setSearchResultsList] = useState([])
   const [formFields, setFormFields] = useState({
     title: "",
@@ -35,6 +35,7 @@ const MovieSearch = ({url}) => {
     return <SearchedMovie
       key={movie.id}
       { ...movie }
+      selectMovie={() => selectMovie(movie)}
       />
   });
 
