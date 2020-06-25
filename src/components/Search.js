@@ -5,7 +5,7 @@ import SearchForm from './SearchForm';
 
   const Search = (props) => {
     const [searchedmovieList, setSearchedMovieList] = useState([]);
-    const [errorMessage, setMessage] = useState(null);
+    const [message, setMessage] = useState("");
     
     const searchMovie = (search) =>{
       axios.get(`${props.url}/?query=${search.searchTerm}`)
@@ -15,7 +15,7 @@ import SearchForm from './SearchForm';
         })
         .catch((error) => {
           setMessage(error.message);
-          console.log(errorMessage);
+          console.log(message);
 
           setTimeout(() => {
             setMessage(null);
@@ -23,66 +23,64 @@ import SearchForm from './SearchForm';
         });
     }
 
-  const checkPresence = (movie) =>{
+  const [movieList, setMovieList] = useState([]);
+  
+  const refreshMovieList = () =>{
     axios.get(props.url)
-      .then((response) => {
-        const movieList = response.data
-        const movie_titles = movieList.map(movie =>
-          movie.title
-        );
-        let result;
-        if (movie_titles.includes(movie.title)){
-          result = true;
-        }else{
-          result = false;
-        }
-        return result;
-      })
+    .then((response) => {
+      const movieList = response.data;
+      setMovieList(movieList);
+    })
       
-      .catch((error) => {
-        setMessage(error.message);
-        console.log(errorMessage);
-
+    .catch((error) => {
+      setMessage(error.message);
+      console.log(message);
+      
         setTimeout(() => {
           setMessage(null);
         }, 5000);
       }); 
     }
-  
+    
+    useEffect(()=>{
+      refreshMovieList();
+    }, [props.url])
+
+    const checkPresence = (movie) =>{
+        const movieTitles = movieList.map(movie =>
+          movie.title
+        );    
+        // console.log(movie.title)
+        // console.log(movieTitles)
+        if (movieTitles.includes(movie.title)){
+          return true
+        }else{
+          return false
+        }    
+      }
+    
     const addMovie = (addedMovie) => {
-        if (checkPresence(addedMovie)){
-          setMessage("Rental already exists in library")
+      if (checkPresence(addedMovie)) return
+      axios.post(props.url, addedMovie)
+      .then((response) => {
+        if (response.status === 200 || response.status === "OK"){
+          setMessage("Movie has been successfully added");
+          setTimeout(() => {
+            setMessage(null);
+          }, 5000);
+          refreshMovieList();
+        }  
+      })
+        .catch((error) => {
+          setMessage(error.message);
+          console.log(error.message);
 
           setTimeout(() => {
             setMessage(null);
           }, 5000);
-          // console.log ("it is present")
-        }else{
-          // console.log ("it is NOOOOOOT present")
-        axios.post(props.url, addedMovie)
-        .then((response) => {
-          // const newRental= response.data;
-          if (response.status === 200 || response.status === "OK"){
-            setMessage("Rental has been successfully added");
-
-            setTimeout(() => {
-              setMessage(null);
-            }, 5000);
-          }  
-        })
-          .catch((error) => {
-            setMessage(error.message);
-            console.log(error.message);
-
-            setTimeout(() => {
-              setMessage(null);
-            }, 5000);
-          });
-          console.log(addedMovie)
-          
-        }
+        });
       }
-    
+      
     const movieComponents = searchedmovieList.map((movie) => {
       return(
         <Movie
