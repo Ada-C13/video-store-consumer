@@ -8,7 +8,6 @@ const Home = () => {
         <div className="card-img-overlay text-center caption-6 d-flex justify-content-center align-items-center flex-column">
           <h2 className="card-title text-center justify-content-around mt-2"></h2>
         </div>
-        <div className="full-page"></div>
       </div>
   );
 }
