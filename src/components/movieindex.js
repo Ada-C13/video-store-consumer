@@ -24,30 +24,15 @@ class MovieIndex extends Component {
     })
   }
 
-  // selectMovie = (movieId) => {
-  //   const { movieList } = this.state;
-
-  //   const selectedMovie = movieList.find((movie) => {
-  //     return movie.id === movieId;
-  //   });
-
-  //   this.setState({ selectedMovie, });
-  // }
-
   render () {
     const { selectedMovie } = this.state;
 
     const movies = this.state.movieList.map((movie, i) => {
       return <Movie 
         key={i}
-        id={movie.id}
-        title={movie.title}
-        overview={movie.overview}
-        releaseDate={movie.release_date}
-        imageUrl={movie.image_url}
-        externalId={movie.external_id}
-        selectMovieCallback={this.selectMovie}
-
+        // movie={movie}
+        {...{movie}}
+        {...this.props}
       />
     })
     return (

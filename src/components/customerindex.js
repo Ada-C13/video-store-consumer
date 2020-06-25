@@ -24,32 +24,15 @@ class CustomerIndex extends Component {
     })
   }
 
-  selectCustomer = (customerId) => {
-    const { customerList } = this.state;
-
-    const selectedCustomer = customerList.find((customer) => {
-      return customer.id === customerId;
-    });
-
-    this.setState({ selectedCustomer, });
-  }
-
   render () {
     const { selectedCustomer } = this.state;
 
     const customers = this.state.customerList.map((customer, i) => {
-      return <Customer 
+      return <Customer
+        // customer={customer}
+        {...{customer}}
         key={i}
-        id={customer.id}
-        name={customer.name}
-        registered_at={customer.registered_at}
-        address={customer.address}
-        city={customer.city}
-        state={customer.state}
-        postal_code={customer.postal_code}
-        phone={customer.phone}
-        account_credit={customer.account_credit}
-        selectCustomerCallback={this.selectCustomer}
+        {...this.props} //spread operator to pass props down
       />
     })
     return (
