@@ -1,10 +1,18 @@
 .checkout-form {
   display: flex;
+  justify-content: space-around;
+}
+
+.checkout-form__selections {
+  display: flex;
   flex-wrap: wrap;
 }
 
+/* CUSTOMER */
+
 .checkout-form-customer {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   width: 40%;
   padding: 3em;
@@ -12,9 +20,11 @@
   border: 1px solid black;
 }
 
-.checkout-form__header {
+.checkout-form-customer__info {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .checkout-form-customer__avatar {
@@ -23,37 +33,57 @@
 
 .checkout-form-customer__buttons {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  margin-top: 3em;
 }
+
+/* MOVIE */
 
 .checkout-form-movie {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   width: 40%;
   padding: 3em;
-  margin-top: 1em;
+  margin: 1em 1em 0 0;
   border: 1px solid black;
 }
 
-.checkout-form-movie__avatar {
+.checkout-form-movie__info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-form-movie__cover {
   width: 20%;
 }
 
 .checkout-form-movie__buttons {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  margin-top: 3em;
 }
 
+/* BUTTONS */
+
 .checkout-form__button {
+  width: 100%;
+  text-align: center;
   text-decoration: none;
   font-size: 1em;
   color: #222;
   background-color: #fff;
   padding: .5em;
-  margin-right: 1em;
   border: 1px solid #222;
+}
+
+.smaller-button {
+  width: 100px;
+  max-height: 35px;
 }
 
 .checkout-form__button:hover {

@@ -47,19 +47,19 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
     <section>
       <h2>Checkout</h2>
 
-      <section className="checkout-form__header">
+      <section className="checkout-form">
         <h4>Customer</h4>
         <h4>Movie</h4>
       </section>
 
-      <section className="checkout-form">
+      <section className="checkout-form__selections">
         { 
           customer && (
             <div className="checkout-form-customer">
-              <img src={avatar} className="checkout-form-customer__avatar" alt="customer profile pic" />
-              <p className="checkout-form-customer__name">#{customer.id}: {customer.name}</p>
-              <div className="checkout-form-customer__buttons">
-                <Popup trigger={<button className="checkout-form__button">Profile</button>} modal>
+              <div className="checkout-form-customer__info">
+                <img src={avatar} className="checkout-form-customer__avatar" alt="customer profile pic" />
+                <p className="checkout-form-customer__name">#{customer.id}: {customer.name}</p>
+                <Popup trigger={<button className="checkout-form__button smaller-button">Profile</button>} modal>
                   <Customer
                     name={customer.name}
                     registered_at={new Date(customer.registered_at).toString()}
@@ -73,6 +73,8 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
                     id={customer.id}
                   />
                 </Popup>
+              </div>
+              <div className="checkout-form-customer__buttons">
                 <Link to="/customers" className="checkout-form__button">Change</Link>
               </div>
             </div>
@@ -88,12 +90,19 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
         { 
           movie && (
             <div className="checkout-form-movie">
-              <img src={movie.image_url} className="checkout-form-movie__cover" alt="movie cover pic" />
-              <p className="checkout-form-movie__title">{movie.title}</p>
-              <div className="checkout-form-movie__buttons">
-                <Popup trigger={<button className="checkout-form__button">Details</button>} modal>
-                  <Movie />
+              <div className="checkout-form-movie__info">
+                <img src={movie.image_url} className="checkout-form-movie__cover" alt="movie cover pic" />
+                <p className="checkout-form-movie__title">{movie.title}</p>
+                <Popup trigger={<button className="checkout-form__button smaller-button">Details</button>} modal>
+                  <section className="movie-details">
+                    <h3>{movie.title}</h3>
+                    <p>{movie.overview}</p>
+                    <p>Released: {movie.release_date}</p>
+                    <p>Inventory: {movie.inventory}</p>
+                </section>
                 </Popup>
+              </div>
+              <div className="checkout-form-movie__buttons">
                 <Link to="/movies" className="checkout-form__button">Change</Link>
               </div>
             </div>
