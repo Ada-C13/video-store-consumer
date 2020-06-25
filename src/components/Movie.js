@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Link, Route, Switch, useRouteMatch,} from 'rea
 import axios from 'axios';
 import Selected from './Selected'
 import "./Movie.css"
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
@@ -57,10 +60,10 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButto
         </div>
       </div>
       <div className="card-buttons">
-        {showAddButton && <button onClick={addMovie}>Add to Movie Library</button>}
-        {showDetailButton && <Link to={`/details/${title}`}><button>Details</button></Link>}
+        {showAddButton && <Button variant="outline-secondary" onClick={addMovie}>Add to Movie Library</Button>}
+        {showDetailButton && <Link to={`/details/${title}`}><Button variant="outline-secondary">Details</Button></Link>}
         <br/>
-        {selectMovieButton && <button onClick={selectMovie}>Select this Movie</button>}
+        {selectMovieButton && <Button variant="outline-secondary" onClick={selectMovie}>Select this Movie</Button>}
       </div>
       <div>
        {message}
