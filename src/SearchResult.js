@@ -24,7 +24,7 @@ const SearchResult = (props) => {
         .then((response) => { 
           console.log("made new movie")
           console.log(response.data)
-          setSuccessMessage(`Successfully added ${props.title} to library`);
+          setSuccessMessage(`Successfully added 1 copy of "${props.title}" to library`);
         })
         .catch((error) => {
           setErrorMessage(error.message);
