@@ -1,6 +1,8 @@
 import React, { useState} from 'react';
 import axios from 'axios';
 import Movie from "./Movie";
+import Form from 'react-bootstrap/Form';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
@@ -54,25 +56,25 @@ const SearchContainer = () => {
   })
 
   return(
-    <>
-      <form className="" onSubmit={onFormSubmit} >
-        <div className ="">
-          <label className="">Search for Movie Title: </label>
+    <div className="form">
+      <Form onSubmit={onFormSubmit} >
+        <Form.Group controlId="exampleForm.ControlInput1">
+          <Form.Label>Search for Movie Title: </Form.Label>
           <input className = ""
             name="text"
             value={formFields.text}
             onChange = {onInputChange}
             type="text"
           />
-        </div>
+        </Form.Group>
         <div>
           <input type="submit" value="Find Movie" />
         </div>
-      </form>
+      </Form>
       <div>
         {movieComponents}
       </div>
-    </>
+    </div>
   )
 }
 
