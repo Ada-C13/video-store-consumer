@@ -15,48 +15,48 @@ const selectMovies = (movieList, count = 4) => {
   return newArray;
  
 };
-function randomItem(items)
-{
-return items[Math.floor(Math.random()*items.length)];  
+
+function randomItem(items) {
+  return items[Math.floor(Math.random()*items.length)];  
 }
 
 const Home = ({movieList}) => {
   const scheduleTimer = () => {
     return setTimeout(refreshSelectedMovies, 5 * 1000)
   }
+
   const refreshSelectedMovies = () => {
     setSelectedMovies(selectMovies(movieList));
     setTimer(scheduleTimer());
   }
+
   const [selectedMovies,setSelectedMovies] = useState([]);
   const [timer,setTimer] = useState(scheduleTimer);
+
   useEffect(() => {
     setSelectedMovies(selectMovies(movieList));
   },[movieList])
+
   return (
-    <>
-    <h3>
-      Just not another Netflix site
-    </h3>
-    <Carousel>
-      { selectedMovies.map((movie) => {
-        return (
-          <Carousel.Item> 
-            <div className="home-card-body">
-              <img className="home-image" src={movie.image_url} alt={movie.title} />
-            </div>
-        </Carousel.Item>
-        );
-      }) 
-      }
- 
-    </Carousel>
-      <div>
-        <img className="home-img w-100" src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3452&q=80" alt="movie popcorn" />
+    <div className="homepage-main">
+
+      <div class="card learn-card">
+        <img class="card-img learn-img" src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3452&q=80" alt="movie popcorn"/>
+        <div class="card-img-overlay text-center align-items-center caption-6 d-flex justify-content-around flex-column hp-block">
+          <Carousel>
+            { selectedMovies.map((movie) => {
+              return (
+                <Carousel.Item> 
+                  <img className="home-image" src={movie.image_url} alt={movie.title} />
+                </Carousel.Item>
+              );
+            })}
+          </Carousel>
+          <h1 class="card-text text-white text-bolder">Just not another Netflix site</h1> 
+        </div>
       </div>
-  </>
- 
-  
+      
+    </div>
   )
 }
 
