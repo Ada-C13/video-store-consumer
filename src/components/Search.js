@@ -15,7 +15,7 @@ const renderMovies = (searchResults, addMovieCallBack, searchText) => {
             <img className="movie-image" src={movie.image_url} alt="Movie Cover" />
           </div>
           <div>{movie.title}</div>
-          <div>{movie.release_date}</div>
+          <div>{movie.release_date.substring(0, 4)}</div>
           <div>
             <Button variant="primary" onClick={() => addMovieCallBack(movie)}>Add Movie</Button>
           </div>
