@@ -3,7 +3,7 @@ import axios from 'axios';
 import Selected from './Selected'
 import '../App.css';
 
-const Customers = () => {
+const Customers = ({onUpdateCurrentCustomer}) => {
   const API_URL_CUSTOMERS = "http://localhost:3000/customers"
 
   const [customerList, setCustomerList] = useState([]);
@@ -23,11 +23,10 @@ const Customers = () => {
     });
   }, []);
   
-  const onSelectCustomer = (event) =>{
+  const onSelectCustomerClick = (event) =>{
     event.preventDefault();
-    setSelectedCustomerId(event.target.value);
+    onUpdateCurrentCustomer(event.target.value)
   }
-  console.log(selectedCustomerId)
 
   const selectedComponents = () => {
     return(
@@ -63,7 +62,7 @@ const Customers = () => {
           <td className="customers-table-item">{customer.phone}</td>
           <td className="customers-table-item">{customer.account_credit}</td>
           <td className="customers-table-item">{customer.movies_checked_out_count}</td>
-          <button value = {customer.id} onClick={onSelectCustomer}>Select this Customer</button>
+          <button value = {customer.id} onClick={onSelectCustomerClick}>Select this Customer</button>
           {false && selectedComponents()}
         </tr>
       ))}
