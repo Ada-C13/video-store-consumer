@@ -59,7 +59,7 @@ const Search = () => {
   };
   
   return (
-  <div class="m-5">
+  <div class="m-5 pt-5">
     {/* <h1>Add a Movie to Your Rental Database</h1> */}
     <Jumbotron>
       <h1>Movie Search!</h1>

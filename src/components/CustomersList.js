@@ -31,7 +31,7 @@ const CustomersList = () => {
     });
 
   return (
-    <div class="row m-5">{customerList}</div>
+    <div class="row m-5 pt-5">{customerList}</div>
   );
 };
 
