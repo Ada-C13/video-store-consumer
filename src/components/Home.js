@@ -38,7 +38,7 @@ const Home = ({movieList}) => {
 
       <div class="card learn-card">
         <img class="card-img learn-img" src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3452&q=80" alt="movie popcorn"/>
-        <div class="card-img-overlay text-center align-items-center caption-6 d-flex justify-content-betweeen flex-column hp-block">
+        <div class="card-img-overlay text-center align-items-center caption-6 d-flex justify-content-around flex-column hp-block">
           <Carousel>
             { selectedMovies.map((movie) => {
               return (
