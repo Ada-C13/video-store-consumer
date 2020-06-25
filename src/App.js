@@ -10,6 +10,19 @@ import CustomerIndex from './components/customerindex';
 import MovieIndex from './components/movieindex';
 import MovieSearch from './components/moviesearch';
 import Rental from './components/rental'
+import {
+  Button, Col,
+  Container,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  Nav,
+  Navbar,
+  NavbarBrand,
+  NavItem,
+  NavLink,
+  Row
+} from "reactstrap";
 
 class App extends Component {
   constructor(props) {
@@ -30,15 +43,25 @@ class App extends Component {
       <div className="App">
         <Router>
           <div>
-            <nav>
-              <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/movies">Movie List</Link></li>
-                <li><Link to="/customers">Customers</Link></li>
-                <li><Link to="/search">Search</Link></li>
-                <li><Link to="/rental">Add a New Movie</Link></li>
-              </ul>
-            </nav>
+          <Navbar color="light" light expand="md">
+          <Nav className="ml-auto" navbar>
+          <NavItem>
+                 <NavbarBrand href="/">Home</NavbarBrand>
+                 </NavItem>
+                <NavItem>
+                <NavbarBrand href="/movies">Movie List</NavbarBrand>
+                </NavItem>
+                <NavItem>
+                <NavbarBrand href="/customers">Customers</NavbarBrand>
+              </NavItem>
+              <NavItem>
+                <NavbarBrand href="/search">Search</NavbarBrand>
+              </NavItem>
+              <NavItem>
+                <NavbarBrand href="/rental">Add a New Movie</NavbarBrand>
+              </NavItem>
+              </Nav>
+              </Navbar>
 
             <Switch>
               <Route path="/customers">
