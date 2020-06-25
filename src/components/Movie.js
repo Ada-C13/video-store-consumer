@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card'
 const Movie = ({ id, title, overview, release_date, image_url, external_id, selectMovie }) => {
   return (
   <div className="">
-    <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '19rem' }}>
       <Card.Img variant="top" src={image_url} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
@@ -23,9 +23,9 @@ const Movie = ({ id, title, overview, release_date, image_url, external_id, sele
               + Checkout
             </Button>
           </div>  
-          <div className="">
+          <div className="button-box">
             <Button
-              className=""
+              className="button-box"
               onClick={() => selectMovie(id)}>
               + Library
             </Button>

@@ -68,7 +68,15 @@ li {
 /* Navbar styling */
 
 nav {
+  width: 100%;
+  color: #151547;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 3.157rem;
+}
 
+nav.logo {
+  width: 100%;
   color: #151547;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
@@ -79,8 +87,19 @@ nav:hover {
   color: #151547;
 }
 
-nav.link {
+a.nav.link {
   color: #151547;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.777rem;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .button-grad {
@@ -102,8 +121,7 @@ nav.link {
 }
 
 .App-header {
-  height: 200px;
-  padding: 20px;
+  height: 160px;
   color: white;
 }
 

@@ -113,13 +113,12 @@ class App extends Component {
   }
 
   render() {
-    // <Form.FormControl type="text" placeholder="Movie Title" className="p" />
    return (
      <Router>
       <div className="App">
         <header className="App-header">
           <Navbar bg="light" expand="lg">
-            <Navbar href="#home">Jetex Videos</Navbar>
+            <Nav.Link href="/library/home">Jetex Videos</Nav.Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="mr-auto">
               <Nav.Link href="/library">Library</Nav.Link>
