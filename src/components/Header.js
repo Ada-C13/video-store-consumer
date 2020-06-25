@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from './Home';
 import Customers from './Customers';
@@ -7,7 +7,7 @@ import Library from './Library';
 import Search from './Search';
 import axios from 'axios'
 
-const Header = (props) => {
+const Header = () => {
   const URL = "http://localhost:3000/"
   
   //Customer
