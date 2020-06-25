@@ -30,7 +30,7 @@ const Customers = (props) => {
     <div>
       <h1>Customers</h1>
       <div className="customerlistlist">
-        <Table striped hover>
+        <Table hover>
           <thead>
             <tr>
               <td>Name</td>

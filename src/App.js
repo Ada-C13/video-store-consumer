@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import Alert from 'react-bootstrap/Alert'
 
 import "./App.css";
 import Home from "./components/Home";
@@ -96,7 +97,7 @@ const App = () => {
     console.log(`App, draw navigation`);
     return (
       <Navbar fixed="top" bg="dark" variant="dark">
-        <Navbar.Brand>GETflix</Navbar.Brand>
+        <Navbar.Brand>GET f l i x</Navbar.Brand>
         <ul className="navbar-nav">
           <Nav.Link href="/">
             <li className="nav-item">Home</li>
@@ -120,8 +121,8 @@ const App = () => {
     return (
       <div>
         <ul className="selected">
-          <li>Selected movie: {selectedMovieTitle()}</li>
-          <li>Selected customer: {selectedCustomerName()}</li>
+          <Alert variant="primary">Selected movie: {selectedMovieTitle()}</Alert>
+          <Alert variant="primary">Selected customer: {selectedCustomerName()}</Alert>
         </ul>
       </div>
     );
