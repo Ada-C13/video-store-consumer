@@ -45,18 +45,3 @@ CustomerCard.propTypes = {
 };
 
 export default CustomerCard;
-
-
-// this is what Customer looks like
-// {
-//   "id": 1,
-//   "name": "Shelley Rocha",
-//   "registered_at": "2015-04-29T14:54:14.000Z",
-//   "address": "Ap #292-5216 Ipsum Rd.",
-//   "city": "Hillsboro",
-//   "state": "OR",
-//   "postal_code": "24309",
-//   "phone": "(322) 510-8695",
-//   "account_credit": 13.15,
-//   "movies_checked_out_count": 0
-// },

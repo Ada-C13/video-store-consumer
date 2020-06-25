@@ -6,7 +6,6 @@ import axios from "axios";
 const SearchMovieCard = ({title, external_id, overview, release_date, image_url}) => {
 
   const [error, setError] = useState(null);
-  // state for inDatabase => default false
 
   const addMovie = (event) => {
 
@@ -49,6 +48,5 @@ SearchMovieCard.propTypes = {
   image_url: PropTypes.string,
 };
 
-// title, overview, release_date, image_url, external_id
 
 export default SearchMovieCard;

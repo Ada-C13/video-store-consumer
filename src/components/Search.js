@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
 import SearchMovieCard from './SearchMovieCard';
 import Form from 'react-bootstrap/Form'
@@ -13,17 +13,6 @@ const Search = () => {
   const [moviesList, setMoviesList] = useState([]);
   const [error, setError] = useState(null);
 
-  // useEffect(() => {
-  //   axios.get(API_URL_BASE)
-  //     .then((response) => {
-  //       const apiStudentList = response.data;
-  //       setStudentList(apiStudentList);
-  //     })
-  //     .catch((error) => {
-  //       setErrorMessage(error.message);
-  //       console.log(error.message);
-  //     });
-  // }, []);
 
   const search = (event) => {
     event.preventDefault();
@@ -74,13 +63,7 @@ const Search = () => {
         </Form>
       </p>
     </Jumbotron>
-
-
     
-    {/* <form className='form' onClick={search}>
-    <input className='input' type='text' name='query' placeholder='Enter a Movie' value={query} onChange={ (event) => setQuery(event.target.value) }/>
-    <button className='button' type='submit'>Search </button>
-    </form> */}
     <hr></hr>
     <div className="row">{moviesList}</div>   
   </div>
