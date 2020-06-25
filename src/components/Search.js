@@ -49,9 +49,9 @@ import PropTypes from 'prop-types';
 
     const checkPresence = (movie) =>{
         const movieTitles = movieList.map(movie =>
-          movie.title
+          movie.external_id
         );    
-        if (movieTitles.includes(movie.title)){
+        if (movieTitles.includes(movie.external_id)){
           return true
         }else{
           return false
