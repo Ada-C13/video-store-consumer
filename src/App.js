@@ -12,6 +12,7 @@ import Home from "./components/Home";
 import Search from "./components/Search";
 import Library from "./components/Library";
 import Customers from "./components/Customers";
+import Checkout from "./components/Checkout";
 
 const API_URL_BASE = "http://localhost:3000";
 
@@ -39,9 +40,7 @@ const App = () => {
         console.log(`apimovieList error`, error.message);
         setErrorMessage(error.message);
       });
-  }, []);
 
-  useEffect(() => {
     axios
       .get(API_URL_BASE + "/customers")
       .then((response) => {
@@ -53,30 +52,64 @@ const App = () => {
       });
   }, []);
 
-  const selectedMovieTitle = () => {
-    console.log(`App, selectedMovieTitle`, selectedMovie);
-    let movieTitle = "No movie selected";
+  // useEffect(() => {
+  //   axios
+  //     .get(API_URL_BASE + "/customers")
+  //     .then((response) => {
+  //       const apiCustomerList = response.data;
+  //       setCustomerList(apiCustomerList);
+  //     })
+  //     .catch((error) => {
+  //       setErrorMessage(error.message);
+  //     });
+  // }, []);
+
+  const selectedMovieData = () => {
+    console.log(`App, selectedMovieData`, selectedMovie);
+    let movieData = null;
     if (selectedMovie > 0) {
       movieList.forEach((movie, index) => {
         if (movie.id === selectedMovie) {
-          movieTitle = movie.title;
+          movieData = movie;
         }
       });
     }
-    return movieTitle;
+    return movieData;
   };
 
-  const selectedCustomerName = () => {
+  const selectedMovieTitle = () => {
+    console.log(`App, selectedMovieTitle`, selectedMovie);
+    let movieData = selectedMovieData();
+    if (movieData === null) {
+      return `No movie selected`;
+    } else {
+      return movieData.title;
+    }
+  };
+
+  // returns all data for selected customer
+  const selectedCustomerData = () => {
     console.log(`App, selectedCustomerName`, selectedCustomer);
-    let customerName = "No customer selected";
+    let customerData = null;
     if (selectedCustomer > 0) {
       customerList.forEach((customer, index) => {
         if (customer.id === selectedCustomer) {
-          customerName = customer.name;
+          customerData = customer;
         }
       });
     }
-    return customerName;
+    return customerData;
+  };
+
+  // returns name for selected customer
+  const selectedCustomerName = () => {
+    console.log(`App, selectedCustomerName`, selectedCustomer);
+    let customerData = selectedCustomerData();
+    if (customerData === null) {
+      return `No customer selected`;
+    } else {
+      return customerData.name;
+    }
   };
 
   // Callback function to select movie
@@ -93,6 +126,14 @@ const App = () => {
     setCustomer(id);
   };
 
+  // Callback function to perform checkout
+  const onCheckoutCallback = () => {
+    console.log(`App, onCheckoutCallback`);
+    // perform checkout
+    setCustomer(0);
+    setMovie(0);
+  };
+  // drawNav file! functions that return components, one for each
   const drawNav = () => {
     console.log(`App, draw navigation`);
     return (
@@ -115,7 +156,7 @@ const App = () => {
       </Navbar>
     );
   };
-
+  // another component!
   const drawSelected = () => {
     console.log(`App, draw selected`);
     return (
@@ -137,8 +178,7 @@ const App = () => {
     axios
       .post(API_URL_BASE + "/movies", movie)
       .then(() => {
-        const newMovieList = movieList;
-        newMovieList.push(movie);
+        const newMovieList = [...movieList, movie];
         // set state
         setMovieList(newMovieList);
       })
@@ -183,6 +223,17 @@ const App = () => {
                 {...props}
                 onCustomerSelectCallback={onCustomerSelectCallback}
                 customerList={customerList}
+              />
+            )}
+          />
+          <Route
+            path="/checkout"
+            render={(props) => (
+              <Checkout
+                {...props}
+                movieData={selectedMovieData()}
+                customerData={selectedCustomerData()}
+                onCheckoutCallback={onCheckoutCallback}
               />
             )}
           />
