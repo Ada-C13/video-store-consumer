@@ -64,7 +64,7 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
 
   const allLibraryResults = libraryResults.map((movie) => {
     return (
-      <div  key={movie.id} className="single-movie align-self-center">
+      <div className="single-movie align-self-center">
         <Movie key={movie.external_id} movie={movie} selectMovie={selectMovie} action={"Select Movie"} />
       </div>
     );
@@ -98,7 +98,7 @@ const MovieSearch = ({ url, movieList, selectMovie, addMovie }) => {
           </div>
         </div>
       </form>
-
+      
       <div className="d-flex flex-row justify-content-center align-items-center">
         <h4> Library Results: {allLibraryResults.length} </h4>
         <img className="popcorn-icon" src="https://images.unsplash.com/photo-1587132129911-80e544e7e7b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1006&q=80" alt="popcorn as icon" />
