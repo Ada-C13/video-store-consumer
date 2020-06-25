@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="row">
           <div className="d-flex col">
             <div className="footer-logo text-left">
-              <a href="/"><img className="w-100" src="https://lh3.googleusercontent.com/pw/ACtC-3egOjtR1cwMLE4DWMqvjucZFIg_OgNhqZtie9V5whCbr-K9oWeSs_9zSXWVS3CMZLDZM_mxC68ZIV20qYpUwihwbMTCwSyWV_rpPl9OEr2xxQGxhq9aeOssSRHQnL2Zdw9VhKh_5W6EouKACuyRpCQC=w400-h173-no?authuser=0"/></a>
+              <a href="/"><img className="w-100" src="https://lh3.googleusercontent.com/pw/ACtC-3egOjtR1cwMLE4DWMqvjucZFIg_OgNhqZtie9V5whCbr-K9oWeSs_9zSXWVS3CMZLDZM_mxC68ZIV20qYpUwihwbMTCwSyWV_rpPl9OEr2xxQGxhq9aeOssSRHQnL2Zdw9VhKh_5W6EouKACuyRpCQC=w400-h173-no?authuser=0" alt = ""/></a>
             </div>
           </div>
           <div className="container text-left col">
