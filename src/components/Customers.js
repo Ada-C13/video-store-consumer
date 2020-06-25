@@ -45,10 +45,10 @@ const Customers = (props) => {
 
 
   return (
-      <div className="w-100 d-flex text-left flex-wrap justify-content-around container-fluid">
-        <h2 className="py-2 text-center w-100">Customers</h2>
-        <table className="customer table table-striped">
-          <thead className="thead-light">
+      <div className="w-100 d-flex text-center flex-wrap justify-content-around">
+        <h2 className="text-center w-100 pt-3 pb-3">Customers</h2>
+        <table className="customer table table-hover">
+          <thead className="thead-light text-center">
             <tr>
               <th>ID</th>
               <th>Select</th>
@@ -56,7 +56,7 @@ const Customers = (props) => {
               <th>Address</th>
               <th>Phone Number</th>
               <th>Account Credit</th>
-              <th>Rentals Count</th>
+              <th>Current Rentals</th>
               <th>Registered</th>
             </tr>
           </thead>
