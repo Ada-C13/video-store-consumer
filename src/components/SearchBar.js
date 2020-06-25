@@ -13,16 +13,15 @@ class SearchBar extends Component {
       error: undefined,
       searchDetailsMovie: undefined
     }
-  }
+  };
 
   onInputChange = (event) => {
     this.setState({ title: event.target.value });
-  }
+  };
 
   onSubmitHandler = (event) => {
     event.preventDefault();
     const { title } = this.state
-
     if (title) {
       const params = {query: title}      
       axios.get(`${this.props.url}/movies`, { params })
@@ -35,22 +34,19 @@ class SearchBar extends Component {
         this.setState({ error: error.message });
       });
     }
-  }
+  };
 
   showDetails = (movieId) => {
     const { searchDetailsMovie, searchResults } = this.state;
-
     if (searchDetailsMovie && searchDetailsMovie.external_id === movieId) {
       this.setState({ searchDetailsMovie: undefined })
     } else {
-
       const searchDetailsMovie = searchResults.find((movie) => {
         return movie.external_id === movieId;
       })
-
       this.setState({ searchDetailsMovie })
     }
-  }
+  };
 
   searchForm = () => {
     return(
@@ -70,7 +66,8 @@ class SearchBar extends Component {
           onClick={this.onSubmitHandler}
         />
     </form>
-    )}
+    )
+  };
 
   databaseMovies = () => 
     this.state.searchResults.map((movie, i) => {
@@ -79,14 +76,13 @@ class SearchBar extends Component {
         { ...movie }
         selectMovie={() => this.props.selectMovie(movie)}
         detailsCallback={() => this.showDetails(movie.external_id) }
-        searchDetailsMovie={this.state.searchDetailsMovie}
-        />
+        searchDetailsMovie={this.state.searchDetailsMovie} />
     }
   );
 
   noResults = () => {
     return <h3>No search results</h3>
-  }
+  };
   
   render () {
     return (
@@ -111,7 +107,7 @@ class SearchBar extends Component {
         </div>
         </div>
     )
-  }
+  };
 }
 
 SearchBar.propTypes = {

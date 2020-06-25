@@ -19,9 +19,6 @@ const CustomerList = ({ customerList, selectCustomer }) => {
 
   return (
     <div>
-    <div>
- 
-    </div>
       <h1>CUSTOMER INFORMATION</h1>
       <p>Select both customer and movie in order to create a rental.</p>
       {buildCustomers()}

@@ -19,9 +19,6 @@ const RentalList = ({ rentalList, returnRental }) => {
 
   return (
     <div>
-    <div>
- 
-    </div>
       <h1>RENTAL INFORMATION</h1>
       <p>Select rental to return it.</p>
       {buildRentals()}

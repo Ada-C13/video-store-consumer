@@ -81,7 +81,7 @@ class App extends Component {
         movies.push(movieToAdd)
         this.setState({
           movies,
-          alertText: "Movie successfully added to your rental library",
+          alertText: "Movie added to your rental library",
           alertVariant: "success"
         });
       })
@@ -94,7 +94,7 @@ class App extends Component {
       });
     } else { 
       this.setState({
-        alertText: "Movie already exists in library", 
+        alertText: "Movie cannot be added to the libaray, it already exists in library", 
         alertVariant: "danger"
       })
     }
@@ -137,7 +137,7 @@ class App extends Component {
           selectedMovie: undefined,
           selectedCustomer: undefined,
           error: undefined,
-          alertText: "Movie successfully rented",
+          alertText: "Rental successfully created",
           alertVariant: "success"
         })
       })
@@ -178,14 +178,12 @@ class App extends Component {
 
   detailsCallback(movieId) {    
     const { movies, detailsMovie } = this.state;
-
     if (detailsMovie && detailsMovie.external_id === movieId) {
       this.setState({ detailsMovie: undefined })
     } else {
       const detailsMovie = movies.find((movie) => {
         return movie.external_id === movieId;
       })
-
       this.setState({ detailsMovie })
     }
   }
@@ -195,7 +193,6 @@ class App extends Component {
   }
 
   render() {
-
     const videoAlert = () => {
       return(
         <Alert 
@@ -210,55 +207,48 @@ class App extends Component {
 
     return (
       <Router>
-            <Nav className="ml-auto"/>
-            <div className={this.selectedItemClass()}>
-              {this.state.selectedMovie ? ("Selected Movie: \n" + this.state.selectedMovie.title) : "" }
-              <br />
-              {this.state.selectedCustomer ? ("Selected Customer: \n" + this.state.selectedCustomer.name) : "" }
-              <br />
-              {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.createRental()}>Create a Rental</Button> : ''}
+        <Nav className="ml-auto"/>
+        <div className={this.selectedItemClass()}>
+          {this.state.selectedMovie ? ("Selected Movie: \n" + this.state.selectedMovie.title) : "" }
+          <br />
+          {this.state.selectedCustomer ? ("Selected Customer: \n" + this.state.selectedCustomer.name) : "" }
+          <br />
+          {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.createRental()}>Create a Rental</Button> : ''}
+        </div>
 
-            </div>
-
-   
-          
-          <div className="main">
-
-            {this.state.alertText ? videoAlert() : "" }
-
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route path="/customers">
-                <CustomerList 
-                customerList={this.state.customers} 
-                selectCustomer={(id) => this.selectCustomer(id)} />
-              </Route>
-              <Route path="/search">
-                <SearchBar 
-                  url={BASE_URL} 
-                  selectMovie={(id) => this.addMovie(id)} 
-                  detailsCallback={(id) => this.detailsCallback(id)} 
-                  detailsMovie={this.state.detailsMovie} />
-              </Route>
-              <Route path="/library">
-                <MovieLib 
-                  movieList={this.state.movies} 
-                  selectMovie={(id) => this.selectMovie(id)} 
-                  selectCustomer={(id) => this.selectCustomer(id)}
-                  detailsCallback={(id) => this.detailsCallback(id)} 
-                  detailsMovie={this.state.detailsMovie} />
-              </Route>
-              <Route path="/rentals">
-                <RentalList 
-                rentalList={this.state.rentals} 
-                returnRental={(movie, customer) => this.returnRental(movie, customer)} />
-              </Route>
-            </Switch>
-          
-          </div>
-
+        <div className="main">
+          {this.state.alertText ? videoAlert() : "" }
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/customers">
+              <CustomerList 
+              customerList={this.state.customers} 
+              selectCustomer={(id) => this.selectCustomer(id)} />
+            </Route>
+            <Route path="/search">
+              <SearchBar 
+                url={BASE_URL} 
+                selectMovie={(id) => this.addMovie(id)} 
+                detailsCallback={(id) => this.detailsCallback(id)} 
+                detailsMovie={this.state.detailsMovie} />
+            </Route>
+            <Route path="/library">
+              <MovieLib 
+                movieList={this.state.movies} 
+                selectMovie={(id) => this.selectMovie(id)} 
+                selectCustomer={(id) => this.selectCustomer(id)}
+                detailsCallback={(id) => this.detailsCallback(id)} 
+                detailsMovie={this.state.detailsMovie} />
+            </Route>
+            <Route path="/rentals">
+              <RentalList 
+              rentalList={this.state.rentals} 
+              returnRental={(movie, customer) => this.returnRental(movie, customer)} />
+            </Route>
+          </Switch>
+        </div>
       </Router>
     );
   }

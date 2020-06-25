@@ -107,7 +107,7 @@ class CustomerSearch extends Component {
         <div>
           {this.state.searchResults.length === 0 ? this.noResults() : this.databaseCustomer()}
         </div>
-        </div>
+      </div>
     )
   }
 }

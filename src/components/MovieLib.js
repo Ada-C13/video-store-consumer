@@ -7,7 +7,6 @@ import './MovieLib.css'
 const BASE_URL = 'http://localhost:3000'
 
 const MovieLib = ({ movieList, selectMovie, selectCustomer, detailsCallback, detailsMovie }) => {
-  
   const makeMovies = () => movieList.map((movie, i) => {
     return <Movie
       key={i}
@@ -21,19 +20,17 @@ const MovieLib = ({ movieList, selectMovie, selectCustomer, detailsCallback, det
   
   return (
     <div className="row">
-    <div class="col-md-4 mb-4">
-
-    <CustomerSearch
-      url={BASE_URL} 
-      selectCustomer={(id) => selectCustomer(id)}
-      detailsCallback={(id) => detailsCallback(id) }
-      />
-    </div>
+      <div class="col-md-4 mb-4">
+        <CustomerSearch
+          url={BASE_URL} 
+          selectCustomer={(id) => selectCustomer(id)}
+          detailsCallback={(id) => detailsCallback(id) }
+          />
+      </div>
       
       <div className="row">
         {makeMovies()}
       </div>
-   
     </div>
   )
 }
