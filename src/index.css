@@ -34,29 +34,3 @@ div.home-card img {
   position: sticky;
 
 }
-
-
-button.btn-danger {
-  background-color: #DF2935;
-  border-color: #DF2935;
-}
-button.btn-danger:hover {
-  background-color: #9A031E;
-  border-color: #9A031E;
-}
-
-ul.list-group li.active {
-  background-color: #DF2935;
-  border-color: #DF2935;
-}
-button.btn-success {
-  border-top-left-radius: none;
-  border-bottom-left-radius: none;
-  background-color: #9A031E;
-  border-color: #9A031E;
-}
-button.btn-success:hover {
-  background-color: #DF2935;
-  border-color: #DF2935;
-}
-
