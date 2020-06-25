@@ -19,7 +19,7 @@ const Movie = ({ id, title, overview, release_date, image_url, external_id, sele
       <Button
         className=""
         onClick={() => selectMovie(id)}>
-          Add Movie
+          Select Movie
       </Button> 
     </div>  
   </div>
