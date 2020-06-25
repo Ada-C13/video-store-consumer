@@ -40,6 +40,7 @@ Button {
   background-image: linear-gradient(to right, #41295a 0%, #2F0743 51%, #41295a 100%);
   outline: none !important;
   box-shadow: none !important;
+  font-family: -apple-system, Roboto,'Open Sans'sans-serif;
 }
 
 .button-grad:hover { 

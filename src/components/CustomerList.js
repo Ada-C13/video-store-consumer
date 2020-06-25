@@ -2,6 +2,7 @@ import React from 'react';
 import './CustomerList.css';
 import PropTypes from 'prop-types';
 import Customer from './Customer';
+import CardDeck from 'react-bootstrap/CardDeck'
 
 
 const CustomerList = ({ customerList, selectCustomer }) => {
@@ -20,8 +21,16 @@ const CustomerList = ({ customerList, selectCustomer }) => {
     <div>
       {buildCustomers()}
     </div>
-  )
-}
+
+    // TODO: The above code renders the cards, but no grid. The below code shows grid, but cards are too skinny. 
+
+    // <div className="">
+    //   <CardDeck>
+    //   {buildCustomers()}
+    //   </CardDeck>
+    // </div>
+  );
+};
 
 CustomerList.propTypes = {
   customerList: PropTypes.array.isRequired,
