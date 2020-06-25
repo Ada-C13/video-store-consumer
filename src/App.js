@@ -62,7 +62,13 @@ const App = () => {
   useEffect( getCustomers, [ getCustomers ]);
 
   const createRental = (title, customer_id, due_date) => {
-    axios.post('http://localhost:3000/rentals/' + title + '/check-out', { params: title, customer_id, due_date })
+    const params = {
+      title: title,
+      customer_id: customer_id,
+      due_date: due_date
+    }
+    console.log(params);
+    axios.post(`http://localhost:3000/rentals/${title}/check-out`, params)
     .then((response) => {
       setSearchResults(response.data);
     })

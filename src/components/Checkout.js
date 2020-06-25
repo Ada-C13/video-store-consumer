@@ -13,34 +13,21 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 
 import avatar from './user.png'
 import './Checkout.css';
+import 'react-day-picker/lib/style.css';
+
 import Customer from './Customer';
 
 const Checkout = ({ customer, movie, onSubmitCallback }) => {
 
-  const customerID = {
-    customer_id: customer.id,
-  };
+  const [dueDate, setDueDate] = useState(new Date());
 
-  const movieTitle = {
-    title: movie.title,
-  };
-
-  const [dueDate, setDueDate] = useState({
-    due_date: new Date(),
-  });
-
-  const onInputChange = (event) => {
-    const newDueDate = {
-      ...dueDate
-    };
-
-    newDueDate[event.target.name] = event.target.value;
-    setDueDate(newDueDate);
+  const handleDateChange = (date) => {
+    setDueDate(date.toJSON());
   };
   
   const submitRentalForm = (event) => {
     event.preventDefault();
-    onSubmitCallback(customerID, movieTitle, dueDate);
+    onSubmitCallback(movie.title, customer.id, dueDate);
   };
   
   return (
@@ -115,7 +102,18 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
             </div>
           )
         }
-        {/* TODO: Add conditional rendering here for movie && customer to render a date select and a checkout form submit button, which will call submitRentalForm */}
+        {
+          movie && customer && (
+            <form className="create-rental-form" onSubmit={submitRentalForm}>
+              <div className="create-rental-form__header"></div>
+              <div className="create-rental-form__form">
+                <label className="create-rental-form__form-label" htmlFor="due date"></label>
+                <DayPickerInput onDayChange={handleDateChange} />
+                <input type="submit" className="create-rental-form__form-button" value="Create Rental"/>
+              </div>
+            </form>
+          )
+        }
       </section>
     </section>
   );
