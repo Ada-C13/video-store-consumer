@@ -19,10 +19,11 @@ html, body {
   font-family: sans-serif;
   color: #030302;
   height: 100%;
-  background-image: url('https://lh3.googleusercontent.com/pw/ACtC-3fD4ohzhSj8UxpU5P_nJIF7tnnfeyfjrbQMEcJXmH_k1iMrieKF4YdlCkP0jycCA4SepIhh3ad_m78vYRMIWdzI3URoCKMaTMSNxYxhK_as-Pc_K0vgkf096Zvm8uUNFC4ksqJg222EDaNYi2IC80OF=w1590-h724-no?authuser=0');
+  /* background-color: #555555; */
+  /* background-image: url('https://lh3.googleusercontent.com/pw/ACtC-3fD4ohzhSj8UxpU5P_nJIF7tnnfeyfjrbQMEcJXmH_k1iMrieKF4YdlCkP0jycCA4SepIhh3ad_m78vYRMIWdzI3URoCKMaTMSNxYxhK_as-Pc_K0vgkf096Zvm8uUNFC4ksqJg222EDaNYi2IC80OF=w1590-h724-no?authuser=0');
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   
 }
 
@@ -40,7 +41,22 @@ h2 {
   font-family: 'Open Sans', sans-serif;
 }
 
-div.home-card img {
-  position: sticky;
+footer {
+  background-color: #df101d;
+  margin: auto auto;
+}
 
+footer h5 {
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: rgb(213, 213, 213);
 }
