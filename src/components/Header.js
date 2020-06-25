@@ -42,7 +42,7 @@ const Header = (props) => {
   }
 
   // Checkout a movie
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState("");
 
   const check_out = () => {
     // POST /rentals/:title/check-out
@@ -61,7 +61,7 @@ const Header = (props) => {
     .then((response) => {
       // const newRental= response.data;
       if (response.status === 200 || response.status === "OK"){
-        console.log("Rental is successfully checked-out")
+        setMessage("Rental is successfully checked-out")
         console.log(message)
       }  
     })
