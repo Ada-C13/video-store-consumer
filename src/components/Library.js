@@ -65,6 +65,7 @@ const Library = (props) => {
             {movieComponents}
           </tbody>
         </table>
+        <div className="full-page"></div>
       </div>
   );
 }

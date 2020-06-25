@@ -71,6 +71,7 @@ const Customers = (props) => {
             {customersComponents}
           </tbody>
         </table>
+        <div className="full-page"></div>
       </div>
   );
 }
