@@ -97,7 +97,9 @@ import SearchForm from './SearchForm';
     })
   
     return (
-      <div className="w-100 d-flex flex-wrap text-center justify-content-around">
+      <div className="search-page w-100 d-flex text-center flex-wrap align-content-start justify-content-center">
+        
+
         <div className="search-form w-100"><SearchForm onSubmitCallback ={searchMovie} /></div>
 
         { movieComponents.length > 0 ? <div>
@@ -119,7 +121,7 @@ import SearchForm from './SearchForm';
         </table>
         </div>
         :
-        <h2 className="py-2 text-center w-100">No Results</h2>
+        <h2 className="text-center">No Results</h2>
         }
       </div>
   );
