@@ -48,6 +48,7 @@ const SearchContainer = () => {
         imageUrl = {movie.image_url}
         showAddButton = {true}
         showDetailButton = {false}
+        selectMovieButton = {false}
       />
     )
   })
