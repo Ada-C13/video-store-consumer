@@ -35,9 +35,11 @@ const SearchResult = (props) => {
 
   return (
     <div className="movie-container">
-      {successMessage ? <div className="success-message"><h2>{successMessage}</h2></div> : ''}
-      {errorMessage ? <div className="error-message"><h3>{errorMessage}</h3></div> : ''}
-      <section >
+      <section className="search-messages">
+        {successMessage ? <div className="success-message"><h2>{successMessage}</h2></div> : ''}
+        {errorMessage ? <div className="error-message"><h3>{errorMessage}</h3></div> : ''}
+      </section>
+      <section>
       <h3>{props.title}</h3>
       <img src={props.image_url} alt="movie poster"/>
       <button className="library-button" onClick={onSelect}>Add to Libray</button>

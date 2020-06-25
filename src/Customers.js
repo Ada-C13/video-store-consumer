@@ -33,7 +33,7 @@ const Customers = (props) => {
     />)
   })
 
-        
+  
   return (
     <div className="Customers">
       <h1 className="body-header">All Customers</h1>
