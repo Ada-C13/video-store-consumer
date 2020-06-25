@@ -13,7 +13,7 @@ const Home = () => {
         alt="First slide"
       />
       <Carousel.Caption>
-        <h3>Welcome to Rentflix</h3>
+        <p>Welcome to Rentflix</p>
         <p>Good luck renting from here.</p>
       </Carousel.Caption>
     </Carousel.Item>
@@ -25,7 +25,7 @@ const Home = () => {
       />
 
       <Carousel.Caption>
-        <h3>Netflix, who?</h3>
+        <p>Netflix, who?</p>
         <p>Watch out, next Forbes 100 company in the making.</p>
       </Carousel.Caption>
     </Carousel.Item>
@@ -37,7 +37,7 @@ const Home = () => {
       />
 
       <Carousel.Caption>
-        <h3>Why are you watching TV? Go outside</h3>
+        <p>Why are you watching TV? Go outside</p>
         <p>RIDE YOUR BIKE. (P.S. ADIE BIKE CREW IS WHERE IT'S AT)</p>
       </Carousel.Caption>
     </Carousel.Item>
@@ -49,7 +49,7 @@ const Home = () => {
       />
 
       <Carousel.Caption>
-        <h3>Seriously, get out of the house.</h3>
+        <p>Seriously, get out of the house.</p>
         <p>You'll feel better!</p>
       </Carousel.Caption>
     </Carousel.Item>
