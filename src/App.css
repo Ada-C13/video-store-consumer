@@ -6,17 +6,37 @@
   text-align: center;
 }
 
-.movie-image {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin: 5px;
-  width: 100px;
-}
-
 h1 {
   margin-bottom: 1em;
 }
 
 input {
   margin-bottom: 2em;
+}
+
+/* movies */
+
+.movielist {
+  /* center div */
+} 
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movie-card {
+  margin-bottom: 2em;
+  width: 200px;
+}
+
+.movie-image {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 5px;
+  width: 150px;
+}
+
+.release-year {
+  text-align: center
 }

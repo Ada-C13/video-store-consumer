@@ -6,18 +6,18 @@ import Button from 'react-bootstrap/Button'
 const drawMovies = (movieList, onMovieSelectCallback) => {
   return movieList.map((movie, index) => {
     return (
-      <tr key={index}>
-        <td>{movie.title}</td>
-        <td>{movie.release_date}</td>
-        <td>
+      <div key={index} className="movie-card">
+        <div>
           <img className="movie-image" src={movie.image_url} alt="Movie Cover" />
-        </td>
-        <td>
+        </div>
+        <div>{movie.title}</div>
+        <div>{movie.release_date}</div>
+        <div>
           <Button variant="primary"  onClick={() => onMovieSelectCallback(movie.id)}>
             Select Movie
           </Button>
-        </td>
-      </tr>
+        </div>
+      </div>
     );
   });
 };
@@ -28,20 +28,10 @@ const Library = (props) => {
   return (
     <div>
       <h1>Movie Library</h1>
-      <div className="movielist">
-        <table>
-          <thead>
-            <tr>
-              <td>Title</td>
-              <td>Release</td>
-              <td>Cover</td>
-              <td>Select</td>
-            </tr>
-          </thead>
-          <tbody>
-            {drawMovies(props.movieList, props.onMovieSelectCallback)}
-          </tbody>
-        </table>
+      <div className="movielist flex-container">
+          
+        {drawMovies(props.movieList, props.onMovieSelectCallback)}
+           
       </div>
       <Button variant="primary" onClick={() => props.onMovieSelectCallback(2)}>
         Select Movie

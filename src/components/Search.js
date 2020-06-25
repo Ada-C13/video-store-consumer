@@ -10,16 +10,16 @@ const drawMovies = (searchResults, addMovieCallBack, searchText) => {
   return searchResults.map((movie, index) => {
     if (movie.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
       return (
-        <tr key={index}>
-          <td>{movie.title}</td>
-          <td>{movie.release_date}</td>
-          <td>
+        <div key={index} className="movie-card">
+          <div>
             <img className="movie-image" src={movie.image_url} alt="Movie Cover" />
-          </td>
-          <td>
+          </div>
+          <div>{movie.title}</div>
+          <div>{movie.release_date}</div>
+          <div>
             <Button variant="primary" onClick={() => addMovieCallBack(movie)}>Add Movie</Button>
-          </td>
-        </tr>
+          </div>
+        </div>
       );
     }
   });
@@ -70,20 +70,10 @@ const Search = (props) => {
         type="text"
       />
 
-      <div className="movielist">
-        <table>
-          <thead>
-            <tr>
-              <td>Title</td>
-              <td>Release</td>
-              <td>Cover</td>
-              <td>Select</td>
-            </tr>
-          </thead>
-          <tbody>
-            {drawMovies(searchResults, props.addMovieCallBack, searchText)}
-          </tbody>
-        </table>
+      <div className="movielist flex-container">
+          
+        {drawMovies(searchResults, props.addMovieCallBack, searchText)}
+        
       </div>
     </div>
   );
