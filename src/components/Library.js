@@ -1,22 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Library.css";
+import Button from 'react-bootstrap/Button'
 
 const renderMovies = (movieList, onMovieSelectCallback) => {
   return movieList.map((movie, index) => {
     return (
-      <tr key={index}>
-        <td>{movie.title}</td>
-        <td>{movie.release_date}</td>
-        <td>
-          <img src={movie.image_url} alt="Movie Cover" />
-        </td>
-        <td>
-          <button onClick={() => onMovieSelectCallback(movie.id)}>
+      <div key={index} className="movie-card">
+        <div>
+          <img className="movie-image" src={movie.image_url} alt="Movie Cover" />
+        </div>
+        <div>{movie.title}</div>
+        <div>{movie.release_date.substring(0, 4)}</div>
+        <div>
+          <Button variant="primary"  onClick={() => onMovieSelectCallback(movie.id)}>
             Select Movie
-          </button>
-        </td>
-      </tr>
+          </Button>
+        </div>
+      </div>
     );
   });
 };
@@ -27,21 +28,14 @@ const Library = (props) => {
   return (
     <div>
       <h1>Movie Library</h1>
-      <div className="movielist">
-        <table>
-          <thead>
-            <tr>
-              <td>Title</td>
-              <td>Release</td>
-              <td>Cover</td>
-              <td>Select</td>
-            </tr>
-          </thead>
-          <tbody>
-            {renderMovies(props.movieList, props.onMovieSelectCallback)}
-          </tbody>
-        </table>
+      <div className="movielist flex-container">
+          
+        {renderMovies(props.movieList, props.onMovieSelectCallback)}
+           
       </div>
+      <Button variant="primary" onClick={() => props.onMovieSelectCallback(2)}>
+        Select Movie
+      </Button>
     </div>
   );
 };

@@ -2,23 +2,26 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./Search.css";
 import axios from "axios";
+import Button from 'react-bootstrap/Button'
 
 const API_URL_BASE = "http://localhost:3000";
 
 const renderMovies = (searchResults, addMovieCallBack, searchText) => {
   return searchResults.map((movie, index) => {
-    return (
-      <tr key={index}>
-        <td>{movie.title}</td>
-        <td>{movie.release_date}</td>
-        <td>
-          <img src={movie.image_url} alt="Movie Cover" />
-        </td>
-        <td>
-          <button onClick={() => addMovieCallBack(movie)}>Add Movie</button>
-        </td>
-      </tr>
-    );
+    if (movie.title.toLowerCase().indexOf(searchText.toLowerCase()) !== -1) {
+      return (
+        <div key={index} className="movie-card">
+          <div>
+            <img className="movie-image" src={movie.image_url} alt="Movie Cover" />
+          </div>
+          <div>{movie.title}</div>
+          <div>{movie.release_date.substring(0, 4)}</div>
+          <div>
+            <Button variant="primary" onClick={() => addMovieCallBack(movie)}>Add Movie</Button>
+          </div>
+        </div>
+      );
+    }
   });
 };
 
@@ -66,20 +69,10 @@ const Search = (props) => {
         type="text"
       />
 
-      <div className="movielist">
-        <table>
-          <thead>
-            <tr>
-              <td>Title</td>
-              <td>Release</td>
-              <td>Cover</td>
-              <td>Select</td>
-            </tr>
-          </thead>
-          <tbody>
-            {renderMovies(searchResults, props.addMovieCallBack, searchText)}
-          </tbody>
-        </table>
+      <div className="movielist flex-container">
+          
+        {renderMovies(searchResults, props.addMovieCallBack, searchText)}
+        
       </div>
     </div>
   );

@@ -1,8 +1,11 @@
 // import React, { Component } from "react";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import Alert from 'react-bootstrap/Alert'
 
 import "./App.css";
 import Home from "./components/Home";
@@ -143,25 +146,23 @@ const App = () => {
   const renderNav = () => {
     console.log(`App, render navigation`);
     return (
-      <nav>
-        <ul className="nav-links">
-          <Link to="/">
-            <li>Home</li>
-          </Link>
-          <Link to="/search">
-            <li>Search</li>
-          </Link>
-          <Link to="/library">
-            <li>Library</li>
-          </Link>
-          <Link to="/customers">
-            <li>Customers</li>
-          </Link>
-          <Link to="/checkout">
-            <li>Checkout</li>
-          </Link>
+      <Navbar fixed="top" bg="dark" variant="dark">
+        <Navbar.Brand>GET f l i x</Navbar.Brand>
+        <ul className="navbar-nav">
+          <Nav.Link href="/">
+            <li className="nav-item">Home</li>
+          </Nav.Link>
+          <Nav.Link href="/search">
+            <li className="nav-item">Search</li>
+          </Nav.Link>
+          <Nav.Link href="/library">
+            <li className="nav-item">Library</li>
+          </Nav.Link>
+          <Nav.Link href="/customers">
+            <li className="nav-item">Customers</li>
+          </Nav.Link>
         </ul>
-      </nav>
+      </Navbar>
     );
   };
 
@@ -170,15 +171,30 @@ const App = () => {
     return (
       <div>
         <ul className="selected">
-          <li>Selected movie: {selectedMovieTitle()}</li>
-          <li>Selected customer: {selectedCustomerName()}</li>
+          <Alert variant="primary">Selected movie: {selectedMovieTitle()}</Alert>
+          <Alert variant="primary">Selected customer: {selectedCustomerName()}</Alert>
         </ul>
       </div>
     );
   };
 
+  const renderFooter = () => {
+    return (
+      <footer>
+        <div class="padded-container">
+        </div>
+        <div class="copyright">
+          <p>
+            © 2020 Copyright: Suely and Yoyo, ADA C13
+          </p>
+        </div>
+      </footer> 
+    )
+  }
+
   const addMovieCallBack = (movie) => {
     console.log(`App, add movie to library`);
+
     // post movie
     axios
       .post(API_URL_BASE + "/movies", movie)
@@ -199,6 +215,7 @@ const App = () => {
       <div className="AppRoute">
         {renderNav()}
         {renderSelected()}
+        {renderFooter()}
         <Switch>
           <Route path="/" exact component={Home} />
           <Route

@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Button from 'react-bootstrap/Button'
+import Table from 'react-bootstrap/Table'
+
 import "./Customers.css";
 
 const renderCustomers = (customerList, onCustomerSelectCallback) => {
@@ -10,9 +13,9 @@ const renderCustomers = (customerList, onCustomerSelectCallback) => {
         <td>{customer.phone}</td>
         <td>{customer.movies_checked_out_count}</td>
         <td>
-          <button onClick={() => onCustomerSelectCallback(customer.id)}>
+          <Button variant="primary" onClick={() => onCustomerSelectCallback(customer.id)}>
             Select Customer
-          </button>
+          </Button>
         </td>
       </tr>
     );
@@ -26,7 +29,7 @@ const Customers = (props) => {
     <div>
       <h1>Customers</h1>
       <div className="customerlistlist">
-        <table>
+        <Table hover>
           <thead>
             <tr>
               <td>Name</td>
@@ -41,7 +44,7 @@ const Customers = (props) => {
               props.onCustomerSelectCallback
             )}
           </tbody>
-        </table>
+        </Table>
       </div>
     </div>
   );
