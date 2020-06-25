@@ -36,7 +36,7 @@ const Customers = (props) => {
         
   return (
     <div className="Customers">
-      <h1>All Customers</h1>
+      <h1 className="body-header">All Customers</h1>
       <section className="grid-columns">
         {customerComponents}
       </section>

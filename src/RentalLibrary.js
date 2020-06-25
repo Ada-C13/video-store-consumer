@@ -35,7 +35,7 @@ const RentalLibrary = (props) => {
         
   return (
     <div className="rental-library">
-      <h1>Rental Library</h1>
+      <h1 className="body-header">Rental Library</h1>
       <section className="grid-columns">
         {moviesComponents}
       </section>

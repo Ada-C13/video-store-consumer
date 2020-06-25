@@ -49,16 +49,18 @@ const App = () => {
       <div className="App">
         <Nav />
         <section className="selections">
-          <p>Selected Customer: {selectedCustomer.name}</p>
-          <p>Selected Movie: {selectedMovie}</p>
-          <button onClick= {checkoutMovie}>Checkout</button>
+          <span>Selected Customer:  <span className="selected">{selectedCustomer.name}</span></span>
+          <span>Selected Movie: <span className="selected">{selectedMovie}</span></span>
+          <button className="checkout-button" onClick= {checkoutMovie}><strong>Checkout</strong></button>
         </section>
+        <section className="Body">
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/customers" component={() => (< Customers onClickCallback={selectCustomer}/>)} />
           <Route path="/library" component={() => (< RentalLibrary onClickCallback={selectMovie}/>)} />
           <Route path="/search" component={Search} />
         </Switch>
+        </section>
       </div>
     </Router>
   );

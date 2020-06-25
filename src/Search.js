@@ -51,7 +51,7 @@ const Search = () => {
 
   return (
     <div className="search">
-      <h1>Search Page</h1>
+      <h1 className="body-header">Search</h1>
 
       <p>Enter the movie you're looking for and we'll return every movie we know about that includes those words!</p>
       <form onSubmit={onFormSubmit}>

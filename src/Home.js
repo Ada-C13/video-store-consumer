@@ -5,7 +5,8 @@ import {Link} from 'react-router-dom'
 const Home = () => {
   return (
     <div className="Home">
-      <h1>What would you like to do?</h1>
+
+      <h1 className="home-header">What would you like to do?</h1>
       
       <ul className="home-links">
         <li>
@@ -18,6 +19,7 @@ const Home = () => {
         <button><Link to="/search">Search for a Movie</Link></button>
         </li>
       </ul>
+      
     </div>
   );
 }
