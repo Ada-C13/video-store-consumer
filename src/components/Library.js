@@ -12,7 +12,7 @@ const API_URL_MOVIES = "http://localhost:3000/movies"
 const Library = ({onUpdateCurrentMovie}) => {
   const [movieList, setMovieList] = useState([])
   const [message, setMessage] = useState(null);
-  const [selectedMovie, setSelectedMovie] = useState(null)
+  // const [selectedMovie, setSelectedMovie] = useState(null)
   
   useEffect(()=>{
     axios.get(API_URL_MOVIES)
@@ -27,10 +27,26 @@ const Library = ({onUpdateCurrentMovie}) => {
 
   const onSelectMovieClick = (event) =>{
     event.preventDefault();
-    setSelectedMovie(event.target.value);
+    // setSelectedMovie(event.target.value);
+    onUpdateCurrentMovie(event.target.value)
   }
 
-  console.log(selectedMovie)
+
+  // const onButtonClick = () => {
+  //   const updatedStudent = {
+  //     fullName: props.fullName,
+  //     birthday: props.birthday,
+  //     email: props.email,
+  //     // Toggle present to a new value
+  //     present: !props.present,
+  //     id: props.id,
+  //   }
+
+  //   // call the function passed from `App`
+  //   props.onUpdateStudent(updatedStudent);
+  // }
+
+  // console.log(selectedMovie)
   
   return (
     <div>
