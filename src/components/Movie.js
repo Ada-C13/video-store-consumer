@@ -1,14 +1,14 @@
 import React,{useState} from 'react';
 import { BrowserRouter as Router, Link, Route, Switch, useRouteMatch,} from 'react-router-dom';
 import axios from 'axios';
-import Details from "./Details";
+import Selected from './Selected'
 
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
-const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButton, showDetailButton}) => {
+const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButton, showDetailButton, selectMovieButton}) => {
   const [message, setMessage] = useState(null);
-  const [movie, setMovie] = useState(null)
-
+  const [selectedMovie, setSelectedMovie] = useState(null)
+  
   const addMovie = (event) =>{
     event.preventDefault();
 
@@ -19,9 +19,8 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButto
         image_url: imageUrl,
         external_id: externalId,
     })
-    .then((response) => {
-      const retrievedMovie = response.data
-      setMovie(retrievedMovie)
+    .then(() => {
+      setMessage(`Successfully added ${title} to library`)
     })
     .catch((error) => {
       setMessage(error.message);
@@ -29,8 +28,22 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButto
     });
   }
 
+  const selectMovie = (event) =>{
+    event.preventDefault();
+    setSelectedMovie(title);
+  }
+
+  const selectedMovieComponents = () => {
+    return(
+      <Selected
+        movieTitle = {selectedMovie}
+      />
+    )
+  };
+  
   return (
-    <div>
+    <table>
+      <div>
       <div>
         <img src={imageUrl} alt={title +"poster"}></img>
       </div>
@@ -41,7 +54,7 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButto
         {releaseDate}
       </div>
       <div>
-        External ID{externalId}
+        External ID: {externalId}
       </div>
       <div>
       {overview}
@@ -49,13 +62,20 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButto
       <div>
         {showAddButton && <button onClick={addMovie}>Add to Movie Library</button>}
       </div>
-        
       <div>
         {showDetailButton && <Link to={`/details/${title}`}><button>Details</button></Link>}
       </div>
-      
+      <div>
+        {selectMovieButton && <button onClick={selectMovie}>Select this Movie</button>}
+      </div>
+      <div>
+        {message}
+        {false && selectedMovieComponents()}
+      </div>
     
     </div>
+    </table>
+    
     
   );
 }
