@@ -18,7 +18,7 @@ p {
 
 Button {
   background-color: #151547;
-  outline: none;
+  outline: !important none;
   border-style: none;
 }
 
@@ -38,15 +38,24 @@ Button {
 
 .button-grad {
   background-image: linear-gradient(to right, #41295a 0%, #2F0743 51%, #41295a 100%);
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .button-grad:hover { 
   background-position: right center;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .right-button {
   float:right;
   margin-bottom: 1rem;
+  outline: !important none;
+}
+
+button:focus {
+  outline:none;
 }
 
 p.card-text {
