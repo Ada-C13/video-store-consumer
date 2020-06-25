@@ -14,7 +14,6 @@ import {
 class App extends Component {
   render() {
     return (
-      <div>
       <Router>
         <head>
           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
@@ -22,8 +21,8 @@ class App extends Component {
           crossorigin="anonymous"></link>
         </head>
           
-        <nav className="navbar navbar-expand-lg navbar-dark navbar-custom px-5">
-          <a className="navbar-brand" href="/">Rentflix</a>
+        <nav className="navbar navbar-expand-lg navbar-dark px-5">
+          <a className="navbar-brand text-uppercase" href="/">Rentflix</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -62,7 +61,6 @@ class App extends Component {
         </Switch>
 
       </Router>
-      </div>
     );
   }
 }
