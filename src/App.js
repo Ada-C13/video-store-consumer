@@ -22,43 +22,44 @@ const App = (props) => {
     setSelectedUser(user)
   }
 
+
   const checkOut = (selectedUser, selectedMovie) => {
     const url = "http://localhost:3000/";
 
-    axios.post(`${url}rentals/${selectedMovie.title}/check-out`, {
-      title: selectedMovie.title,
-      customer_id: selectedUser.id,
-    })
-      .then((response) => {
+    if (selectedUser == null || selectedMovie == null ) {
+      setError("Please make sure you selected: an User and a Movie! Thanks! ")
+    } else {
+      axios.post(`${url}rentals/${selectedMovie.title}/check-out`, {
+        title: selectedMovie.title,
+        customer_id: selectedUser.id,
+      }).then((response) => {
         setFlash(true)
         setSuccess(`Successfully Checked out`)
-      })
-      .catch((error) => {
+        setSelectedUser(null)
+        setSelectedMovie(null)
+      }).catch((error) => {
         console.log(`Error: ${error}`)
         setError(error.message)
       })
-
+    }
   }
 
   const onTimeout = () => {
     console.log("timing out, clearing state");
-
     // clear success and error messages
     // clear selected customer and movie
     setSuccess(undefined);
     setError(undefined);
-    setSelectedUser(null)
-    setSelectedMovie(null)
     setFlash(null)
   }
 
   return (
     <section>
-      {/* <header className="header">
-        <h1 className="header__h1"><span className="header__text">Welcome to insert title movies...</span></h1>
-      </header> */}
+      <header className="header">
+        <h1 class="text_1">Uncle  Salmon  Rental  store</h1>
+      </header>
       <div>
-        <p>Selected User : {selectedUser ? selectedUser.name : "Not Selected" }</p>
+        <p>Selected User : {selectedUser ? selectedUser.name : "Not Selected"}</p>
       </div>
       <div>
         <p>Selected Movie : {selectedMovie ? selectedMovie.title : "Not Selected"}</p>
@@ -70,22 +71,23 @@ const App = (props) => {
         <input className="add-library-button" type="button" value="checkout" onClick={() => checkOut(selectedUser, selectedMovie)} />
       </div>
 
-      {error
-        ? <FlashMessage
-          messageContents={error}
-          messageClass="error-message"
-          onTimeoutCallback={onTimeout} />
-        : ""}
-      {success
-        ? <FlashMessage
-          messageContents={success}
-          messageClass="success-message"
-          onTimeoutCallback={onTimeout} />
-        : ""}
-
-      <Routing {...{ onSubmitUserCallback, onSubmitMovieCallback }}
-      />
-
+      {
+        error ?
+          <FlashMessage
+            messageContents={error}
+            messageClass="error-message"
+            onTimeoutCallback={onTimeout}
+          /> : ""
+      }
+      {
+        success ?
+          <FlashMessage
+            messageContents={success}
+            messageClass="success-message"
+            onTimeoutCallback={onTimeout}
+          /> : ""
+      }
+      <Routing {...{ onSubmitUserCallback, onSubmitMovieCallback }} />
     </section>
   );
 };

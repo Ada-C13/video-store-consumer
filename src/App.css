@@ -45,3 +45,56 @@
   text-align: center;
   margin-bottom: 2em;
 }
+
+h1 {
+  font-size: 40px;
+}
+
+@keyframes typewriter {
+  0%, 100% {
+    width: 0;
+  }
+  20%, 80% {
+    width: 10.2em;
+  }
+}
+
+@keyframes caret {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+
+.text_1 {
+  border-right: solid 3px black;
+  white-space: nowrap;
+  overflow: hidden;    
+  font-family: 'Dosis', sans-serif;
+  font-size: 45px;
+  color: salmon;
+  margin: 0 auto;
+}
+
+/* Animation */
+.text_1 {
+  animation: animated-text 4s steps(29,end) 1s 1 normal both,
+  animated-cursor 600ms steps(16,end) infinite;
+}
+
+/* text animation */
+
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: 500px;}
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor{
+  from{border-right-color:black;}
+  to{border-right-color: transparent;}
+}
