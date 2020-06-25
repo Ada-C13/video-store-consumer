@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import './Movie.css';
+import React from 'react';
 import { Button } from 'react-bootstrap/';
+import PropTypes from 'prop-types';
 
-const Movie = ({ id, title, overview, release_date, image_url, external_id, selectMovie }) => {
+const SearchedMovie = ({ id, title, overview, release_date, image_url, external_id, selectMovie}) => {
   return (
   <div className="">
     <div className="">
@@ -17,23 +17,21 @@ const Movie = ({ id, title, overview, release_date, image_url, external_id, sele
     </div>
     <div className="">
       <Button
-        className=""
-        onClick={() => selectMovie(id)}>
-          Select Movie
+       onClick = {() => selectMovie(id, title, overview, release_date, image_url, external_id)}>
+         Add Movie
       </Button> 
     </div>  
   </div>
   )
 };
 
-Movie.propTypes = {
+SearchedMovie.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
-  release_date: PropTypes.string,
-  image_url: PropTypes.string,
-  external_id: PropTypes.number,
+  release_date: PropTypes.string.isRequired,
+  image_url: PropTypes.string.isRequired,
+  external_id: PropTypes.number.isRequired,
   selectMovie: PropTypes.func.isRequired,
 };
-
-export default Movie;
+export default SearchedMovie;
