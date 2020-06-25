@@ -17,6 +17,32 @@ import Movie from './Movie';
 
 const Checkout = ({ customer, movie, onSubmitCallback }) => {
 
+  const customerID = {
+    customer_id: customer.id,
+  };
+
+  const movieTitle = {
+    title: movie.title,
+  };
+
+  const [dueDate, setDueDate] = useState({
+    due_date: new Date(),
+  });
+
+  const onInputChange = (event) => {
+    const newDueDate = {
+      ...dueDate
+    };
+
+    newDueDate[event.target.name] = event.target.value;
+    setDueDate(newDueDate);
+  };
+  
+  const submitRentalForm = (event) => {
+    event.preventDefault();
+    onSubmitCallback(customerID, movieTitle, dueDate);
+  };
+  
   return (
     <section>
       <h2>Checkout</h2>
