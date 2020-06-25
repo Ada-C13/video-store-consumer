@@ -47,7 +47,7 @@ const Search = () => {
       />);
     });
     setSearchResultComponents(searchResultComponents)
-  } // end onFormSubmit
+  } 
 
   return (
     <div className="search">

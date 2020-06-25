@@ -35,12 +35,12 @@ const App = () => {
 
     axios.post(API_CHECKOUT_MOVIE_URL)
     .then((response) => { 
-      console.log("rented new movie succesful")
-      console.log(response.data)
+      setErrorMessage(`Movie rented successfully! Return it by ${date}`);
+      console.log(response.data);
     })
     .catch((error) => {
-      setErrorMessage(error.message);
-      console.log(error.message)
+      setErrorMessage("Could not checkout. Make sure a Customer and Movie are selected.");
+      console.log(error.message);
     });
   }
 
@@ -48,6 +48,7 @@ const App = () => {
     <Router>
       <div className="App">
         <Nav />
+        {errorMessage ? <div><h2>{errorMessage}</h2></div> : ''}
         <section className="selections">
           <p>Selected Customer: {selectedCustomer.name}</p>
           <p>Selected Movie: {selectedMovie}</p>
