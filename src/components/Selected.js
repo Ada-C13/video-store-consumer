@@ -6,11 +6,9 @@ import Customers from './Customers'
 const Selected = ({customerId, movieTitle}) => {
 
   return (
-  
     <div>
-      Selected Customer: {customerId}
-      <br/>
-      Selected Movie: {movieTitle}
+      <p>Selected Customer: {customerId}</p>
+      <p>Selected Movie: {movieTitle}</p>
     </div>
   );
 }
