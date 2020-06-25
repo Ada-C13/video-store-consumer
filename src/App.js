@@ -3,9 +3,9 @@ import React, { Component, useState } from 'react';
 import './App.css';
 import Routing from './components/Routing'
 import axios from 'axios';
-// import FlashMessage from 'react-flash-message'
 import FlashMessage from './components/FlashMessage';
 import picture1 from './images/Picture1.png';
+import SideBar from './components/SideBar';
 
 const App = (props) => {
 
@@ -28,7 +28,7 @@ const App = (props) => {
     const url = "http://localhost:3000/";
 
     if (selectedUser == null || selectedMovie == null ) {
-      setError("Please make sure you selected: an User and a Movie! Thanks! ")
+      setError("Please select User and Movie. ")
     } else {
       axios.post(`${url}rentals/${selectedMovie.title}/check-out`, {
         title: selectedMovie.title,
@@ -62,19 +62,18 @@ const App = (props) => {
       <span className="top">
         <span className="container">
           <div className="selected_wording">
-            <p>Selected User : {selectedUser ? selectedUser.name : "Not Selected" }</p>
+            <p>Selected User : {selectedUser ? selectedUser.name : "Please select an User" }</p>
           </div>
           <div className="selected_wording">
-            <p>Selected Movie : {selectedMovie ? selectedMovie.title : "Not Selected"}</p>
+            <p>Selected Movie : {selectedMovie ? selectedMovie.title : "Please select a Movie"}</p>
           </div>
           <div className="selected_wording">
             <p>Status : {flash ? "Successfully Checked out" : "Not Checked Out"}</p>
           </div>
         </span>
-        <div className="item-a">
+        {/* <div className="item-a">
           <input className="checkout-button" type="button" value="Checkout" onClick={() => checkOut(selectedUser, selectedMovie)} />
-        </div>
-
+        </div> */}
         <div className="logo">
           <img src={picture1} width="140" height="125" />
         </div>
@@ -96,7 +95,18 @@ const App = (props) => {
         <Routing {...{ onSubmitUserCallback, onSubmitMovieCallback }}
         />
       </span>
-  
+      <SideBar width={300} height={"30vh"}>
+        <p>Wellcome to Piper's Checkout :) </p>
+        <div className="selected_wording">
+          <p>User : {selectedUser ? selectedUser.name : "Please select an User"}</p>
+        </div>
+        <div className="selected_wording">
+          <p>Movie : {selectedMovie ? selectedMovie.title : "Please select a Movie"}</p>
+        </div>
+        <div className="item-a">
+          <input className="checkout-button" type="button" value="Checkout" onClick={() => checkOut(selectedUser, selectedMovie)} />
+        </div>
+      </SideBar>
     </section>
   );
 };

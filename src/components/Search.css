@@ -185,8 +185,7 @@ button span:before, button span:after
 .mainPic {
     
     margin-top: 150px;
-    margin-left: 15%;
+    margin-left: 18%;
     margin-right: 25%;
-    
-    
+    position: absolute;
 }

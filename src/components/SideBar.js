@@ -21,7 +21,7 @@ const SideBar = ({ width, height, children }) => {
   
   return (
       <div
-        className="side-bar"
+      className="side-bar zindex-popover"
         style={{
           transform: `translatex(${xPosition}px)`,
           width: width,

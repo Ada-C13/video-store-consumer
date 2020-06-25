@@ -4,6 +4,7 @@ import './Store.css';
 import Search from './Search';
 
 
+
 const Store = (props) => {
 
 
@@ -17,8 +18,7 @@ const Store = (props) => {
         <Search
           onSubmitCallback={onSubmitCallback} 
         />
-      </div>
-    
+      </div> 
     </main>
   );
 }
