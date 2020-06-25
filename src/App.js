@@ -115,7 +115,6 @@ class App extends Component {
     });
   }
 
-
   render() {
    return (
      <Router>
@@ -150,7 +149,7 @@ class App extends Component {
         <Home/>
       </Route>
       <Route path="/search">
-        <MovieSearch/>
+      <MovieSearch url={BASE_URL}/>
       </Route> 
       <Route path="/library">
         <MovieLib movieList={this.state.movies} 
