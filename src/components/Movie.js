@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { BrowserRouter as Router, Link, Route, Switch, useRouteMatch,} from 'react-router-dom';
 import axios from 'axios';
 import Selected from './Selected'
+import "./Movie.css"
 
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
@@ -20,11 +21,11 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButto
         external_id: externalId,
     })
     .then(() => {
-      setMessage(`Successfully added ${title} to library`)
+      setMessage(`Successfully added ${title} to library!`)
     })
     .catch((error) => {
-      setMessage(error.message);
-      console.log(message);
+      console.log(error.message)
+      setMessage(`${title} already exists in the library!`)
     });
   }
 
@@ -42,39 +43,31 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButto
   };
   
   return (
-    <table>
-      <div>
-      <div>
+   <div className="outer-card">
+      <div className='card-container'>
         <img src={imageUrl} alt={title +"poster"}></img>
+        <div className='card-info'>
+          <h1>{title}</h1>
+          <p>
+            Released: {releaseDate}
+          </p>
+          <p>
+            {overview}
+          </p>
+        </div>
       </div>
-      <div>
-        {title}
-      </div>
-      <div>
-        {releaseDate}
-      </div>
-      <div>
-        External ID: {externalId}
-      </div>
-      <div>
-      {overview}
-      </div>
-      <div>
+      <div className="card-buttons">
         {showAddButton && <button onClick={addMovie}>Add to Movie Library</button>}
-      </div>
-      <div>
         {showDetailButton && <Link to={`/details/${title}`}><button>Details</button></Link>}
-      </div>
-      <div>
+        <br/>
         {selectMovieButton && <button onClick={selectMovie}>Select this Movie</button>}
       </div>
       <div>
-        {message}
+       {message}
         {false && selectedMovieComponents()}
       </div>
+   </div>
     
-    </div>
-    </table>
     
     
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Movie from "./Movie";
+import "./Library.css"
 
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
@@ -13,12 +14,10 @@ const Library = () => {
     axios.get(API_URL_MOVIES)
     .then((response) => {
       const apiMovieList = response.data;
-      console.log(apiMovieList)
       setMovieList(apiMovieList);
     })
     .catch((error) => {
       setMessage(error.message);
-      console.log(message);
     });
   }, []);
 
@@ -36,11 +35,12 @@ const Library = () => {
         selectMovieButton = {true}
       />
     )
-  })
-  console.log(movieComponents)
+  });
+
   return (
-    <div>
-      {movieComponents}
+    <div className="move-list">
+      {/* found this sorting code here:https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/ */}
+      {movieComponents.sort((a, b) => (a.props.title > b.props.title) ? 1 : (a.props.title === b.props.title) ? ((a.props.externalId > b.props.externalId) ? 1 : -1) : -1 )}
     </div>
   );
 }
