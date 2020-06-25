@@ -157,6 +157,20 @@ const App = () => {
     );
   };
 
+  const renderFooter = () => {
+    return (
+      <footer>
+        <div class="padded-container">
+        </div>
+        <div class="copyright">
+          <p>
+            © 2020 Copyright: Suely and Yoyo, ADA C13
+          </p>
+        </div>
+      </footer> 
+    )
+  }
+
   const addMovieCallBack = (movie) => {
     console.log(`App, add movie to library`);
     // if external id is unique:
@@ -182,6 +196,7 @@ const App = () => {
       <div className="AppRoute">
         {renderNav()}
         {renderSelected()}
+        {renderFooter()}
         <Switch>
           <Route path="/" exact component={Home} />
           <Route

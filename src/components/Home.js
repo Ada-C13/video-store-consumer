@@ -10,7 +10,7 @@ const Home = (props) => {
   return (
     <div className="container">
       <h1>Welcome!</h1>
-      <Image src="https://i.imgur.com/Q6KB8ty.png" alt="illustration" fluid></Image>
+      <Image src="https://i.imgur.com/Q6KB8ty.png" alt="illustration" fluid className="splash"></Image>
     </div>
   
   );

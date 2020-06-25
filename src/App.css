@@ -1,5 +1,12 @@
+/* app */
+
 .App {
   text-align: center;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
 }
 
 .container {
@@ -14,10 +21,16 @@ input {
   margin-bottom: 2em;
 }
 
+/* homepage */
+
+.splash {
+  margin-bottom: 5em;
+}
+
 /* movies */
 
 .movielist {
-  /* center div */
+
 } 
 
 .flex-container {
@@ -49,4 +62,22 @@ input {
 
 .release-year {
   text-align: center
+}
+
+/* Footer */
+
+footer {
+  margin-top: 10rem;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  background-color: #353a40;
+  color: #fff;
+  /* TODO: get footer to stick to bottom of window */
+  position: absolute;
+  bottom:   0;
+}
+
+.copyright p {
+  text-align: center;
 }
