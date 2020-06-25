@@ -31,10 +31,10 @@ const SearchForm = (props) => {
 
   return (
     <div className="SearchForm">
-      <form className="SearchForm__form" onSubmit={onFormSubmit}>
+      <form className="SearchForm-form" onSubmit={onFormSubmit}>
 
-        <div className="SearchForm__inputs">
-          <input
+        <div className="SearchForm-inputs">
+          <input className="SearchForm-input"
             name="title"
             placeholder="Title"
             type="text"
@@ -42,8 +42,8 @@ const SearchForm = (props) => {
             value={formFields.title} />
         </div>
 
-        <div className="SearchForm__submit">
-          <input type="submit" value="Submit Line" className="SearchForm__submit-btn" />
+        <div className="SearchForm-submit">
+          <input type="submit" value="Search" className="select-button" />
         </div>
 
       </form>

@@ -27,7 +27,7 @@ const CustomerList = ({ pickCustomerCallback }) => {
         <ul className="customer-list" >
           {customers.map((c) => 
             <li key={c.id} className="customer-square">
-              <button className='button' onClick={() => { pickCustomerCallback(c) }}>select</button>
+              <button className='select-button' onClick={() => { pickCustomerCallback(c) }}>select</button>
               <h3 className="customer-name">{c.name}</h3>  
             </li> 
           )}
