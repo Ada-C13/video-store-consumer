@@ -15,6 +15,7 @@ import Home from './components/Home';
 import Search from './components/Search';
 import Movies from './components/Movies';
 import Customers from './components/Customers';
+import Checkout from './components/Checkout';
 
 const App = () => {
   const [ searchResults, setSearchResults ] = useState([]);
@@ -60,6 +61,22 @@ const App = () => {
 
   useEffect( getCustomers, [ getCustomers ]);
 
+  const createRental = (title, customer_id, due_date) => {
+    const params = {
+      title: title,
+      customer_id: customer_id,
+      due_date: due_date
+    }
+    console.log(params);
+    axios.post(`http://localhost:3000/rentals/${title}/check-out`, params)
+    .then((response) => {
+      setSearchResults(response.data);
+    })
+    .catch((error) => {
+      setErrorMessage(error.response.data.cause);
+    });
+  }
+
   return (
     <Router>
       <header className="App-header">
@@ -77,12 +94,17 @@ const App = () => {
               <h3>Current Selection</h3>
             {
               selectedCustomer && (
-                <span className="App-selected__customer">Customer #{selectedCustomer.id} {selectedCustomer.name}</span>
+                <span className="App-selected__customer">Customer: {selectedCustomer.name}</span>
               )
             }
             {
               selectedMovie && (
                 <span className="App-selected__movie">Movie: {selectedMovie.title} {selectedMovie.name}</span>
+              )
+            }
+            {
+              selectedCustomer && selectedMovie && (
+                <Link to="/checkout" className="App-selected__checkout">Checkout</Link>
               )
             }
           </div>
@@ -98,6 +120,9 @@ const App = () => {
           </Route>
           <Route path="/customers">
             <Customers list={customerList} onSelectCallback={setSelectedCustomer} />
+          </Route>
+          <Route path="/checkout">
+            <Checkout customer={selectedCustomer} movie={selectedMovie} onSubmitCallback={createRental} />
           </Route>
           <Route path="/">
             <Home />

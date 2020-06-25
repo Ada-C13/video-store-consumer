@@ -21,7 +21,7 @@ class Movie extends React.Component {
     return (
       <div className="movie">
         <div className="movie-image">
-          image
+          <img src={this.props.image_url} alt="movie cover pic" />
         </div>
         <div className="movie-overview">
           <h3>{this.props.title}</h3>
