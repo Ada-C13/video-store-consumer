@@ -9,6 +9,7 @@ import SideBar from './components/SideBar';
 
 const App = (props) => {
 
+
   const [selectedUser, setSelectedUser] = useState(null)
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [flash, setFlash] = useState(null)
@@ -56,29 +57,30 @@ const App = (props) => {
 
   return (
     <section>
+      <section className="sticky" id="myHeader">
       <header className="header">
         <h1 class="text_1">Piper's Pictures</h1>
       </header>
+
       <span className="top">
         <span className="container">
-          <div className="selected_wording">
-            <p>Selected User : {selectedUser ? selectedUser.name : "Please select an User" }</p>
-          </div>
-          <div className="selected_wording">
-            <p>Selected Movie : {selectedMovie ? selectedMovie.title : "Please select a Movie"}</p>
-          </div>
-          <div className="selected_wording">
-            <p>Status : {flash ? "Successfully Checked out" : "Not Checked Out"}</p>
-          </div>
         </span>
         {/* <div className="item-a">
           <input className="checkout-button" type="button" value="Checkout" onClick={() => checkOut(selectedUser, selectedMovie)} />
         </div> */}
+        <div className="selected_wording">
+          <p><strong className="strong-titles">User : </strong>{selectedUser ? selectedUser.name : "Please select an User"}</p>
+        </div>
+        <div className="selected_wording">
+          <p><strong className="strong-titles">Movie: </strong> {selectedMovie ? selectedMovie.title : "Please select a Movie"}</p>
+        </div>
+        <div className="selected_wording">
+          <p><strong className="strong-titles">Status: </strong> {flash ? "Successfully Checked out" : "Not Checked Out"}</p>
+        </div>
         <div className="logo">
           <img src={picture1} width="140" height="125" />
         </div>
       </span>
-      <br></br>
       {error
         ? <FlashMessage
           messageContents={error}
@@ -96,17 +98,18 @@ const App = (props) => {
         />
       </span>
       <SideBar width={300} height={"30vh"}>
-        <p>Wellcome to Piper's Checkout :) </p>
-        <div className="selected_wording">
+        <p className="p-welcome">Welcome to Piper's Checkout :) </p>
+        <div className="selected_checkout-bar">
           <p>User : {selectedUser ? selectedUser.name : "Please select an User"}</p>
         </div>
-        <div className="selected_wording">
+        <div className="selected_checkout-bar">
           <p>Movie : {selectedMovie ? selectedMovie.title : "Please select a Movie"}</p>
         </div>
-        <div className="item-a">
+        <div className="selected_checkout-bar">
           <input className="checkout-button" type="button" value="Checkout" onClick={() => checkOut(selectedUser, selectedMovie)} />
         </div>
       </SideBar>
+      </section>
     </section>
   );
 };
