@@ -37,9 +37,7 @@ const App = () => {
         console.log(`apimovieList error`, error.message);
         setErrorMessage(error.message);
       });
-  }, []);
 
-  useEffect(() => {
     axios
       .get(API_URL_BASE + "/customers")
       .then((response) => {
@@ -50,6 +48,18 @@ const App = () => {
         setErrorMessage(error.message);
       });
   }, []);
+
+  // useEffect(() => {
+  //   axios
+  //     .get(API_URL_BASE + "/customers")
+  //     .then((response) => {
+  //       const apiCustomerList = response.data;
+  //       setCustomerList(apiCustomerList);
+  //     })
+  //     .catch((error) => {
+  //       setErrorMessage(error.message);
+  //     });
+  // }, []);
 
   const selectedMovieData = () => {
     console.log(`App, selectedMovieData`, selectedMovie);
@@ -120,7 +130,7 @@ const App = () => {
     setCustomer(0);
     setMovie(0);
   };
-
+  // drawNav file! functions that return components, one for each
   const drawNav = () => {
     console.log(`App, draw navigation`);
     return (
@@ -145,7 +155,7 @@ const App = () => {
       </nav>
     );
   };
-
+  // another component!
   const drawSelected = () => {
     console.log(`App, draw selected`);
     return (
@@ -160,12 +170,12 @@ const App = () => {
 
   const addMovieCallBack = (movie) => {
     console.log(`App, add movie to library`);
-    const newMovieList = movieList;
+    const newMovieList = [...movieList, movie]; // same as -> newMovieList.push(movie);
 
     // if movie.external_id doesn't match any in movieList,
     // add movie. otherwise show error
-    newMovieList.push(movie);
 
+    // TODO make API call to add move to the library in the database!
     setMovieList(newMovieList);
   };
 
