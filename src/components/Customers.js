@@ -8,7 +8,6 @@ const drawCustomers = (customerList, onCustomerSelectCallback) => {
       <tr key={index}>
         <td>{customer.name}</td>
         <td>{customer.phone}</td>
-        <td>{customer.account_credit}</td>
         <td>{customer.movies_checked_out_count}</td>
         <td>
           <button onClick={() => onCustomerSelectCallback(customer.id)}>
@@ -32,9 +31,8 @@ const Customers = (props) => {
             <tr>
               <td>Name</td>
               <td>Phone</td>
-              <td>Account Credit</td>
-              <td>Account Credit</td>
               <td>Movies Checked Out</td>
+              <td>Select</td>
             </tr>
           </thead>
           <tbody>
