@@ -57,7 +57,7 @@ const App = (props) => {
   return (
     <section>
       <header className="header">
-        <h1 class="text_1">Uncle  Salmon  Rental  store</h1>
+        <h1 class="text_1">Piper's Pictures</h1>
       </header>
       <span className="top">
         <span className="container">

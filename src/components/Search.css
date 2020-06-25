@@ -45,7 +45,7 @@ input, button
     right: 0;
     width: 500px;
     padding: 35px;
-    margin: -1px auto 0 auto;  /*was -83*/
+    margin: 45px auto 0 auto;  /*was -83*/
     background-color: #ff7575;
     border-radius: 20px;
     box-shadow: 0 10px 40px #ff7c7c, 0 0 0 20px #ffffffeb;

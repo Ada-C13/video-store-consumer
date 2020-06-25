@@ -92,7 +92,7 @@ h1 {
   to{width: 500px;}
 }
 
-/* cursor animations */
+/* cursor animations */    TODO - This broke on merge
 
 @keyframes animated-cursor{
   from{border-right-color:black;}
@@ -100,8 +100,10 @@ h1 {
 .selected_wording{
   font-family: nunito;
   color: #413542;
-  /* padding: 10px 0px 0px 10px; */
 }
+}
+  /* padding: 10px 0px 0px 10px; */
+
 
 .checkout{
   margin-bottom: .5em;
