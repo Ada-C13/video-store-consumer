@@ -16,9 +16,39 @@ p {
   color: #151547;
 }
 
-.button-box {
-  color: #151547;
-  text-align:left;
-  margin-top: 1rem;
+Button {
+  background-color: #151547;
+  outline: none;
+  border-style: none;
 }
 
+.button-box-container {
+  padding: 0px;
+  margin: 0px;
+  margin-right: 0px;
+  justify-content: space-evenly;
+}
+
+.button-box {
+  text-align:left;
+  margin-bottom: 1rem;
+  margin-right: 0px;
+  margin: 0px;
+}
+
+.button-grad {
+  background-image: linear-gradient(to right, #41295a 0%, #2F0743 51%, #41295a 100%);
+}
+
+.button-grad:hover { 
+  background-position: right center;
+}
+
+.right-button {
+  float:right;
+  margin-bottom: 1rem;
+}
+
+p.card-text {
+  padding: 0px;
+}

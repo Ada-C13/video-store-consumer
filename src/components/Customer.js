@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card'
 const Customer = ({ id, name, address, city, state, registered_at, phone, account_credit, movies_checked_out_count, selectCustomer }) => {
   return (
     <div className="">
-      <Card style={{ width: '18rem' }}>
+      <Card style={{ width: '20rem' }}>
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>
@@ -18,15 +18,13 @@ const Customer = ({ id, name, address, city, state, registered_at, phone, accoun
           <Card.Text>Date Registered: {(registered_at)}</Card.Text>
           <Card.Text>Phone: {phone}</Card.Text>
           <Card.Text>Address: {address}, {city}, {state}</Card.Text>
-          {/* <div className="">
+          <div className="">
             <Button
               className=""
-              onClick={() => selectMovie(id)}>
+              onClick={() => selectCustomer(id)}>
               + Checkout
             </Button>
-          </div> */}
-            {/* <Card.Text>External ID:{external_id}</Card.Text>
-          </div> */}
+          </div> 
         </Card.Body>
       </Card>
     </div>
