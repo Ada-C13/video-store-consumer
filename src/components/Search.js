@@ -15,12 +15,15 @@ import SearchForm from './SearchForm';
         })
         .catch((error) => {
           setMessage(error.message);
-          console.log(message);
+          console.log(errorMessage);
+
+          setTimeout(() => {
+            setMessage(null);
+          }, 5000);
         });
     }
 
   const [movieList, setMovieList] = useState([]);
-  
   
   const refreshMovieList = () =>{
     axios.get(props.url)
@@ -28,45 +31,55 @@ import SearchForm from './SearchForm';
       const movieList = response.data;
       setMovieList(movieList);
     })
+      
     .catch((error) => {
       setMessage(error.message);
       console.log(message);
-    });
-  }
-  useEffect(()=>{
-    refreshMovieList();
-  }, [props.url])
+      
+        setTimeout(() => {
+          setMessage(null);
+        }, 5000);
+      }); 
+    }
+    
+    useEffect(()=>{
+      refreshMovieList();
+    }, [props.url])
 
     const checkPresence = (movie) =>{
-      const movieTitles = movieList.map(movie =>
-        movie.title
-      );    
-      // console.log(movie.title)
-      // console.log(movieTitles)
-      if (movieTitles.includes(movie.title)){
-        return true
-      }else{
-        return false
-      }    
-    }
-  
+        const movieTitles = movieList.map(movie =>
+          movie.title
+        );    
+        // console.log(movie.title)
+        // console.log(movieTitles)
+        if (movieTitles.includes(movie.title)){
+          return true
+        }else{
+          return false
+        }    
+      }
+    
     const addMovie = (addedMovie) => {
-        if (checkPresence(addedMovie)) return
-      
-        console.log ("XXXXXXX")
-        axios.post(props.url, addedMovie)
-        .then((response) => {
-          // const newRental= response.data;
-          if (response.status === 200 || response.status === "OK"){
-            console.log("The movie is successfully added")
-            refreshMovieList();
-          }  
-        })
-          .catch((error) => {
-            setMessage(error.message);
-            console.log(error.message);
-          });
-        }
+      if (checkPresence(addedMovie)) return
+      axios.post(props.url, addedMovie)
+      .then((response) => {
+        if (response.status === 200 || response.status === "OK"){
+          setMessage("Movie has been successfully added");
+          setTimeout(() => {
+            setMessage(null);
+          }, 5000);
+          refreshMovieList();
+        }  
+      })
+        .catch((error) => {
+          setMessage(error.message);
+          console.log(error.message);
+
+          setTimeout(() => {
+            setMessage(null);
+          }, 5000);
+        });
+      }
       
     const movieComponents = searchedmovieList.map((movie) => {
       return(

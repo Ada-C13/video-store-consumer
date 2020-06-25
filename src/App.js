@@ -1,27 +1,17 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = () => {
   useEffect(() => {
-    
-  }, [])
-  //create a callback func for customers...to set the selected customer
-  //use effect statement to store selectedCustomer locally
-  //add func to clear it
-  //add func to set it to a new one
-
+    document.title = "LA Videos title"
+  }, []);
 
     return (
       <section>
-        <Header 
-        // selectedMovie={selectedMovie}
-          // selectedCustomer={selectedCustomer}
-          // selectCustomerCallback={selectCustomer}
-          // url={URL}
-         />
+        <Header />
       </section>
     );
 }
