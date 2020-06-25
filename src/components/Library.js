@@ -6,7 +6,7 @@ import Movie from './Movie';
 const Library = (props) => {
   // const API_MOVIE_URL = "http://localhost:3000/movies"
   const [movieList, setMovieList] = useState([]);
-  const [errorMessage, setMessage] = useState(null);
+  const [message, setMessage] = useState(null);
   
   useEffect(()=>{
     axios.get(props.url)
@@ -16,7 +16,7 @@ const Library = (props) => {
       })
       .catch((error) => {
         setMessage(error.message);
-        console.log(errorMessage);
+        console.log(message);
         
         setTimeout(() => {
           setMessage(null);

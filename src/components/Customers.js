@@ -7,7 +7,7 @@ import Customer from './Customer';
 
 const Customers = (props) => {
   const [customersList, setCustomersList] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [message, setMessage] = useState(null);
 
 
   useEffect(() => {
@@ -17,8 +17,12 @@ const Customers = (props) => {
         setCustomersList(customers);
       })
       .catch((error) => {
-        setErrorMessage(error.message);
-        console.log(errorMessage);
+        setMessage(error.message);
+        console.log(setMessage);
+
+        setTimeout(() => {
+          setMessage(null);
+        }, 5000);
       });
   },[props.url])
 
