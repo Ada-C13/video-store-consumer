@@ -40,15 +40,14 @@ const Movie = (props) => {
 }
 
 Movie.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   title: PropTypes.string,
   release_date: PropTypes.string,
   image_url: PropTypes.string,
   overview: PropTypes.string,
-  external_id: PropTypes.string,
+  external_id: PropTypes.number,
   url: PropTypes.string,
   selectMovieCallback: PropTypes.func.isRequired,
-  clickAddOnMovie: PropTypes.func.isRequired
 };
 
 export default Movie;
