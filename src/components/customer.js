@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {
+  Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button, Row, Col
+} from 'reactstrap';
 
 const Customer = (props) => {
   const { customer, selectCustomerCallback } = props;
@@ -12,20 +16,25 @@ const Customer = (props) => {
   }
 
   return (
-    <div className="card customer-card">
-        {id} - {name} - {phone}
 
-        <button
-          className="btn btn-primary select-customer"
-          onClick={someCustomer}
-        >
-          Select
-        </button>
-        {name}
+<div>
+<Row xs="2">
+<Col xs="6" sm="4">
+<Card>
+<CardBody>
+ <CardTitle>{id}</CardTitle>
+ <CardSubtitle>{name}</CardSubtitle>
+ <CardText>{phone}</CardText>
+ <Button color="primary"
+          onClick={someCustomer}>Select</Button>
+          {name}
         <p>{phone}</p>
         {account_credit}
-
-    </div>
+</CardBody>
+</Card>
+</Col>
+</Row>
+</div>
   );
 };
 
