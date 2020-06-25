@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from'react';
-import PropTypes from 'prop-types';
 import Carousel from 'react-bootstrap/Carousel'
-import Card from 'react-bootstrap/Card'
-// setTimeout(function, milliseconds)
-
 
 const selectMovies = (movieList, count = 4) => {
   
@@ -55,7 +51,6 @@ const Home = ({movieList}) => {
           <h1 class="card-text text-white text-bolder">Just not another Netflix site</h1> 
         </div>
       </div>
-      
     </div>
   )
 }
