@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import Movie from './Movie';
 import SearchForm from './SearchForm';
+import PropTypes from 'prop-types';
 
   const Search = (props) => {
     const [searchedmovieList, setSearchedMovieList] = useState([]);
@@ -50,8 +51,6 @@ import SearchForm from './SearchForm';
         const movieTitles = movieList.map(movie =>
           movie.title
         );    
-        // console.log(movie.title)
-        // console.log(movieTitles)
         if (movieTitles.includes(movie.title)){
           return true
         }else{
@@ -98,8 +97,6 @@ import SearchForm from './SearchForm';
   
     return (
       <div className="search-page w-100 d-flex text-center flex-wrap align-content-start justify-content-center">
-        
-
         <div className="search-form w-100"><SearchForm onSubmitCallback ={searchMovie} /></div>
 
         { movieComponents.length > 0 ? <div>
@@ -127,6 +124,8 @@ import SearchForm from './SearchForm';
   );
 }
   
-
+Search.propTypes = {
+  url: PropTypes.string.isRequired
+};
 
 export default Search;
