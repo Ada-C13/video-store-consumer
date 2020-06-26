@@ -20,11 +20,18 @@ import {
   InputGroup,
   InputGroupAddon,
   Nav,
-  Navbar,
-  NavbarBrand,
+  Navbar, 
   NavItem,
   NavLink,
-  Row
+  NavbarBrand,
+  NavbarToggler,
+  Row,
+  Collapse,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText
 } from "reactstrap";
 
 class App extends Component {
@@ -35,6 +42,7 @@ class App extends Component {
       selectedMovie: undefined,
       open: false,
       message: '',
+      isOpen: false
     }
   }
 
@@ -52,39 +60,12 @@ class App extends Component {
 
     return (
       <div className="App">
+        <div className="App-logo">
+          OG.Blockbuster
+        </div>
         <Router>
           <div>
-            <Navbar color="light" light expand="md">
-              <Nav  navbar>
-                <NavItem>
-                  <NavbarBrand href="/">Home</NavbarBrand>
-                </NavItem>
-                <NavItem>
-                  <NavbarBrand href="/customers">Customers</NavbarBrand>
-                </NavItem>
-                <NavItem>
-                  <NavbarBrand href="/movies">Movie List</NavbarBrand>
-                </NavItem>
-                <NavItem>
-                  <NavbarBrand href="/rental">Add a New Movie</NavbarBrand>
-                </NavItem>
-                <NavItem>
-                  <NavbarBrand href="/rentals/currentlycheckedout">Currently Checked out</NavbarBrand>
-                </NavItem>
-                <NavItem>
-                  <NavbarBrand href="/rentals/:title/check-out">Rentals to Cart</NavbarBrand>
-                </NavItem>
-                <NavItem>
-                  <NavbarBrand href="/search">Search</NavbarBrand>
-                </NavItem>
-                <p>
-              {this.state.selectedCustomer?.name}
-              {this.state.selectedMovie?.title}
-
-            </p>
-              </Nav>
-            </Navbar>
-            {/* <nav>
+            <nav>
               <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/movies">Movie List</Link></li>
@@ -93,11 +74,10 @@ class App extends Component {
                 <li><Link to="/rentals/currentlycheckedout">CurrentlyCheckedOut</Link></li>
                 <li><Link to="/rentals/:title/check-out">Rentals to Cart</Link></li>
               </ul>
-            </nav> */}
+            </nav>
             <p>
               {this.state.selectedCustomer?.name}
               {this.state.selectedMovie?.title}
-
             </p>
           </div>
           <div>
