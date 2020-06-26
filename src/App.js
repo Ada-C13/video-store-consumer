@@ -1,21 +1,23 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-class App extends Component {
-  render() {
+import React, { useEffect } from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+
+const App = () => {
+  useEffect(() => {
+    document.title = "LA Videos title"
+  }, []);
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <section className="">
+        <ReactNotification />
+        <Header />
+        <Footer />
+      </section>
     );
-  }
 }
 
 export default App;

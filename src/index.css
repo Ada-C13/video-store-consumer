@@ -1,5 +1,64 @@
-body {
+/* color scheme:
+  https://coolors.co/e3dcd6-030302-ac9c8a-9a031e-df2935
+
+  {
+    "Timberwolf":"e3dcd6",
+    "Rich Black FOGRA 39":"030302",
+    "Grullo":"ac9c8a",
+    "Ruby Red":"9a031e",
+    "Rose Madder":"df2935"
+  }
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans:wght@800&display=swap');
+
+
+html, body {
+  position: relative;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  color: #030302;
+  height: 100%;
+}
+
+@media all and (max-width: 499px) {
+  #ifMobile1 {
+      background-image: url("https://lh3.googleusercontent.com/pw/ACtC-3cfUrffFXJ-0UvhaS0lpRJW6eE9SiD95s5NV6kMH124j6zBEIwwF2TEKnJvD79F6MUCuaoSDADE1qc1SMt1By7csqERi13OFZDjKfulyLl3nH_hht1m7pZGXY_psjeQliWDTMuxaK9lIySDucpkSPWO=w564-h1019-no?authuser=0");
+  }
+}
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+div.full-page {
+  min-height: 100vh;
+}
+
+footer {
+  background-color: #df101d;
+  margin: auto auto;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+footer h5 {
+  font-weight: 700;
+  font-family: 'Open Sans', sans-serif;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: rgb(230, 230, 230);
 }
