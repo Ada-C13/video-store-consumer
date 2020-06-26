@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CustomerDetails from '../components/CustomerDetails';
+import './CustomerDetails.css';
 
 const Customers = (props) => {
   const [customers, setCustomers] = useState([]);
@@ -36,9 +37,23 @@ const Customers = (props) => {
       />
     );
   });
+
   return (
     <div>
-      <h1>List of Customers</h1>
+      <h1>Customers</h1>
+      <thead>
+        <tr>
+          <th width= "300">Name</th>
+          <th width= "300">Registered At</th>
+          <th width= "300">Address</th>
+          <th width= "300">City</th>
+          <th width= "300">State</th>            
+          <th width= "300">Postal Code</th>
+          <th width= "300">Phone</th>
+          <th width= "300">Account Credit</th>
+          <th width= "300">Movies Checked Out</th>
+        </tr>
+      </thead>
       {cutomersList}
     </div>
   );

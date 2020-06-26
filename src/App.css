@@ -34,6 +34,15 @@
   color: rgb(19, 15, 15)
 }
 
+h1 {
+  color: rgb(3, 3, 0);
+  padding-top: 10px;
+  font-size: 70px;
+  font-weight: bold;
+  -webkit-text-stroke: .02px black;
+  font-family: herculanum;
+}
+
 .header-nav {
   box-sizing: border-box;
   z-index: 1039;

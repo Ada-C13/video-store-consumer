@@ -1,4 +1,5 @@
 import React from 'react';
+import './CustomerDetails.css';
 
 const CustomerDetails = (props) => {
   const onButtonClick = () => {
@@ -7,14 +8,24 @@ const CustomerDetails = (props) => {
 
   return (
     <div>
-      <li>
-        <strong>{props.name}</strong>
-      </li>
-      <p>{props.registered_at}</p>
-      <p>{props.phone}</p>
-      <button className='CustomerDetails' onClick={onButtonClick}>
-        Select User
-      </button>
+      <section class="customers-container">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>{props.name}</td>
+              <td>{props.registered_at}</td>
+              <td>{props.address}</td>
+              <td>{props.city}</td>
+              <td>{props.postal_code}</td>
+              <td>{props.account_credit}</td>
+              <td>{props.movies_checked_out_count}</td>
+              <button className='select-user-button' onClick={onButtonClick}>
+                Select User
+              </button>
+            </tr>
+          </tbody>
+        </table>
+      </section>
     </div>
   );
 };
