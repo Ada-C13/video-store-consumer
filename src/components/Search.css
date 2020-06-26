@@ -33,3 +33,8 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.button-primary {
+  color: #000;
+  background-color: #03CEA4;
+}

@@ -48,7 +48,7 @@ const Search = ({ results, onSearchMovieCallback }) => {
             value={query.query}
             onChange={onInputChange}
           />
-          <input type="submit" className="movie-search-form__form-button" value="Search Movies"/>
+          <input type="submit" className="movie-search-form__form-button button-primary" value="Search Movies"/>
         </div>
       </form>
       <section className="movie-list">
