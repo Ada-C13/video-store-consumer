@@ -54,9 +54,9 @@ const App = () => {
 
   const addMovie = (movie) => {
     axios.post('http://localhost:3000/movies', movie)
-    .then((response) => {
-      setSearchResults(response.data);
+    .then((_response) => {
       setSuccessMessage(`${movie.title} added to library`);
+      getMovies();
     })
     .catch((error) => {
       setErrorMessage(Object.values(error.response.data.errors));
