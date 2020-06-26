@@ -10,12 +10,12 @@ const Home = (props) => {
     <div>
       <h2>Welcome to I<span role="img" aria-label="heart">♥️</span>VIDEO!</h2>
       <main className="view-all-list">
-        <h3>Recently Added Movies</h3>
         <section className="list">
+          <h3>Recently Added Movies</h3>
           <Movies list={props.recentMovies} onSelectCallback={props.onSelectCallback}/>
         </section>
-        <h3>Popular Movies</h3>
         <section className="list"> 
+          <h3>Popular Movies</h3>
           <Movies list={props.popularMovies} onSelectCallback={props.onSelectCallback}/>
         </section>
       </main>
