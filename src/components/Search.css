@@ -1,11 +1,7 @@
-/* .movie-search-form {
-  display: flex;
-  width: 100%;
-} */
-
 .movie-search-form__form {
   display: flex;
   flex-direction: column;
+  margin-bottom: 2em;
 }
 
 .movie-search-form__form-textarea {
@@ -30,4 +26,10 @@
   background-color: #222;
   color: #fff;
   border: 1px solid #fff;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

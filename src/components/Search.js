@@ -51,7 +51,9 @@ const Search = ({ results, onSearchMovieCallback }) => {
           <input type="submit" className="movie-search-form__form-button" value="Search Movies"/>
         </div>
       </form>
-      {resultsList}
+      <section className="movie-list">
+        {resultsList}
+      </section>
     </section>
   ); 
 }
