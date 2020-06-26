@@ -1,13 +1,9 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
   Link,
-  useRouteMatch,
-  useParams
 } from "react-router-dom";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Popup from "reactjs-popup";
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 
@@ -123,5 +119,34 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
     </section>
   );
 }
+
+Checkout.propTypes = {
+  customer: PropTypes.objectOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      registered_at: PropTypes.string.isRequired,
+      address: PropTypes.string.isRequired,
+      city: PropTypes.string.isRequired,
+      state: PropTypes.string.isRequired,
+      postal_code: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+      account_credit: PropTypes.number.isRequired,
+      movies_checked_out_count: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
+    })
+  ),
+  movie: PropTypes.objectOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      overview: PropTypes.string.isRequired,
+      release_date: PropTypes.string.isRequired,
+      inventory: PropTypes.number.isRequired,
+      onSelectCallback: PropTypes.func.isRequired,
+      key: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
+    })
+  ),
+  onSubmitCallback: PropTypes.func.isRequired,
+};
 
 export default Checkout;

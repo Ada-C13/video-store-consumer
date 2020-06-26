@@ -1,22 +1,13 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
-} from "react-router-dom";
-// import PropTypes from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Popup from "reactjs-popup";
 
 import avatar from './user.png'
 import './Customers.css';
+
 import Customer from './Customer';
 
 const Customers = ({ list, onSelectCallback }) => {
-  let match = useRouteMatch();
-
   return (
     <section>
       <h2>Customer List</h2>
@@ -49,6 +40,24 @@ const Customers = ({ list, onSelectCallback }) => {
 
     </section>
   );
+}
+
+Customers.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      registered_at: PropTypes.string.isRequired,
+      address: PropTypes.string.isRequired,
+      city: PropTypes.string.isRequired,
+      state: PropTypes.string.isRequired,
+      postal_code: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+      account_credit: PropTypes.number.isRequired,
+      movies_checked_out_count: PropTypes.number.isRequired,
+    })
+  ),
+  onSelectCallback: PropTypes.func.isRequired,
 }
 
 export default Customers;

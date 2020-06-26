@@ -8,6 +8,7 @@ class Movie extends React.Component {
   constructor(props) {
     super(props)
   }
+  
   render() {
     return (
       <div className="movie">
@@ -26,7 +27,6 @@ class Movie extends React.Component {
                 <h3>{this.props.title}</h3>
                 <p>{this.props.overview}</p>
                 <p>Released: {this.props.release_date}</p>
-                <p>Inventory: {this.props.inventory}</p>
             </section>
           </Popup>
           <button className="movie-button button-primary" onClick={() => this.props.onSelectCallback(this.props)}>Select</button>
@@ -40,7 +40,9 @@ Movie.propTypes = {
   title: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
   release_date: PropTypes.string.isRequired,
-  inventory: PropTypes.number.isRequired,
   onSelectCallback: PropTypes.func.isRequired,
+  key: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
 }
+
 export default Movie;
