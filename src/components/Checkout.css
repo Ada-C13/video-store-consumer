@@ -115,3 +115,8 @@
   color: #fff;
   border: 1px solid #fff;
 }
+
+.button-primary {
+  color: #000;
+  background-color: #03CEA4;
+}
