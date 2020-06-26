@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useCallback } from 'react';
-// import PropTypes from 'prop-types';
+import React, {  useState } from 'react';
+import PropTypes from 'prop-types';
 
 import './Search.css';
+
 import SearchResult from './SearchResult';
 
 const Search = ({ results, onSearchMovieCallback }) => {
@@ -57,5 +58,18 @@ const Search = ({ results, onSearchMovieCallback }) => {
     </section>
   ); 
 }
+
+Search.propTypes = {
+  results: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      overview: PropTypes.string.isRequired,
+      release_date: PropTypes.string.isRequired,
+      image_url: PropTypes.string.isRequired,
+      external_id: PropTypes.number.isRequired,
+    })
+  ),
+  onSearchMovieCallback: PropTypes.func.isRequired,
+};
 
 export default Search;
