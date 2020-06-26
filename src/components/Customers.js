@@ -41,19 +41,18 @@ const Customers = (props) => {
   return (
     <div>
       <h1>Customers</h1>
-      <thead>
-        <tr>
-          <th width= "300">Name</th>
-          <th width= "300">Registered At</th>
-          <th width= "300">Address</th>
-          <th width= "300">City</th>
-          <th width= "300">State</th>            
-          <th width= "300">Postal Code</th>
-          <th width= "300">Phone</th>
-          <th width= "300">Account Credit</th>
-          <th width= "300">Movies Checked Out</th>
-        </tr>
-      </thead>
+      <table className="table">
+        <thead>
+          <th width="200">Name</th>
+          <th width="250">Address</th>
+          <th width="125">City</th>
+          <th width="75">State</th>            
+          <th width="100">Postal Code</th>
+          <th width="125">Phone</th>
+          <th width="100">Account Credit</th>
+          <th width="50">Movies Checked Out</th>
+        </thead>
+      </table>
       {cutomersList}
     </div>
   );

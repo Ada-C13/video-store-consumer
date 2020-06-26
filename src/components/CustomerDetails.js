@@ -10,20 +10,19 @@ const CustomerDetails = (props) => {
     <div>
       <section class="customers-container">
         <table class="table">
-          <tbody>
-            <tr>
-              <td>{props.name}</td>
-              <td>{props.registered_at}</td>
-              <td>{props.address}</td>
-              <td>{props.city}</td>
-              <td>{props.postal_code}</td>
-              <td>{props.account_credit}</td>
-              <td>{props.movies_checked_out_count}</td>
-              <button className='select-user-button' onClick={onButtonClick}>
-                Select User
-              </button>
-            </tr>
-          </tbody>
+          <tr>
+            <td width="200">{props.name}</td>
+            <td width="250">{props.address}</td>
+            <td width="125">{props.city}</td>
+            <td width="75">{props.state}</td>
+            <td width="100">{props.postal_code}</td>
+            <td width="125">{props.phone}</td>
+            <td width="100">{props.account_credit}</td>
+            <td width="50">{props.movies_checked_out_count}</td>
+            <button className='select-user-button' onClick={onButtonClick}>
+              Select User
+            </button>
+          </tr>
         </table>
       </section>
     </div>
