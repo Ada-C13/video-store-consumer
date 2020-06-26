@@ -20,14 +20,14 @@ const Customer = (props) => {
 <div>
 <Card>
 <CardBody>
- <CardTitle>{id}</CardTitle>
+ {/* <CardTitle>{id}</CardTitle> */}
  <CardSubtitle>{name}</CardSubtitle>
  <CardText>{phone}</CardText>
  <Button color="primary"
           onClick={someCustomer}>Select</Button>
-          {name}
-        <p>{phone}</p>
-        {account_credit}
+          {/* {name} */}
+        {/* <p>{phone}</p> */}
+        <br></br>{account_credit}
 </CardBody>
 </Card>
 </div>
