@@ -1,8 +1,8 @@
 .movie {
-  margin-top: 10px;
-  padding: 5px;
-  width: 80%;
-  border: solid 2px black;
+  margin-top: 1em;
+  padding: 2em;
+  width: 100%;
+  border: solid 3px black;
   display: flex;
   justify-content: space-between;
 }
@@ -14,9 +14,35 @@
 .movie-overview {
   display: inline-block;
   margin-left: 10px;
+  padding: 1em;
 }
 
 .movie-buttons {
-  display: inline-block;
-  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+/* BUTTONS */
+
+.movie-button {
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  color: #222;
+  background-color: #fff;
+  padding: 1em;
+  border: 1px solid #222;
+}
+
+.movie-button:hover {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.button-primary {
+  color: #000;
+  background-color: #03CEA4;
 }
