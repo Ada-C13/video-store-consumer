@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button, Row, Col
+  CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 
 const Movie = (props) => {
@@ -12,10 +12,8 @@ const Movie = (props) => {
 
   return (
     <div>
-      <Row xs="2">
-      <Col xs="6" sm="4">
         <Card>
-          <CardImg top width="100%" src={imageUrl} alt="Card image cap" />
+          <CardImg top width="100%" src={movie.image_url} alt="Card image cap" />
           <CardBody>
             <CardTitle>{title}</CardTitle>
             <CardSubtitle>{releaseDate}</CardSubtitle>
@@ -26,8 +24,6 @@ const Movie = (props) => {
         </Button>
         </CardBody>
         </Card>
-        </Col>
-        </Row>
       </div>
   );
 };
