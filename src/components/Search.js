@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 // import PropTypes from 'prop-types';
-// import axios from 'axios';
 
-// import './Search.css';
+import './Search.css';
 import SearchResult from './SearchResult';
 
 const Search = ({ results, onSearchMovieCallback }) => {
@@ -39,21 +38,22 @@ const Search = ({ results, onSearchMovieCallback }) => {
     <section className="movie-search">
       <h2>Movie Search</h2>
       <form className="movie-search-form" onSubmit={onSubmit}>
-        <div className="movie-search-form__header"></div>
         <div className="movie-search-form__form">
-          <label className="movie-search-form__form-label" htmlFor="query">query</label>
+          <label className="movie-search-form__form-label" htmlFor="query"></label>
           <input 
             className="movie-search-form__form-textarea" 
-            type="query" 
+            type="text" 
             name="query"
-            placeholder="search here" 
+            placeholder="movie title" 
             value={query.query}
             onChange={onInputChange}
           />
-          <input type="submit" className="movie-search-form__form-button" value="Search Movies"/>
+          <input type="submit" className="movie-search-form__form-button button-primary" value="Search Movies"/>
         </div>
       </form>
-      {resultsList}
+      <section className="movie-list">
+        {resultsList}
+      </section>
     </section>
   ); 
 }

@@ -1,17 +1,8 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
-} from "react-router-dom";
+import React from 'react';
 import PropTypes from 'prop-types';
 import Popup from "reactjs-popup";
 
 import './Movie.css';
-
 
 class Movie extends React.Component {
   constructor(props) {
@@ -30,7 +21,7 @@ class Movie extends React.Component {
           <p>{this.props.overview}</p>
         </div>
         <div className="movie-buttons">
-          <Popup trigger={<button>Profile</button>} modal>
+          <Popup trigger={<button className="movie-button">Details</button>} modal>
             <section className="movie-details">
                 <h3>{this.props.title}</h3>
                 <p>{this.props.overview}</p>
@@ -38,7 +29,7 @@ class Movie extends React.Component {
                 <p>Inventory: {this.props.inventory}</p>
             </section>
           </Popup>
-          <button onClick={() => this.props.onSelectCallback(this.props)}>Select</button>
+          <button className="movie-button button-primary" onClick={() => this.props.onSelectCallback(this.props)}>Select</button>
         </div>
       </div>
     );

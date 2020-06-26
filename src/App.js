@@ -151,7 +151,7 @@ const App = () => {
     <Router>
       <header className="App-header">
         <nav className="App-nav">
-          <h1 className="App-title"><a href="/">Video Store Consumer</a></h1>
+          <h1 className="App-title"><a href="/">I<span role="img" aria-label="heart">♥️</span>VIDEO</a></h1>
           <div className="App-nav-links">
             <Link to="/" className="App-nav-links__item">Home</Link>
             <Link to="/search" className="App-nav-links__item">Movie Search</Link>

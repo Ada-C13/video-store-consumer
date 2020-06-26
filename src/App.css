@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 .App {
   /* text-align: center; */
 }
@@ -13,15 +15,23 @@
   background-color: #222;
   padding: 0 3.75em;
   color: white;
+  background: url('./90s_bg.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .App-title {
-  font-size: 2em;
+  font-size: 68px;
+  font-family: 'Fredoka One', cursive;
 }
 
 .App-title a {
   text-decoration: none;
   color: #fff;
+  text-shadow:
+  -3px -3px 0 #45c,  
+   3px -3px 0 #45c,
+   -3px 3px 0 #45c,
+    3px 3px 0 #45c;
 }
 
 .App-intro {
@@ -38,7 +48,6 @@
 .App-nav {
   display: flex;
   flex-direction: column;
-  margin: 2em 0;
 }
 
 .App-nav-links {
@@ -68,8 +77,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 0 1em;
+  padding: 1em 2em;
   margin: 2em 0;
+  background-color: #45c;
 }
 
 .App-selected h3 {
@@ -101,7 +111,7 @@
   text-align: center;
   text-decoration: none;
   color: #222;
-  background-color: #fff;
+  background-color: #03CEA4;
   padding: 1em;
   margin-top: .5em;
   border: 1px solid #222;

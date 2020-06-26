@@ -112,8 +112,10 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
           <form className="checkout-form" onSubmit={submitRentalForm}>
             <div className="checkout-form__form">
               <label className="checkout-form__form-label" htmlFor="due date"></label>
-              <DayPickerInput onDayChange={handleDateChange} />
-              <input type="submit" className="checkout__button" value="Create Rental"/>
+              <DayPickerInput 
+                onDayChange={handleDateChange} 
+                placeholder="due date (YYYY-M-D)" />
+              <input type="submit" className="checkout__button button-primary" value="Create Rental"/>
             </div>
           </form>
         </div>
