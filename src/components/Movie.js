@@ -12,6 +12,7 @@ const Movie = (props) => {
         <img src={props.image_url} alt="movie-image"/>
         <p className="movie-title">{props.title}</p>
         <p className="movie-overview">{props.overview}</p>
+        <p className="movie-inventory">{props.inventory} Copies Available</p>
       </div>
       <button class="movie-button" onClick={onButtonClick}>
         Select Movie
