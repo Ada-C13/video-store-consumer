@@ -19,9 +19,14 @@ const Customer = ({ id, name, address, city, state, registered_at, phone, accoun
         <Card.Text><strong>Address </strong> {address}, {city}, {state}</Card.Text>
         <div className="">
           <Button variant="dark"
-            className="button-box right-button button-grad button-grad:hover"
+            className="button-box button-grad button-grad:hover"
             onClick={() => selectCustomer(id)}>
             Select Customer
+          </Button>
+          <Button variant="dark"
+            className="button-box right-button button-grad button-grad:hover"
+            onClick={() => selectCustomer(id)}>
+            Checkout
           </Button>
         </div> 
       </Card.Body>

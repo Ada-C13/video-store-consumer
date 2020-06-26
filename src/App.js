@@ -153,8 +153,7 @@ class App extends Component {
                  className="button-box button-grad button-grad:hover">Search</Button>
             </Form>
           </Navbar>
-      <div>
-
+      <div className="Newsline">
         <h3>{this.state.selectedMovie ? ("You Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
         <h3>{this.state.selectedCustomer ? ("Customer that you Selected: \n\n" + this.state.selectedCustomer.name) : "" }</h3>
         {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.makeRental()}>Rent Now</Button> : ''}

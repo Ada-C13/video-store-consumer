@@ -9,3 +9,12 @@
 .card-deck.library {
   flex-wrap: wrap;
 }
+
+.Newsline {
+  height: 5vh;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  text-align: center;
+  margin-top: 5vh;
+}
