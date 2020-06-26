@@ -22,11 +22,11 @@ const Navbar = (props) => {
         })
         .then((response) => {
           setCheckedOutMovie(response.data);
-          // setStatusCallback("Movie successfully rented. It is due back in one week.");
+          props.setStatusCallback("Movie successfully rented. It is due back in one week.");
           console.log(response.data);
         })
         .catch((error) => {
-          // setStatusCallback("Failed to rent movie.");
+          props.setStatusCallback("Failed to rent movie.");
           setError(error.message);
           console.log(error.message);
         });

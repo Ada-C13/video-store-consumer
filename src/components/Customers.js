@@ -11,7 +11,11 @@ const Customers = (props) => {
     axios
       .get('http://localhost:3000/customers')
       .then((response) => {
-        const allCustomers = response.data;
+        const allCustomers = (response.data).sort(function (a, b) {
+          if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+          if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+          return 0;
+        });
         setCustomers(allCustomers);
       })
       .catch((error) => {
