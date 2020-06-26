@@ -20,7 +20,7 @@ This project has two main components: a Rails API and a React front-end. You wil
 
 ## Problem Statement
 
-Our rental store employees want to be able to manage their rental inventory. They want to be able to search through all movies and pick and choose which movies they want to add to their rental library. They want to be able to manage their rental library. We will be using an external API to build in searching for *all movies*. We will use our existing Rails API to manage the *rental library*.
+Our rental store employees want to be able to manage their rental inventory. They want to be able to search through all movies and pick and choose which movies they want to add to their rental library. They want to be able to manage their rental library. We will be using an external API to build in searching for _all movies_. We will use our existing Rails API to manage the _rental library_.
 
 ## Project Information
 
@@ -47,9 +47,9 @@ Each pair/group will give a short presentation on their project and their learni
 
 ### 2. External API Configuration
 
-- Follow the instructions on the API's [Getting Started](https://developers.themoviedb.org/3/getting-started) page to set up your account and request an API Key.   You can use Ada's address in the registration process.
+- Follow the instructions on the API's [Getting Started](https://developers.themoviedb.org/3/getting-started) page to set up your account and request an API Key. You can use Ada's address in the registration process.
 - Read through the documentation and use POSTman to investigate the API. A few endpoints you may want to explore include:
-  - [Search Movies](https://developers.themoviedb.org/3/search/search-movies)
+  - [Search Library](https://developers.themoviedb.org/3/search/search-movies)
   - [Get Movie Details](https://developers.themoviedb.org/3/movies/get-movie-details)
   - [Configuration](https://developers.themoviedb.org/3/configuration/get-api-configuration)
 
@@ -82,6 +82,7 @@ If I am a rental store employee...
 ### The React Router
 
 Your front-end should use the [React Router](https://reacttraining.com/react-router/). You will need to research this as a pair!
+
 - What problem does it solve?
 - How do you install it?
 - How do you use it?
@@ -106,6 +107,7 @@ You can have more if you want (for example `/customers/:id`), but ultimately the
 ## Back-End Requirements
 
 The Rails back-end already has a lot of functionality implemented. You can:
+
 - Get the list of movies in the library
 - Search for movies in the external API
 - Get details on an individual movie
@@ -121,6 +123,7 @@ For the core requirements, you will need to add the ability to add a movie from 
 - What happens if you try to add the same movie twice?
 
 ## Optional Enhancements
+
 Some of these optional requirements require work in the front-end only, back-end only or both.
 
 - Get a list of all overdue movies
@@ -142,6 +145,7 @@ At the conclusion of this project, each group will give a presentation of their 
 This presentation should be a concise demo of your project and also talking through the following reflection prompts.
 
 Please include the following things in your demo:
+
 - **ONE** of the following user flows to demo:
   - Search for a movie and select a movie
   - I can look at the customers and see a customer
@@ -156,4 +160,5 @@ Please include the following things in your demo:
 There is no expectation for a slideshow.
 
 ## What we're looking for
+
 You can see what your instructors are looking for [here](./feedback.md)
