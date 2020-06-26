@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card'
 import PropTypes from "prop-types";
 
-const MovieCard = ({id, title, external_id, overview, image_url, onUpdateSelect, selected_id}) => {
+const MovieCard = ({id, title, external_id, overview, image_url, onUpdateSelect}) => {
 
   const onSelect = () => {
     const newSelected = {
@@ -12,22 +12,13 @@ const MovieCard = ({id, title, external_id, overview, image_url, onUpdateSelect,
     onUpdateSelect(newSelected)
   }
 
-  const selected = () => {
-    console.log(selected_id)
-    if (id === selected_id) {
-      return true
-    } else {
-      return false
-    }
-  }
-
   return (
       <Card style={{ width: '24rem' }}>
         <Card.Img variant="top" src={image_url} />
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>{overview}</Card.Text>
-          <button className="button" onClick={onSelect}> {selected()? 'Selected' : 'Select this Movie'}</button>
+          <button className="button" onClick={onSelect}>Select this Movie</button>
         </Card.Body>
       </Card>
     )
@@ -38,7 +29,8 @@ MovieCard.propTypes = {
   title: PropTypes.string,
   overview: PropTypes.string,
   release_date: PropTypes.string,
-  image_url: PropTypes.string
+  image_url: PropTypes.string,
+  onUpdateSelect: PropTypes.func
 };
 
 
