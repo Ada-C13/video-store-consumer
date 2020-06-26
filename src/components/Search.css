@@ -1,0 +1,16 @@
+.container{
+  margin: 10px;
+  text-align: center;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+.movie_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 15px;
+}

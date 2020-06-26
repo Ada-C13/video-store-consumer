@@ -1,0 +1,12 @@
+.customers-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.title {
+  margin: 15px;
+  text-align: center;
+}
