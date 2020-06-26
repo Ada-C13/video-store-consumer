@@ -75,7 +75,6 @@ class App extends Component {
       const title = this.state.selectedMovie.title
       const custoId = this.state.selectedCustomer.id
 
-      // let dueDate = new Date()
       let checkoutDate = new Date()
       let dueDate = new Date() 
       dueDate.setDate(checkoutDate.getDate() + 5);
@@ -114,8 +113,7 @@ class App extends Component {
       axios.post(`${BASE_URL}/movies`, addedMovie)
       .then((response) => {
         this.setState({
-          // movies,
-          success: "Movie successfully added to your rental library",
+          success: `Movie: ${addedMovie.title}, has been added successfully in library`,
         });
       })
       .catch((error) => {
