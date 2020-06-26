@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -8,14 +10,28 @@
 }
 
 .App-header {
+  display: flex;
+  justify-content: space-between;
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  padding: 0 3.75em;
   color: white;
+  background: url('./90s_bg.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 68px;
+  font-family: 'Fredoka One', cursive;
+}
+
+.App-title a {
+  text-decoration: none;
+  color: #fff;
+  text-shadow:
+  -3px -3px 0 #45c,  
+   3px -3px 0 #45c,
+   -3px 3px 0 #45c,
+    3px 3px 0 #45c;
 }
 
 .App-intro {
@@ -25,4 +41,88 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* NAV LINKS */
+
+.App-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.App-nav-links {
+  display: flex;
+  text-align: center;
+}
+
+.App-nav-links__item {
+  width: 100px;
+  text-decoration: none;
+  color: #222;
+  background-color: #fff;
+  padding: 1em;
+  margin-right: 1em;
+  border: 1px solid #222;
+}
+
+.App-nav-links__item:hover {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+/* CURRENT SELECTION */
+
+.App-selected {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1em 2em;
+  margin: 2em 0;
+  background-color: #45c;
+}
+
+.App-selected h3 {
+  margin-top: 0;
+}
+
+.App-selected__customer,
+.App-selected__movie,
+.App-selected__checkout {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  padding: 1em;
+  margin-top: .5em;
+  border: 1px solid #fff;
+}
+
+.App-selected__checkout {
+  border: none;
+}
+
+.App-selected__customer-name, 
+.App-selected__movie {
+  margin: .5em 0;
+}
+
+.App-selected__checkout-button {
+  text-align: center;
+  text-decoration: none;
+  color: #222;
+  background-color: #03CEA4;
+  padding: 1em;
+  margin-top: .5em;
+  border: 1px solid #222;
+}
+
+.App-selected__checkout-button:hover {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.App-content {
+  padding: 4rem;
 }

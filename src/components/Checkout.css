@@ -1,0 +1,122 @@
+.checkout__header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.checkout__selections {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* CUSTOMER */
+
+.checkout-customer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40.3%;
+  padding: 3em;
+  margin-right: 1em;
+  border: 3px solid black;
+}
+
+.checkout-customer__info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-customer__avatar {
+  width: 20%;
+}
+
+.checkout-customer__buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  margin-top: 3em;
+}
+
+/* MOVIE */
+
+.checkout-movie {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40.3%;
+  padding: 3em;
+  border: 3px solid black;
+}
+
+.checkout-movie__info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-movie__cover {
+  width: 20%;
+}
+
+.checkout-movie__buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  margin-top: 3em;
+}
+
+/* FORM INPUT */
+
+.checkout {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.checkout-form {
+  width: 50%;
+  margin: 3em;
+}
+
+.checkout-form__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.DayPickerInput input {
+  width: 97%;
+  height: 35px;
+  padding-left: 10px;
+  margin-bottom: 1em;
+}
+
+/* BUTTONS */
+
+.checkout__button {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  color: #222;
+  background-color: #fff;
+  padding: .5em;
+  border: 1px solid #222;
+}
+
+.smaller-button {
+  width: 100px;
+  max-height: 35px;
+}
+
+.checkout__button:hover {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.button-primary {
+  color: #000;
+  background-color: #03CEA4;
+}

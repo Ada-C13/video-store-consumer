@@ -1,0 +1,12 @@
+.view-all-list {
+  margin-top: 1em;
+  padding: 2em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.list {
+  display: inline-block;
+  width: 45%;
+  border: solid 3px black;
+}
