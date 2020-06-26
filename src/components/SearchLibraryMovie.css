@@ -1,10 +1,30 @@
-.searchbutton {
+.searchbar-button {
   color: black;
-  position: relative
+  padding: 15px;
+}
+
+.searchbar-bar {
+  padding: 15px;
+}
+
+h2 {
+  padding-left: 270px;
+  color: rgb(3, 3, 0);
+  padding-top: 50px;
+  font-size: 70px;
+  font-weight: bold;
+  -webkit-text-stroke: .02px black;
+  font-family: herculanum;
+}
+
+.searchbar {
+  padding-top: 30px;
+  padding-right: 50px;
+  float: right;
+  position: relative;
 }
 
 .search-page {
-  display: inline-grid;
   grid-template-rows: 0.5fr 1fr;
   align-content: space-between;
   margin-bottom: 100px;

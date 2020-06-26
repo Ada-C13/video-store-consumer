@@ -44,7 +44,7 @@ h1 {
 }
 
 .header-nav {
-  box-sizing: border-box;
+  width: 100%;
   z-index: 1039;
   height: 50px;
   background-color: #ffeef9;
@@ -79,11 +79,6 @@ h1 {
   font-weight: bold;
 }
 
-.nav-link, .divider{
-  font-weight: bold;
-  color: black;
-}
-
 .store-name {
   font-family: ITC Machine;
   font-weight: bold;
@@ -91,4 +86,8 @@ h1 {
   font-size: 80px;
   position: absolute;
   padding-left: 35px;
+}
+
+.checkout-button {
+  padding-left: 200px;
 }

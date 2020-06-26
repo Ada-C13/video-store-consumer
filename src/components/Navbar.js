@@ -42,7 +42,7 @@ const Navbar = (props) => {
       <div className="selected-view">
           <p className="selected">Selected Customer: {props.selectedCustomer.name}</p>
           <p className="selected">Selected Movie: {props.selectedMovie.title}</p>
-          <p>{statement}</p>
+          <p class="checkout-button">{statement}</p>
         </div>
       <nav className="header-nav">
         <div>

@@ -45,14 +45,13 @@ const Search = () => {
 
   return (
     <div>
-      <input 
-        className="searchbar" 
-        onChange={(e) => setSearchText(e.target.value)} 
-        value={searchText}
-      />
+      <div class="searchbar">
+        <input class="searchbar-bar" onChange={(e) => setSearchText(e.target.value)} value={searchText}/>
 
-      <button className="searchbutton" onClick={handleSearch}>Search</button>
+        <button className="searchbar-button" onClick={handleSearch}>Search</button>
+      </div>
 
+      <h2>Search Results</h2>
       <div className="movie-container">
         {resultMovies.map((movieData) => (
           <div className="movie-details">
