@@ -38,7 +38,7 @@ const Navbar = (props) => {
 
   return (
     <div className="header">
-      <p className="store-name">PLACEHOLDER NAME</p>
+      <p className="store-name">MOCKBUSTER</p>
       <div className="selected-view">
           <p className="selected">Selected Customer: {props.selectedCustomer.name}</p>
           <p className="selected">Selected Movie: {props.selectedMovie.title}</p>
