@@ -13,6 +13,8 @@
   background-color: #222;
   padding: 0 3.75em;
   color: white;
+  background: url('./90s_bg.png') no-repeat center center fixed;
+  background-size: cover;
 }
 
 .App-title {
@@ -68,8 +70,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 0 1em;
+  padding: 1em 2em;
   margin: 2em 0;
+  background-color: #45c;
 }
 
 .App-selected h3 {
