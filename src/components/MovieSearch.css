@@ -1,0 +1,19 @@
+.form {
+  margin: 3% 5% 5% 5%;
+  display: grid;
+  grid-template-rows: 25% auto auto;
+  width: 600px;
+}
+
+.label {
+  font-size: larger;
+}
+
+.input{
+  height: 50px;
+  margin-bottom: 0;
+}
+.button{
+  margin-top: 3%;
+  height: 30px;
+}

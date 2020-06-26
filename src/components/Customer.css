@@ -1,0 +1,23 @@
+
+
+.customer-card{
+  border: 1px white solid;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  padding: 3%;
+  margin: 5%;
+}
+
+.acct-info {
+  margin-top: 5%;
+}
+.card-list{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.customer-card > button {
+  align-items: center;
+}
+.customer-button{
+  width: 50%;
+}
