@@ -69,12 +69,6 @@ class App extends Component {
     this.setState({ selectedMovie });
   };
 
-  //Geting ready for Checkout
-  selectedMovieCustomer(){ 
-    return ((this.state.selectedCustomer || this.state.selectedMovie) ? "you selected an items" : "You didn't select any items" )
-  };
-
-  // If I have the movie that is select and the customer I have to get the movie title and the costumer id and to create dueDate and to post through axios.
   makeRental(){
     console.log(this.state.selectedMovie)
     if(this.state.selectedMovie){
