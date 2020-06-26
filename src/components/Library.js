@@ -33,7 +33,7 @@ const renderMovies = (movieList, onMovieSelectCallback) => {
 const Library = (props) => {
   console.log(`rendering Library...`, props);
   return (
-    <div>
+    <div className="container">
       <h1>Movie Library</h1>
       <div className="movielist flex-container">
         {renderMovies(props.movieList, props.onMovieSelectCallback)}

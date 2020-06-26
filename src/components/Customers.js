@@ -26,7 +26,7 @@ const renderCustomers = (customerList, onCustomerSelectCallback) => {
 const Customers = (props) => {
   console.log(`rendering customers...`, props);
   return (
-    <div>
+    <div className="container">
       <h1>Customers</h1>
       <div className="customerlistlist">
         <Table hover>

@@ -58,7 +58,7 @@ const Search = (props) => {
 
   console.log(`rendering Search...`, props.addMovieCallBack);
   return (
-    <div>
+    <div className="container">
       <h1>Search Movie</h1>
       <input
         name="search"

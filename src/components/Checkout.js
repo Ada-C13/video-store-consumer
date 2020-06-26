@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Button from 'react-bootstrap/Button'
 import "./Checkout.css";
 
 const CHECKOUT_NEVER = 0;
@@ -17,7 +18,7 @@ const renderMovie = (movieData) => {
           <li>Title: {movieData.title}</li>
           <li>Release Date: {movieData.release_date}</li>
           <li>
-            <img src={movieData.image_url} alt="Movie Cover" />
+            <img className="movie-image" src={movieData.image_url} alt="Movie Cover" />
           </li>
         </ul>
       </div>
@@ -46,7 +47,7 @@ const renderButton = (movieData, customerData, onCheckoutCallback) => {
   if (!customerData || !movieData) {
     return <p>Cannot Checkout - Select Movie and Customer</p>;
   } else {
-    return <button onClick={() => onCheckoutCallback()}>Checkout Movie</button>;
+    return <Button variant="primary" onClick={() => onCheckoutCallback()}>Checkout Movie</Button>;
   }
 };
 
@@ -87,7 +88,7 @@ const renderCheckout = (
 const Checkout = (props) => {
   console.log(`rendering Checkout...`, props);
   return (
-    <div>
+    <div className="container">
       <h1>Movie Checkout</h1>
       <div className="checkout">
         {renderCheckout(
