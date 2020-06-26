@@ -84,13 +84,11 @@ const App = () => {
         <Route path="/customers">
           <CustomersList 
             onUpdateSelectedCustomer={updateSelectedCustomer} 
-            selectedCustomer={selectedCustomer.id} 
           />
         </Route>
         <Route path="/library">
           <Library 
             onUpdateSelectedMovie={updateSelectedMovie} 
-            selectedMovie={selectedMovie.id}
           />
         </Route>
         <Route path="/">
