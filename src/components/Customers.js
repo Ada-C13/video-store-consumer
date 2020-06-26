@@ -27,7 +27,7 @@ const Customers = ({ list, onSelectCallback }) => {
             <img src={avatar} className="customer-list-item__avatar" alt="customer profile pic" />
             <p className="customer-list-item__name">#{customer.id}: {customer.name}</p>
             <div className="customer-list-item__buttons">
-              <Popup trigger={<button>Profile</button>} modal>
+              <Popup trigger={<button className="customer-button">Profile</button>} modal>
                 <Customer
                   name={customer.name}
                   registered_at={new Date(customer.registered_at).toString()}
@@ -41,7 +41,7 @@ const Customers = ({ list, onSelectCallback }) => {
                   id={customer.id}
                 />
               </Popup>
-              <button onClick={() => onSelectCallback(customer)}>Select</button>
+              <button className="customer-button button-primary" onClick={() => onSelectCallback(customer)}>Select</button>
             </div>
           </div>
         )}

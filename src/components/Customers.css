@@ -1,15 +1,16 @@
 .customer-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .customer-list-item {
   display: flex;
   justify-content: space-between;
-  width: 40%;
-  padding: 3em;
-  margin-top: 1em;
-  border: 1px solid black;
+  width: 43%;
+  padding: 2em;
+  margin-top: 1.5em;
+  border: 3px solid black;
 }
 
 .customer-list-item:nth-child(odd) {
@@ -17,7 +18,7 @@
 }
 
 .customer-list-item__avatar {
-  width: 70px;
+  width: 25%;
 }
 
 .customer-list-item__buttons {
@@ -28,4 +29,28 @@
 
 .customer-profile {
   padding: 1em;
+}
+
+/* BUTTONS */
+
+.customer-button {
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  color: #222;
+  background-color: #fff;
+  padding: 1em;
+  border: 1px solid #222;
+}
+
+.customer-button:hover {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.button-primary {
+  color: #000;
+  background-color: #03CEA4;
 }
