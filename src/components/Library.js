@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import MovieCard from './MovieCard';
 
-const Library = ({onUpdateSelectedMovie, selected_id}) => {
+const Library = ({onUpdateSelectedMovie}) => {
   const [error, setError] = useState(null);
   const [libraryList, setLibraryList] = useState(null);
 
@@ -22,7 +22,6 @@ const Library = ({onUpdateSelectedMovie, selected_id}) => {
               image_url = {movie.image_url}
               key = {movie.external_id}
               onUpdateSelect={onUpdateSelectedMovie} 
-              selected_id={selected_id}
               />
             </div>
           );
