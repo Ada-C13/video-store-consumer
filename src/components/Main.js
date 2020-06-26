@@ -22,12 +22,13 @@ const Main = (props) => {
         exact
         path='/Customers'
         component={() => (
-          <Customers
-            setSelectedCustomerCallBack={props.setSelectedCustomerCallBack}
-          />
+          <Customers setSelectedCustomerCallBack={props.setSelectedCustomerCallBack} />
         )}
       ></Route>
-      <Route exact path='/Search' component={Search}></Route>
+      {/* MATCH THIS */}
+      <Route exact path='/Search' >
+        <Search setStatusCallback={props.setStatusCallback} />
+      </Route>
     </Switch>
   );
 };

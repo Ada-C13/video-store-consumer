@@ -38,11 +38,13 @@ const Navbar = (props) => {
 
   return (
     <div className="header">
-      <p className="store-name">MOCKBUSTER</p>
-      <div className="selected-view">
-          <p className="selected">Selected Customer: {props.selectedCustomer.name}</p>
-          <p className="selected">Selected Movie: {props.selectedMovie.title}</p>
-          <p class="checkout-button">{statement}</p>
+      <div className="header-first-row">
+        <p className="store-name">MOCKBUSTER</p>
+        <div className="selected-view">
+            <p className="selected">Selected Customer: {props.selectedCustomer.name}</p>
+            <p className="selected">Selected Movie: {props.selectedMovie.title}</p>
+            <p class="checkout-button">{statement}</p>
+          </div>
         </div>
       <nav className="header-nav">
         <div>

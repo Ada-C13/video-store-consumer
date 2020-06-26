@@ -12,7 +12,6 @@ Body {
 }
 
 .header {
-  height: 100px;
   padding: 20px;
   background-color: #ffeef9;
 }
@@ -48,16 +47,16 @@ h1 {
 
 .header-nav {
   width: 100%;
-  z-index: 1039;
+  /* z-index: 1039; */
   height: 50px;
   background-color: #ffeef9;
   color: white;
   font-size: 17px;
 }
 
-.selected-view {
-  padding-left: 1100px;
-  padding-bottom: 50px;
+.header-first-row {
+  display: flex;
+  justify-content: space-between;
 }
 
 .selected {
@@ -88,7 +87,7 @@ h1 {
   font-weight: bold;
   color: rgb(94, 5, 80);
   font-size: 80px;
-  position: absolute;
+  /* position: absolute; */
   padding-left: 200px;
 }
 

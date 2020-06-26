@@ -3,7 +3,7 @@ import axios from 'axios';
 import Movie from './Movie';
 import './SearchLibraryMovie.css';
 
-const Search = () => {
+const Search = ({setStatusCallback}) => {
   const base_url = 'http://localhost:3000/movies';
 
   const [searchText, setSearchText] = useState('');
@@ -35,9 +35,11 @@ const Search = () => {
     axios
       .post(base_url, movieData)
       .then((response) => {
+        setStatusCallback("success");
         console.log(response.data);
       })
       .catch((error) => {
+        setStatusCallback("error");
         setError(error.message);
         console.log(error.message);
       });
@@ -52,17 +54,17 @@ const Search = () => {
         <button className="searchbar-button" onClick={handleSearch}>Search</button>
       </div>
 
-      <div className="movie-container">
-        {resultMovies.map((movieData) => (
+      {resultMovies.map((movieData) => (
+        <div className="movie-container">
           <div className="movie-details">
             <img src={movieData.image_url} alt="movie-image"/>
             <p className="movie-title">{movieData.title}</p>
             <p className="movie-overview">{movieData.overview}</p>
-            <button class="movie-button" onClick={() => addMovie(movieData) }>Add to Library</button>
+          </div>
+          <button class="movie-button" onClick={() => addMovie(movieData) }>Add to Library</button>
           </div>
         ))}
       </div>
-    </div>
   );
 };
 
