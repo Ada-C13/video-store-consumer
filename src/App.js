@@ -114,7 +114,7 @@ class App extends Component {
               </Route>
               <Route path="/search">
                 <MovieSearch
-
+                  selectMovieCallback={this.selectMovie}  
                 />
               </Route>
               <Route path="/rentals/currentlycheckedout">

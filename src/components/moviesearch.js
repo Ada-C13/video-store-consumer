@@ -48,14 +48,9 @@ class MovieSearch extends React.Component {
     const movies = this.state.movieList.map((movie, i) => {
       return <Movie 
         key={i}
-        id={null} //null because calling external API
-        title={movie.title}
-        overview={movie.overview}
-        releaseDate={movie.release_date}
-        imageUrl={movie.image_url}
-        externalId={movie.external_id}
-        selectMovieCallback={this.selectMovie}
-
+        // movie={movie}
+        {...{movie}}
+        {...this.props}
       />
     })
     return (
