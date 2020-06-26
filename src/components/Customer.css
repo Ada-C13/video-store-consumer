@@ -1,0 +1,32 @@
+.customer-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.customer-container .card {
+  margin: 1.5%;
+  max-width: 30%;
+  width: 20%;
+  background-color: #343a40;
+  color: white;
+}
+
+.customer-card .card {
+  margin: 15px !important;
+}
+
+.cutomer-button {
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #fff;
+  background-image: -webkit-linear-gradient(45deg, #2f4f4f 0%, #b3a39c 100%);
+  background-image: linear-gradient(45deg, #2f4f4f 0%, #b3a39c 100%);
+  transition: 0.4s;
+}
+
+.cutomer-button:hover {
+  background-image: -webkit-linear-gradient(45deg, #bdac7c 0%, #a88d84 100%);
+  background-image: linear-gradient(45deg, #bdac7c 0%, #a88d84 100%);
+}
