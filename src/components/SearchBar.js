@@ -1,45 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { Button, Form, FormControl } from "react-bootstrap";
+import PropTypes from "prop-types";
 
-const SearchBar = ({submitSearchTermCallback}) => {
-	const [searchWord, setSearchWord] = useState('');
+const SearchBar = ({ submitSearchTermCallback }) => {
+  const [searchWord, setSearchWord] = useState("");
 
-	const resetState = () => {
-		setSearchWord("");
-	};
+  const resetState = () => {
+    setSearchWord("");
+  };
 
-	const onSubmit = (event) => {
-		event.preventDefault();
+  const onSubmit = (event) => {
+    event.preventDefault();
 
-		const query = searchWord;
+    const query = searchWord;
 
-		submitSearchTermCallback(query);
-		resetState();
-	};
+    submitSearchTermCallback(query);
+    resetState();
+  };
 
-	const onFormChange = (event) => {
-		const value = event.target.value;
-		setSearchWord(value);
-	};
+  const onFormChange = (event) => {
+    const value = event.target.value;
+    setSearchWord(value);
+  };
 
-    console.log(
-        searchWord
-    )
-	return (
-		<div>
-			<h2>Search Movie Here</h2>
-			<form onSubmit={onSubmit}>
-				<div>
-					<input
-						onChange={onFormChange}
-						value={searchWord}
-						name="searchWord"
-						placeholder=""
-					/>
-				</div>
-				<input type="submit" name="submit" value="Search the Movie" />
-			</form>
-		</div>
-	);
+  return (
+    <Form onSubmit={onSubmit} inline>
+      <FormControl
+        onChange={onFormChange}
+        value={searchWord}
+        name="searchWord"
+        type="text"
+        placeholder="Search"
+        className="mr-sm-2"
+      />
+
+      <Button className="customer-button" variant="primary" type="submit">
+        {" "}
+        Search
+      </Button>
+    </Form>
+  );
 };
 
+SearchBar.propTypes = {
+  submitSearchTermCallback: PropTypes.string.isRequired,
+};
 export default SearchBar;
