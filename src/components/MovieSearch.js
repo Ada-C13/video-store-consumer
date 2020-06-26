@@ -55,7 +55,7 @@ const MovieSearch = ({url, selectMovie}) => {
         <button>Search</button>
       </div>
     <div>
-      <h1>INFORMATION ABOUT MOVIES</h1>
+      <h2>Database Search</h2>
       {searchResults ? databaseMovies() : ""}
     </div>
     </form>

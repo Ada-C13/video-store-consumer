@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap/';
 import CardDeck from 'react-bootstrap/CardDeck'
 import Card from 'react-bootstrap/Card'
 
-const Customer = ({ id, name, address, city, state, registered_at, phone, account_credit, movies_checked_out_count, selectCustomer }) => {
+const Customer = ({ id, name, address, city, state, registered_at, phone, account_credit, movies_checked_out_count, selectCustomer, makeRental }) => {
   return (
     <Card className="customer-card">
       <Card.Body>
@@ -25,8 +25,7 @@ const Customer = ({ id, name, address, city, state, registered_at, phone, accoun
           </Button>
           <Button variant="dark"
             className="button-box right-button button-grad button-grad:hover"
-            onClick={() => selectCustomer(id)}>
-            Checkout
+            onClick={() => makeRental()}>Checkout
           </Button>
         </div> 
       </Card.Body>

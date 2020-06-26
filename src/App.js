@@ -31,53 +31,61 @@ class App extends Component {
       error: undefined
     }; 
   }
-  
+
   // Geting Data from API
   componentDidMount() {
     // Geting Customers Data
     axios.get(`${BASE_URL}/customers`)
-    .then((response) => {
-      const customers = response.data;
-      this.setState({ 
-        customers,
-        error: undefined
+      .then((response) => {
+        const customers = response.data;
+        this.setState({
+          customers,
+          error: undefined
+        });
+        const selectedCustomerId = localStorage.getItem("customerId");
+        if (selectedCustomerId) {
+          this.selectCustomer(selectedCustomerId);
+        }
+      })
+      .catch((error) => {
+        this.setState({ error: error.message });
       });
-    })
-    .catch((error) => {
-      this.setState({ error: error.message });
-    });
     // Geting Movies Data
     axios.get(`${BASE_URL}/movies`)
-    .then((response) => {
-      const movies = response.data;
-      this.setState({ 
-        movies,
-        error: undefined
-      });
-    })
-    .catch((error) => {
-      this.setState({ error: error.message });
+      .then((response) => {
+        const movies = response.data;
+        this.setState({
+          movies,
+          error: undefined
+        });
+        const selectedMovieId = localStorage.getItem("movieId");
+        if (selectedMovieId) {
+          this.selectMovie(selectedMovieId);
+        }
+      })
+      .catch((error) => {
+        this.setState({ error: error.message });
     });
   }
+
   // Select Customer Method
   selectCustomer(customerId) {
-    console.log(customerId);
+    customerId = parseInt(customerId);
     const selectedCustomer = this.state.customers.find((customer) => {
       return customer.id === customerId;
     }) ;
     this.setState({ selectedCustomer });
+    localStorage.setItem("customerId", customerId);
   };
   // Select Movies Method
   selectMovie(movieId) {
-    console.log(movieId);
-    const selectedMovie = this.state.movies.find((movie) => {
-      return movie.id === movieId;
-    });
+    movieId = parseInt(movieId);
+    const selectedMovie = this.state.movies.find(movie => movie.id === movieId);
     this.setState({ selectedMovie });
+    localStorage.setItem("movieId", movieId);
   };
 
   makeRental(){
-    console.log(this.state.selectedMovie)
     if(this.state.selectedMovie){
       const title = this.state.selectedMovie.title
       const custoId = this.state.selectedCustomer.id
@@ -144,19 +152,19 @@ class App extends Component {
             <Nav.Link href="/library/home">Jetex Videos</Nav.Link>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Nav className="mr-auto">
-              <Nav.Link href="/library">Library</Nav.Link>
-              <Nav.Link href="/customers">Customers</Nav.Link>
+              <Nav.Link href="/library">Library | </Nav.Link>
+              <Nav.Link href="/customers">Customers | </Nav.Link>
+               <Nav.Link href="/search">Search</Nav.Link>
             </Nav>
-            <Form inline>
+            {/* <Form inline>
                <Form.Control type="text" placeholder="Movie Title"/>
                <Button variant="dark"
                  className="button-box button-grad button-grad:hover">Search</Button>
-            </Form>
+            </Form> */}
           </Navbar>
       <div className="Newsline">
-        <h3>{this.state.selectedMovie ? ("You Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
+        <h3>{this.state.selectedMovie ? ("You Selected: \n\n" + this.state.selectedMovie.title) : ""}</h3>
         <h3>{this.state.selectedCustomer ? ("Customer that you Selected: \n\n" + this.state.selectedCustomer.name) : "" }</h3>
-        {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.makeRental()}>Rent Now</Button> : ''}
         <h3>{this.state.success ? (this.state.success) : "" }</h3>
         <h3>{this.state.error ? (this.state.error) : "" }</h3>
       </div>
@@ -176,7 +184,8 @@ class App extends Component {
       <Route path="/customers">
         <CustomerList 
         customerList={this.state.customers} 
-        selectCustomer={(id) => this.selectCustomer(id)} />
+        selectCustomer={(id) => this.selectCustomer(id)}
+        makeRental={() => this.makeRental()} />
       </Route> 
       </Switch>
       </div>

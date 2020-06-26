@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import Customer from './Customer';
 import CardDeck from 'react-bootstrap/CardDeck'
 
-const CustomerList = ({ customerList, selectCustomer }) => {
+const CustomerList = ({ customerList, selectCustomer, makeRental }) => {
   const buildCustomers = () => {
     const customer = customerList.map((customer) => {
       return <Customer 
         key={customer.id}
         { ...customer }
         selectCustomer={(id) => selectCustomer(id)}
+        makeRental={() => makeRental()}
       />
     });
     return customer;
