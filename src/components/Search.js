@@ -56,10 +56,9 @@ const Search = () => {
       <div className="movie-container">
         {resultMovies.map((movieData) => (
           <div className="movie-details">
-            <p className="movie-title">{movieData.title}</p>
             <img src={movieData.image_url} alt="movie-image"/>
+            <p className="movie-title">{movieData.title}</p>
             <p className="movie-overview">{movieData.overview}</p>
-            <p className= "movie-inventory">{movieData.inventory}</p>
             <button class="movie-button" onClick={() => addMovie(movieData) }>Add to Library</button>
           </div>
         ))}
