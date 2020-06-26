@@ -2,6 +2,7 @@ import React from 'react';
 import './MovieLib.css';
 import PropTypes from 'prop-types';
 import Movie from './Movie'
+import CardDeck from 'react-bootstrap/CardDeck'
 
 const MovieLib = ({ movieList, selectMovie }) => {
   const buildMovie = () => {
@@ -17,8 +18,9 @@ const MovieLib = ({ movieList, selectMovie }) => {
 
   return (
     <div>
-      <h1>INFORMATION ABOUT MOVIES</h1>
+      <CardDeck>
       {buildMovie()}
+      </CardDeck>
     </div>
   );
 };

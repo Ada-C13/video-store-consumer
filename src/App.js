@@ -6,7 +6,14 @@ import CustomerList from './components/CustomerList'
 import MovieLib from './components/MovieLib'
 import MovieSearch from './components/MovieSearch'
 import Home from './components/Home'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Add to all components 
+// import * as ReactBootstrap from 'react-bootstrap'
+
 import { Button } from 'react-bootstrap/';
+import { Navbar, Nav } from 'react-bootstrap/';
+import Form from 'react-bootstrap/Form'
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -132,26 +139,23 @@ class App extends Component {
    return (
      <Router>
       <div className="App">
-      <header className="App-header">
-        <ul>
-          <li>
-            <Link to="/"> Home</Link>
-          </li>
-          <li>
-            <Link to="/search">Search for Movie</Link>
-          </li>
-          <li>
-            <Link to="/library">Library</Link>
-          </li>
-          <li>
-            <Link to="/customers">Customer List</Link>
-          </li>
-          <li>
-          <Button onClick={() => this.setSucces()}>Reset</Button>
-          </li>
-        </ul>
+        <header className="App-header">
+          <Navbar bg="light" expand="lg">
+            <Nav.Link href="/library/home">Jetex Videos</Nav.Link>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Nav className="mr-auto">
+              <Nav.Link href="/library">Library</Nav.Link>
+              <Nav.Link href="/customers">Customers</Nav.Link>
+            </Nav>
+            <Form inline>
+               <Form.Control type="text" placeholder="Movie Title"/>
+               <Button variant="dark"
+                 className="button-box button-grad button-grad:hover">Search</Button>
+            </Form>
+          </Navbar>
       <div>
-        <h3>{this.state.selectedMovie ? ("Movie that you Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
+
+        <h3>{this.state.selectedMovie ? ("You Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
         <h3>{this.state.selectedCustomer ? ("Customer that you Selected: \n\n" + this.state.selectedCustomer.name) : "" }</h3>
         {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.makeRental()}>Rent Now</Button> : ''}
         <h3>{this.state.success ? (this.state.success) : "" }</h3>

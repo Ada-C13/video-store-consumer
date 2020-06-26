@@ -2,26 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Movie.css';
 import { Button } from 'react-bootstrap/';
+import CardDeck from 'react-bootstrap/CardDeck'
+import Card from 'react-bootstrap/Card'
 
 const Movie = ({ id, title, overview, release_date, image_url, external_id, selectMovie }) => {
   return (
   <div className="">
-    <div className="">
-      <h3> {title} </h3>
-      <ul>
-        <li>Overview: {overview} </li>
-        <li>Release Date: {release_date} </li>
-        <li><img src={image_url} alt={title}/></li>
-        <li>External id: {external_id} </li>
-      </ul>
-    </div>
-    <div className="">
-      <Button
-        className=""
-        onClick={() => selectMovie(id)}>
-          Select Movie
-      </Button> 
-    </div>  
+      <Card style={{ width: '19rem' }}>
+      <Card.Img variant="top" src={image_url} />
+      <Card.Body>
+          <Card.Title><div className="h4-movie-card">{title}</div></Card.Title>
+        <Card.Text>
+          {overview}
+        </Card.Text>
+          <Card.Text><strong>Release Date </strong>{release_date}</Card.Text>
+          <Card.Text><strong>External ID </strong>{external_id}</Card.Text>
+          <div className="button-box-container">
+            <Button variant="dark"
+              className="button-box button-grad button-grad:hover"
+              onClick={() => selectMovie(id)}>
+              Rent Movie
+            </Button>
+          </div>  
+      </Card.Body>
+    </Card>
   </div>
   )
 };
