@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import './App.css';
 import axios from 'axios';
@@ -7,10 +7,7 @@ import SearchComponent from './components/SearchContainer';
 import Customers from './components/Customers';
 import Library from './components/Library';
 import Details from './components/Details';
-import Movie from './components/Movie';
-import Selected from './components/Selected';
 import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 // http://localhost:3000/rentals/{title}/check-out 

@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import Selected from './Selected'
 import '../App.css';
 
 const Customers = ({onUpdateCurrentCustomer}) => {
@@ -8,7 +7,7 @@ const Customers = ({onUpdateCurrentCustomer}) => {
 
   const [customerList, setCustomerList] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [selectedCustomerId, setSelectedCustomerId] = useState(null)
+  
 
   // Get Cusomter list
   useEffect(()=>{
@@ -19,7 +18,6 @@ const Customers = ({onUpdateCurrentCustomer}) => {
     })
     .catch((error) => {
       setErrorMessage(error.message);
-      console.log(error.message);
     });
   }, []);
   
@@ -27,14 +25,6 @@ const Customers = ({onUpdateCurrentCustomer}) => {
     event.preventDefault();
     onUpdateCurrentCustomer(event.target.value)
   }
-
-  const selectedComponents = () => {
-    return(
-      <Selected
-        customerId = {selectedCustomerId}
-      />
-    )
-  };
 
   return (
     <div>
@@ -63,10 +53,10 @@ const Customers = ({onUpdateCurrentCustomer}) => {
           <td className="customers-table-item">{customer.account_credit}</td>
           <td className="customers-table-item">{customer.movies_checked_out_count}</td>
           <button value = {customer.id} onClick={onSelectCustomerClick}>Select this Customer</button>
-          {false && selectedComponents()}
         </tr>
       ))}
       </table>
+      {errorMessage}
     </div>
   );
 }

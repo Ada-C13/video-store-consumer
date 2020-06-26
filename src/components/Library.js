@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import axios from 'axios';
-import "./Library.css"
+import "../App.css"
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
- /* found this sorting code here:https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/ */
-//  .sort((a, b) => (a.props.title > b.props.title) ? 1 : (a.props.title === b.props.title) ? ((a.props.externalId < b.props.externalId) ? 1 : -1) : -1 )
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
 const Library = ({onUpdateCurrentMovie}) => {
   const [movieList, setMovieList] = useState([])
   const [message, setMessage] = useState(null);
-  // const [selectedMovie, setSelectedMovie] = useState(null)
-  
+  console.log(movieList)
   useEffect(()=>{
     axios.get(API_URL_MOVIES)
     .then((response) => {
       const apiMovieList = response.data;
-      setMovieList(apiMovieList);
+      /* found this sorting code here:https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/ */
+      const sortedApiMovieList = apiMovieList.sort((a, b) => (a.title > b.title) ? 1 : (a.title === b.title) ? ((a.externalId < b.externalId) ? 1 : -1) : -1 )
+      setMovieList(sortedApiMovieList);
     })
     .catch((error) => {
       setMessage(error.message);
@@ -27,29 +26,11 @@ const Library = ({onUpdateCurrentMovie}) => {
 
   const onSelectMovieClick = (event) =>{
     event.preventDefault();
-    // setSelectedMovie(event.target.value);
     onUpdateCurrentMovie(event.target.value)
   }
 
-
-  // const onButtonClick = () => {
-  //   const updatedStudent = {
-  //     fullName: props.fullName,
-  //     birthday: props.birthday,
-  //     email: props.email,
-  //     // Toggle present to a new value
-  //     present: !props.present,
-  //     id: props.id,
-  //   }
-
-  //   // call the function passed from `App`
-  //   props.onUpdateStudent(updatedStudent);
-  // }
-
-  // console.log(selectedMovie)
-  
   return (
-    <div>
+    <div className="movie-list">
       {movieList.map(movie => (
         <div className="outer-card">
           <div className='card-container'>

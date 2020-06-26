@@ -2,22 +2,22 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Movie from "./Movie";
 
-const API_URL_MOVIES = "http://localhost:3000/movies"
+
 
 const Details = (props) => {
   const { title } = props.match.params
   const [message, setMessage] = useState(null);
   const [movie, setMovie] = useState(null)
   
+  const API_URL_MOVIES = `http://localhost:3000/movies/${title}`
   useEffect(()=>{
-    axios.get(API_URL_MOVIES + `/${title}`)
+    axios.get(API_URL_MOVIES)
     .then((response) => {
       const retrievedMovie = response.data
       setMovie(retrievedMovie)
     })
     .catch((error) => {
       setMessage(error.message);
-      console.log(message);
     });
   }, []);
 
@@ -41,6 +41,7 @@ const Details = (props) => {
     return (
       <div>
         {movieComponent}
+        {message}
       </div>
     );
   }
