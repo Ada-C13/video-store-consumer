@@ -22,7 +22,7 @@ const App = () => {
 
       {status && <div className="status">
         <div className="status-alert">{status}</div>
-        <button onClick= {() => setStatus(null)}>Dismiss</button> 
+        <button className="dismiss-button" onClick= {() => setStatus(null)}>Dismiss</button> 
       </div>}
 
       <Main

@@ -38,7 +38,7 @@ const Search = ({setStatusCallback}) => {
         console.log(response.data);
       })
       .catch((error) => {
-        setStatusCallback("Error: Unable to add movie to Library");
+        setStatusCallback("Movie already exists in Library");
         setError(error.message);
         console.log(error.message);
       });

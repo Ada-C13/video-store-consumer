@@ -87,10 +87,28 @@ h1 {
   font-weight: bold;
   color: rgb(94, 5, 80);
   font-size: 80px;
-  /* position: absolute; */
   padding-left: 200px;
 }
 
 .checkout-button {
   padding-left: 200px;
+}
+
+.status {
+  background-color: rgba(255, 192, 203, 0.637);
+  display: flex;
+  align-items: center;
+}
+
+.status-alert {
+  text-align: center;
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: rgb(94, 5, 80);
+  padding-right: 15px;
+  padding-left: 540px;
+}
+
+.dismiss-button {
+  font-size: 15px;
 }
