@@ -56,6 +56,7 @@ class CurrentlyCheckedOut extends Component {
 );
 
     return (
+      
       <div className="CurrentlyCheckedOut">
         <ul>
           {this.items}
