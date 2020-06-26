@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 
 import './SearchResult.css';
 
-const SearchResult = ({ title, overview, release_date, image_url, id }) => {
+const SearchResult = ({ title, overview, release_date, image_url, id, addMovieCallback }) => {
+  const movie_params = {
+    title: title,
+    overview: overview,
+    release_date: release_date,
+    image_url: image_url,
+    external_id: id,
+  };
   return (
     <div className="movie">
     <div className="movie-image">
@@ -15,7 +22,7 @@ const SearchResult = ({ title, overview, release_date, image_url, id }) => {
       <p>Release Date: {release_date}</p>
     </div>
     <div className="movie-buttons">
-      <button className="movie-button button-primary">Add to Library</button>
+      <button onClick={()=> addMovieCallback(movie_params)} className="movie-button button-primary">Add to Library</button>
     </div>
   </div>
   );

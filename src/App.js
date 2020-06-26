@@ -3,12 +3,10 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useRouteMatch,
-  useParams
+  Link
 } from "react-router-dom";
+
 import axios from 'axios'; 
-import PropTypes from 'prop-types';
 import ReactNotification, { store } from 'react-notifications-component'
 
 import './App.css';
@@ -53,6 +51,17 @@ const App = () => {
   }, []);
 
   useEffect( getMovies, [ getMovies ]);
+
+  const addMovie = (movie) => {
+    axios.post('http://localhost:3000/movies', movie)
+    .then((response) => {
+      setSearchResults(response.data);
+      setSuccessMessage(`${movie.title} added to library`);
+    })
+    .catch((error) => {
+      setErrorMessage(Object.values(error.response.data.errors));
+    });
+  };
 
   const selectMovie = (movie) => {
     setSelectedMovie(movie);
@@ -189,7 +198,7 @@ const App = () => {
       <main className="App-content">
         <Switch>
           <Route path="/search">
-            <Search results={searchResults} onSearchMovieCallback={searchMovies} />
+            <Search results={searchResults} onSearchMovieCallback={searchMovies} addMovieCallback={addMovie} />
           </Route>
           <Route path="/library">
             <Movies list={movieList} onSelectCallback={selectMovie} />

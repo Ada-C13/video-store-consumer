@@ -5,7 +5,7 @@ import './Search.css';
 
 import SearchResult from './SearchResult';
 
-const Search = ({ results, onSearchMovieCallback }) => {
+const Search = ({ results, onSearchMovieCallback, addMovieCallback }) => {
   const resultsList = results.map(result => 
     <SearchResult
       title={result.title}
@@ -14,6 +14,7 @@ const Search = ({ results, onSearchMovieCallback }) => {
       image_url={result.image_url}
       id={result.external_id}
       key={result.external_id}
+      addMovieCallback={addMovieCallback}
     />
   );
 
