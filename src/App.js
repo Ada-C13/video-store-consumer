@@ -27,7 +27,10 @@ const App = () => {
   const [ selectedCustomer, setSelectedCustomer ] = useState(null);
 
   const [ movieList, setMovieList] = useState([]);
+  const [ recentMovieList, setRecentMovieList] = useState([]);
+  const [ popularMovieList, setPopularMovieList] = useState([]);
   const [ selectedMovie, setSelectedMovie ] = useState(null);
+
 
   const searchMovies = (search) => {
     axios.get('http://localhost:3000/movies', { params: search })
@@ -51,6 +54,32 @@ const App = () => {
   }, []);
 
   useEffect( getMovies, [ getMovies ]);
+
+  const getPopularMovies = useCallback(() => {
+    axios.get('http://localhost:3000/movies', {params: {showcase: "popular"}})
+    .then((response) => {
+      setPopularMovieList(response.data);
+    })
+    .catch((error) => {
+      setErrorMessage(Object.values(error.response.data.errors));
+    })
+  }, []);
+
+  useEffect( getPopularMovies, [ getPopularMovies ]);
+
+
+  const getRecentMovies = useCallback(() => {
+    axios.get('http://localhost:3000/movies', {params: {showcase: "recently_added"}})
+    .then((response) => {
+      setRecentMovieList(response.data);
+    })
+    .catch((error) => {
+      setErrorMessage(Object.values(error.response.data.errors));
+    })
+  }, []);
+
+  useEffect( getRecentMovies, [ getRecentMovies ]);
+
 
   const addMovie = (movie) => {
     axios.post('http://localhost:3000/movies', movie)
@@ -210,7 +239,7 @@ const App = () => {
             <Checkout customer={selectedCustomer} movie={selectedMovie} onSubmitCallback={createRental} />
           </Route>
           <Route path="/">
-            <Home />
+            <Home recentMovies={recentMovieList} popularMovies={popularMovieList} onSelectCallback={selectMovie}/>
           </Route>
         </Switch>
       </main>
