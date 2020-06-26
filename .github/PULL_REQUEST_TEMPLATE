@@ -4,12 +4,12 @@ Congratulations! You're submitting your assignment!
 ## Comprehension Questions
 Question | Answer
 :------------- | :-------------
-Paste a link to the PR for your API |
-For each person in your pair, describe something you learned from your partner during this project |
-What was one area of React you gained more clarity on during this assignment? |
-Describe how you solved the problem of having lists of movies that look mostly the same but have different content |
-Describe how you handled rentals with React |
-Describe a DOM event your application handled |
-Did you use any functional stateless components? What for? |
-Did you use any container components? What for? |
-Do you have any recommendations on how we could improve this project for the next cohort? |
+Paste a link to the PR for your API | https://github.com/Ada-C13/video-store-consumer-api/pull/3
+For each person in your pair, describe something you learned from your partner during this project | Each of us recognize ther are different ways to approach a problem and thoes in themseves are great tools to learn. Example Chelsea uses binding.pry when vera uses byebug.
+What was one area of React you gained more clarity on during this assignment? |Passing functions through props. Turns out we don't need to call them at every level. They are references and when you understand that, they are easier to use.  
+Describe how you solved the problem of having lists of movies that look mostly the same but have different content | When we serch for a movie based of a word we allow you to select the move you want and add it to the library. Once it is in the library you can again select what you watn to check out, here we use the movie as an object so you have all the info to check out.  
+Describe how you handled rentals with React |Our checkout button uses the checkout URL with props. The key here being the date sets in the backend as today plus 5.
+Describe a DOM event your application handled | Thers are a few event like on click to add a movie to the library, select a user and movie. Then there is one to checkout like described above. 
+Did you use any functional stateless components? What for? | Movie is a stateless component. It essentially formats what the movie looks like after search. Routing also just redirects with out a state.
+Did you use any container components? What for? |App is a container of everything. Also, library is a container of movies. Store is a container of search. 
+Do you have any recommendations on how we could improve this project for the next cohort? |We agree that this would be better after doing react.

@@ -26,3 +26,194 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+
+h1 {
+  font-size: 40px;
+}
+
+@keyframes typewriter {
+  0%, 100% {
+    width: 0;
+  }
+  20%, 80% {
+    width: 10.2em;
+  }
+}
+
+@keyframes caret {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+
+.text_1 {
+  border-right: solid 3px black;
+  white-space: nowrap;
+  overflow: hidden;    
+  font-family: 'Dosis', sans-serif;
+  font-size: 45px;
+  color: salmon;
+  margin: 0 auto;
+}
+
+/* Animation */
+.text_1 {
+  animation: animated-text 4s steps(29,end) 1s 1 normal both,
+  animated-cursor 600ms steps(16,end) infinite;
+}
+
+/* text animation */
+
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: 300px;}
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor{
+  from{border-right-color:black;}
+  to{border-right-color: transparent;}
+}
+
+.selected_wording{
+  font-family: nunito;
+  color: #413542;
+  padding: 15px 0 0 15px;
+}
+
+.checkout{
+  margin-bottom: .5em;
+}
+
+
+.top {
+  /* margin: 30px; */
+  padding-top: 5px;
+  
+  display: grid;
+  grid-template: 1 fr 1fr 1fr 1fr 1fr ;
+}
+.container {
+  float: left;
+  grid-column: 3 / 2;
+  grid-row: 1 / 4;
+  justify-self: end;
+  padding-right: 5px;
+}
+
+.item-a {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  margin: 5px;
+}
+
+.logo {
+  float: right;
+  grid-column: 4 / 5;
+  grid-row: 1 / 4;
+  margin: 5px;
+}
+
+.navbar {
+  width: 100%;
+  font-family: nunito;
+
+}
+
+.checkout-button{
+  background-color: white !important; 
+  background: #ff7575 !important;
+  border-radius: 15px !important;
+  padding: 15px 15px !important;
+  color: white !important;
+  text-decoration: none !important;
+  font-size: 1.10em !important;;
+  margin: 0 10px !important;
+}
+
+.p-welcome{
+  font-family: 'Dosis', sans-serif;
+  font-size: 23px;
+  color: salmon;
+}
+
+.selected_checkout-bar{
+  font-family: nunito;
+}
+
+.strong-titles {
+  font-family: 'Dosis', sans-serif;
+  font-size: 23px;
+  color: salmon;
+}
+
+.error-message{
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fadd7d;
+    text-align: center;
+    line-height: 2.5;
+    font-family: nunito;
+    color:#a94442 ;
+
+    -webkit-box-shadow: 0 0 5px salmon;
+    -moz-box-shadow:    0 0 5px salmon;
+    box-shadow:         0 0 5px salmon;
+}
+
+@-webkit-keyframes slideDown {
+    0%, 100% { -webkit-transform: translateY(-50px); }
+    10%, 90% { -webkit-transform: translateY(0px); }
+}
+@-moz-keyframes slideDown {
+    0%, 100% { -moz-transform: translateY(-50px); }
+    10%, 90% { -moz-transform: translateY(0px); }
+}
+
+.cssanimations.csstransforms .error-message-movie {
+    -webkit-transform: translateY(-50px);
+    -webkit-animation: slideDown 2.5s 1.0s 1 ease forwards;
+    -moz-transform:    translateY(-50px);
+    -moz-animation:    slideDown 2.5s 1.0s 1 ease forwards;
+}
+
+.success-message{
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #dff0d8;
+    text-align: center;
+    line-height: 2.5;
+    font-family: nunito;
+
+    -webkit-box-shadow: 0 0 5px salmon;
+    -moz-box-shadow:    0 0 5px salmon;
+    box-shadow:         0 0 5px salmon;
+}
+
+@-webkit-keyframes slideDown {
+    0%, 100% { -webkit-transform: translateY(-50px); }
+    10%, 90% { -webkit-transform: translateY(0px); }
+}
+@-moz-keyframes slideDown {
+    0%, 100% { -moz-transform: translateY(-50px); }
+    10%, 90% { -moz-transform: translateY(0px); }
+}
+
+.cssanimations.csstransforms .success-message {
+    -webkit-transform: translateY(-50px);
+    -webkit-animation: slideDown 2.5s 1.0s 1 ease forwards;
+    -moz-transform:    translateY(-50px);
+    -moz-animation:    slideDown 2.5s 1.0s 1 ease forwards;
+}
