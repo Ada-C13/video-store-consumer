@@ -42,5 +42,7 @@ Movie.propTypes = {
   release_date: PropTypes.string.isRequired,
   inventory: PropTypes.number.isRequired,
   onSelectCallback: PropTypes.func.isRequired,
+  key: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
 }
 export default Movie;
