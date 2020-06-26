@@ -55,18 +55,15 @@ class App extends Component {
         <Router>
           <div>
             <Navbar color="light" light expand="md">
-              <Nav className="ml-auto" navbar>
+              <Nav  navbar>
                 <NavItem>
                   <NavbarBrand href="/">Home</NavbarBrand>
-                </NavItem>
-                <NavItem>
-                  <NavbarBrand href="/movies">Movie List</NavbarBrand>
                 </NavItem>
                 <NavItem>
                   <NavbarBrand href="/customers">Customers</NavbarBrand>
                 </NavItem>
                 <NavItem>
-                  <NavbarBrand href="/search">Search</NavbarBrand>
+                  <NavbarBrand href="/movies">Movie List</NavbarBrand>
                 </NavItem>
                 <NavItem>
                   <NavbarBrand href="/rental">Add a New Movie</NavbarBrand>
@@ -77,6 +74,9 @@ class App extends Component {
                 <NavItem>
                   <NavbarBrand href="/rentals/:title/check-out">Rentals to Cart</NavbarBrand>
                 </NavItem>
+                <NavItem>
+                  <NavbarBrand href="/search">Search</NavbarBrand>
+                </NavItem>
                 <p>
               {this.state.selectedCustomer?.name}
               {this.state.selectedMovie?.title}
@@ -84,7 +84,7 @@ class App extends Component {
             </p>
               </Nav>
             </Navbar>
-            <nav>
+            {/* <nav>
               <ul>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/movies">Movie List</Link></li>
@@ -93,12 +93,14 @@ class App extends Component {
                 <li><Link to="/rentals/currentlycheckedout">CurrentlyCheckedOut</Link></li>
                 <li><Link to="/rentals/:title/check-out">Rentals to Cart</Link></li>
               </ul>
-            </nav>
+            </nav> */}
             <p>
               {this.state.selectedCustomer?.name}
               {this.state.selectedMovie?.title}
 
             </p>
+          </div>
+          <div>
             <Switch>
               <Route path="/customers">
                 <CustomerIndex
@@ -122,7 +124,8 @@ class App extends Component {
               </Route>
               <Route path="/rentals/:title/check-out">
                 <Rental
-
+                  selectedCustomer={this.state.selectedCustomer}
+                  selectedMovie={this.state.selectedMovie}
                 />
               </Route>
             </Switch>
