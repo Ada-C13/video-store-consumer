@@ -18,8 +18,6 @@ const Customer = (props) => {
   return (
 
 <div>
-<Row xs="2">
-<Col xs="6" sm="4">
 <Card>
 <CardBody>
  <CardTitle>{id}</CardTitle>
@@ -32,8 +30,6 @@ const Customer = (props) => {
         {account_credit}
 </CardBody>
 </Card>
-</Col>
-</Row>
 </div>
   );
 };
