@@ -83,7 +83,7 @@ const App = () => {
           <Row>
             <Col>
               <Card className="rental-info">
-                <h4 className="rental-tag">Rental Information</h4>
+                <h4>Rental Information</h4>
                 <p>
                   {currentMovies ? "Selected Movie: " : null}
                   <strong>{currentMovies ? currentMovies.title : null}</strong>
