@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Checkout.css";
 
+const CHECKOUT_NEVER = 0;
+const CHECKOUT_SUCCESS = 1;
+const CHECKOUT_FAILURE = 2;
+
 const renderMovie = (movieData) => {
   if (!movieData) {
     return <p>No movie selected</p>;
@@ -46,6 +50,39 @@ const renderButton = (movieData, customerData, onCheckoutCallback) => {
   }
 };
 
+const renderCheckout = (
+  movieData,
+  customerData,
+  onCheckoutCallback,
+  checkoutStatus,
+  errorMessage
+) => {
+  if (checkoutStatus === CHECKOUT_NEVER) {
+    return (
+      <div className="checkout">
+        {renderMovie(movieData)}
+        {renderCustomer(customerData)}
+        {renderButton(customerData, movieData, onCheckoutCallback)}
+      </div>
+    );
+  }
+  if (checkoutStatus === CHECKOUT_FAILURE) {
+    return (
+      <div className="checkoutFailure">
+        Checkout failed. Error: {errorMessage}
+      </div>
+    );
+  }
+  if (checkoutStatus === CHECKOUT_SUCCESS) {
+    return (
+      <div className="checkoutSucess">
+        {renderCustomer(customerData)}
+        <p>Checkout was successful!</p>
+      </div>
+    );
+  }
+};
+
 // Checkout Component
 const Checkout = (props) => {
   console.log(`rendering Checkout...`, props);
@@ -53,12 +90,12 @@ const Checkout = (props) => {
     <div>
       <h1>Movie Checkout</h1>
       <div className="checkout">
-        {renderMovie(props.movieData)}
-        {renderCustomer(props.customerData)}
-        {renderButton(
-          props.customerData,
+        {renderCheckout(
           props.movieData,
-          props.onCheckoutCallback
+          props.customerData,
+          props.onCheckoutCallback,
+          props.checkoutStatus,
+          props.errorMessage
         )}
       </div>
     </div>
@@ -66,9 +103,11 @@ const Checkout = (props) => {
 };
 
 Checkout.propTypes = {
-  movieData: PropTypes.object.isRequired,
-  customerData: PropTypes.object.isRequired,
+  movieData: PropTypes.object,
+  customerData: PropTypes.object,
   onCheckoutCallback: PropTypes.func.isRequired,
+  checkoutStatus: PropTypes.number.isRequired,
+  errorMessage: PropTypes.string.isRequired,
 };
 
 export default Checkout;

@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import axios from "axios";
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import Alert from 'react-bootstrap/Alert'
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Alert from "react-bootstrap/Alert";
 
 import "./App.css";
 import Home from "./components/Home";
@@ -15,6 +15,9 @@ import Customers from "./components/Customers";
 import Checkout from "./components/Checkout";
 
 const API_URL_BASE = "http://localhost:3000";
+const CHECKOUT_NEVER = 0;
+const CHECKOUT_SUCCESS = 1;
+const CHECKOUT_FAILURE = 2;
 
 // App component
 const App = () => {
@@ -24,6 +27,7 @@ const App = () => {
   const [selectedCustomer, setCustomer] = useState(0);
   const [movieList, setMovieList] = useState([]);
   const [customerList, setCustomerList] = useState([]);
+  const [checkoutStatus, setCheckoutStatus] = useState(CHECKOUT_NEVER);
 
   // use hook/state for proper error handling
   const [errorMessage, setErrorMessage] = useState(null);
@@ -50,7 +54,7 @@ const App = () => {
       .catch((error) => {
         setErrorMessage(error.message);
       });
-  }, []);
+  }, [checkoutStatus]);
 
   const selectedMovieData = () => {
     console.log(`App, selectedMovieData`, selectedMovie);
@@ -105,6 +109,7 @@ const App = () => {
     console.log(`App, onMovieSelectCallback`, id);
     // change state
     setMovie(id);
+    setCheckoutStatus(CHECKOUT_NEVER);
   };
 
   // Callback function to select customer
@@ -112,6 +117,7 @@ const App = () => {
     console.log(`App, onCustomerSelectCallback`, id);
     // change state
     setCustomer(id);
+    setCheckoutStatus(CHECKOUT_NEVER);
   };
 
   // Callback function to perform checkout
@@ -121,9 +127,7 @@ const App = () => {
     date.setDate(new Date().getDate() + 7);
 
     // perform checkout
-    axios 
-      // /rentals/:title/check-out(.:format)
-      // params[:movie_id] params[:customer_id] params[:due_date])
+    axios
       .post(API_URL_BASE + `/rentals/${selectedMovieTitle()}/check-out`, {
         title: selectedMovieTitle(),
         customer_id: selectedCustomer,
@@ -131,16 +135,14 @@ const App = () => {
       })
       .then((response) => {
         console.log(`Checkout success`, response.data);
-        // const updatedCardList = [response.data, ...cardsList];
-        // setCardsList(updatedCardList);
+        setCheckoutStatus(CHECKOUT_SUCCESS);
       })
       .catch((error) => {
         console.log(`Checkout failure`, error.message);
-
+        setCheckoutStatus(CHECKOUT_FAILURE);
         setErrorMessage(error.message);
       });
 
-    setCustomer(0);
     setMovie(0);
   };
 
@@ -155,7 +157,7 @@ const App = () => {
           </Link>
           <Link to="/search">
             <li className="nav-item">Search</li>
-            </Link>
+          </Link>
           <Link to="/library">
             <li className="nav-item">Library</li>
           </Link>
@@ -175,8 +177,12 @@ const App = () => {
     return (
       <div>
         <ul className="selected">
-          <Alert variant="primary">Selected movie: {selectedMovieTitle()}</Alert>
-          <Alert variant="primary">Selected customer: {selectedCustomerName()}</Alert>
+          <Alert variant="primary">
+            Selected movie: {selectedMovieTitle()}
+          </Alert>
+          <Alert variant="primary">
+            Selected customer: {selectedCustomerName()}
+          </Alert>
         </ul>
       </div>
     );
@@ -185,16 +191,13 @@ const App = () => {
   const renderFooter = () => {
     return (
       <footer>
-        <div class="padded-container">
-        </div>
+        <div class="padded-container"></div>
         <div class="copyright">
-          <p>
-            © 2020 Copyright: Suely and Yoyo, ADA C13
-          </p>
+          <p>© 2020 Copyright: Suely and Yoyo, ADA C13</p>
         </div>
-      </footer> 
-    )
-  }
+      </footer>
+    );
+  };
 
   const addMovieCallBack = (movie) => {
     console.log(`App, add movie to library`);
@@ -260,6 +263,8 @@ const App = () => {
                 movieData={selectedMovieData()}
                 customerData={selectedCustomerData()}
                 onCheckoutCallback={onCheckoutCallback}
+                checkoutStatus={checkoutStatus}
+                errorMessage={errorMessage}
               />
             )}
           />
