@@ -12,7 +12,6 @@ const MovieSearch = ({url, selectMovie}) => {
   })
   const [message, setMessage] = useState(null);
 
-
   const onInputChange = (event) => {
     setFormFields({title: event.target.value})
   }
@@ -30,12 +29,8 @@ const MovieSearch = ({url, selectMovie}) => {
           setMessage(error.message);
         });
     }
-    
-    setMessage(null)
-    setSearchResultsList({title: "",})
-    setSearchResultsList([])
   }
-
+    
   const databaseMovies = () => searchResults.map((movie) => {
     return <SearchedMovie
       key={movie.id}
