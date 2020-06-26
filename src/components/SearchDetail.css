@@ -1,0 +1,9 @@
+.Search-detail-movie-container {
+  /* background-color: plum; */
+  padding: 10px ;
+  margin-top: 15px;
+}
+
+.Search-detail-movie-details {
+  font-weight: bold;
+}
