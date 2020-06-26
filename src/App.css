@@ -33,8 +33,18 @@ body {
   border-radius: 1.25rem;
   width: 45%;
   padding: 10px;
-  background-color: rgb(136, 199, 199) !important;
+  background-color: rgb(137, 148, 148) !important;
   font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+
+}
+
+.rental-info .card {
+  /* margin: 15px 0 !important ; */
+  margin: auto !important;
+}
+
+.rental-tag {
+margin: auto;
 }
 
 .carousel {
@@ -42,7 +52,7 @@ body {
 }
 
 .pages .container {
-  margin: 15px 0;
+  margin: 15px 0!important;
 }
 
 /* .carousel .slide {

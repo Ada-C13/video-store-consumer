@@ -3,6 +3,7 @@ import axios from "axios";
 import SearchBar from "./SearchBar";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
+import { Button } from "react-bootstrap";
 
 const Search = ({ API_URL_BASE }) => {
   const [selectedMovie, setSelectedMovie] = useState({});
@@ -74,9 +75,9 @@ const Search = ({ API_URL_BASE }) => {
             className={movie === selectedMovie ? "" : null}
           ></img>
           <p>{movie.overview}</p>
-          <button onClick={() => addMovie(movie)}>
+          <Button className="customer-button"onClick={() => addMovie(movie)}>
             Add Movie to Inventory
-          </button>
+          </Button>
         </div>
       );
     });
