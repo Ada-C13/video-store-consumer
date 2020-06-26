@@ -1,8 +1,6 @@
 import React,{useState} from 'react';
 import axios from 'axios';
-import "./Movie.css"
-import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "../App.css"
 
 
 
@@ -35,7 +33,7 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButto
       <div className='card-container'>
         <img src={imageUrl} alt={title +"poster"}></img>
         <div className='card-info'>
-          <h1>{title}</h1>
+          <h3>{title}</h3>
           <p>
             Released: {releaseDate}
           </p>
@@ -45,7 +43,7 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButto
         </div>
       </div>
       <div className="card-buttons">
-        {showAddButton && <Button variant="outline-secondary" onClick={addMovie}>Add to Movie Library</Button>}
+        <button className="btn btn-outline-secondary" onClick={addMovie}>Add to Movie Library</button>
       </div>
       <div>
         {message}

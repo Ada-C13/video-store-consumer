@@ -7,7 +7,7 @@ import SearchComponent from './components/SearchContainer';
 import Customers from './components/Customers';
 import Library from './components/Library';
 import Details from './components/Details';
-import Button from 'react-bootstrap/Button';
+
 
 
 // http://localhost:3000/rentals/{title}/check-out 
@@ -59,25 +59,27 @@ const App = () => {
 
 
   return (
-    <>
+    <div>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@400;800&family=Open+Sans&display=swap');
+      </style>
       <div className="header">
-        <h2>Welcome to the Video Store Admin Portal</h2>
+        <a href="/"><h2>Video Store Admin Portal</h2></a>
       </div>
 
       <div className="note">
         <p>Selected Customer: {currentCustomer}</p>
         <p>Selected Movie: {currentMovie}</p>
-        <Button variant="outline-secondary" onClick={checkOut}>Check-out</Button>
-        <Button variant="outline-secondary" onClick={returnMovie}>Return</Button>
+        <button className="btn btn-outline-secondary" onClick={checkOut}>Check-out</button>
+        <button className="btn btn-outline-secondary" onClick={returnMovie}>Return</button>
         <br/>
-        {message}
+        <h3>{message}</h3>
       </div>
-      
       <Router>
           <ul className="navbar">
             {/* https://medium.com/the-andela-way/understanding-the-fundamentals-of-routing-in-react-b29f806b157e*/}
             <Link to="/">Home</Link>
-            <Link to="/search"> Search for Movies</Link>
+            <Link to="/search"> Search</Link>
             <Link to="/library">Library</Link>
             <Link to="/customers">Customers</Link>
           </ul> 
@@ -91,9 +93,7 @@ const App = () => {
             <Route exact path= "/details/:title" component= {Details}/>
           </div>
       </Router> 
-
-      {/* {false && <Customers onUpdateCurrentCustomer={updateCustomer}/>} */}
-    </>
+    </div>
   );
 
 }

@@ -28,33 +28,31 @@ const Customers = ({onUpdateCurrentCustomer}) => {
 
   return (
     <div>
-      <table className="customers-table">
+      <table className="table table-hover">
       <tbody>
-        <tr>
-          <th className="customers-table-item">Name</th>
-          <th className="customers-table-item">ID</th>
-          <th className="customers-table-item">Address</th>
-          <th className="customers-table-item">City</th>
-          <th className="customers-table-item">State</th>
-          <th className="customers-table-item">Postal Code</th> 
-          <th className="customers-table-item">Phone</th>
-          <th className="customers-table-item">Account Credit</th>
-          <th className="customers-table-item">Movies Checked Out Count</th>
-          <th className="customers-table-item">Select</th>
+        <tr className="hover-row">
+          <th>Name</th>
+          <th>ID</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Postal Code</th> 
+          <th>Phone</th>
+          <th>Checked Out <br/> Count</th>
+          <th>Select</th>
         </tr>
-      {customerList.map(customer => (
-        <tr key={customer.id}>
-          <td className="customers-table-item">{customer.name}</td>
-          <td className="customers-table-item">{customer.id}</td>
-          <td className="customers-table-item">{customer.address}</td>
-          <td className="customers-table-item">{customer.city}</td>
-          <td className="customers-table-item">{customer.state}</td>
-          <td className="customers-table-item">{customer.postal_code}</td> 
-          <td className="customers-table-item">{customer.phone}</td>
-          <td className="customers-table-item">{customer.account_credit}</td>
-          <td className="customers-table-item">{customer.movies_checked_out_count}</td>
-          <button value = {customer.id} onClick={onSelectCustomerClick}>Select this Customer</button>
-        </tr>
+        {customerList.map(customer => (
+          <tr className="hover-row" key={customer.id}>
+            <td>{customer.name}</td>
+            <td>{customer.id}</td>
+            <td>{customer.address}</td>
+            <td>{customer.city}</td>
+            <td>{customer.state}</td>
+            <td>{customer.postal_code}</td> 
+            <td>{customer.phone}</td>
+            <td>{customer.movies_checked_out_count}</td>
+            <button className="btn btn-outline-secondary" value = {customer.id} onClick={onSelectCustomerClick}>Select this Customer</button>
+          </tr>
       ))}
       </tbody>
       </table>

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import axios from 'axios';
 import "../App.css"
-import Button from 'react-bootstrap/Button';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
@@ -36,9 +34,9 @@ const Library = ({onUpdateCurrentMovie}) => {
           <div className='card-container'>
             <img src={movie.image_url} alt={movie.title +"poster"}></img>
             <div className='card-info'>
-              <h1>{movie.title}</h1>
+              <h3>{movie.title}</h3>
               <p>
-                Released: {movie.release_rate}
+                Released: {movie.release_date}
               </p>
               <p>
                 {movie.overview}
@@ -46,9 +44,9 @@ const Library = ({onUpdateCurrentMovie}) => {
             </div>
           </div>
           <div className="card-buttons">
-            <Link to={`/details/${movie.title}`}><Button variant="outline-secondary">Details</Button></Link>
+            <Link to={`/details/${movie.title}`}><button className="btn btn-outline-secondary" >Details</button></Link>
             <br/>
-            <Button variant="outline-secondary" value={movie.title} onClick={onSelectMovieClick}>Select this Movie</Button>
+            <button className="btn btn-outline-secondary" value={movie.title} onClick={onSelectMovieClick}>Select this Movie</button>
           </div>
           <div>
             {message}
