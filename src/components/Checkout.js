@@ -19,7 +19,7 @@ import Customer from './Customer';
 
 const Checkout = ({ customer, movie, onSubmitCallback }) => {
 
-  const [dueDate, setDueDate] = useState(new Date());
+  const [dueDate, setDueDate] = useState(null);
 
   const handleDateChange = (date) => {
     setDueDate(date.toJSON());

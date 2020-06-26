@@ -23,6 +23,7 @@ import Checkout from './components/Checkout';
 const App = () => {
   const [ searchResults, setSearchResults ] = useState([]);
   const [ errorMessage, setErrorMessage ] = useState(null);
+  const [ successMessage, setSuccessMessage ] = useState(null);
   
   const [ customerList, setCustomerList ] = useState([]);
   const [ selectedCustomer, setSelectedCustomer ] = useState(null);
@@ -34,6 +35,7 @@ const App = () => {
     axios.get('http://localhost:3000/movies', { params: search })
     .then((response) => {
       setSearchResults(response.data);
+      setSuccessMessage(`Here are your search results`);
     })
     .catch((error) => {
       setErrorMessage(Object.values(error.response.data.errors));
@@ -70,21 +72,30 @@ const App = () => {
       customer_id: customer_id,
       due_date: due_date
     }
-    console.log(params);
+
     axios.post(`http://localhost:3000/rentals/${title}/check-out`, params)
-    .then((response) => {
-      setSearchResults(response.data);
+    .then((_response) => {
+      setSuccessMessage(`${title} has been checked out to Customer #${customer_id}`);
+      setSelectedCustomer(null);
+      setSelectedMovie(null);
     })
     .catch((error) => {
-      setErrorMessage(Object.values(error.response.data.errors));
+      setErrorMessage(Object.entries(error.response.data.errors));
     });
   }
 
   if (errorMessage) {
-    errorMessage.forEach(message => {
+    errorMessage.forEach(error => {
+      let message = null;
+      if (error.length > 1) {
+        message = `${error[0]} ${error[1][0]}`;
+      } else {
+        message = error[0];
+      }
+
       store.addNotification({
         title: "A problem occurred!",
-        message: message[0],
+        message: message,
         type: "warning",
         insert: "top",
         container: "top-left",
@@ -98,6 +109,24 @@ const App = () => {
     });
 
     setErrorMessage(null);
+  }
+
+  if (successMessage) {
+    store.addNotification({
+      title: "Success!",
+      message: successMessage,
+      type: "success",
+      insert: "top",
+      container: "top-left",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: {
+        duration: 5000,
+        onScreen: true
+      }
+    });
+
+    setSuccessMessage(null);
   }
 
   return (
