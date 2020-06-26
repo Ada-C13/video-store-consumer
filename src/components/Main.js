@@ -9,23 +9,16 @@ import Search from '../components/Search';
 const Main = (props) => {
   return (
     <Switch>
-      {/* The Switch decides which component to show based on the current URL.*/}
       <Route exact path='/' component={Home}></Route>
-      <Route
-        exact
-        path='/Library'
-        component={() => (
+
+      <Route exact path='/Library'>
           <Library setSelectedMovieCallBack={props.setSelectedMovieCallBack} />
-        )}
-      ></Route>
-      <Route
-        exact
-        path='/Customers'
-        component={() => (
-          <Customers setSelectedCustomerCallBack={props.setSelectedCustomerCallBack} />
-        )}
-      ></Route>
-      {/* MATCH THIS */}
+      </Route>
+
+      <Route exact path='/Customers' >
+        <Customers setSelectedCustomerCallBack={props.setSelectedCustomerCallBack} />
+      </Route>
+
       <Route exact path='/Search' >
         <Search setStatusCallback={props.setStatusCallback} />
       </Route>

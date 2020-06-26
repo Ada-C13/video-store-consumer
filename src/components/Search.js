@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Movie from './Movie';
 import './SearchLibraryMovie.css';
 
 const Search = ({setStatusCallback}) => {
@@ -35,11 +34,11 @@ const Search = ({setStatusCallback}) => {
     axios
       .post(base_url, movieData)
       .then((response) => {
-        setStatusCallback("success");
+        setStatusCallback("Movie successfully added to Libary");
         console.log(response.data);
       })
       .catch((error) => {
-        setStatusCallback("error");
+        setStatusCallback("Error: Unable to add movie to Library");
         setError(error.message);
         console.log(error.message);
       });
@@ -57,7 +56,7 @@ const Search = ({setStatusCallback}) => {
       {resultMovies.map((movieData) => (
         <div className="movie-container">
           <div className="movie-details">
-            <img src={movieData.image_url} alt="movie-image"/>
+            <img src={movieData.image_url} alt="movie-poster"/>
             <p className="movie-title">{movieData.title}</p>
             <p className="movie-overview">{movieData.overview}</p>
           </div>

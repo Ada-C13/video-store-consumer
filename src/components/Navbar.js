@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import "../App.css"
 
-const Navbar = (props) => {
+const Navbar = (props, {setStatusCallback}) => {
+
 
   const base_url = 'http://localhost:3000/rentals/';
   const [checkedOutMovie, setCheckedOutMovie] = useState(null);
@@ -23,6 +24,7 @@ const Navbar = (props) => {
         })
         .then((response) => {
           setCheckedOutMovie(response.data);
+          setStatusCallback("Movie successfully rented.")
           console.log(response.data);
         })
         .catch((error) => {

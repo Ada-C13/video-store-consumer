@@ -9,7 +9,7 @@ const Movie = (props) => {
   return (
     <div className="movie-container">
       <div className="movie-details">
-        <img src={props.image_url} alt="movie-image"/>
+        <img src={props.image_url} alt="movie-poster"/>
         <p className="movie-title">{props.title}</p>
         <p className="movie-overview">{props.overview}</p>
         <p className="movie-inventory">{props.inventory} Copies Available</p>
