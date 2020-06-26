@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   background-image: url("./backgroundimages/backgroundimage2.jpg");
+  height: 1200px;
 }
 
 .App-logo {
@@ -82,10 +83,10 @@ h1 {
 .store-name {
   font-family: ITC Machine;
   font-weight: bold;
-  color: rgb(141, 39, 124);
+  color: rgb(94, 5, 80);
   font-size: 80px;
   position: absolute;
-  padding-left: 35px;
+  padding-left: 90px;
 }
 
 .checkout-button {
