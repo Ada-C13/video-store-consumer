@@ -10,8 +10,11 @@ const Library = (props) => {
     axios
       .get('http://localhost:3000/movies')
       .then((response) => {
-        const allMovies = response.data;
-
+        const allMovies = (response.data).sort(function (a, b) {
+          if(a.title.toLowerCase() < b.title.toLowerCase()) return -1;
+          if(a.title.toLowerCase() > b.title.toLowerCase()) return 1;
+          return 0;
+        });
         setLibrary(allMovies);
       })
       .catch((error) => {
@@ -29,6 +32,7 @@ const Library = (props) => {
         release_date={movie.release_date}
         image_url={movie.image_url}
         external_id={movie.external_id}
+        inventory={movie.inventory}
         setSelectedMovieCallBack={props.setSelectedMovieCallBack}
       />
     );
@@ -36,8 +40,10 @@ const Library = (props) => {
 
   return (
     <div>
-      <h1>List of Movies</h1>
-      {moviesList}
+      <h1>All Movies</h1>
+      <div>
+        {moviesList}
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Movie from './Movie';
-import './Search.css';
+import './SearchLibraryMovie.css';
 
 const Search = () => {
   const base_url = 'http://localhost:3000/movies';
@@ -16,8 +16,14 @@ const Search = () => {
     axios
       .get(base_url + '?query=' + searchText)
       .then((response) => {
-        setResultMovies(response.data);
-        console.log(response.data);
+        const alphabetized = (response.data).sort(function (a, b) {
+          if(a.title.toLowerCase() < b.title.toLowerCase()) return -1;
+          if(a.title.toLowerCase() > b.title.toLowerCase()) return 1;
+          return 0;
+        });
+
+        setResultMovies(alphabetized);
+        console.log(alphabetized);
       })
       .catch((error) => {
         setError(error.message);
@@ -39,19 +45,20 @@ const Search = () => {
 
   return (
     <div>
-      <input
-        name='search'
-        onChange={(e) => setSearchText(e.target.value)}
-        value={searchText}
-      />
+      <h2>Search Results</h2>
+      <div class="searchbar">
+        <input class="searchbar-bar" onChange={(e) => setSearchText(e.target.value)} value={searchText}/>
 
-      <button onClick={handleSearch}>Search</button>
+        <button className="searchbar-button" onClick={handleSearch}>Search</button>
+      </div>
 
-      <div>
+      <div className="movie-container">
         {resultMovies.map((movieData) => (
-          <div>
-            <p>{movieData.title}</p>
-            <button onClick={() => addMovie(movieData)}>Add to Library</button>
+          <div className="movie-details">
+            <img src={movieData.image_url} alt="movie-image"/>
+            <p className="movie-title">{movieData.title}</p>
+            <p className="movie-overview">{movieData.overview}</p>
+            <button class="movie-button" onClick={() => addMovie(movieData) }>Add to Library</button>
           </div>
         ))}
       </div>
