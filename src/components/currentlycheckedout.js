@@ -10,17 +10,18 @@ class CurrentlyCheckedOut extends Component {
   }
 
   getCurrentlyCheckedOut() {
-  axios.get('http://localhost:3000/rentals/currentlycheckedout').then((response) => {
-      this.setState({
-        rentals: response.data
+    axios.get('http://localhost:3000/rentals/currentlycheckedout').then((response) => {
+        this.setState({
+          rentals: response.data
+        })
+        console.log(this.state.rentals)
+      }).catch(() => {
+        this.setState({
+          error: 'Error'
+        })
       })
-      console.log(this.state.rentals)
-    }).catch(() => {
-      this.setState({
-        error: 'Error'
-      })
-    })
-  }
+    }
+    
   //runs start of this component
   componentDidMount() {
     this.getCurrentlyCheckedOut()
@@ -47,8 +48,7 @@ class CurrentlyCheckedOut extends Component {
 
       <button
           className="btn btn-primary select-customer"
-          onClick={() => { this.onClickCheckIn(item.title, item.customer_id) }}
-        >
+          onClick={() => { this.onClickCheckIn(item.title, item.customer_id) }}>
           Returned
         </button>
     
