@@ -1,3 +1,11 @@
+.searchbar {
+  padding-top: 30px;
+  padding-right: 50px;
+  float: center;
+  position: relative;
+
+}
+
 .searchbar-button {
   color: black;
   padding: 15px;
@@ -8,20 +16,13 @@
 }
 
 h2 {
-  padding-left: 270px;
+  float: center;
   color: rgb(3, 3, 0);
   padding-top: 50px;
   font-size: 70px;
   font-weight: bold;
   -webkit-text-stroke: .02px black;
   font-family: herculanum;
-}
-
-.searchbar {
-  padding-top: 30px;
-  padding-right: 50px;
-  float: right;
-  position: relative;
 }
 
 .search-page {

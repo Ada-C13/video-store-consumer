@@ -1,7 +1,9 @@
-.App {
+Body {
   text-align: center;
   background-image: url("./backgroundimages/backgroundimage2.jpg");
-  height: 1200px;
+  height: 100%;
+  background-repeat: repeat;
+  background-attachment: fixed;
 }
 
 .App-logo {
@@ -59,6 +61,7 @@ h1 {
 }
 
 .selected {
+  font-size: 17px;
   font-family: 'Times New Roman', Times, serif;
   font-weight: lighter;
   text-align: left;
@@ -86,7 +89,7 @@ h1 {
   color: rgb(94, 5, 80);
   font-size: 80px;
   position: absolute;
-  padding-left: 90px;
+  padding-left: 200px;
 }
 
 .checkout-button {

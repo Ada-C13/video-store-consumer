@@ -45,13 +45,13 @@ const Search = () => {
 
   return (
     <div>
+      <h2>Search Results</h2>
       <div class="searchbar">
         <input class="searchbar-bar" onChange={(e) => setSearchText(e.target.value)} value={searchText}/>
 
         <button className="searchbar-button" onClick={handleSearch}>Search</button>
       </div>
 
-      <h2>Search Results</h2>
       <div className="movie-container">
         {resultMovies.map((movieData) => (
           <div className="movie-details">
