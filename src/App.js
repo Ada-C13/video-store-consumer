@@ -55,8 +55,7 @@ const App = () => {
   const addMovie = (movie) => {
     axios.post('http://localhost:3000/movies', movie)
     .then((response) => {
-      setSearchResults(response.data);
-      setSuccessMessage(`${movie.title} added to library`);
+      setSuccessMessage(`${response.title} added to library`);
     })
     .catch((error) => {
       setErrorMessage(Object.values(error.response.data.errors));
@@ -94,13 +93,13 @@ const App = () => {
       return;
     }
 
-    const params = {
+    const rental_params = {
       title: movie.title,
       customer_id: customer.id,
       due_date: due_date
     }
 
-    axios.post(`http://localhost:3000/rentals/${movie.title}/check-out`, params)
+    axios.post(`http://localhost:3000/rentals/${movie.title}/check-out`, rental_params)
     .then((_response) => {
       setSuccessMessage(`${movie.title} has been checked out to ${customer.name}`);
       setSelectedCustomer(null);
