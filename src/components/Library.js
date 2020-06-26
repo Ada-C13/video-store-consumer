@@ -40,7 +40,7 @@ const Library = (props) => {
 
   return (
     <div>
-      <h1>All Movies</h1>
+      <h1>Library</h1>
       <div>
         {moviesList}
       </div>

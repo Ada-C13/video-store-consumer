@@ -13,7 +13,7 @@ Body {
 
 .header {
   padding: 20px;
-  background-color: #ffeef9;
+  background-color: rgb(245, 242, 236);
 }
 
 .App-title {
@@ -37,19 +37,23 @@ Body {
 }
 
 h1 {
-  color: rgb(3, 3, 0);
+  color:  rgb(245, 242, 236);
   padding-top: 50px;
   font-size: 70px;
   font-weight: bold;
   -webkit-text-stroke: .02px black;
   font-family: herculanum;
+  background-color: rgb(248, 149, 138);
+  border: 10px dotted black;
+  padding: 15px;
+  margin: 25px 200px;
+  background-clip: padding-box;
 }
 
 .header-nav {
   width: 100%;
-  /* z-index: 1039; */
   height: 50px;
-  background-color: #ffeef9;
+  background-color: rgb(245, 242, 236);
   color: white;
   font-size: 17px;
 }
@@ -85,7 +89,7 @@ h1 {
 .store-name {
   font-family: ITC Machine;
   font-weight: bold;
-  color: rgb(94, 5, 80);
+  color: rgb(248, 149, 138);
   font-size: 80px;
   padding-left: 200px;
 }
