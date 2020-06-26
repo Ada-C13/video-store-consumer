@@ -4,6 +4,7 @@ import './MovieSearch.css'
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap/';
 
 const MovieSearch = ({url, selectMovie}) => {
   const [searchResults, setSearchResultsList] = useState([])
@@ -40,26 +41,26 @@ const MovieSearch = ({url, selectMovie}) => {
   });
 
   return(
-    <div>
-    <form onSubmit={onFormSubmit} >
+    <div className="Search-box">
+      <form onSubmit={onFormSubmit} >
+        <div>
+          <h2>Database Search</h2>
+          {/* <label>Title </label> */}
+          <input
+            name="title"
+            value={formFields.text}
+            onChange = {onInputChange}
+            type="text"
+          />
+        </div>
+        <div className="button-search-div">
+          <button>Search</button>
+        </div>
       <div>
-        <label>Title: </label>
-        <input
-          name="title"
-          value={formFields.text}
-          onChange = {onInputChange}
-          type="text"
-        />
+        {searchResults ? databaseMovies() : ""}
       </div>
-      <div>
-        <button>Search</button>
-      </div>
-    <div>
-      <h2>Database Search</h2>
-      {searchResults ? databaseMovies() : ""}
+      </form>
     </div>
-    </form>
-  </div>
   )
 }
 

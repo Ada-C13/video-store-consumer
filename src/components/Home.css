@@ -8,3 +8,65 @@ html, body {
   background-size: cover;
   background-attachment: fixed;
 }
+
+h1 {
+ color: white;
+ font-family: 'Roboto', sans-serif;
+ font-weight: 700;
+ font-size: 3.157rem;
+}
+
+h2 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 2.369rem;
+}
+
+h3 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.777rem;
+}
+
+h4 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.333rem;
+}
+
+h5 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.255rem;
+}
+
+h6 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  align-items: center;
+}
+
+.Newsline-lowered {
+  height: 20vh;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  font-size: 3em;
+  color: white;
+  text-align: center;
+  margin-top: 20vh;
+}

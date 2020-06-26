@@ -154,7 +154,8 @@ class App extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="/library">Library | </Nav.Link>
               <Nav.Link href="/customers">Customers | </Nav.Link>
-               <Nav.Link href="/search">Search</Nav.Link>
+              <Nav.Link href="/search">Search | </Nav.Link>
+               <Nav.Link href="onClick={() => this.setSucces()}>Reset">Reset</Nav.Link>
             </Nav>
             {/* <Form inline>
                <Form.Control type="text" placeholder="Movie Title"/>
