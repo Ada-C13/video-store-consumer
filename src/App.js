@@ -154,6 +154,9 @@ class App extends Component {
           <li>
             <Link to="/customers">Customer List</Link>
           </li>
+          <li>
+          <Button onClick={() => this.setSucces()}>Reset</Button>
+          </li>
         </ul>
       <div>
         <h3>{this.state.selectedMovie ? ("Movie that you Selected: \n\n" + this.state.selectedMovie.title) : "" }</h3>
@@ -161,7 +164,6 @@ class App extends Component {
         {(this.state.selectedMovie && this.state.selectedCustomer )? <Button onClick={() => this.makeRental()}>Rent Now</Button> : ''}
         <h3>{this.state.success ? (this.state.success) : "" }</h3>
         <h3>{this.state.error ? (this.state.error) : "" }</h3>
-        {this.state.success? <Button onClick={() => this.setSucces()}>Next Rental</Button> : ''}
       </div>
       </header>
     
