@@ -1,0 +1,57 @@
+.pages {
+  margin-top: 5em;
+}
+body {
+  background-color: darkslategray;
+}
+
+.customer-button {
+  display: inline-block !important;
+  padding: 7px 20px !important;
+  border-radius: 25px !important;
+  text-decoration: none !important;
+  color: #fff !important;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    #2f4f4f 0%,
+    #b3a39c 100%
+  ) !important;
+  background-image: linear-gradient(45deg, #2f4f4f 0%, #b3a39c 100%) !important;
+  transition: 0.4s !important;
+}
+
+.customer-button:hover {
+  background-image: -webkit-linear-gradient(
+    45deg,
+    #bdac7c 0%,
+    #a88d84 100%
+  ) !important;
+  background-image: linear-gradient(45deg, #bdac7c 0%, #a88d84 100%) !important;
+}
+
+.rental-info {
+  border-radius: 1.25rem;
+  width: 45%;
+  padding: 10px;
+  background-color: rgb(136, 199, 199) !important;
+  font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+}
+
+.carousel {
+  margin: 10px;
+}
+
+.pages .container {
+  margin: 15px 0;
+}
+
+/* .carousel .slide {
+  height: 50vh !important;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+} */
