@@ -1,0 +1,33 @@
+/* .movie-search-form {
+  display: flex;
+  width: 100%;
+} */
+
+.movie-search-form__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-search-form__form-textarea {
+  width: 98.7%;
+  height: 35px;
+  padding-left: 10px;
+  margin-bottom: 1em;
+}
+
+.movie-search-form__form-button {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1em;
+  color: #222;
+  background-color: #fff;
+  padding: .5em;
+  border: 1px solid #222;
+}
+
+.movie-search-form__form-button:hover {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #fff;
+}
