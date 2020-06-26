@@ -24,21 +24,25 @@ const Details = (props) => {
       <div></div>
     )
   } else {
-    const movieComponent = 
-      <Movie
-        key = {movie.external_id}
-        externalId = {movie.external_id}
-        title = {movie.title}
-        overview = {movie.overview}
-        releaseDate = {movie.release_date}
-        imageUrl = {movie.image_url}
-        showAddButton = {false}
-        showDetailButton = {false}
-      />
-    return (
-      <div>
-        {movieComponent}
-        {message}
+      return (
+      <div className="detail-card">
+          <div key={movie.id} className="detail-outer-card">
+            <div className='detail-card-container'>
+              <img src={movie.image_url} alt={movie.title +"poster"}></img>
+              <div className='detail-card-info'>
+                <h3>{movie.title}</h3>
+                <p>
+                  Released: {movie.release_date}
+                </p>
+                <p>
+                  {movie.overview}
+                </p>
+              </div>
+            </div>
+            <div>
+              {message}
+            </div>
+          </div>
       </div>
     );
   }

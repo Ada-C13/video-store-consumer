@@ -73,7 +73,7 @@ const App = () => {
         <button className="btn btn-outline-secondary" onClick={checkOut}>Check-out</button>
         <button className="btn btn-outline-secondary" onClick={returnMovie}>Return</button>
         <br/>
-        <h3>{message}</h3>
+        <h6>{message}</h6>
       </div>
       <Router>
           <ul className="navbar">

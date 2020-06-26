@@ -6,7 +6,7 @@ import "../App.css"
 
 const API_URL_MOVIES = "http://localhost:3000/movies"
 
-const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButton, showDetailButton, selectMovieButton}) => {
+const Movie = ({externalId, title, overview, releaseDate, imageUrl}) => {
   const [message, setMessage] = useState(null);
   
   const addMovie = (event) =>{
@@ -33,13 +33,12 @@ const Movie = ({externalId, title, overview, releaseDate, imageUrl, showAddButto
       <div className='card-container'>
         <img src={imageUrl} alt={title +"poster"}></img>
         <div className='card-info'>
-          <h3>{title}</h3>
-          <p>
-            Released: {releaseDate}
-          </p>
-          <p>
-            {overview}
-          </p>
+          <div className="card-info-text">
+            <h3>{title}</h3>
+            <p>
+              Released: {releaseDate}
+            </p>
+          </div>
         </div>
       </div>
       <div className="card-buttons">

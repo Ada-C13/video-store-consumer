@@ -8,7 +8,7 @@ const API_URL_MOVIES = "http://localhost:3000/movies"
 const Library = ({onUpdateCurrentMovie}) => {
   const [movieList, setMovieList] = useState([])
   const [message, setMessage] = useState(null);
-  console.log(movieList)
+
   useEffect(()=>{
     axios.get(API_URL_MOVIES)
     .then((response) => {
@@ -34,13 +34,12 @@ const Library = ({onUpdateCurrentMovie}) => {
           <div className='card-container'>
             <img src={movie.image_url} alt={movie.title +"poster"}></img>
             <div className='card-info'>
+            <div className="card-info-text">
               <h3>{movie.title}</h3>
               <p>
                 Released: {movie.release_date}
               </p>
-              <p>
-                {movie.overview}
-              </p>
+            </div>
             </div>
           </div>
           <div className="card-buttons">
