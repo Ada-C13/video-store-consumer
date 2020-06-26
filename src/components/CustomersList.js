@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import CustomerCard from './CustomerCard';
 
-const CustomersList = ({onUpdateSelectedCustomer, selected_id}) => {
+const CustomersList = ({onUpdateSelectedCustomer}) => {
   const [error, setError] = useState(null);
   const [customerList, setCustomerList] = useState(null);
 
@@ -11,7 +11,7 @@ const CustomersList = ({onUpdateSelectedCustomer, selected_id}) => {
     axios.get('http://localhost:3000/customers')
       .then((response) => {
         const data = response.data;
-        //console.log(`this is response.data ${response.data}`);
+        
         let customerCollection = data.map((customer) => {
           return (
             <div className="col-md-4 pb-4">
@@ -23,7 +23,6 @@ const CustomersList = ({onUpdateSelectedCustomer, selected_id}) => {
                 phone = {customer.phone}
                 key = {customer.id}
                 onUpdateSelect={onUpdateSelectedCustomer}
-                selected_id={selected_id}
               />
             </div>
           );
