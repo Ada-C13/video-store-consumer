@@ -1,0 +1,20 @@
+.movie-container .card-img-top {
+  width: 185px;
+}
+
+.movie-container .card {
+  margin: 1.5%;
+  max-width: 30%;
+}
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.movie-container .card-img-top {
+  margin: 0 !important;
+}
+
+.d-block {
+  max-height: 70vh !important;
+  margin: 0 auto;
+}
