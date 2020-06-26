@@ -1,21 +1,37 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import Main from './components/Main';
+import "./App.css"
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = () => {
+  const [selectedCustomer, setSelectedCustomer] = useState("");
+  const [selectedMovie, setSelectedMovie] = useState("");
+  const [status, setStatus] = useState(null)
+
+  console.log(selectedCustomer);
+  console.log(selectedMovie);
+ 
+
+  return (
+    <div className='App'>
+      <Navbar
+        selectedCustomer={selectedCustomer}
+        selectedMovie={selectedMovie}
+        setStatusCallback={setStatus}
+      />
+
+      {status && <div className="status">
+        <div className="status-alert">{status}</div>
+        <button className="dismiss-button" onClick= {() => setStatus(null)}>Dismiss</button> 
+      </div>}
+
+      <Main
+        setSelectedCustomerCallBack={setSelectedCustomer}
+        setSelectedMovieCallBack={setSelectedMovie}
+        setStatusCallback={setStatus}
+      />
+    </div>
+  );
+};
 
 export default App;

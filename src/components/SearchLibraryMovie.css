@@ -1,0 +1,86 @@
+.searchbar {
+  padding-top: 30px;
+  padding-right: 50px;
+  float: center;
+  position: relative;
+
+}
+
+.searchbar-button {
+  color: black;
+  padding: 15px;
+}
+
+.searchbar-bar {
+  padding: 15px;
+}
+
+h2 {
+  color:  rgb(245, 242, 236);
+  padding-top: 50px;
+  font-size: 70px;
+  font-weight: bold;
+  -webkit-text-stroke: .02px black;
+  font-family: herculanum;
+  background-color: rgb(248, 149, 138);
+  border: 10px dotted black;
+  padding: 15px;
+  margin: 25px 200px;
+  background-clip: padding-box;
+}
+
+.xsearch-page {
+  grid-template-rows: 0.5fr 1fr;
+  align-content: space-between;
+  margin-bottom: 100px;
+}
+
+.movie-container {
+  border-radius: 25px;
+  margin: 20px;
+  margin-top: 20px;
+  display: inline-grid;
+  align-items: center;
+  justify-items: center;
+  background-size: 300px auto;
+  width: 310px;
+  height: auto;
+  padding: 20px 5px 20px 5px;
+  justify-self: center;
+  background-color: rgb(245, 242, 236);
+}
+
+.movie-title {
+  font-size: 25px;
+  font-style: italic;
+  padding: 15px 45px;
+  font-weight: 700;
+  color: rgb(22, 14, 14);
+  text-shadow: 0 3px 2px rgba(0,0,0,0.3);
+}
+
+.movie-inventory {
+  font-size: 15px;
+  font-weight: bold;
+  padding-bottom: 15px;
+}
+
+.movie-image {
+  width: 25%;
+  height: auto;
+  margin: auto;
+  float: right;
+  position: absolute;
+  left: 3%;
+  top: 20%
+}
+.movie-overview {
+  padding-bottom: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.movie-button {
+  padding: 5px;
+  bottom: 0;
+}
