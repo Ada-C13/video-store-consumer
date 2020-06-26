@@ -32,7 +32,7 @@ const Library = ({onUpdateCurrentMovie}) => {
   return (
     <div className="movie-list">
       {movieList.map(movie => (
-        <div className="outer-card">
+        <div key={movie.id} className="outer-card">
           <div className='card-container'>
             <img src={movie.image_url} alt={movie.title +"poster"}></img>
             <div className='card-info'>

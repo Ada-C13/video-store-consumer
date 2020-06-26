@@ -29,6 +29,7 @@ const Customers = ({onUpdateCurrentCustomer}) => {
   return (
     <div>
       <table className="customers-table">
+      <tbody>
         <tr>
           <th className="customers-table-item">Name</th>
           <th className="customers-table-item">ID</th>
@@ -42,7 +43,7 @@ const Customers = ({onUpdateCurrentCustomer}) => {
           <th className="customers-table-item">Select</th>
         </tr>
       {customerList.map(customer => (
-        <tr>
+        <tr key={customer.id}>
           <td className="customers-table-item">{customer.name}</td>
           <td className="customers-table-item">{customer.id}</td>
           <td className="customers-table-item">{customer.address}</td>
@@ -55,6 +56,7 @@ const Customers = ({onUpdateCurrentCustomer}) => {
           <button value = {customer.id} onClick={onSelectCustomerClick}>Select this Customer</button>
         </tr>
       ))}
+      </tbody>
       </table>
       {errorMessage}
     </div>

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Movie from "./Movie";
 
-
-
 const Details = (props) => {
   const { title } = props.match.params
   const [message, setMessage] = useState(null);
@@ -19,14 +17,13 @@ const Details = (props) => {
     .catch((error) => {
       setMessage(error.message);
     });
-  }, []);
+  }, [API_URL_MOVIES]);
 
   if (!movie) {
     return (
       <div></div>
     )
   } else {
-    console.log(props)
     const movieComponent = 
       <Movie
         key = {movie.external_id}
