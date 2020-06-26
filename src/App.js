@@ -60,11 +60,11 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="App-logo">
+        <div className="App-header">
           OG.Blockbuster
         </div>
         <Router>
-          <div>
+          <div className="nav">
             <nav>
               <ul>
                 <li><Link to="/">Home</Link></li>

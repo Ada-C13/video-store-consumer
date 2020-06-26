@@ -46,8 +46,6 @@ class Rental extends Component {
       
       return (
         <div className='blah'>
-  
-          some rental stuff hereeeeeeeee <br></br>
          { displayRentalInfo}
          <button
           className="btn btn-primary select-customer"
