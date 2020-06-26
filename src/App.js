@@ -54,6 +54,11 @@ const App = () => {
 
   useEffect( getMovies, [ getMovies ]);
 
+  const selectMovie = (movie) => {
+    setSelectedMovie(movie);
+    setSuccessMessage(`${movie.title} has been selected`);
+  }
+
   const getCustomers = useCallback(() => {
     axios.get('http://localhost:3000/customers')
     .then((response) => {
@@ -65,6 +70,11 @@ const App = () => {
   }, []);
 
   useEffect( getCustomers, [ getCustomers ]);
+
+  const selectCustomer = (customer) => {
+    setSelectedCustomer(customer);
+    setSuccessMessage(`${customer.name} has been selected`);
+  }
 
   const createRental = (title, customer_id, due_date) => {
     const params = {
@@ -172,10 +182,10 @@ const App = () => {
             <Search results={searchResults} onSearchMovieCallback={searchMovies} />
           </Route>
           <Route path="/library">
-            <Movies list={movieList} onSelectCallback={setSelectedMovie} />
+            <Movies list={movieList} onSelectCallback={selectMovie} />
           </Route>
           <Route path="/customers">
-            <Customers list={customerList} onSelectCallback={setSelectedCustomer} />
+            <Customers list={customerList} onSelectCallback={selectCustomer} />
           </Route>
           <Route path="/checkout">
             <Checkout customer={selectedCustomer} movie={selectedMovie} onSubmitCallback={createRental} />
