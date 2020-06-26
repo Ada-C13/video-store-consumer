@@ -19,7 +19,7 @@ import Customer from './Customer';
 
 const Checkout = ({ customer, movie, onSubmitCallback }) => {
 
-  const [dueDate, setDueDate] = useState(new Date());
+  const [dueDate, setDueDate] = useState(null);
 
   const handleDateChange = (date) => {
     setDueDate(date.toJSON());
@@ -27,7 +27,7 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
   
   const submitRentalForm = (event) => {
     event.preventDefault();
-    onSubmitCallback(movie.title, customer.id, dueDate);
+    onSubmitCallback(movie, customer, dueDate);
   };
   
   return (
@@ -71,6 +71,9 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
           !customer && (
             <div className="checkout-customer">
               <p>No customer selected.</p>
+              <div className="checkout-customer__buttons">
+                <Link to="/customers" className="checkout__button">Browse Customers</Link>
+              </div>
             </div>
           )
         }
@@ -99,22 +102,21 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
           !movie && (
             <div className="checkout-movie">
               <p>No movie selected.</p>
+              <div className="checkout-movie__buttons">
+                <Link to="/library" className="checkout__button">Browse Library</Link>
+              </div>
             </div>
           )
         }
-        {
-          movie && customer && (
-            <div className="checkout">
-              <form className="checkout-form" onSubmit={submitRentalForm}>
-                <div className="checkout-form__form">
-                  <label className="checkout-form__form-label" htmlFor="due date"></label>
-                  <DayPickerInput onDayChange={handleDateChange} />
-                  <input type="submit" className="checkout__button" value="Create Rental"/>
-                </div>
-              </form>
+        <div className="checkout">
+          <form className="checkout-form" onSubmit={submitRentalForm}>
+            <div className="checkout-form__form">
+              <label className="checkout-form__form-label" htmlFor="due date"></label>
+              <DayPickerInput onDayChange={handleDateChange} />
+              <input type="submit" className="checkout__button" value="Create Rental"/>
             </div>
-          )
-        }
+          </form>
+        </div>
       </section>
     </section>
   );

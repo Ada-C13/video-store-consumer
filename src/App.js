@@ -9,7 +9,10 @@ import {
 } from "react-router-dom";
 import axios from 'axios'; 
 import PropTypes from 'prop-types';
+import ReactNotification, { store } from 'react-notifications-component'
+
 import './App.css';
+import 'react-notifications-component/dist/theme.css'
 
 import Home from './components/Home';
 import Search from './components/Search';
@@ -20,6 +23,7 @@ import Checkout from './components/Checkout';
 const App = () => {
   const [ searchResults, setSearchResults ] = useState([]);
   const [ errorMessage, setErrorMessage ] = useState(null);
+  const [ successMessage, setSuccessMessage ] = useState(null);
   
   const [ customerList, setCustomerList ] = useState([]);
   const [ selectedCustomer, setSelectedCustomer ] = useState(null);
@@ -31,9 +35,10 @@ const App = () => {
     axios.get('http://localhost:3000/movies', { params: search })
     .then((response) => {
       setSearchResults(response.data);
+      setSuccessMessage(`Here are your search results`);
     })
     .catch((error) => {
-      setErrorMessage(error.response.data.cause);
+      setErrorMessage(Object.values(error.response.data.errors));
     });
   };
 
@@ -43,11 +48,16 @@ const App = () => {
       setMovieList(response.data);
     })
     .catch((error) => {
-      setErrorMessage(error.response.data.cause);
+      setErrorMessage(Object.values(error.response.data.errors));
     })
   }, []);
 
   useEffect( getMovies, [ getMovies ]);
+
+  const selectMovie = (movie) => {
+    setSelectedMovie(movie);
+    setSuccessMessage(`${movie.title} has been selected`);
+  }
 
   const getCustomers = useCallback(() => {
     axios.get('http://localhost:3000/customers')
@@ -55,26 +65,86 @@ const App = () => {
       setCustomerList(response.data);
     })
     .catch((error) => {
-      setErrorMessage(error.response.data.cause);
+      setErrorMessage(Object.values(error.response.data.errors));
     });
   }, []);
 
   useEffect( getCustomers, [ getCustomers ]);
 
-  const createRental = (title, customer_id, due_date) => {
+  const selectCustomer = (customer) => {
+    setSelectedCustomer(customer);
+    setSuccessMessage(`${customer.name} has been selected`);
+  }
+
+  const createRental = (movie, customer, due_date) => {
+    if (!customer) {
+      setErrorMessage([["Please select a customer"]]);
+      return;
+    } else if (!movie) {
+      setErrorMessage([["Please select a movie"]]);
+      return;
+    }
+
     const params = {
-      title: title,
-      customer_id: customer_id,
+      title: movie.title,
+      customer_id: customer.id,
       due_date: due_date
     }
-    console.log(params);
-    axios.post(`http://localhost:3000/rentals/${title}/check-out`, params)
-    .then((response) => {
-      setSearchResults(response.data);
+
+    axios.post(`http://localhost:3000/rentals/${movie.title}/check-out`, params)
+    .then((_response) => {
+      setSuccessMessage(`${movie.title} has been checked out to ${customer.name}`);
+      setSelectedCustomer(null);
+      setSelectedMovie(null);
     })
     .catch((error) => {
-      setErrorMessage(error.response.data.cause);
+      setErrorMessage(Object.entries(error.response.data.errors));
     });
+  }
+
+  if (errorMessage) {
+    errorMessage.forEach(error => {
+      let message = null;
+      if (error.length > 1) {
+        message = `${error[0]} ${error[1][0]}`;
+      } else {
+        message = error[0];
+      }
+
+      store.addNotification({
+        title: "A problem occurred!",
+        message: message,
+        type: "warning",
+        insert: "top",
+        container: "top-left",
+        animationIn: ["animated", "fadeIn"],
+        animationOut: ["animated", "fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
+    });
+
+    setErrorMessage(null);
+  }
+
+  if (successMessage) {
+    store.addNotification({
+      title: "Success!",
+      message: successMessage,
+      type: "success",
+      insert: "top",
+      container: "top-left",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: {
+        duration: 5000,
+        onScreen: true
+      }
+    });
+
+    setSuccessMessage(null);
   }
 
   return (
@@ -91,24 +161,30 @@ const App = () => {
         </nav>
 
         <div className="App-selected">
-              <h3>Current Selection</h3>
+          <h3>Current Selection</h3>
+          <div className="App-selected__customer">
             {
               selectedCustomer && (
-                <span className="App-selected__customer">Customer: {selectedCustomer.name}</span>
-              )
-            }
-            {
-              selectedMovie && (
-                <span className="App-selected__movie">Movie: {selectedMovie.title} {selectedMovie.name}</span>
-              )
-            }
-            {
-              selectedCustomer && selectedMovie && (
-                <Link to="/checkout" className="App-selected__checkout">Checkout</Link>
+                <span className="App-selected__customer-name">Customer: {selectedCustomer.name}</span>
               )
             }
           </div>
+          <div className="App-selected__movie">
+            {
+              selectedMovie && (
+                <span className="App-selected__movie-name">Movie: {selectedMovie.title} {selectedMovie.name}</span>
+              )
+            }
+          </div>
+          <div className="App-selected__checkout">
+            <Link to="/checkout" className="App-selected__checkout-button">Checkout</Link>
+          </div>
+        </div>
       </header>
+
+      <section className="App-errors">
+          <ReactNotification />
+        </section>
 
       <main className="App-content">
         <Switch>
@@ -116,10 +192,10 @@ const App = () => {
             <Search results={searchResults} onSearchMovieCallback={searchMovies} />
           </Route>
           <Route path="/library">
-            <Movies list={movieList} onSelectCallback={setSelectedMovie} />
+            <Movies list={movieList} onSelectCallback={selectMovie} />
           </Route>
           <Route path="/customers">
-            <Customers list={customerList} onSelectCallback={setSelectedCustomer} />
+            <Customers list={customerList} onSelectCallback={selectCustomer} />
           </Route>
           <Route path="/checkout">
             <Checkout customer={selectedCustomer} movie={selectedMovie} onSubmitCallback={createRental} />
