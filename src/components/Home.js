@@ -5,7 +5,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 // import './Home.css';
 
 const Home = () => {
-  return <h2>Home</h2>;
+  return <h2>Welcome to I<span role="img" aria-label="heart">♥️</span>VIDEO!</h2>;
 }
 
 export default Home;

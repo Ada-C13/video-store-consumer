@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 .App {
   /* text-align: center; */
 }
@@ -18,12 +20,18 @@
 }
 
 .App-title {
-  font-size: 2em;
+  font-size: 60px;
+  font-family: 'Fredoka One', cursive;
 }
 
 .App-title a {
   text-decoration: none;
   color: #fff;
+  text-shadow:
+  -3px -3px 0 #45c,  
+   3px -3px 0 #45c,
+   -3px 3px 0 #45c,
+    3px 3px 0 #45c;
 }
 
 .App-intro {
