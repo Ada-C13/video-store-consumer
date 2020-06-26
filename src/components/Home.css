@@ -1,0 +1,64 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translate(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } 
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translate(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } 
+}
+
+.home-header {
+  height: 96vh;
+  background-image: linear-gradient(to bottom, rgba(21, 123, 233, 0.8), rgba(21, 22, 24, 0.5)), url(../star_wars.jpg);
+  background-size: cover;
+  background-position: center;
+  margin: 0
+}
+
+.home-header__text-box {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; 
+}
+
+.heading-primary {
+  color: #FFF;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem; 
+}
+  
+.heading-primary--main {
+  display: block;
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 1rem;
+  animation-name: moveInLeft;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  backface-visibility: hidden; 
+}
+  
+.heading-primary--sub {
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.6rem;
+    animation: moveInRight 1.5s ease-out;
+    backface-visibility: hidden; 
+}
