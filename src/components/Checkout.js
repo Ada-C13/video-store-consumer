@@ -27,7 +27,7 @@ const Checkout = ({ customer, movie, onSubmitCallback }) => {
   
   const submitRentalForm = (event) => {
     event.preventDefault();
-    onSubmitCallback(movie.title, customer.id, dueDate);
+    onSubmitCallback(movie.title, customer.id, customer.name, dueDate);
   };
   
   return (

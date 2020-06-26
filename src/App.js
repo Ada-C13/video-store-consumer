@@ -76,7 +76,7 @@ const App = () => {
     setSuccessMessage(`${customer.name} has been selected`);
   }
 
-  const createRental = (title, customer_id, due_date) => {
+  const createRental = (title, customer_id, customer_name, due_date) => {
     const params = {
       title: title,
       customer_id: customer_id,
@@ -85,7 +85,7 @@ const App = () => {
 
     axios.post(`http://localhost:3000/rentals/${title}/check-out`, params)
     .then((_response) => {
-      setSuccessMessage(`${title} has been checked out to Customer #${customer_id}`);
+      setSuccessMessage(`${title} has been checked out to ${customer_name}`);
       setSelectedCustomer(null);
       setSelectedMovie(null);
     })
