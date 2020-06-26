@@ -37,7 +37,9 @@ const Library = (props) => {
   return (
     <div>
       <h1>List of Movies</h1>
-      {moviesList}
+      <div className="movies-list">
+        {moviesList}
+      </div>
     </div>
   );
 };

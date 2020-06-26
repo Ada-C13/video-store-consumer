@@ -1,4 +1,5 @@
 import React from 'react';
+import './Search.css';
 
 const Movie = (props) => {
   const onButtonClick = () => {
@@ -7,11 +8,13 @@ const Movie = (props) => {
   
   return (
     <div>
-      <li>
-        <strong>{props.title}</strong>
-      </li>
-      <p>{props.overview}</p>
-      <button className='Movie' onClick={onButtonClick}>
+      <div className="movie-details">
+        <p className="movie-title">{props.title}</p>
+        <p className="movie-overview">{props.overview}</p>
+        <img src={props.image_url} alt="movie-image"/>
+        <p className= "movie-inventory">{props.inventory}</p>
+      </div>
+      <button className="movie-button" onClick={onButtonClick}>
         Select Movie
       </button>
     </div>

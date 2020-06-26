@@ -26,3 +26,42 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(19, 15, 15)
+}
+
+.header-nav {
+  box-sizing: border-box;
+  z-index: 1039;
+  width: 100%;
+  background-color: #f8fdae;
+  color: white;
+}
+
+.selected {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  text-align: left;
+}
+
+.links {
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  justify-content: space-between;
+  padding-right: 15px;
+  font-weight: bold;
+}
+
+.nav-link, .divider{
+  font-weight: bold;
+  color: black;
+}

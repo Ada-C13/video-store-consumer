@@ -1,0 +1,45 @@
+.searchbutton {
+  color: black
+}
+
+.search-page {
+  display: grid;
+  grid-template-rows: 0.5fr 1fr;
+  align-content: space-between;
+  margin-bottom: 100px;
+}
+
+.search-movie-container {
+  border-radius: 25px;
+  margin: 50px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  background-size: 400px auto;
+  width: 400px;
+  height: 500px;
+  padding-top: 50px;
+  justify-self: center;
+}
+
+.movie-title {
+  line-height: 1.35;
+  font-size: 1.5rem;
+  font-style: italic;
+  padding: 15px 45px;
+  font-weight: 700;
+  color: rgb(238, 143, 143);
+  text-shadow: 0 3px 2px rgba(0,0,0,0.3);
+}
+
+.movie-image {
+  width: 25%;
+  height: auto;
+  margin: auto;
+  float: right;
+  position: absolute;
+  left: 3%;
+  top: 20%
+}

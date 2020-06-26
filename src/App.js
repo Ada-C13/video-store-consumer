@@ -6,9 +6,6 @@ const App = () => {
   const [selectedCustomer, setSelectedCustomer] = useState("");
   const [selectedMovie, setSelectedMovie] = useState("");
 
-  // let setSelectedCustomerCallBack = (customerId) => {
-  //   setSelectedCustomer(customerId)
-  // };
   console.log(selectedCustomer);
   console.log(selectedMovie);
 

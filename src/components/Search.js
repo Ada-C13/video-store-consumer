@@ -16,8 +16,14 @@ const Search = () => {
     axios
       .get(base_url + '?query=' + searchText)
       .then((response) => {
-        setResultMovies(response.data);
-        console.log(response.data);
+        var alphabetized = (response.data).sort(function (a, b) {
+          if(a.title.toLowerCase() < b.title.toLowerCase()) return -1;
+          if(a.title.toLowerCase() > b.title.toLowerCase()) return 1;
+          return 0;
+        });
+
+        setResultMovies(alphabetized);
+        console.log(alphabetized);
       })
       .catch((error) => {
         setError(error.message);
@@ -39,19 +45,22 @@ const Search = () => {
 
   return (
     <div>
-      <input
-        name='search'
-        onChange={(e) => setSearchText(e.target.value)}
+      <input 
+        className="searchbar" 
+        onChange={(e) => setSearchText(e.target.value)} 
         value={searchText}
       />
 
-      <button onClick={handleSearch}>Search</button>
+      <button className="searchbutton" onClick={handleSearch}>Search</button>
 
-      <div>
+      <div className="search-movie-container">
         {resultMovies.map((movieData) => (
-          <div>
-            <p>{movieData.title}</p>
-            <button onClick={() => addMovie(movieData)}>Add to Library</button>
+          <div className="search-movie-details">
+            <p className="movie-title">{movieData.title}</p>
+            <p className="movie-overview">{movieData.overview}</p>
+            <img src={movieData.image_url} alt="movie-image"/>
+            <p className= "movie-inventory">{movieData.inventory}</p>
+            <button onClick={() => addMovie(movieData) }>Add to Library</button>
           </div>
         ))}
       </div>
