@@ -9,7 +9,10 @@ import {
 } from "react-router-dom";
 import axios from 'axios'; 
 import PropTypes from 'prop-types';
+import ReactNotification, { store } from 'react-notifications-component'
+
 import './App.css';
+import 'react-notifications-component/dist/theme.css'
 
 import Home from './components/Home';
 import Search from './components/Search';
@@ -33,7 +36,7 @@ const App = () => {
       setSearchResults(response.data);
     })
     .catch((error) => {
-      setErrorMessage(error.response.data.errors.query);
+      setErrorMessage(Object.values(error.response.data.errors));
     });
   };
 
@@ -43,7 +46,7 @@ const App = () => {
       setMovieList(response.data);
     })
     .catch((error) => {
-      setErrorMessage(error.response.data.cause);
+      setErrorMessage(Object.values(error.response.data.errors));
     })
   }, []);
 
@@ -55,7 +58,7 @@ const App = () => {
       setCustomerList(response.data);
     })
     .catch((error) => {
-      setErrorMessage(error.response.data.errors.sort);
+      setErrorMessage(Object.values(error.response.data.errors));
     });
   }, []);
 
@@ -73,8 +76,28 @@ const App = () => {
       setSearchResults(response.data);
     })
     .catch((error) => {
-      setErrorMessage(error.response.data.cause);
+      setErrorMessage(Object.values(error.response.data.errors));
     });
+  }
+
+  if (errorMessage) {
+    errorMessage.forEach(message => {
+      store.addNotification({
+        title: "A problem occurred!",
+        message: message[0],
+        type: "warning",
+        insert: "top",
+        container: "top-left",
+        animationIn: ["animated", "fadeIn"],
+        animationOut: ["animated", "fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
+    });
+
+    setErrorMessage(null);
   }
 
   return (
@@ -110,10 +133,11 @@ const App = () => {
           </div>
       </header>
 
-      <main className="App-content">
-        <section className="App-content__errors">
-          <p>{errorMessage}</p>
+      <section className="App-errors">
+          <ReactNotification />
         </section>
+
+      <main className="App-content">
         <Switch>
           <Route path="/search">
             <Search results={searchResults} onSearchMovieCallback={searchMovies} />
