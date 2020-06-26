@@ -76,16 +76,24 @@ const App = () => {
     setSuccessMessage(`${customer.name} has been selected`);
   }
 
-  const createRental = (title, customer_id, customer_name, due_date) => {
+  const createRental = (movie, customer, due_date) => {
+    if (!customer) {
+      setErrorMessage([["Please select a customer"]]);
+      return;
+    } else if (!movie) {
+      setErrorMessage([["Please select a movie"]]);
+      return;
+    }
+
     const params = {
-      title: title,
-      customer_id: customer_id,
+      title: movie.title,
+      customer_id: customer.id,
       due_date: due_date
     }
 
-    axios.post(`http://localhost:3000/rentals/${title}/check-out`, params)
+    axios.post(`http://localhost:3000/rentals/${movie.title}/check-out`, params)
     .then((_response) => {
-      setSuccessMessage(`${title} has been checked out to ${customer_name}`);
+      setSuccessMessage(`${movie.title} has been checked out to ${customer.name}`);
       setSelectedCustomer(null);
       setSelectedMovie(null);
     })
@@ -153,23 +161,25 @@ const App = () => {
         </nav>
 
         <div className="App-selected">
-              <h3>Current Selection</h3>
+          <h3>Current Selection</h3>
+          <div className="App-selected__customer">
             {
               selectedCustomer && (
-                <span className="App-selected__customer">Customer: {selectedCustomer.name}</span>
-              )
-            }
-            {
-              selectedMovie && (
-                <span className="App-selected__movie">Movie: {selectedMovie.title} {selectedMovie.name}</span>
-              )
-            }
-            {
-              selectedCustomer && selectedMovie && (
-                <Link to="/checkout" className="App-selected__checkout">Checkout</Link>
+                <span className="App-selected__customer-name">Customer: {selectedCustomer.name}</span>
               )
             }
           </div>
+          <div className="App-selected__movie">
+            {
+              selectedMovie && (
+                <span className="App-selected__movie-name">Movie: {selectedMovie.title} {selectedMovie.name}</span>
+              )
+            }
+          </div>
+          <div className="App-selected__checkout">
+            <Link to="/checkout" className="App-selected__checkout-button">Checkout</Link>
+          </div>
+        </div>
       </header>
 
       <section className="App-errors">
