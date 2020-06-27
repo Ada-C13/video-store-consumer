@@ -1,5 +1,119 @@
+html, body {
+  background: no-repeat;
+  background-image: url('/images/9108.png');
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+ color: white;
+ font-family: 'Roboto', sans-serif;
+ font-weight: 700;
+ font-size: 3.157rem;
+}
+
+h2 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 2.369rem;
+}
+
+h3 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.777rem;
+}
+
+h4 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.333rem;
+}
+
+h5 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.255rem;
+}
+
+h6 {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+}
+
+p {
+  color: white;
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+ul {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+li {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Navbar styling */
+
+nav {
+  height: 20vh;
+  width: 100%;
+  color: #151547;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 3.157rem;
+}
+
+nav.logo {
+  width: 100%;
+  color: #151547;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 3.157rem;
+}
+
+nav:hover {
+  color: #151547;
+}
+
+a.nav-link {
+  color: #151547;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.777rem;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.button-grad {
+  background-image: linear-gradient(to right, #41295a 0%, #2F0743 51%, #41295a 100%);
+}
+
+.button-grad:hover { 
+  background-position: right center;
+}
+
+
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -7,14 +121,13 @@
   height: 80px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+/* .App-header {
+  height: 160px;
   color: white;
-}
+} */
 
 .App-title {
+  color: white;
   font-size: 1.5em;
 }
 
@@ -25,4 +138,13 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.Newsline {
+  height: 5vh;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  text-align: center;
+  margin-top: 5vh;
 }

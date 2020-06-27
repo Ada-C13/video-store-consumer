@@ -1,0 +1,77 @@
+.cards {
+  margin-bottom: 1rem;
+}
+
+.card {
+  margin-top: 2rem;
+  align-items: stretch;
+}
+
+.h4-movie-card {
+  color: 151547;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.333rem;
+}
+
+.h5-movie-card {
+  color: 151547;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.255rem;
+}
+
+body {
+  color: #151547;
+}
+
+p {
+  color: #151547;
+}
+
+Button {
+  background-color: #151547;
+  outline: !important none;
+  border-style: none;
+}
+
+.button-box-container {
+  padding: 0px;
+  margin: 0px;
+  margin-right: 0px;
+  justify-content: space-evenly;
+}
+
+.button-box {
+  text-align:left;
+  margin-bottom: 1rem;
+  margin-right: 0px;
+  margin: 0px;
+}
+
+.button-grad {
+  background-image: linear-gradient(to right, #41295a 0%, #2F0743 51%, #41295a 100%);
+  outline: none !important;
+  box-shadow: none !important;
+  font-family: -apple-system, Roboto,'Open Sans'sans-serif;
+}
+
+.button-grad:hover { 
+  background-position: right center;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.right-button {
+  float:right;
+  margin-bottom: 1rem;
+  outline: !important none;
+}
+
+button:focus {
+  outline:none;
+}
+
+p.card-text {
+  padding: 0px;
+}

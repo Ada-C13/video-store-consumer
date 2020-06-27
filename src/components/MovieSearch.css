@@ -1,0 +1,26 @@
+button {
+  background: white;
+  color: #151547;
+  margin: 2px;
+}
+
+.button-search-div {
+  margin: 2vh 2vw;;
+}
+
+form {
+  margin-bottom: 2vh;
+}
+
+.Search-box {
+  display: flex;
+  justify-content: center;
+  height: 25vh;
+  width: 35%;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  text-align: center;
+  margin-top: 20vh;
+  margin-left:32vw;
+  justify-content: center;
+}
