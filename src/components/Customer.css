@@ -1,0 +1,31 @@
+
+.customer-card-container {
+  margin: 10px;
+  column-count: 1;
+  text-align: center;
+}
+
+.customer-name{
+  margin: 10px;
+  color: black;
+}
+
+.customer-name h4 {
+  color: black;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  list-style-type: none;
+}
+.customer-container{
+  width: 30vw;
+}
+
+.image-customer{
+  height: 14vh;
+}

@@ -1,0 +1,79 @@
+
+/* portrait hover reference: https://codepen.io/gamerilla/pen/qaXpJo */
+
+.portrait-hover-effect {
+  display: inline-block;
+  position: relative;
+  margin: 0px;
+  overflow: hidden;
+  background: #000;
+  max-width: 25vw;
+}
+
+.portrait-hover-effect img {
+  display: block;
+  max-width: 100%;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+.portrait-hover-effect:hover img {
+  opacity: 0.5;
+}
+.portrait-hover-effect::after {
+  content: attr(ds-title);
+  position: absolute;
+  text-align:center;
+  color: #fff;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 20%;
+  width: 100%;
+  background: rgba(5,5,5,0.3);
+  font-weight: 500;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  padding: 1rem;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out; 
+  -moz-transition: -moz-transform 0.3s ease-in-out; 
+  transition: transform 0.3s ease-in-out; 
+}
+
+.portrait-hover-effect::before {
+  content: attr(ds-desc);
+  position: absolute;
+  height: 100%;
+  color: #fff;
+  z-index: 1;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  background: rgba(5,5,5,0.3);
+  font-size: 0.8rem;
+  padding: 1rem;
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  transform: translateY(100%);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out; 
+  -moz-transition: -moz-transform 0.3s ease-in-out; 
+  transition: transform 0.3s ease-in-out; 
+}
+
+.portrait-hover-effect:hover::after,
+.portrait-hover-effect:hover::before {
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0%);
+  transform: translateY(0%);
+}
+
+.movie-img {
+  width: 22vw;
+}
+
+.movie-btn {
+  max-width: 22vw;
+}
