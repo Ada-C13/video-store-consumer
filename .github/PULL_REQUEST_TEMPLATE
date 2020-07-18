@@ -4,12 +4,13 @@ Congratulations! You're submitting your assignment!
 ## Comprehension Questions
 Question | Answer
 :------------- | :-------------
-Paste a link to the PR for your API |
-For each person in your pair, describe something you learned from your partner during this project |
-What was one area of React you gained more clarity on during this assignment? |
-Describe how you solved the problem of having lists of movies that look mostly the same but have different content |
-Describe how you handled rentals with React |
-Describe a DOM event your application handled |
-Did you use any functional stateless components? What for? |
-Did you use any container components? What for? |
-Do you have any recommendations on how we could improve this project for the next cohort? |
+Paste a link to the PR for your API | https://github.com/antoniairizarry/video-store-consumer-api |
+For each person in your pair, describe something you learned from your partner during this project | Antonia - I was very rusty in React and Kate helped me make sense of some React basics, she was very patient and helpful! // Kate - I already knew that Antonia's patience, energy, willingness to help with anything would make this pair project experience honestly wonderful. I learned that steadily going through the project, discussing the code, having mutual trust and respect makes a whole world of difference in the learning process. With Antonia, I am never afraid to guess or try something out, she is a judgement-free zone. |
+What was one area of React you gained more clarity on during this assignment? | Antonia- The way I initially set up the project was not the best way to go about it, which caused some difficulties. I got a better sense of React design patterns due to trial and error (and TA Ansel)  // Kate- Oh, these are what props are and this is where they all go! Also, return is where the HTML goes which is equivalent to the view in rails. I miss Rails. |
+Describe how you solved the problem of having lists of movies that look mostly the same but have different content | We used distinct components to deal with different functionalities and that those dealt with the lists of movies in their own way. |
+Describe how you handled rentals with React | We made rental its own component and passed in props that would make a rental valid, a movie and a customer. Within rental, we had a button that confirmed rentals that resulted in a message if rentals were successfully checked out. |
+Describe a DOM event your application handled | We have a button where when you hover over it, it turns a certain color to indicate "hey the cursor is on the Customer". |
+Did you use any functional stateless components? What for? | Yes, for movie, customer, currentlycheckedout. These are functional but do not have states. 
+Did you use any container components? What for? | Container components are mostly concerned with the “backend” operations. MovieIndex would count as a container that does that axios request. Presentational components are mostly concerned with generating some markup to be outputted.
+They don’t manage any kind of state, except for state related to the presentation. Movie.js would be the presentational component. |
+Do you have any recommendations on how we could improve this project for the next cohort? | Instead of going into React right after the one week of html/css with the personal portfolio project, it might be better for our memory to go into Ruby on Rails then have a few consecutive weeks of React. Seems like moving into Ruby on Rails makes a little more sense especially when we were doing Ruby for weeks. Even though there are trillion folders knowing there's a model-view-controller structure would translate a little better conceptually for React. Recalling React was extremely difficult after interviews and BEtsy. This would mean shifting things around, probably cutting out a few projects to give everyone more time for concepts to sink in. |
