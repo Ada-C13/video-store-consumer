@@ -26,3 +26,142 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.navbar {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 1.2rem;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.navbar__logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.selected__container {
+  color: white;
+}
+
+.selected__item {
+  width: 200px;
+}
+
+
+.selected__text {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  border: 2px rgb(165, 165, 165) solid;
+  opacity: 0.9;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.selected__text:hover {
+  background-color: rgb(199, 98, 98);
+  transition: background-color 1s;
+}
+
+.selected__text:hover span {
+  display: none;
+}
+
+.selected__text:hover:before {
+  content: "Deselect?";
+  cursor: pointer;
+}
+
+.rent-btn {
+  width: 100%;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  height: 30px;
+  margin-top: -2px;
+  color: #fff;
+  border: #EF6A4E 2px solid;
+}
+
+.rent-btn:hover {
+  background-color: #EF6A4E;
+
+
+}
+
+/* https://stackoverflow.com/questions/3397113/how-to-remove-focus-border-outline-around-text-input-boxes-chrome */
+input:focus, button:focus {
+  outline: none;
+}
+
+
+.button-bg {
+  border: #EF6A4E solid 2px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: #EF6A4E;
+  letter-spacing: 2px;
+  background-color: #fff;
+  outline: none;
+}
+
+.button-bg:hover {
+  background-color: #EF6A4E;
+  color: #fff;
+  outline: none;
+}
+
+.flash-success {
+  padding: 20px;
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.flash-failure {
+  padding: 20px;
+  color: #571515;
+  background-color: #edd4d4;
+  border-color: #e6c3c3;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.alert {
+  padding: 20px;
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+  margin-top: 20px;
+  text-align: center;
+
+}
+
+.body-container {
+  margin: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.all-movies {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+}
